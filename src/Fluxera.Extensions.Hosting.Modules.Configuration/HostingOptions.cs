@@ -4,7 +4,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     An options class for the modular hosting infrastructure.
+	///     The options for the modular hosting infrastructure.
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
@@ -21,12 +21,12 @@
 		/// <summary>
 		///     Gets or sets the application name.
 		/// </summary>
-		public string? AppName { get; set; }
+		public string AppName { get; set; }
 
 		/// <summary>
 		///     Gets or sets the application version.
 		/// </summary>
-		public Version? Version { get; set; }
+		public Version Version { get; set; }
 
 		/// <summary>
 		///     Gets or sets the modules app settings.

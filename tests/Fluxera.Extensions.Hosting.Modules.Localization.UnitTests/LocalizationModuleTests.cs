@@ -11,6 +11,18 @@ namespace Fluxera.Extensions.Hosting.Modules.Localization.UnitTests
 	[TestFixture]
 	public class LocalizationModuleTests : StartupModuleTestBase<LocalizationModule>
 	{
+		[SetUp]
+		public void SetUp()
+		{
+			this.StartApplication();
+		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			this.StopApplication();
+		}
+
 		[Test]
 		public void ShouldConfigureResourcesPath()
 		{

@@ -4,7 +4,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 
-	public class TestConfigureContributor : IConfigureContributor
+	public class TestConfigureOptionsContributor : IConfigureOptionsContributor
 	{
 		/// <inheritdoc />
 		public string Name => "Test";

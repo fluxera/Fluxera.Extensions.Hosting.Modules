@@ -1,5 +1,6 @@
 namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 {
+	using System;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Logging;

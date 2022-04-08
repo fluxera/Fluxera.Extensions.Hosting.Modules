@@ -12,6 +12,18 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 	[TestFixture]
 	public class ConfigurationModuleTests : StartupModuleTestBase<ConfigurationModule>
 	{
+		[SetUp]
+		public void SetUp()
+		{
+			this.StartApplication();
+		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			this.StopApplication();
+		}
+
 		[Test]
 		[Ignore("Need to build a test base that stops after ConfigureServices")]
 		public void ShouldAddOptionsToServices()

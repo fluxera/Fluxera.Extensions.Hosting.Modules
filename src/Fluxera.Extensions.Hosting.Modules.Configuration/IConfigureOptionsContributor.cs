@@ -9,7 +9,7 @@
 	///     A contract for a configure contributor.
 	/// </summary>
 	[PublicAPI]
-	public interface IConfigureContributor
+	public interface IConfigureOptionsContributor
 	{
 		/// <summary>
 		///     Gets the name of the module aka. the app settings section key.

@@ -1,5 +1,7 @@
 namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 {
+	using System.Threading;
+	using System.Threading.Tasks;
 	using Microsoft.Extensions.Hosting;
 
 	public class TestLifetime : IHostLifetime

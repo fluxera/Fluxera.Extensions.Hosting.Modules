@@ -1,11 +1,11 @@
 namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 {
+	using System;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Hosting.Internal;
-	using NUnit.Framework;
 
 	[PublicAPI]
 	public abstract class StartupModuleTestBase<TStartupModule> : TestBase
@@ -13,8 +13,7 @@ namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 	{
 		protected IApplicationLoader ApplicationLoader { get; private set; }
 
-		[SetUp]
-		public void Setup()
+		protected void StartApplication()
 		{
 			IServiceProvider serviceProvider = BuildServiceProvider(services =>
 			{
@@ -38,11 +37,13 @@ namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 			this.ApplicationLoader.Initialize(new ApplicationLoaderInitializationContext(serviceProvider));
 		}
 
-		[TearDown]
-		public void TearDown()
+		protected void StopApplication()
 		{
-			this.ApplicationLoader?.Shutdown();
-			this.ApplicationLoader = null!;
+			if(this.ApplicationLoader != null)
+			{
+				this.ApplicationLoader.Shutdown();
+				this.ApplicationLoader = null;
+			}
 		}
 	}
 }

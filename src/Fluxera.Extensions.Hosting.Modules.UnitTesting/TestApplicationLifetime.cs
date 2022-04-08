@@ -1,6 +1,7 @@
 namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 {
 	using System.Diagnostics.CodeAnalysis;
+	using System.Threading;
 	using Microsoft.Extensions.Hosting;
 
 	[SuppressMessage("ReSharper", "UnassignedGetOnlyAutoProperty")]

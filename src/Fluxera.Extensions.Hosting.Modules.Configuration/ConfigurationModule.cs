@@ -35,7 +35,7 @@
 		{
 			// Configure the module options.
 			ConfigureContributorList contributorList = context.Services.GetObject<ConfigureContributorList>();
-			foreach(IConfigureContributor contributor in contributorList)
+			foreach(IConfigureOptionsContributor contributor in contributorList)
 			{
 				IConfigurationSection section = context.Configuration.GetSection($"Hosting:Modules:{contributor.Name}");
 				context.Log($"Configure({contributor.OptionsType.Name})",

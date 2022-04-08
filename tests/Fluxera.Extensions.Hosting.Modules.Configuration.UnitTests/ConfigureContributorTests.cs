@@ -9,6 +9,18 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 	[TestFixture]
 	public class ConfigureContributorTests : StartupModuleTestBase<TestModule>
 	{
+		[SetUp]
+		public void SetUp()
+		{
+			this.StartApplication();
+		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			this.StopApplication();
+		}
+
 		[Test]
 		public void ShouldConfigureTestOptions()
 		{

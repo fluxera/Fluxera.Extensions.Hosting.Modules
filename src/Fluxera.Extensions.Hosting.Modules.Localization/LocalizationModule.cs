@@ -20,7 +20,7 @@
 			// Add localization.
 			context.Log("AddLocalization", services =>
 			{
-				LocalizationOptions localizationOptions = context.Configuration.Get<LocalizationOptions>("Localization");
+				LocalizationOptions localizationOptions = context.Configuration.GetForModule<LocalizationOptions>("Localization");
 
 				services.AddLocalization(options =>
 				{

@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Caching
 {
 	using Fluxera.Extensions.Common;
+	using Fluxera.Extensions.Hosting.Modules.Caching.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -13,16 +14,21 @@
 	public sealed class CachingModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
+		public override void PreConfigureServices(IServiceConfigurationContext context)
+		{
+			// Add the configure options contributor.
+			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+		}
+
+		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			context.Log(services => services.AddJitterCalculator());
+			// Add cache services. 
 			context.Log(services => services.AddMemoryCache());
 			context.Log(services => services.AddDistributedMemoryCache());
 
-			//context.Services.Configure<CachingOptions>(options =>
-			//{
-			//	//options.GlobalCacheEntryOptions.SlidingExpiration = TimeSpan.FromMinutes(20);
-			//});
+			// Ass jitter service.
+			context.Log(services => services.AddJitterCalculator());
 		}
 	}
 }

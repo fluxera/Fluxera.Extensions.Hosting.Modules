@@ -9,7 +9,7 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public sealed class ModulesOptionsDictionary : Dictionary<string, ModuleOptionsDictionary>
+	public sealed class ModulesOptionsDictionary : Dictionary<string, object>
 	{
 	}
 }

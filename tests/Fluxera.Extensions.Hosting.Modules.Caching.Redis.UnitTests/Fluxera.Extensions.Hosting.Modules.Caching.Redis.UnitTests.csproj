@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Caching.Redis\Fluxera.Extensions.Hosting.Modules.Caching.Redis.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
   </ItemGroup>
 

@@ -16,7 +16,7 @@
 		/// <param name="configuration"></param>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		public static TOptions Get<TOptions>(this IConfiguration configuration, string name)
+		public static TOptions GetForModule<TOptions>(this IConfiguration configuration, string name)
 		{
 			IConfigurationSection section = configuration.GetSection($"Hosting:Modules:{name}");
 			return section.Get<TOptions>();

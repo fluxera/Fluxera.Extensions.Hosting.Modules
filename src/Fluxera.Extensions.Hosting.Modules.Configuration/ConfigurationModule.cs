@@ -31,15 +31,14 @@
 		}
 
 		/// <inheritdoc />
-		public override void PostConfigureServices(IServiceConfigurationContext context)
+		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Configure the module options.
 			ConfigureContributorList contributorList = context.Services.GetObject<ConfigureContributorList>();
 			foreach(IConfigureOptionsContributor contributor in contributorList)
 			{
 				IConfigurationSection section = context.Configuration.GetSection($"Hosting:Modules:{contributor.Name}");
-				context.Log($"Configure({contributor.OptionsType.Name})",
-					services => contributor.Configure(services, section));
+				context.Log($"Configure({contributor.Name})", _ => contributor.Configure(context, section));
 			}
 		}
 	}

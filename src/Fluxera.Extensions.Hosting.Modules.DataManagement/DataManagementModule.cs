@@ -1,8 +1,10 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.DataManagement
 {
 	using System.Collections.Generic;
+	using Fluxera.Extensions.DataManagement;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.DataManagement.Contributors;
 	using Fluxera.Utilities;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,13 @@
 	public sealed class DataManagementModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
+		public override void PreConfigureServices(IServiceConfigurationContext context)
+		{
+			// Add the configure options contributor.
+			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+		}
+
+		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the default connection string resolver.
@@ -27,9 +36,6 @@
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(DataSeedingContributorList)",
 				services => services.AddObjectAccessor(new DataSeedingContributorList(), ObjectAccessorLifetime.Configure));
-
-			// Add the configure options contributor.
-			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
 		}
 
 		/// <inheritdoc />

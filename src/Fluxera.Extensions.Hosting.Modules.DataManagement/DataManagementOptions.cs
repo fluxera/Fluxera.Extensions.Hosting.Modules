@@ -18,8 +18,8 @@
 		}
 
 		/// <summary>
-		///     Gets or sets the connection strings.
+		///     Gets the connection strings.
 		/// </summary>
-		public ConnectionStrings ConnectionStrings { get; set; }
+		public ConnectionStrings ConnectionStrings { get; internal set; }
 	}
 }

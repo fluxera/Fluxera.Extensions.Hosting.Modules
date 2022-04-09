@@ -4,7 +4,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 	public class TestModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
-		public override void ConfigureServices(IServiceConfigurationContext context)
+		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			context.Services.AddConfigureOptionsContributor<TestConfigureOptionsContributor>();
 		}

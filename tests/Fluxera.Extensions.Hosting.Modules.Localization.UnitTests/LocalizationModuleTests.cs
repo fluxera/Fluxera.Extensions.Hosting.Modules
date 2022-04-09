@@ -1,6 +1,5 @@
 namespace Fluxera.Extensions.Hosting.Modules.Localization.UnitTests
 {
-	using System.Linq;
 	using FluentAssertions;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.Extensions.DependencyInjection;
@@ -24,11 +23,15 @@ namespace Fluxera.Extensions.Hosting.Modules.Localization.UnitTests
 		}
 
 		[Test]
+		public void ShouldAddLocalizerService()
+		{
+			IStringLocalizerFactory stringLocalizerFactory = this.ApplicationLoader.ServiceProvider.GetRequiredService<IStringLocalizerFactory>();
+			stringLocalizerFactory.Should().NotBeNull();
+		}
+
+		[Test]
 		public void ShouldConfigureResourcesPath()
 		{
-			IModuleDescriptor descriptor = this.ApplicationLoader.Modules.Last();
-			LocalizationModule? module = descriptor.Instance as LocalizationModule;
-
 			IOptions<LocalizationOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<LocalizationOptions>>();
 			options.Value.ResourcesPath.Should().Be("Localizations");
 		}

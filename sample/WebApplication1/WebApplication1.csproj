@@ -12,12 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Caching.Redis\Fluxera.Extensions.Hosting.Modules.Caching.Redis.csproj" />
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Localization\Fluxera.Extensions.Hosting.Modules.Localization.csproj" />
   </ItemGroup>
 
   <ItemGroup>

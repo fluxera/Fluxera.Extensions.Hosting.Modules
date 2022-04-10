@@ -37,7 +37,7 @@
 
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(MappingProfileContributorList)",
-				services => services.AddObjectAccessor(new MappingProfileContributorList(), ObjectAccessorLifetime.Application));
+				services => services.AddObjectAccessor(new MappingProfileContributorList(), ObjectAccessorLifetime.Configure));
 		}
 
 		/// <inheritdoc />

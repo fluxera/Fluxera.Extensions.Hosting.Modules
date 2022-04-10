@@ -8,6 +8,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests
 	using Microsoft.Extensions.Options;
 	using NUnit.Framework;
 
+	[TestFixture]
 	public class CachingRedisModuleTests : StartupModuleTestBase<CachingRedisModule>
 	{
 		[SetUp]
@@ -23,7 +24,15 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests
 		}
 
 		[Test]
-		public void ShouldConfigureCachingRedis()
+		public void ShouldAddDistributedRedisCache()
+		{
+			IDistributedCache distributedCache = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDistributedCache>();
+			distributedCache.Should().NotBeNull();
+			distributedCache.Should().BeOfType<RedisCache>();
+		}
+
+		[Test]
+		public void ShouldConfigureCachingRedisOptions()
 		{
 			IOptions<CachingRedisOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<CachingRedisOptions>>();
 			options.Value.ConnectionStringName.Should().Be("RedisServer");
@@ -31,14 +40,6 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests
 
 			options.Value.ConnectionStrings.Should().NotBeNullOrEmpty();
 			options.Value.ConnectionStrings[options.Value.ConnectionStringName].Should().Be("localhost");
-		}
-
-		[Test]
-		public void ShouldAddDistributedRedisCache()
-		{
-			IDistributedCache distributedCache = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDistributedCache>();
-			distributedCache.Should().NotBeNull();
-			distributedCache.Should().BeOfType<RedisCache>();
 		}
 	}
 }

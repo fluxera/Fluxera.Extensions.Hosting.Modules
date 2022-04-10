@@ -24,31 +24,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F18D2D58
 		tests\Directory.Build.props = tests\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Localization", "src\Fluxera.Extensions.Hosting.Modules.Localization\Fluxera.Extensions.Hosting.Modules.Localization.csproj", "{2D42916B-3D21-4DA1-8938-9F18A71FC268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Localization", "src\Fluxera.Extensions.Hosting.Modules.Localization\Fluxera.Extensions.Hosting.Modules.Localization.csproj", "{2D42916B-3D21-4DA1-8938-9F18A71FC268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Localization.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Localization.UnitTests\Fluxera.Extensions.Hosting.Modules.Localization.UnitTests.csproj", "{6B6EFA40-8E5C-424D-BBA4-626DD258CE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Localization.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Localization.UnitTests\Fluxera.Extensions.Hosting.Modules.Localization.UnitTests.csproj", "{6B6EFA40-8E5C-424D-BBA4-626DD258CE87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Configuration", "src\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj", "{B18F1986-4D22-433A-9F4A-6E3B31D24721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Configuration", "src\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj", "{B18F1986-4D22-433A-9F4A-6E3B31D24721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests\Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests.csproj", "{330503E2-7EDF-44EB-8111-A582C0D3C6E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests\Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests.csproj", "{330503E2-7EDF-44EB-8111-A582C0D3C6E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.DataManagement", "src\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj", "{DCCC029D-C86E-49F7-A29D-FF2CD6E26BEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.DataManagement", "src\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj", "{DCCC029D-C86E-49F7-A29D-FF2CD6E26BEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.DataManagement.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.DataManagement.UnitTests\Fluxera.Extensions.Hosting.Modules.DataManagement.UnitTests.csproj", "{F13AD6EE-AC61-4E70-9FA2-9FE327F90149}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.DataManagement.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.DataManagement.UnitTests\Fluxera.Extensions.Hosting.Modules.DataManagement.UnitTests.csproj", "{F13AD6EE-AC61-4E70-9FA2-9FE327F90149}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.UnitTesting", "src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj", "{4E809521-5B05-442D-8A34-6A73FE8F82D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Caching", "src\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj", "{1B66591E-78E1-463B-941E-FD385B8C07E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Caching", "src\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj", "{1B66591E-78E1-463B-941E-FD385B8C07E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Caching.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Caching.UnitTests\Fluxera.Extensions.Hosting.Modules.Caching.UnitTests.csproj", "{0E6500BB-DD6C-4D1F-9C8F-3E4629B35C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Caching.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Caching.UnitTests\Fluxera.Extensions.Hosting.Modules.Caching.UnitTests.csproj", "{0E6500BB-DD6C-4D1F-9C8F-3E4629B35C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Caching.Redis", "src\Fluxera.Extensions.Hosting.Modules.Caching.Redis\Fluxera.Extensions.Hosting.Modules.Caching.Redis.csproj", "{337DB1E4-BE5D-4E4F-BBAB-ED7490BEEA17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Caching.Redis", "src\Fluxera.Extensions.Hosting.Modules.Caching.Redis\Fluxera.Extensions.Hosting.Modules.Caching.Redis.csproj", "{337DB1E4-BE5D-4E4F-BBAB-ED7490BEEA17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests\Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests.csproj", "{F1B2261C-1639-4057-8D62-D6245D30B66E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests\Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests.csproj", "{F1B2261C-1639-4057-8D62-D6245D30B66E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{3BF3EFE7-E11F-42BB-914D-D29A9703AB49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "sample\WebApplication1\WebApplication1.csproj", "{5725CFDA-26CC-4E79-ADF9-B56BAE75BD6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "sample\WebApplication1\WebApplication1.csproj", "{5725CFDA-26CC-4E79-ADF9-B56BAE75BD6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AutoMapper", "src\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj", "{20CAFFEB-BA43-4A98-80D6-48718C1FBABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AutoMapper.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AutoMapper.UnitTests\Fluxera.Extensions.Hosting.Modules.AutoMapper.UnitTests.csproj", "{F973B9DA-315F-4D1E-B75C-3C941CEBC275}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +108,14 @@ Global
 		{5725CFDA-26CC-4E79-ADF9-B56BAE75BD6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5725CFDA-26CC-4E79-ADF9-B56BAE75BD6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5725CFDA-26CC-4E79-ADF9-B56BAE75BD6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CAFFEB-BA43-4A98-80D6-48718C1FBABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CAFFEB-BA43-4A98-80D6-48718C1FBABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CAFFEB-BA43-4A98-80D6-48718C1FBABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CAFFEB-BA43-4A98-80D6-48718C1FBABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F973B9DA-315F-4D1E-B75C-3C941CEBC275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F973B9DA-315F-4D1E-B75C-3C941CEBC275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F973B9DA-315F-4D1E-B75C-3C941CEBC275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F973B9DA-315F-4D1E-B75C-3C941CEBC275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +133,8 @@ Global
 		{337DB1E4-BE5D-4E4F-BBAB-ED7490BEEA17} = {DF28D730-99B3-4811-AAC7-725A73B3F668}
 		{F1B2261C-1639-4057-8D62-D6245D30B66E} = {F18D2D58-282C-4D93-8D9A-3A76CF98F018}
 		{5725CFDA-26CC-4E79-ADF9-B56BAE75BD6B} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
+		{20CAFFEB-BA43-4A98-80D6-48718C1FBABF} = {DF28D730-99B3-4811-AAC7-725A73B3F668}
+		{F973B9DA-315F-4D1E-B75C-3C941CEBC275} = {F18D2D58-282C-4D93-8D9A-3A76CF98F018}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

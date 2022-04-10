@@ -9,6 +9,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.UnitTests
 	using Microsoft.Extensions.Options;
 	using NUnit.Framework;
 
+	[TestFixture]
 	public class CachingModuleTests : StartupModuleTestBase<CachingModule>
 	{
 		[SetUp]
@@ -24,12 +25,11 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.UnitTests
 		}
 
 		[Test]
-		public void ShouldConfigureCaching()
+		public void ShouldAddDistributedCache()
 		{
-			IOptions<CachingOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<CachingOptions>>();
-			options.Value.DistributedCache.AbsoluteExpiration.Should().Be(DateTimeOffset.Parse("12:00:00"));
-			options.Value.DistributedCache.AbsoluteExpirationRelativeToNow.Should().Be(TimeSpan.Parse("00:30:00"));
-			options.Value.DistributedCache.SlidingExpiration.Should().Be(TimeSpan.Parse("00:15:00"));
+			IDistributedCache distributedCache = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDistributedCache>();
+			distributedCache.Should().NotBeNull();
+			distributedCache.Should().BeOfType<MemoryDistributedCache>();
 		}
 
 		[Test]
@@ -41,11 +41,12 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.UnitTests
 		}
 
 		[Test]
-		public void ShouldAddDistributedCache()
+		public void ShouldConfigureCachingOptions()
 		{
-			IDistributedCache distributedCache = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDistributedCache>();
-			distributedCache.Should().NotBeNull();
-			distributedCache.Should().BeOfType<MemoryDistributedCache>();
+			IOptions<CachingOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<CachingOptions>>();
+			options.Value.DistributedCache.AbsoluteExpiration.Should().Be(DateTimeOffset.Parse("12:00:00"));
+			options.Value.DistributedCache.AbsoluteExpirationRelativeToNow.Should().Be(TimeSpan.Parse("00:30:00"));
+			options.Value.DistributedCache.SlidingExpiration.Should().Be(TimeSpan.Parse("00:15:00"));
 		}
 	}
 }

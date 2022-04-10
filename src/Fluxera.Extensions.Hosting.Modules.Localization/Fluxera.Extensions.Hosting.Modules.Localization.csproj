@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.3" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.4" />
 		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.0.20" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.9.0">
 			<PrivateAssets>all</PrivateAssets>

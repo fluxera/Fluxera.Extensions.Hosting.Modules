@@ -1,23 +1,13 @@
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-WebApplication app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if(app.Environment.IsDevelopment())
+namespace WebApplication1
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+	using System.Threading.Tasks;
+	using Fluxera.Extensions.Hosting;
+
+	public static class Program
+	{
+		public static async Task Main(string[] args)
+		{
+			await ApplicationHost.RunAsync<WebApplication1Host>(args);
+		}
+	}
 }
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

@@ -7,7 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Caching.Redis\Fluxera.Extensions.Hosting.Modules.Caching.Redis.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Localization\Fluxera.Extensions.Hosting.Modules.Localization.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contributors\" />
   </ItemGroup>
 
 </Project>

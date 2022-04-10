@@ -2,25 +2,27 @@
 {
 	using Fluxera.Extensions.DataManagement;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 
-	internal sealed class ConfigureOptionsContributor : IConfigureOptionsContributor
+	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<CachingRedisOptions>
 	{
 		/// <inheritdoc />
-		public string Name => "Caching";
+		public override string SectionName => "Caching:Redis";
 
 		/// <inheritdoc />
-		public void Configure(IServiceConfigurationContext context, IConfigurationSection section)
+		protected override void AdditionalConfigure(IServiceConfigurationContext context)
 		{
-			IConfigurationSection connectionStringsSection = context.Configuration.GetSection("ConnectionStrings");
-			ConnectionStrings connectionStrings = connectionStringsSection.Get<ConnectionStrings>();
+			CachingRedisOptions redisOptions = context.Services.GetOptions<CachingRedisOptions>();
+			redisOptions.ConnectionStrings = context.Services.GetOptions<ConnectionStrings>();
 
-			context.Services.Configure<CachingRedisOptions>(section.GetSection("Redis"));
-			context.Services.Configure<CachingRedisOptions>(options =>
-			{
-				options.ConnectionStrings = connectionStrings;
-			});
+			context.Log("Configure(CachingRedisOptions)",
+				services =>
+				{
+					services.Configure<CachingRedisOptions>(options =>
+					{
+						options.ConnectionStrings = redisOptions.ConnectionStrings;
+					});
+				});
 		}
 	}
 }

@@ -37,8 +37,7 @@
 			ConfigureContributorList contributorList = context.Services.GetObject<ConfigureContributorList>();
 			foreach(IConfigureOptionsContributor contributor in contributorList)
 			{
-				IConfigurationSection section = context.Configuration.GetSection($"Hosting:Modules:{contributor.Name}");
-				context.Log($"Configure({contributor.Name})", _ => contributor.Configure(context, section));
+				contributor.Configure(context);
 			}
 		}
 	}

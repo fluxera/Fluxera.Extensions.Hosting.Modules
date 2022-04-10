@@ -6,26 +6,31 @@
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 
-	internal sealed class ConfigureOptionsContributor : IConfigureOptionsContributor
+	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<DataManagementOptions>
 	{
 		/// <inheritdoc />
-		public string Name => "DataManagement";
+		public override string SectionName => "DataManagement";
 
 		/// <inheritdoc />
-		public void Configure(IServiceConfigurationContext context, IConfigurationSection section)
+		protected override void AdditionalConfigure(IServiceConfigurationContext context)
 		{
-			IConfigurationSection connectionStringsSection = context.Configuration.GetSection("ConnectionStrings");
-			ConnectionStrings connectionStrings = connectionStringsSection.Get<ConnectionStrings>();
+			IConfigurationSection section = context.Configuration.GetSection("ConnectionStrings");
+			ConnectionStrings connectionStrings = section.Get<ConnectionStrings>();
+
+			context.Log("Configure(ConnectionStrings)",
+				services => services.Configure<ConnectionStrings>(section));
 
 			context.Log("AddObjectAccessor(ConnectionStrings)",
 				services => services.AddObjectAccessor(connectionStrings, ObjectAccessorLifetime.ConfigureServices));
 
-			context.Services.Configure<ConnectionStrings>(connectionStringsSection);
-			context.Services.Configure<DataManagementOptions>(section);
-			context.Services.Configure<DataManagementOptions>(options =>
-			{
-				options.ConnectionStrings = connectionStrings;
-			});
+			context.Log("Configure(DataManagementOptions)",
+				services =>
+				{
+					services.Configure<DataManagementOptions>(options =>
+					{
+						options.ConnectionStrings = connectionStrings;
+					});
+				});
 		}
 	}
 }

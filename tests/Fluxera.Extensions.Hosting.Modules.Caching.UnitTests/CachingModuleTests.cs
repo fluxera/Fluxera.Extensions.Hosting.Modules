@@ -27,9 +27,6 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.UnitTests
 		public void ShouldConfigureCaching()
 		{
 			IOptions<CachingOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<CachingOptions>>();
-			options.Value.MemoryCache.AbsoluteExpiration.Should().Be(DateTimeOffset.Parse("12:00:00"));
-			options.Value.MemoryCache.AbsoluteExpirationRelativeToNow.Should().Be(TimeSpan.Parse("00:30:00"));
-			options.Value.MemoryCache.SlidingExpiration.Should().Be(TimeSpan.Parse("00:15:00"));
 			options.Value.DistributedCache.AbsoluteExpiration.Should().Be(DateTimeOffset.Parse("12:00:00"));
 			options.Value.DistributedCache.AbsoluteExpirationRelativeToNow.Should().Be(TimeSpan.Parse("00:30:00"));
 			options.Value.DistributedCache.SlidingExpiration.Should().Be(TimeSpan.Parse("00:15:00"));

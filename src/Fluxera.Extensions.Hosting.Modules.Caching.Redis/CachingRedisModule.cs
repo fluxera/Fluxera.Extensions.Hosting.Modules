@@ -26,7 +26,7 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			CachingRedisOptions redisOptions = context.Configuration.GetForModule<CachingRedisOptions>("Caching:Redis");
+			CachingRedisOptions redisOptions = context.Services.GetOptions<CachingRedisOptions>();
 			redisOptions.ConnectionStrings = context.Services.GetObject<ConnectionStrings>();
 
 			// Add the Redis cache services.

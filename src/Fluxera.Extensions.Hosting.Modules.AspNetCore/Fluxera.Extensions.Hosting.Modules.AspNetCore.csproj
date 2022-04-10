@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Principal</Title>
-		<Description>A module that enables a principal accessor.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore</Title>
+		<Description>A module that enables ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;aspnet</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,7 +22,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.4" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.0.4" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.9.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

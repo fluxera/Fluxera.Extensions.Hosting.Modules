@@ -19,7 +19,7 @@
 				services => services.AddPrincipalAccessor());
 
 			// Add the thread as source for a principal.
-			context.Log("AddPrincipalProviderExtension(Thread)",
+			context.Log("AddPrincipalProvider(Thread)",
 				services => services.AddPrincipalProvider<ThreadPrincipalProvider>());
 		}
 	}

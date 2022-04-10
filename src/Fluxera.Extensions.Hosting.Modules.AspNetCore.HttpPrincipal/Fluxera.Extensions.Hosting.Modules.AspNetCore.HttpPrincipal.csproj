@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Principal</Title>
-		<Description>A module that enables a principal accessor.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal</Title>
+		<Description>A module that enables a principal accessor for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;http</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,6 +22,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.4" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.9.0">
 			<PrivateAssets>all</PrivateAssets>
@@ -31,7 +35,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Principal\Fluxera.Extensions.Hosting.Modules.Principal.csproj" />
 	</ItemGroup>
 
 </Project>

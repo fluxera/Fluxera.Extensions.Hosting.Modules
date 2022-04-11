@@ -2,11 +2,11 @@
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	[DependsOn(typeof(ConfigurationModule))]
+	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebApplication1Module : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

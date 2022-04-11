@@ -28,14 +28,15 @@
 			context.Log($"AddObjectAccessor({optionsTypeName})",
 				services => services.AddObjectAccessor(options, ObjectAccessorLifetime.ConfigureServices));
 
-			this.AdditionalConfigure(context);
+			this.AdditionalConfigure(context, options);
 		}
 
 		/// <summary>
 		///     Performs additional options configuration.
 		/// </summary>
 		/// <param name="context"></param>
-		protected virtual void AdditionalConfigure(IServiceConfigurationContext context)
+		/// <param name="createdOptions"></param>
+		protected virtual void AdditionalConfigure(IServiceConfigurationContext context, TOptions createdOptions)
 		{
 		}
 	}

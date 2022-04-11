@@ -18,7 +18,7 @@
 		{
 			string optionsTypeName = typeof(TOptions).Name;
 			IConfigurationSection section = context.Configuration.GetSection(ConfigurationSection.GetSectionName(this.SectionName));
-			TOptions options = section.Get<TOptions>();
+			TOptions options = section.Get<TOptions>() ?? new TOptions();
 
 			// Configure as IOptions<T>
 			context.Log($"Configure({optionsTypeName})",

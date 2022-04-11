@@ -12,7 +12,7 @@
 		public override string SectionName => "DataManagement";
 
 		/// <inheritdoc />
-		protected override void AdditionalConfigure(IServiceConfigurationContext context)
+		protected override void AdditionalConfigure(IServiceConfigurationContext context, DataManagementOptions createdOptions)
 		{
 			IConfigurationSection section = context.Configuration.GetSection("ConnectionStrings");
 			ConnectionStrings connectionStrings = section.Get<ConnectionStrings>();

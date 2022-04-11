@@ -26,8 +26,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.4" />
-		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.0.4" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.5" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.0.5" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.9.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

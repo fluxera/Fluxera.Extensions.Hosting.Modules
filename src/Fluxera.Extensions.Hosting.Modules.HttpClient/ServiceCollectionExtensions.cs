@@ -1,9 +1,8 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.DataManagement
+﻿namespace Fluxera.Extensions.Hosting.Modules.HttpClient
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Hosting;
 
 	/// <summary>
 	///     Extension methods for the <see cref="IServiceCollection" /> type.
@@ -20,18 +19,12 @@
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
 		/// <returns></returns>
-		public static IServiceCollection AddDataSeedingContributor<TContributor>(this IServiceCollection services)
-			where TContributor : class, IDataSeedingContributor, new()
+		public static IServiceCollection AddHttpClientServiceContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IHttpClientServiceContributor, new()
 		{
-			IHostEnvironment environment = services.GetObject<IHostEnvironment>();
-
-			// We only support the data seeders in non-production environments.
-			if(!environment.IsProduction())
-			{
-				DataSeedingContributorList contributors = services.GetObject<DataSeedingContributorList>();
-				TContributor contributor = new TContributor();
-				contributors.Add(contributor);
-			}
+			HttpClientServiceRegistrationContributorList contributors = services.GetObject<HttpClientServiceRegistrationContributorList>();
+			TContributor contributor = new TContributor();
+			contributors.Add(contributor);
 
 			return services;
 		}

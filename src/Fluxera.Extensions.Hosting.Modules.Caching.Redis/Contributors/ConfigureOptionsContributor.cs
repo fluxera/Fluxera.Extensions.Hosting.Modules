@@ -10,17 +10,16 @@
 		public override string SectionName => "Caching:Redis";
 
 		/// <inheritdoc />
-		protected override void AdditionalConfigure(IServiceConfigurationContext context)
+		protected override void AdditionalConfigure(IServiceConfigurationContext context, CachingRedisOptions createdOptions)
 		{
-			CachingRedisOptions redisOptions = context.Services.GetOptions<CachingRedisOptions>();
-			redisOptions.ConnectionStrings = context.Services.GetOptions<ConnectionStrings>();
+			createdOptions.ConnectionStrings = context.Services.GetOptions<ConnectionStrings>();
 
 			context.Log("Configure(CachingRedisOptions)",
 				services =>
 				{
 					services.Configure<CachingRedisOptions>(options =>
 					{
-						options.ConnectionStrings = redisOptions.ConnectionStrings;
+						options.ConnectionStrings = createdOptions.ConnectionStrings;
 					});
 				});
 		}

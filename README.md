@@ -9,6 +9,7 @@ Einleitung...
   - Is the logical unit of one or more features that are enabled by using it as dependency.
 - Contributors
   - Are components that provide additional startup logic to a module that provides a sertain feature.
+  - Always add them in PreConfigureServices
 - Extensions
   - Are similar to contributors but are used at runtime. Extensions are always additive so that not only
     one instace is used, but all registered extensions. Extensions are fixed it the sense that the module

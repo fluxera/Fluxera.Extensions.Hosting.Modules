@@ -8,16 +8,6 @@
 	[UsedImplicitly]
 	internal sealed class RepositoryProviderContributor : IRepositoryProviderContributor
 	{
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions> ConfigureRepository
-		{
-			get
-			{
-				return (builder, connectionString, options) =>
-				{
-				};
-			}
-		}
-
 		public string RepositoryProviderName => RepositoryProviderNames.InMemory;
 
 		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>> AddRepository
@@ -27,6 +17,16 @@
 				return (builder, repositoryName, configureAction) =>
 				{
 					builder.AddInMemoryRepository(repositoryName, configureAction);
+				};
+			}
+		}
+
+		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions> ConfigureRepository
+		{
+			get
+			{
+				return (builder, connectionString, options) =>
+				{
 				};
 			}
 		}

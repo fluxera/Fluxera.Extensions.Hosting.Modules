@@ -3,12 +3,22 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
+	using Fluxera.Extensions.Hosting.Modules.Persistence;
+	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
+	using WebApplication1.Contributors;
 
 	[PublicAPI]
+	[DependsOn(typeof(InMemoryPersistenceModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebApplication1Module : ConfigureApplicationModule
 	{
+		/// <inheritdoc />
+		public override void PreConfigureServices(IServiceConfigurationContext context)
+		{
+			context.Services.AddRepositoryContributor<RepositoryContributor>("Test");
+		}
+
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{

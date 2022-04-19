@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AutoMapper</Title>
-		<Description>A module that enables object mapping using AutoMapper.</Description>
-		<PackageTags>library;extensions;hosting;modular;mapping;automapper</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.Persistence</Title>
+		<Description>A module that enables persistence.</Description>
+		<PackageTags>library;extensions;hosting;modular;persistence</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,11 +22,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AutoMapper" Version="11.0.1" />
-		<PackageReference Include="AutoMapper.Extensions.EnumMapping" Version="2.0.1" />
-		<PackageReference Include="AutoMapper.Extensions.ExpressionMapping" Version="5.0.2" />
-		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.5" />
+		<PackageReference Include="Fluxera.Extensions.Validation.DataAnnotations" Version="6.0.25" />
+		<PackageReference Include="Fluxera.Extensions.Validation.FluentValidation" Version="6.0.25" />
+		<PackageReference Include="Fluxera.Repository" Version="6.0.12" />
+		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.0.12" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -35,7 +35,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
 	</ItemGroup>
 
 </Project>

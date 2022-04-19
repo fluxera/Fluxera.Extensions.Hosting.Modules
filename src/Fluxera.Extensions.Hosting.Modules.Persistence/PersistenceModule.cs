@@ -5,6 +5,7 @@
 	using System.Linq;
 	using Fluxera.Extensions.DataManagement;
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.DataManagement;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.Contributors;
@@ -21,6 +22,7 @@
 	///     A module that enabled persistence.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(DataManagementModule))]
 	public sealed class PersistenceModule : ConfigureApplicationModule
 	{

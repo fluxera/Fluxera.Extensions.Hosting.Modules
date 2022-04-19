@@ -29,7 +29,6 @@
 		/// <inheritdoc />
 		public void ConfigureCaching(ICachingBuilder builder)
 		{
-			builder.UseNoCaching();
 		}
 	}
 }

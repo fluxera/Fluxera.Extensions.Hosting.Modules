@@ -3,6 +3,7 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
@@ -10,6 +11,7 @@
 
 	[PublicAPI]
 	[DependsOn(typeof(InMemoryPersistenceModule))]
+	[DependsOn(typeof(SwaggerModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebApplication1Module : ConfigureApplicationModule
 	{
@@ -22,31 +24,23 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			context.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-			context.Services.AddEndpointsApiExplorer();
-			context.Services.AddSwaggerGen();
 		}
 
 		/// <inheritdoc />
 		public override void Configure(IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
-
 			// Configure the HTTP request pipeline.
 			if(context.Environment.IsDevelopment())
 			{
-				app.UseSwagger();
-				app.UseSwaggerUI();
+				context.UseSwagger();
+				context.UseSwaggerUI();
 			}
 
-			app.UseHttpsRedirection();
+			context.UseHttpsRedirection();
 
-			app.UseAuthorization();
+			//context.UseAuthorization();
 
-			app.MapControllers();
-
-			app.Run();
+			context.MapControllers();
 		}
 	}
 }

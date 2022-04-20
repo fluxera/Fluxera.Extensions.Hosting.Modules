@@ -5,6 +5,7 @@
 	using Microsoft.AspNetCore.Http;
 	using Microsoft.AspNetCore.Mvc.Infrastructure;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Options;
 	using NUnit.Framework;
 
 	[TestFixture]
@@ -34,6 +35,13 @@
 		{
 			IHttpContextAccessor httpContextAccessor = this.ApplicationLoader.ServiceProvider.GetRequiredService<IHttpContextAccessor>();
 			httpContextAccessor.Should().NotBeNull();
+		}
+
+		[Test]
+		public void ShouldConfigureAspNetCoreOptions()
+		{
+			IOptions<AspNetCoreOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<AspNetCoreOptions>>();
+			options.Value.Should().NotBeNull();
 		}
 	}
 }

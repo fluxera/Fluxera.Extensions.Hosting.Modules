@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:59508;http://localhost:59509"
+    }
+  }
+}

@@ -23,8 +23,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.6" />
-		<PackageReference Include="Fluxera.Extensions.Validation.DataAnnotations" Version="6.0.26" />
-		<PackageReference Include="Fluxera.Extensions.Validation.FluentValidation" Version="6.0.26" />
+		<PackageReference Include="Fluxera.Extensions.Validation.DataAnnotations" Version="6.0.27" />
+		<PackageReference Include="Fluxera.Extensions.Validation.FluentValidation" Version="6.0.27" />
 		<PackageReference Include="Fluxera.Repository" Version="6.0.13" />
 		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.0.13" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">

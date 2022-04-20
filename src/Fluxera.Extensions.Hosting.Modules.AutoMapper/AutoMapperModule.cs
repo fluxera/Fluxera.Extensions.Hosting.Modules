@@ -43,7 +43,7 @@
 		/// <inheritdoc />
 		public override void PreConfigure(IApplicationInitializationContext context)
 		{
-			context.Log("UseAutoMapper", serviceProvider =>
+			context.Log("Initialize(AutoMapper)", serviceProvider =>
 			{
 				IOptions<AutoMapperOptions> optionsService = serviceProvider.GetRequiredService<IOptions<AutoMapperOptions>>();
 				AutoMapperOptions options = optionsService.Value;

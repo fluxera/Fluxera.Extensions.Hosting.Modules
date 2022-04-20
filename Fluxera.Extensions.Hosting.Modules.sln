@@ -8,7 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{75AC41
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		GitVersion.yml = GitVersion.yml
-		global.json = global.json
 		icon.png = icon.png
 		LICENSE = LICENSE
 		README.md = README.md
@@ -78,9 +77,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.HttpClient.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.HttpClient.UnitTests\Fluxera.Extensions.Hosting.Modules.HttpClient.UnitTests.csproj", "{5EA88882-D8A9-40F3-8ACA-5A7117B77C04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.ODataClient", "src\Fluxera.Extensions.Hosting.Modules.ODataClient\Fluxera.Extensions.Hosting.Modules.ODataClient.csproj", "{F5DB9D14-FA1D-4708-BD1F-7872E410C998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.ODataClient", "src\Fluxera.Extensions.Hosting.Modules.ODataClient\Fluxera.Extensions.Hosting.Modules.ODataClient.csproj", "{F5DB9D14-FA1D-4708-BD1F-7872E410C998}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests\Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests.csproj", "{557CD3BB-F642-40BE-87EC-CAC2D1FB2F51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests\Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests.csproj", "{557CD3BB-F642-40BE-87EC-CAC2D1FB2F51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence", "src\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj", "{45C6D0F4-051E-4FB2-ABE6-06BD0AA41ECD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests\Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests.csproj", "{829B846F-09DB-46A5-B18C-482DD7BB93BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.InMemory", "src\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory.csproj", "{DB20A85A-A931-452E-9BC5-F054037CFF91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj", "{2CC40948-0E9B-49EB-9203-0459CBE317C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB", "src\Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB\Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB.csproj", "{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore", "src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj", "{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -184,6 +195,30 @@ Global
 		{557CD3BB-F642-40BE-87EC-CAC2D1FB2F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{557CD3BB-F642-40BE-87EC-CAC2D1FB2F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{557CD3BB-F642-40BE-87EC-CAC2D1FB2F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C6D0F4-051E-4FB2-ABE6-06BD0AA41ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C6D0F4-051E-4FB2-ABE6-06BD0AA41ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C6D0F4-051E-4FB2-ABE6-06BD0AA41ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C6D0F4-051E-4FB2-ABE6-06BD0AA41ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829B846F-09DB-46A5-B18C-482DD7BB93BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829B846F-09DB-46A5-B18C-482DD7BB93BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829B846F-09DB-46A5-B18C-482DD7BB93BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829B846F-09DB-46A5-B18C-482DD7BB93BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB20A85A-A931-452E-9BC5-F054037CFF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB20A85A-A931-452E-9BC5-F054037CFF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB20A85A-A931-452E-9BC5-F054037CFF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB20A85A-A931-452E-9BC5-F054037CFF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC40948-0E9B-49EB-9203-0459CBE317C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC40948-0E9B-49EB-9203-0459CBE317C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC40948-0E9B-49EB-9203-0459CBE317C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC40948-0E9B-49EB-9203-0459CBE317C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -217,6 +252,12 @@ Global
 		{5EA88882-D8A9-40F3-8ACA-5A7117B77C04} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
 		{F5DB9D14-FA1D-4708-BD1F-7872E410C998} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{557CD3BB-F642-40BE-87EC-CAC2D1FB2F51} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
+		{45C6D0F4-051E-4FB2-ABE6-06BD0AA41ECD} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{829B846F-09DB-46A5-B18C-482DD7BB93BA} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
+		{DB20A85A-A931-452E-9BC5-F054037CFF91} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{2CC40948-0E9B-49EB-9203-0459CBE317C0} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

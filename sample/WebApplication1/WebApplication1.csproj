@@ -13,10 +13,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Contributors\" />
+    <Folder Include="Model\" />
   </ItemGroup>
 
 </Project>

@@ -16,10 +16,7 @@
 			{
 				return (builder, repositoryName, optionsAction) =>
 				{
-					builder.AddMongoRepository(repositoryName, optionsAction, conventions =>
-					{
-						// TODO: How do we get this special configuration in here?
-					});
+					builder.AddMongoRepository(repositoryName, optionsAction);
 				};
 			}
 		}

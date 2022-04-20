@@ -16,10 +16,7 @@
 			{
 				return (builder, repositoryName, optionsAction) =>
 				{
-					builder.AddLiteRepository(repositoryName, optionsAction, mapper =>
-					{
-						// TODO: How do we get this special configuration in here?
-					});
+					builder.AddLiteRepository(repositoryName, optionsAction);
 				};
 			}
 		}

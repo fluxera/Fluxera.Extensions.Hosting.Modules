@@ -8,7 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{75AC41
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		GitVersion.yml = GitVersion.yml
-		global.json = global.json
 		icon.png = icon.png
 		LICENSE = LICENSE
 		README.md = README.md
@@ -88,9 +87,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.InMemory", "src\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory.csproj", "{DB20A85A-A931-452E-9BC5-F054037CFF91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj", "{2CC40948-0E9B-49EB-9203-0459CBE317C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj", "{2CC40948-0E9B-49EB-9203-0459CBE317C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB", "src\Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB\Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB.csproj", "{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB", "src\Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB\Fluxera.Extensions.Hosting.Modules.Persistence.LiteDB.csproj", "{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore", "src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj", "{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}"
 EndProject

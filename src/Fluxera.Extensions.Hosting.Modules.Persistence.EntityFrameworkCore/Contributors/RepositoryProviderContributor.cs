@@ -33,7 +33,10 @@
 						logSQL = bool.Parse(setting);
 					}
 
+					Type dbContextType = null;
+
 					builder
+						.AddSetting("EntityFrameworkCore.DbContext", connectionString)
 						.AddSetting("EntityFrameworkCore.ConnectionString", connectionString)
 						.AddSetting("EntityFrameworkCore.LogSQL", logSQL);
 				};

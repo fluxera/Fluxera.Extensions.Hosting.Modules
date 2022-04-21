@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<ApiKeyAuthenticationOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Authentication:ApiKey";
+		public override string SectionName => "Authentication:Schemes";
 	}
 }

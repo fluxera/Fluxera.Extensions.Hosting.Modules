@@ -7,7 +7,7 @@
 	<PropertyGroup>
 		<Title>Fluxera.Extensions.Hosting.Modules.UnitTesting</Title>
 		<Description>A module that provides utilities for unit testing modules.</Description>
-		<PackageTags>library;extensions;hosting;modular;test</PackageTags>
+		<PackageTags>library;extensions;hosting;modular;unit-testing;test</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>

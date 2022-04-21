@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

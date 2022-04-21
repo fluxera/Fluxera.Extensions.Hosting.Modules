@@ -1,12 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic
 {
-	using System;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Utilities.Extensions;
-	using global::AspNetCore.Authentication.Basic;
 	using JetBrains.Annotations;
-	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
 	///     A module that enables JWT Bearer authentication.
@@ -20,29 +16,9 @@
 		{
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
-		}
 
-		/// <inheritdoc />
-		public override void PostConfigureServices(IServiceConfigurationContext context)
-		{
-			context.Log("AddBasicAuthentication", services =>
-			{
-				BasicAuthenticationOptions authenticationOptions = services.GetOptions<BasicAuthenticationOptions>();
-
-				services
-					.AddAuthentication(BasicDefaults.AuthenticationScheme)
-					.AddBasic<BasicUserValidationService>(options =>
-					{
-						if(authenticationOptions.Realm.IsNullOrWhiteSpace())
-						{
-							throw new InvalidOperationException("The Realm configuration value must be set.");
-						}
-
-						options.IgnoreAuthenticationIfAllowAnonymous = authenticationOptions.IgnoreAuthenticationIfAllowAnonymous;
-						options.SuppressWWWAuthenticateHeader = authenticationOptions.SuppressWWWAuthenticateHeader;
-						options.Realm = authenticationOptions.Realm;
-					});
-			});
+			// Add the configure authentication contributor.
+			context.Services.AddAuthenticationContributor<AuthenticationContributor>();
 		}
 	}
 }

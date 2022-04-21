@@ -13,6 +13,7 @@
 		///     Configure the <see cref="IMvcBuilder" />.
 		/// </summary>
 		/// <param name="builder"></param>
-		void Configure(IMvcBuilder builder);
+		/// <param name="context"></param>
+		void Configure(IMvcBuilder builder, IServiceConfigurationContext context);
 	}
 }

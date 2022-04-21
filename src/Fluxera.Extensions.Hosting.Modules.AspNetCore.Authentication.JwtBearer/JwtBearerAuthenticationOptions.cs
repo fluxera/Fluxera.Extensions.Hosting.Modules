@@ -9,13 +9,16 @@
 	public sealed class JwtBearerAuthenticationOptions
 	{
 		/// <summary>
-		///     Gets ot sets the authority to use.
+		///     Creates a new instance of the <see cref="JwtBearerAuthenticationOptions" /> type.
 		/// </summary>
-		public string Authority { get; set; }
+		public JwtBearerAuthenticationOptions()
+		{
+			this.JwtBearer = new JwtBearerAuthenticationSchemes();
+		}
 
 		/// <summary>
-		///     Gets or sets the signing key to use.
+		///     Gets or sets the JWT Bearer authentication schemes.
 		/// </summary>
-		public string SigningKey { get; set; }
+		public JwtBearerAuthenticationSchemes JwtBearer { get; set; }
 	}
 }

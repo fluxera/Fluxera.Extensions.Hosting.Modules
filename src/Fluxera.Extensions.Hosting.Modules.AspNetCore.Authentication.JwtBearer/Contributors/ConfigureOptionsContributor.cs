@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<JwtBearerAuthenticationOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Authentication:Jwt";
+		public override string SectionName => "Authentication:Schemes";
 	}
 }

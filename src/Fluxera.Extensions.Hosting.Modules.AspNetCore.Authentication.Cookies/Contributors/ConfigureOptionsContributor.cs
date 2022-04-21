@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<CookiesAuthenticationOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Authentication:Cookies";
+		public override string SectionName => "Authentication:Schemes";
 	}
 }

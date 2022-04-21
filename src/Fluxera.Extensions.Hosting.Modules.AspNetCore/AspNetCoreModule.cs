@@ -54,7 +54,7 @@
 			MvcBuilderContributorList contributorList = context.Services.GetObject<MvcBuilderContributorList>();
 			foreach(IMvcBuilderContributor contributor in contributorList)
 			{
-				contributor.Configure(builder);
+				contributor.Configure(builder, context);
 			}
 		}
 	}

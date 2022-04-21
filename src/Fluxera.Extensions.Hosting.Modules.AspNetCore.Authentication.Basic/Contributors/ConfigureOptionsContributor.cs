@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<BasicAuthenticationOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Authentication:Basic";
+		public override string SectionName => "Authentication:Schemes";
 	}
 }

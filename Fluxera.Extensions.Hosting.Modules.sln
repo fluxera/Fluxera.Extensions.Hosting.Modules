@@ -97,6 +97,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests.csproj", "{7CEE38F7-DDC6-4604-8B46-AE2756C86798}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj", "{236D7A8A-B923-48E3-8056-989F57DDF260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.csproj", "{611811B4-112F-4242-B082-222DA2414B5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer.csproj", "{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -231,6 +237,18 @@ Global
 		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236D7A8A-B923-48E3-8056-989F57DDF260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236D7A8A-B923-48E3-8056-989F57DDF260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236D7A8A-B923-48E3-8056-989F57DDF260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236D7A8A-B923-48E3-8056-989F57DDF260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611811B4-112F-4242-B082-222DA2414B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611811B4-112F-4242-B082-222DA2414B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611811B4-112F-4242-B082-222DA2414B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611811B4-112F-4242-B082-222DA2414B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +290,9 @@ Global
 		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{F984C92C-A387-4650-8648-C5B9621998F0} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{7CEE38F7-DDC6-4604-8B46-AE2756C86798} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
+		{236D7A8A-B923-48E3-8056-989F57DDF260} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{611811B4-112F-4242-B082-222DA2414B5F} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

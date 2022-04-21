@@ -3,6 +3,8 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
@@ -11,6 +13,8 @@
 
 	[PublicAPI]
 	[DependsOn(typeof(InMemoryPersistenceModule))]
+	[DependsOn(typeof(AuthenticationModule))]
+	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(SwaggerModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebApplication1Module : ConfigureApplicationModule
@@ -38,7 +42,8 @@
 
 			context.UseHttpsRedirection();
 
-			//context.UseAuthorization();
+			context.UseAuthentication();
+			context.UseAuthorization();
 
 			context.MapControllers();
 		}

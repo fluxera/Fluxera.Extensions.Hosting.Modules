@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Principal</Title>
-		<Description>A module that enables a principal accessor.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication</Title>
+		<Description>A module that enables authentication for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,16 +22,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="IdentityModel" Version="6.0.0" />
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -11,10 +11,6 @@
 	/// <summary>
 	///     A module that enables the http client.
 	/// </summary>
-	/// <remarks>
-	///     http://restcookbook.com/
-	///     https://restfulapi.net/
-	/// </remarks>
 	[PublicAPI]
 	[DependsOn(typeof(ConfigurationModule))]
 	public sealed class HttpClientModule : ConfigureServicesModule
@@ -25,8 +21,11 @@
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
 
-			// Add the contributor list list.
+			// Add the contributor list.
 			context.Services.TryAddObjectAccessor(new HttpClientServiceRegistrationContributorList(), ObjectAccessorLifetime.ConfigureServices);
+
+			// Add the contributor list list.
+			context.Services.TryAddObjectAccessor(new HttpClientBuilderContributorList(), ObjectAccessorLifetime.ConfigureServices);
 		}
 
 		/// <inheritdoc />
@@ -34,13 +33,21 @@
 		{
 			// Add named http client services.
 			HttpClientServiceRegistrationContributorList contributorList = context.Services.GetObject<HttpClientServiceRegistrationContributorList>();
+			HttpClientBuilderContributorList httpClientBuilderContributorList = context.Services.GetObject<HttpClientBuilderContributorList>();
+
 			foreach(IHttpClientServiceContributor contributor in contributorList)
 			{
-				contributor.AddNamedHttpClientService(context)
+				IHttpClientBuilder builder = contributor.AddNamedHttpClientService(context);
+				builder
 					.AddAuthenticateRequestHandler()
 					.AddIdempotentPostRequestHandler()
 					.AddContentHashRequestHandler()
 					.AddContentHashResponseHandler();
+
+				foreach(IHttpClientBuilderContributor httpClientBuilderContributor in httpClientBuilderContributorList)
+				{
+					httpClientBuilderContributor.Configure(builder);
+				}
 
 				// TODO: Polly, settings per service configurable.
 				// https://www.hanselman.com/blog/AddingResilienceAndTransientFaultHandlingToYourNETCoreHttpClientWithPolly.aspx
@@ -51,11 +58,17 @@
 			// https://stackoverflow.com/a/57235906
 			context.Log("AddHttpClient", services =>
 			{
-				AddDefaultHttpClient(services)
+				IHttpClientBuilder builder = AddDefaultHttpClient(services);
+				builder
 					.AddAuthenticateRequestHandler()
 					.AddIdempotentPostRequestHandler()
 					.AddContentHashRequestHandler()
 					.AddContentHashResponseHandler();
+
+				foreach(IHttpClientBuilderContributor httpClientBuilderContributor in httpClientBuilderContributorList)
+				{
+					httpClientBuilderContributor.Configure(builder);
+				}
 			});
 		}
 

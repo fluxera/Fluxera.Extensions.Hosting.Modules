@@ -5,9 +5,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization</Title>
-		<Description>A module that enables authorization for ASP.NET Core.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authorization;auth</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic</Title>
+		<Description>A module that enables Basic authentication for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth;basic</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,8 +35,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.csproj" />
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj" />
 	</ItemGroup>
 
 </Project>

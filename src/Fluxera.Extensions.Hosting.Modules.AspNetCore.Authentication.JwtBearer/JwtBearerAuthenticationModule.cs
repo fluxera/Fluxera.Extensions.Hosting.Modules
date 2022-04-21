@@ -1,6 +1,11 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer
 {
+	using System;
 	using System.IdentityModel.Tokens.Jwt;
+	using System.Text;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Utilities.Extensions;
 	using IdentityModel;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,26 +21,33 @@
 	public sealed class JwtBearerAuthenticationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
+		public override void PreConfigureServices(IServiceConfigurationContext context)
+		{
+			// Add the configure options contributor.
+			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+		}
+
+		/// <inheritdoc />
 		public override void PostConfigureServices(IServiceConfigurationContext context)
 		{
-			context.Log("AddJwtBearer", services =>
+			context.Log("AddJwtAuthentication", services =>
 			{
+				JwtBearerAuthenticationOptions authenticationOptions = services.GetOptions<JwtBearerAuthenticationOptions>();
+
 				JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 				services
 					.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 					.AddJwtBearer(options =>
 					{
-						//JwtOptions jwtOptions = authenticationOptions.Authentication.Jwt;
+						if(authenticationOptions.Authority.IsNullOrWhiteSpace())
+						{
+							throw new InvalidOperationException("The Authority configuration value must be set.");
+						}
 
-						//if(jwtOptions.Authority.IsNullOrWhiteSpace())
-						//{
-						//	throw new InvalidOperationException("The Authentication:Jwt:Authority configuration value must be set.");
-						//}
-
-						//if(jwtOptions.SigningKey.IsNullOrWhiteSpace())
-						//{
-						//	throw new InvalidOperationException("The Authentication:Jwt:SigningKey configuration value must be set.");
-						//}
+						if(authenticationOptions.SigningKey.IsNullOrWhiteSpace())
+						{
+							throw new InvalidOperationException("The SigningKey configuration value must be set.");
+						}
 
 						options.RequireHttpsMetadata = !context.Environment.IsDevelopment();
 						options.SaveToken = true;
@@ -47,7 +59,7 @@
 							ValidateIssuerSigningKey = true,
 							NameClaimType = JwtClaimTypes.Name,
 							RoleClaimType = JwtClaimTypes.Role,
-							//IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtOptions.SigningKey))
+							IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(authenticationOptions.SigningKey))
 						};
 					});
 			});

@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies
 {
 	using JetBrains.Annotations;
+	using Microsoft.Extensions.Configuration;
 
 	/// <summary>
 	///     The options for the Basic authentication module.
@@ -13,12 +14,13 @@
 		/// </summary>
 		public CookiesAuthenticationOptions()
 		{
-			this.Cookies = new CookiesAuthenticationSchemes();
+			this.Schemes = new CookiesAuthenticationSchemes();
 		}
 
 		/// <summary>
 		///     Gets or sets the Basic authentication schemes.
 		/// </summary>
-		public CookiesAuthenticationSchemes Cookies { get; set; }
+		[ConfigurationKeyName("Cookies")]
+		public CookiesAuthenticationSchemes Schemes { get; set; }
 	}
 }

@@ -14,12 +14,12 @@
 			ApiKeyAuthenticationOptions authenticationOptions = context.Services.GetOptions<ApiKeyAuthenticationOptions>();
 
 			// Add all configures ApiKey schemes.
-			foreach((string key, ApiKeyAuthenticationSchemeOptions schemeOptions) in authenticationOptions.ApiKey)
+			foreach((string key, ApiKeyAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)
 			{
 				context.Log($"AddApiKeyAuthentication({key})", _ =>
 				{
-					string schemeName = key;
-					if(schemeName == ApiKeyAuthenticationSchemes.DefaultSchemeName)
+					string schemeName = $"{ApiKeyDefaults.AuthenticationScheme}-{key}";
+					if(key == ApiKeyAuthenticationSchemes.DefaultSchemeName)
 					{
 						schemeName = ApiKeyDefaults.AuthenticationScheme;
 					}

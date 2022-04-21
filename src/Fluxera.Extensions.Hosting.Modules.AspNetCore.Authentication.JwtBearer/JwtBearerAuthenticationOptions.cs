@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer
 {
 	using JetBrains.Annotations;
+	using Microsoft.Extensions.Configuration;
 
 	/// <summary>
 	///     The options for the JWt Bearer authentication module.
@@ -13,12 +14,13 @@
 		/// </summary>
 		public JwtBearerAuthenticationOptions()
 		{
-			this.JwtBearer = new JwtBearerAuthenticationSchemes();
+			this.Schemes = new JwtBearerAuthenticationSchemes();
 		}
 
 		/// <summary>
 		///     Gets or sets the JWT Bearer authentication schemes.
 		/// </summary>
-		public JwtBearerAuthenticationSchemes JwtBearer { get; set; }
+		[ConfigurationKeyName("JwtBearer")]
+		public JwtBearerAuthenticationSchemes Schemes { get; set; }
 	}
 }

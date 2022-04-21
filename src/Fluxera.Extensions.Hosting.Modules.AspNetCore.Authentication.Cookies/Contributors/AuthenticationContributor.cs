@@ -13,12 +13,12 @@
 			CookiesAuthenticationOptions authenticationOptions = context.Services.GetOptions<CookiesAuthenticationOptions>();
 
 			// Add all configures Cookies schemes.
-			foreach((string key, CookiesAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Cookies)
+			foreach((string key, CookiesAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)
 			{
 				context.Log($"AddCookiesAuthentication({key})", _ =>
 				{
-					string schemeName = key;
-					if(schemeName == CookiesAuthenticationSchemes.DefaultSchemeName)
+					string schemeName = $"{CookieAuthenticationDefaults.AuthenticationScheme}-{key}";
+					if(key == CookiesAuthenticationSchemes.DefaultSchemeName)
 					{
 						schemeName = CookieAuthenticationDefaults.AuthenticationScheme;
 					}

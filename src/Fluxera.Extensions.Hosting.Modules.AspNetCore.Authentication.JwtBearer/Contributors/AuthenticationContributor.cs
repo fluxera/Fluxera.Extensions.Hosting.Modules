@@ -23,12 +23,12 @@
 			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 			// Add all configures JwtBearer schemes.
-			foreach((string key, JwtBearerAuthenticationSchemeOptions schemeOptions) in authenticationOptions.JwtBearer)
+			foreach((string key, JwtBearerAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)
 			{
 				context.Log($"AddJwtBearerAuthentication({key})", _ =>
 				{
-					string schemeName = key;
-					if(schemeName == JwtBearerAuthenticationSchemes.DefaultSchemeName)
+					string schemeName = $"{JwtBearerDefaults.AuthenticationScheme}-{key}";
+					if(key == JwtBearerAuthenticationSchemes.DefaultSchemeName)
 					{
 						schemeName = JwtBearerDefaults.AuthenticationScheme;
 					}

@@ -14,12 +14,12 @@
 			BasicAuthenticationOptions authenticationOptions = context.Services.GetOptions<BasicAuthenticationOptions>();
 
 			// Add all configures Basic schemes.
-			foreach((string key, BasicAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Basic)
+			foreach((string key, BasicAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)
 			{
 				context.Log($"AddBasicAuthentication({key})", _ =>
 				{
-					string schemeName = key;
-					if(schemeName == BasicAuthenticationSchemes.DefaultSchemeName)
+					string schemeName = $"{BasicDefaults.AuthenticationScheme}-{key}";
+					if(key == BasicAuthenticationSchemes.DefaultSchemeName)
 					{
 						schemeName = BasicDefaults.AuthenticationScheme;
 					}

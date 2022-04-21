@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic
 {
 	using JetBrains.Annotations;
+	using Microsoft.Extensions.Configuration;
 
 	/// <summary>
 	///     The options for the Basic authentication module.
@@ -13,12 +14,13 @@
 		/// </summary>
 		public BasicAuthenticationOptions()
 		{
-			this.Basic = new BasicAuthenticationSchemes();
+			this.Schemes = new BasicAuthenticationSchemes();
 		}
 
 		/// <summary>
 		///     Gets or sets the Basic authentication schemes.
 		/// </summary>
-		public BasicAuthenticationSchemes Basic { get; set; }
+		[ConfigurationKeyName("Basic")]
+		public BasicAuthenticationSchemes Schemes { get; set; }
 	}
 }

@@ -9,7 +9,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn(typeof(AuthenticationModule))]
-	public sealed class BasicAuthenticationModule : ConfigureServicesModule
+	public sealed class ApiKeyAuthenticationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)

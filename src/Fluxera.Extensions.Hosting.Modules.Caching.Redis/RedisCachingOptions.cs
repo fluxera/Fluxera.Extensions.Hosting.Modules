@@ -7,12 +7,12 @@
 	///     The options for the Redis cache.
 	/// </summary>
 	[PublicAPI]
-	public sealed class CachingRedisOptions
+	public sealed class RedisCachingOptions
 	{
 		/// <summary>
-		///     Creates a new instance of the <see cref="CachingRedisOptions" /> type.
+		///     Creates a new instance of the <see cref="RedisCachingOptions" /> type.
 		/// </summary>
-		public CachingRedisOptions()
+		public RedisCachingOptions()
 		{
 			this.ConnectionStrings = new ConnectionStrings();
 		}

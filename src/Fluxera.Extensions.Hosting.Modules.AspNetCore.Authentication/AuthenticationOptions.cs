@@ -8,5 +8,9 @@
 	[PublicAPI]
 	public sealed class AuthenticationOptions
 	{
+		/// <summary>
+		///     Used as the fallback default scheme for all the other defaults.
+		/// </summary>
+		public string DefaultScheme { get; set; }
 	}
 }

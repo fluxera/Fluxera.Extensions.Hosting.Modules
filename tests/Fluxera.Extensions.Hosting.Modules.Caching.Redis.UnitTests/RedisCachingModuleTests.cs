@@ -9,7 +9,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests
 	using NUnit.Framework;
 
 	[TestFixture]
-	public class CachingRedisModuleTests : StartupModuleTestBase<CachingRedisModule>
+	public class RedisCachingModuleTests : StartupModuleTestBase<RedisCachingModule>
 	{
 		[SetUp]
 		public void SetUp()
@@ -34,7 +34,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests
 		[Test]
 		public void ShouldConfigureCachingRedisOptions()
 		{
-			IOptions<CachingRedisOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<CachingRedisOptions>>();
+			IOptions<RedisCachingOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<RedisCachingOptions>>();
 			options.Value.ConnectionStringName.Should().Be("RedisServer");
 			options.Value.InstanceName.Should().Be("RedisInstance");
 

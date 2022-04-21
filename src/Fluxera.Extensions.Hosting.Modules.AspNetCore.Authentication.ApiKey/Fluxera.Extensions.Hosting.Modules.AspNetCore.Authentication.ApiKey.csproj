@@ -5,9 +5,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic</Title>
-		<Description>A module that enables Basic authentication for ASP.NET Core.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth;basic</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey</Title>
+		<Description>A module that enables ApiKey authentication for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth;apikey</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.Authentication.Basic" Version="6.0.1" />
+		<PackageReference Include="AspNetCore.Authentication.ApiKey" Version="6.0.1" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>

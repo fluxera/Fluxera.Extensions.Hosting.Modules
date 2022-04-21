@@ -14,7 +14,7 @@
 	[PublicAPI]
 	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(DataManagementModule))]
-	public sealed class CachingRedisModule : ConfigureServicesModule
+	public sealed class RedisCachingModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
@@ -26,7 +26,7 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			CachingRedisOptions redisOptions = context.Services.GetOptions<CachingRedisOptions>();
+			RedisCachingOptions redisOptions = context.Services.GetOptions<RedisCachingOptions>();
 			redisOptions.ConnectionStrings = context.Services.GetObject<ConnectionStrings>();
 
 			// Add the Redis cache services.

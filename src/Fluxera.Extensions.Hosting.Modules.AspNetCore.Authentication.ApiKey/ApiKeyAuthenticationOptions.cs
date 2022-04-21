@@ -1,13 +1,18 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey
 {
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     The options for the Basic authentication module.
+	///     The options for the ApiKey authentication module.
 	/// </summary>
 	[PublicAPI]
-	public sealed class BasicAuthenticationOptions
+	public sealed class ApiKeyAuthenticationOptions
 	{
+		/// <summary>
+		///     This is required property. It is the name of the header or query parameter of the API Key.
+		/// </summary>
+		public string KeyName { get; set; }
+
 		/// <summary>
 		///     Gets or sets the realm property. It is used with WWW-Authenticate response header when challenging un-authenticated
 		///     requests.

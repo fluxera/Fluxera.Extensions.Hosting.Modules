@@ -5,9 +5,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic</Title>
-		<Description>A module that enables Basic authentication for ASP.NET Core.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth;basic</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies</Title>
+		<Description>A module that enables Cookies authentication for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth;cookies</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,17 +26,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.Authentication.Basic" Version="6.0.1" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj" />
 	</ItemGroup>
 
 </Project>

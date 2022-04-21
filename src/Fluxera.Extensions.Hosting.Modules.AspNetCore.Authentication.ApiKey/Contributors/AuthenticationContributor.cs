@@ -18,7 +18,13 @@
 			{
 				context.Log($"AddApiKeyAuthentication({key})", _ =>
 				{
-					builder.AddApiKeyInHeader<ApiKeyProvider>(key, options =>
+					string schemeName = key;
+					if(schemeName == ApiKeyAuthenticationSchemes.DefaultSchemeName)
+					{
+						schemeName = ApiKeyDefaults.AuthenticationScheme;
+					}
+
+					builder.AddApiKeyInHeader<ApiKeyProvider>(schemeName, options =>
 					{
 						if(schemeOptions.KeyName.IsNullOrWhiteSpace())
 						{

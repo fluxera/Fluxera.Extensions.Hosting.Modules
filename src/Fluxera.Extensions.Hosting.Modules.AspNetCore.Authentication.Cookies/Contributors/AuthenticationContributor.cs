@@ -2,6 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Microsoft.AspNetCore.Authentication;
+	using Microsoft.AspNetCore.Authentication.Cookies;
 	using Microsoft.Extensions.DependencyInjection;
 
 	internal sealed class AuthenticationContributor : IAuthenticationContributor
@@ -11,12 +12,18 @@
 		{
 			CookiesAuthenticationOptions authenticationOptions = context.Services.GetOptions<CookiesAuthenticationOptions>();
 
-			// Add all configures ApiKey schemes.
+			// Add all configures Cookies schemes.
 			foreach((string key, CookiesAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Cookies)
 			{
 				context.Log($"AddCookiesAuthentication({key})", _ =>
 				{
-					builder.AddCookie(key, options =>
+					string schemeName = key;
+					if(schemeName == CookiesAuthenticationSchemes.DefaultSchemeName)
+					{
+						schemeName = CookieAuthenticationDefaults.AuthenticationScheme;
+					}
+
+					builder.AddCookie(schemeName, options =>
 					{
 						options.Cookie.Name = schemeOptions.Cookie.Name;
 						options.AccessDeniedPath = schemeOptions.AccessDeniedPath;

@@ -8,6 +8,7 @@
 	using Fluxera.Utilities.Extensions;
 	using IdentityModel;
 	using Microsoft.AspNetCore.Authentication;
+	using Microsoft.AspNetCore.Authentication.JwtBearer;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.IdentityModel.Tokens;
@@ -21,12 +22,18 @@
 
 			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-			// Add all configures ApiKey schemes.
+			// Add all configures JwtBearer schemes.
 			foreach((string key, JwtBearerAuthenticationSchemeOptions schemeOptions) in authenticationOptions.JwtBearer)
 			{
 				context.Log($"AddJwtBearerAuthentication({key})", _ =>
 				{
-					builder.AddJwtBearer(key, options =>
+					string schemeName = key;
+					if(schemeName == JwtBearerAuthenticationSchemes.DefaultSchemeName)
+					{
+						schemeName = JwtBearerDefaults.AuthenticationScheme;
+					}
+
+					builder.AddJwtBearer(schemeName, options =>
 					{
 						if(schemeOptions.Authority.IsNullOrWhiteSpace())
 						{

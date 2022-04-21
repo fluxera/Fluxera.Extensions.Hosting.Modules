@@ -13,12 +13,18 @@
 		{
 			BasicAuthenticationOptions authenticationOptions = context.Services.GetOptions<BasicAuthenticationOptions>();
 
-			// Add all configures ApiKey schemes.
+			// Add all configures Basic schemes.
 			foreach((string key, BasicAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Basic)
 			{
 				context.Log($"AddBasicAuthentication({key})", _ =>
 				{
-					builder.AddBasic<BasicUserValidationService>(key, options =>
+					string schemeName = key;
+					if(schemeName == BasicAuthenticationSchemes.DefaultSchemeName)
+					{
+						schemeName = BasicDefaults.AuthenticationScheme;
+					}
+
+					builder.AddBasic<BasicUserValidationService>(schemeName, options =>
 					{
 						if(schemeOptions.Realm.IsNullOrWhiteSpace())
 						{

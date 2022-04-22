@@ -5,6 +5,7 @@
 	using Fluxera.Utilities.Extensions;
 	using global::AspNetCore.Authentication.Basic;
 	using Microsoft.AspNetCore.Authentication;
+	using Microsoft.Extensions.DependencyInjection;
 
 	internal sealed class AuthenticationContributor : IAuthenticationContributor
 	{
@@ -12,6 +13,9 @@
 		public void Configure(AuthenticationBuilder builder, IServiceConfigurationContext context)
 		{
 			BasicAuthenticationOptions authenticationOptions = context.Services.GetOptions<BasicAuthenticationOptions>();
+
+			context.Log("AddBasicUserValidationServiceFactory",
+				services => services.AddTransient<IBasicUserValidationServiceFactory, BasicUserValidationServiceFactory>());
 
 			// Add all configures Basic schemes.
 			foreach((string key, BasicAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)
@@ -24,7 +28,7 @@
 						schemeName = BasicDefaults.AuthenticationScheme;
 					}
 
-					builder.AddBasic<BasicUserValidationService>(schemeName, options =>
+					builder.AddBasic(schemeName, options =>
 					{
 						if(schemeOptions.Realm.IsNullOrWhiteSpace())
 						{

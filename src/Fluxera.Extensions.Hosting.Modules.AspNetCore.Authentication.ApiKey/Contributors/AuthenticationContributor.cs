@@ -5,6 +5,7 @@
 	using Fluxera.Utilities.Extensions;
 	using global::AspNetCore.Authentication.ApiKey;
 	using Microsoft.AspNetCore.Authentication;
+	using Microsoft.Extensions.DependencyInjection;
 
 	internal sealed class AuthenticationContributor : IAuthenticationContributor
 	{
@@ -12,6 +13,9 @@
 		public void Configure(AuthenticationBuilder builder, IServiceConfigurationContext context)
 		{
 			ApiKeyAuthenticationOptions authenticationOptions = context.Services.GetOptions<ApiKeyAuthenticationOptions>();
+
+			context.Log("AddApiKeyProviderFactory",
+				services => services.AddTransient<IApiKeyProviderFactory, ApiKeyProviderFactory>());
 
 			// Add all configures ApiKey schemes.
 			foreach((string key, ApiKeyAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)
@@ -24,7 +28,7 @@
 						schemeName = ApiKeyDefaults.AuthenticationScheme;
 					}
 
-					builder.AddApiKeyInHeader<ApiKeyProvider>(schemeName, options =>
+					builder.AddApiKeyInHeader(schemeName, options =>
 					{
 						if(schemeOptions.KeyName.IsNullOrWhiteSpace())
 						{

@@ -1,15 +1,14 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey
 {
 	using System;
-	using System.Threading.Tasks;
 	using global::AspNetCore.Authentication.ApiKey;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class ApiKeyProvider : IApiKeyProvider
+	internal sealed class ApiKeyProviderFactory : IApiKeyProviderFactory
 	{
 		/// <inheritdoc />
-		public async Task<IApiKey> ProvideAsync(string key)
+		public IApiKeyProvider CreateApiKeyProvider(string authenticationSchemaName)
 		{
 			throw new NotImplementedException();
 		}

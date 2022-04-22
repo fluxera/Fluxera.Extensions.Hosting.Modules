@@ -17,7 +17,7 @@
 		}
 
 		[Test]
-		public void ShouldCreateSchemeName_ForDefaultEqualsAuthSchemeKey()
+		public void ShouldCreateSchemeName_ForDefaultAuthScheme()
 		{
 			const string key = "Bearer";
 			string schemeName = key.CalculateSchemeName("Bearer");

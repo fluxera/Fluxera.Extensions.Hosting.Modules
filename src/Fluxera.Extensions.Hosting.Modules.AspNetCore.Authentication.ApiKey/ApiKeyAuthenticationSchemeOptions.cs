@@ -36,5 +36,10 @@
 		///     found, it does not try to authenticate the request.
 		/// </summary>
 		public bool IgnoreAuthenticationIfAllowAnonymous { get; set; }
+
+		/// <summary>
+		///     Gets or sets the mode of the ApiKey authentication. The default is <see cref="ApiKeySchemeMode.KeyInHeader" />.
+		/// </summary>
+		public ApiKeySchemeMode Mode { get; set; } = ApiKeySchemeMode.KeyInHeader;
 	}
 }

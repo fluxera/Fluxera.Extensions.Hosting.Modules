@@ -27,11 +27,7 @@
 			{
 				context.Log($"AddJwtBearerAuthentication({key})", _ =>
 				{
-					string schemeName = $"{JwtBearerDefaults.AuthenticationScheme}-{key}";
-					if(key == JwtBearerAuthenticationSchemes.DefaultSchemeName)
-					{
-						schemeName = JwtBearerDefaults.AuthenticationScheme;
-					}
+					string schemeName = key.CalculateSchemeName(JwtBearerDefaults.AuthenticationScheme);
 
 					builder.AddJwtBearer(schemeName, options =>
 					{

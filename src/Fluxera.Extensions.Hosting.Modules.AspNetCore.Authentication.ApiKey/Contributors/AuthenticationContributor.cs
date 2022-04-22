@@ -22,13 +22,18 @@
 			{
 				context.Log($"AddApiKeyAuthentication({key})", _ =>
 				{
-					string schemeName = $"{ApiKeyDefaults.AuthenticationScheme}-{key}";
-					if(key == ApiKeyAuthenticationSchemes.DefaultSchemeName)
-					{
-						schemeName = ApiKeyDefaults.AuthenticationScheme;
-					}
+					string schemeName = key.CalculateSchemeName(ApiKeyDefaults.AuthenticationScheme);
 
-					builder.AddApiKeyInHeader(schemeName, options =>
+					Func<string, Action<ApiKeyOptions>, AuthenticationBuilder> builderFunc = schemeOptions.Mode switch
+					{
+						ApiKeySchemeMode.KeyInHeader => builder.AddApiKeyInHeader,
+						ApiKeySchemeMode.ApiKeyInAuthorizationHeader => builder.AddApiKeyInAuthorizationHeader,
+						ApiKeySchemeMode.ApiKeyInQueryParams => builder.AddApiKeyInQueryParams,
+						ApiKeySchemeMode.ApiKeyInHeaderOrQueryParams => builder.AddApiKeyInHeaderOrQueryParams,
+						_ => throw new ArgumentOutOfRangeException(nameof(schemeOptions.Mode), "Unknown ApiKey scheme mode.")
+					};
+
+					builderFunc(schemeName, options =>
 					{
 						if(schemeOptions.KeyName.IsNullOrWhiteSpace())
 						{

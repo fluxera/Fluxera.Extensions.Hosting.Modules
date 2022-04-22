@@ -17,11 +17,7 @@
 			{
 				context.Log($"AddCookiesAuthentication({key})", _ =>
 				{
-					string schemeName = $"{CookieAuthenticationDefaults.AuthenticationScheme}-{key}";
-					if(key == CookiesAuthenticationSchemes.DefaultSchemeName)
-					{
-						schemeName = CookieAuthenticationDefaults.AuthenticationScheme;
-					}
+					string schemeName = key.CalculateSchemeName(CookieAuthenticationDefaults.AuthenticationScheme);
 
 					builder.AddCookie(schemeName, options =>
 					{

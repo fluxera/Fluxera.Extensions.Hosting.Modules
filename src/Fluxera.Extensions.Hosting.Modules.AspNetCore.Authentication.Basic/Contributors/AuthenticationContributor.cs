@@ -22,11 +22,7 @@
 			{
 				context.Log($"AddBasicAuthentication({key})", _ =>
 				{
-					string schemeName = $"{BasicDefaults.AuthenticationScheme}-{key}";
-					if(key == BasicAuthenticationSchemes.DefaultSchemeName)
-					{
-						schemeName = BasicDefaults.AuthenticationScheme;
-					}
+					string schemeName = key.CalculateSchemeName(BasicDefaults.AuthenticationScheme);
 
 					builder.AddBasic(schemeName, options =>
 					{

@@ -25,7 +25,7 @@
 
 			// Add the mvc builder.
 			context.Log("AddObjectAccessor(AuthenticationBuilder)",
-				services => services.AddObjectAccessor(builder, ObjectAccessorLifetime.ConfigureServices));
+				services => services.AddObjectAccessor(new AuthenticationBuilderContainer(builder), ObjectAccessorLifetime.ConfigureServices));
 
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(AuthenticationContributorList)",
@@ -36,11 +36,11 @@
 		public override void PostConfigureServices(IServiceConfigurationContext context)
 		{
 			// Configure the authentication builder.
-			AuthenticationBuilder builder = context.Services.GetObject<AuthenticationBuilder>();
+			AuthenticationBuilderContainer container = context.Services.GetObject<AuthenticationBuilderContainer>();
 			AuthenticationContributorList contributorList = context.Services.GetObject<AuthenticationContributorList>();
 			foreach(IAuthenticationContributor contributor in contributorList)
 			{
-				contributor.Configure(builder, context);
+				contributor.Configure(container.Builder, context);
 			}
 		}
 	}

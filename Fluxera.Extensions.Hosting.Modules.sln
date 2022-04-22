@@ -97,9 +97,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests.csproj", "{7CEE38F7-DDC6-4604-8B46-AE2756C86798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj", "{236D7A8A-B923-48E3-8056-989F57DDF260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj", "{236D7A8A-B923-48E3-8056-989F57DDF260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.csproj", "{611811B4-112F-4242-B082-222DA2414B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.csproj", "{611811B4-112F-4242-B082-222DA2414B5F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer.csproj", "{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7}"
 EndProject
@@ -110,6 +110,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey.csproj", "{BEB9E31C-B72A-42E4-AD2E-FDCDE392B0C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies.csproj", "{838E005F-C9D0-453F-8FF5-A4ECB788F06C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry.csproj", "{36D21558-E081-4E20-8CC2-F60BF4DC72C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -273,6 +275,10 @@ Global
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -321,6 +327,7 @@ Global
 		{9A060F99-3541-430A-961A-E5D552C4528C} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 		{BEB9E31C-B72A-42E4-AD2E-FDCDE392B0C5} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{36D21558-E081-4E20-8CC2-F60BF4DC72C8} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

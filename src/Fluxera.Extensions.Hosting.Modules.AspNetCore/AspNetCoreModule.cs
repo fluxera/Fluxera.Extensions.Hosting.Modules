@@ -39,7 +39,7 @@
 
 			// Add the mvc builder.
 			context.Log("AddObjectAccessor(MvcBuilder)",
-				services => services.AddObjectAccessor(builder, ObjectAccessorLifetime.ConfigureServices));
+				services => services.AddObjectAccessor(new MvcBuilderContainer(builder), ObjectAccessorLifetime.ConfigureServices));
 
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(MvcBuilderContributorList)",
@@ -50,11 +50,11 @@
 		public override void PostConfigureServices(IServiceConfigurationContext context)
 		{
 			// Configure the mvc builder.
-			IMvcBuilder builder = context.Services.GetObject<IMvcBuilder>();
+			MvcBuilderContainer container = context.Services.GetObject<MvcBuilderContainer>();
 			MvcBuilderContributorList contributorList = context.Services.GetObject<MvcBuilderContributorList>();
 			foreach(IMvcBuilderContributor contributor in contributorList)
 			{
-				contributor.Configure(builder, context);
+				contributor.Configure(container.Builder, context);
 			}
 		}
 	}

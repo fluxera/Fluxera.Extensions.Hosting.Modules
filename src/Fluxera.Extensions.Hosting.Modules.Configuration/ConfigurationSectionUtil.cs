@@ -7,7 +7,7 @@
 	///     Utility class that helps getting the correct section name.
 	/// </summary>
 	[PublicAPI]
-	public static class ConfigurationSection
+	public static class ConfigurationSectionUtil
 	{
 		/// <summary>
 		///     The prefix for every modules configuration section.

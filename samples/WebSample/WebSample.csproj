@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.2.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
@@ -35,6 +36,7 @@
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Principal\Fluxera.Extensions.Hosting.Modules.Principal.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
     <ProjectReference Include="..\..\tests\Fluxera.Extensions.Hosting.Modules.Caching.UnitTests\Fluxera.Extensions.Hosting.Modules.Caching.UnitTests.csproj" />
   </ItemGroup>
 

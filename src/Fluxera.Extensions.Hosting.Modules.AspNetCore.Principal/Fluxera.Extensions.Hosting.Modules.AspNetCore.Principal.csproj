@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry</Title>
-		<Description>A module that enables OpenTelemetry monitoring for ASP.NET Core.</Description>
-		<PackageTags>library;extensions;hosting;modular;monitoring;opentelemetry</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal</Title>
+		<Description>A module that enables a principal accessor for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;http</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,6 +26,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
@@ -36,7 +40,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Principal\Fluxera.Extensions.Hosting.Modules.Principal.csproj" />
 	</ItemGroup>
 
 </Project>

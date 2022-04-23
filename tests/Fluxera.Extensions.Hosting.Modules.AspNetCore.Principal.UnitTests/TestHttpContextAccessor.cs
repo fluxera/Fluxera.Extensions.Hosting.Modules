@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.UnitTests
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests
 {
 	using Microsoft.AspNetCore.Http;
 

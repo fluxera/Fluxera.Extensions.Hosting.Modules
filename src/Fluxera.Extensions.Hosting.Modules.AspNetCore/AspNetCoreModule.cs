@@ -3,6 +3,7 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@
 	///     A module that enables ASP.NET Core basic features.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(OpenTelemetryModule))]
 	[DependsOn(typeof(ConfigurationModule))]
 	public sealed class AspNetCoreModule : ConfigureServicesModule
 	{
@@ -18,6 +20,12 @@
 		{
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+
+			// Add the tracer provider contributor.
+			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
+
+			// Add the meter provider contributor.
+			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
 
 			// Add the http context accessor.
 			context.Log("AddHttpContextAccessor",

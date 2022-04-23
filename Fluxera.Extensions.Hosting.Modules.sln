@@ -55,8 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Principal.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Principal.UnitTests\Fluxera.Extensions.Hosting.Modules.Principal.UnitTests.csproj", "{38559D09-66CF-4B25-9EEE-D5C2B160ABC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.csproj", "{93F880A8-4E4F-4F31-9502-9D2B17E6A97C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCore", "AspNetCore", "{013DA0B6-4C2C-4931-8077-8620C60135A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{2E256929-E4B0-4CA8-B52D-AD5193C91F3F}"
@@ -68,8 +66,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCore", "AspNetCore", "{844D2B20-B80F-4432-85AB-D6C9033B95A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.UnitTests.csproj", "{F55165BD-94C0-47AE-AABA-A26DBA0D37D5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.UnitTests.csproj", "{BEB1D75D-1A52-4A8F-BE62-3233B9A6B173}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.HttpClient", "src\Fluxera.Extensions.Hosting.Modules.HttpClient\Fluxera.Extensions.Hosting.Modules.HttpClient.csproj", "{E69ECFD1-7127-4E91-BE28-E866FE1B79A1}"
 EndProject
@@ -109,13 +105,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies.csproj", "{838E005F-C9D0-453F-8FF5-A4ECB788F06C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry.csproj", "{36D21558-E081-4E20-8CC2-F60BF4DC72C8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.OpenTelemetry", "src\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj", "{A55C4C33-DB32-483C-B335-2051DBEF55CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSample", "samples\WebSample\WebSample.csproj", "{D1731CC8-25CF-422F-961E-1D3D1DE6CDD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.OpenTelemetry.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.UnitTests\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.UnitTests.csproj", "{04AC48DA-3B48-44CE-B60B-B7BCE189CFCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.OpenTelemetry.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.UnitTests\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.UnitTests.csproj", "{04AC48DA-3B48-44CE-B60B-B7BCE189CFCE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.csproj", "{78D486FA-84C0-4F56-B735-68C622AF7F41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests.csproj", "{66E69B41-AD28-4AA8-AB67-7CD6FD2B488F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Serilog", "src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj", "{33E0147C-F034-42A8-BD17-C2DA18D461F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,10 +183,6 @@ Global
 		{38559D09-66CF-4B25-9EEE-D5C2B160ABC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38559D09-66CF-4B25-9EEE-D5C2B160ABC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38559D09-66CF-4B25-9EEE-D5C2B160ABC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93F880A8-4E4F-4F31-9502-9D2B17E6A97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93F880A8-4E4F-4F31-9502-9D2B17E6A97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93F880A8-4E4F-4F31-9502-9D2B17E6A97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93F880A8-4E4F-4F31-9502-9D2B17E6A97C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0436B2E-3354-4D76-9B65-8B0947F49F10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0436B2E-3354-4D76-9B65-8B0947F49F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0436B2E-3354-4D76-9B65-8B0947F49F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -195,10 +191,6 @@ Global
 		{F55165BD-94C0-47AE-AABA-A26DBA0D37D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F55165BD-94C0-47AE-AABA-A26DBA0D37D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F55165BD-94C0-47AE-AABA-A26DBA0D37D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEB1D75D-1A52-4A8F-BE62-3233B9A6B173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEB1D75D-1A52-4A8F-BE62-3233B9A6B173}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEB1D75D-1A52-4A8F-BE62-3233B9A6B173}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEB1D75D-1A52-4A8F-BE62-3233B9A6B173}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E69ECFD1-7127-4E91-BE28-E866FE1B79A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E69ECFD1-7127-4E91-BE28-E866FE1B79A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E69ECFD1-7127-4E91-BE28-E866FE1B79A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -275,10 +267,6 @@ Global
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36D21558-E081-4E20-8CC2-F60BF4DC72C8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A55C4C33-DB32-483C-B335-2051DBEF55CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A55C4C33-DB32-483C-B335-2051DBEF55CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A55C4C33-DB32-483C-B335-2051DBEF55CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -291,6 +279,18 @@ Global
 		{04AC48DA-3B48-44CE-B60B-B7BCE189CFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04AC48DA-3B48-44CE-B60B-B7BCE189CFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04AC48DA-3B48-44CE-B60B-B7BCE189CFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78D486FA-84C0-4F56-B735-68C622AF7F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D486FA-84C0-4F56-B735-68C622AF7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D486FA-84C0-4F56-B735-68C622AF7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D486FA-84C0-4F56-B735-68C622AF7F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66E69B41-AD28-4AA8-AB67-7CD6FD2B488F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66E69B41-AD28-4AA8-AB67-7CD6FD2B488F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66E69B41-AD28-4AA8-AB67-7CD6FD2B488F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66E69B41-AD28-4AA8-AB67-7CD6FD2B488F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E0147C-F034-42A8-BD17-C2DA18D461F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E0147C-F034-42A8-BD17-C2DA18D461F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E0147C-F034-42A8-BD17-C2DA18D461F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E0147C-F034-42A8-BD17-C2DA18D461F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -311,14 +311,12 @@ Global
 		{F973B9DA-315F-4D1E-B75C-3C941CEBC275} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
 		{43C6BBAC-F9D2-481A-87D7-BE9B395A8CAF} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{38559D09-66CF-4B25-9EEE-D5C2B160ABC5} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
-		{93F880A8-4E4F-4F31-9502-9D2B17E6A97C} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{013DA0B6-4C2C-4931-8077-8620C60135A5} = {DF28D730-99B3-4811-AAC7-725A73B3F668}
 		{2E256929-E4B0-4CA8-B52D-AD5193C91F3F} = {DF28D730-99B3-4811-AAC7-725A73B3F668}
 		{C0436B2E-3354-4D76-9B65-8B0947F49F10} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7} = {F18D2D58-282C-4D93-8D9A-3A76CF98F018}
 		{844D2B20-B80F-4432-85AB-D6C9033B95A2} = {F18D2D58-282C-4D93-8D9A-3A76CF98F018}
 		{F55165BD-94C0-47AE-AABA-A26DBA0D37D5} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
-		{BEB1D75D-1A52-4A8F-BE62-3233B9A6B173} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 		{E69ECFD1-7127-4E91-BE28-E866FE1B79A1} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{5EA88882-D8A9-40F3-8ACA-5A7117B77C04} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
 		{F5DB9D14-FA1D-4708-BD1F-7872E410C998} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
@@ -338,10 +336,12 @@ Global
 		{9A060F99-3541-430A-961A-E5D552C4528C} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 		{BEB9E31C-B72A-42E4-AD2E-FDCDE392B0C5} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{838E005F-C9D0-453F-8FF5-A4ECB788F06C} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
-		{36D21558-E081-4E20-8CC2-F60BF4DC72C8} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{A55C4C33-DB32-483C-B335-2051DBEF55CB} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{D1731CC8-25CF-422F-961E-1D3D1DE6CDD8} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{04AC48DA-3B48-44CE-B60B-B7BCE189CFCE} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
+		{78D486FA-84C0-4F56-B735-68C622AF7F41} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{66E69B41-AD28-4AA8-AB67-7CD6FD2B488F} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
+		{33E0147C-F034-42A8-BD17-C2DA18D461F6} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

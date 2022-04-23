@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
   </ItemGroup>
 

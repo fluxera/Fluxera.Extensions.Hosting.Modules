@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.Extensions
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.Extensions
 {
 	using System.Security.Claims;
 	using Fluxera.Extensions.Hosting.Modules.Principal;

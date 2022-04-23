@@ -35,7 +35,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.csproj" />
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
 	</ItemGroup>
 

@@ -1,18 +1,18 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.UnitTests
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests
 {
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Security.Claims;
 	using System.Security.Principal;
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.Extensions;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.Extensions;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.Extensions.DependencyInjection;
 	using NUnit.Framework;
 
 	[TestFixture]
-	public class HttpPrincipalModuleTests : StartupModuleTestBase<TestModule>
+	public class AspNetCorePrincipalModuleTests : StartupModuleTestBase<TestModule>
 	{
 		[SetUp]
 		public void SetUp()

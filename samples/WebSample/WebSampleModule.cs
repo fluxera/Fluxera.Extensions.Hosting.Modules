@@ -6,6 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
@@ -18,6 +19,7 @@
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(SwaggerModule))]
+	[DependsOn(typeof(HealthChecksModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebSampleModule : ConfigureApplicationModule
 	{
@@ -25,11 +27,6 @@
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			context.Services.AddRepositoryContributor<RepositoryContributor>("Test");
-		}
-
-		/// <inheritdoc />
-		public override void ConfigureServices(IServiceConfigurationContext context)
-		{
 		}
 
 		/// <inheritdoc />
@@ -47,7 +44,7 @@
 			context.UseAuthentication();
 			context.UseAuthorization();
 
-			context.MapControllers();
+			context.UseEndpoints();
 		}
 	}
 }

@@ -1,7 +1,7 @@
-﻿namespace WebApplication1.Contributors
+﻿namespace WebSample.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
-	using WebApplication1.Model;
+	using WebSample.Model;
 
 	public class RepositoryContributor : IRepositoryContributor
 	{

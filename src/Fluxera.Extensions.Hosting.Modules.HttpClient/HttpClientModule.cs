@@ -3,6 +3,7 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn(typeof(ConfigurationModule))]
+	[DependsOn(typeof(OpenTelemetryModule))]
 	public sealed class HttpClientModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -20,6 +22,12 @@
 		{
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+
+			// Add the tracer provider contributor.
+			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
+
+			// Add the meter provider contributor.
+			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
 
 			// Add the contributor list.
 			context.Services.TryAddObjectAccessor(new HttpClientServiceRegistrationContributorList(), ObjectAccessorLifetime.ConfigureServices);

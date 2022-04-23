@@ -8,6 +8,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.DataManagement;
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.Contributors;
 	using Fluxera.Extensions.Validation.DataAnnotations;
 	using Fluxera.Extensions.Validation.FluentValidation;
@@ -24,6 +25,7 @@
 	[PublicAPI]
 	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(DataManagementModule))]
+	[DependsOn(typeof(OpenTelemetryModule))]
 	public sealed class PersistenceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
@@ -31,6 +33,9 @@
 		{
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+
+			// Add the tracer provider contributor.
+			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
 
 			// Initialize the assembly contributor list.
 			context.Log("AddObjectAccessor(RepositoryContributorDictionary)",

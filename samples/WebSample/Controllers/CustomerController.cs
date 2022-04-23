@@ -1,9 +1,11 @@
-namespace WebApplication1.Controllers
+namespace WebSample.Controllers
 {
 	using Fluxera.Repository;
+	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
-	using WebApplication1.Model;
+	using WebSample.Model;
 
+	[AllowAnonymous]
 	[ApiController]
 	[Route("customers")]
 	public class CustomerController : ControllerBase
@@ -34,6 +36,9 @@ namespace WebApplication1.Controllers
 				Name = Guid.NewGuid().ToString("N")
 			};
 			await this.repository.AddAsync(customer);
+
+			this.logger.LogInformation("Customer added: ID={CustomerID}", customer.ID);
+
 			return this.Ok(customer);
 		}
 
@@ -41,6 +46,9 @@ namespace WebApplication1.Controllers
 		public async Task<IActionResult> DeleteAsync([FromRoute] string id)
 		{
 			await this.repository.RemoveAsync(id);
+
+			this.logger.LogInformation("Customer deleted: ID={CustomerID}", id);
+
 			return this.NoContent();
 		}
 	}

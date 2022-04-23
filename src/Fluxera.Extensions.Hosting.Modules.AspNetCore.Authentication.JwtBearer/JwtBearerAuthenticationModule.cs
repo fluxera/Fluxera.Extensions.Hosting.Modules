@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;

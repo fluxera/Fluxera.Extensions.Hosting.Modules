@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Model
+﻿namespace WebSample.Model
 {
 	using Fluxera.Entity;
 

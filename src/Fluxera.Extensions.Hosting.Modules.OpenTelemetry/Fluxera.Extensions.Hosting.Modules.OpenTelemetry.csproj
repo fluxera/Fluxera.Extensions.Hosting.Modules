@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry</Title>
-		<Description>A module that enables OpenTelemetry monitoring for ASP.NET Core.</Description>
+		<Title>Fluxera.Extensions.Hosting.Modules.OpenTelemetry</Title>
+		<Description>A module that enables OpenTelemetry monitoring.</Description>
 		<PackageTags>library;extensions;hosting;modular;monitoring;opentelemetry</PackageTags>
 	</PropertyGroup>
 
@@ -22,21 +22,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.3.0-beta.1" />
+		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol.Logs" Version="1.0.0-rc9.3" />
+		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc9.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,23 +1,27 @@
-﻿namespace WebApplication1
+﻿namespace WebSample
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
-	using WebApplication1.Contributors;
+	using WebSample.Contributors;
 
 	[PublicAPI]
+	[DependsOn(typeof(AspNetCoreOpenTelemetryModule))]
 	[DependsOn(typeof(InMemoryPersistenceModule))]
+	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(SwaggerModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
-	public sealed class WebApplication1Module : ConfigureApplicationModule
+	public sealed class WebSampleModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)

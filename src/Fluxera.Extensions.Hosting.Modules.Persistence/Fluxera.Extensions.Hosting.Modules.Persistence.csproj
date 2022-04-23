@@ -37,6 +37,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
 	</ItemGroup>
 
 </Project>

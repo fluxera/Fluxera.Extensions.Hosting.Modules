@@ -1,6 +1,6 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal.Extensions;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.Extensions;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using JetBrains.Annotations;
 
@@ -10,7 +10,7 @@
 	[PublicAPI]
 	[DependsOn(typeof(PrincipalModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
-	public sealed class HttpPrincipalModule : ConfigureServicesModule
+	public sealed class AspNetCorePrincipalModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)

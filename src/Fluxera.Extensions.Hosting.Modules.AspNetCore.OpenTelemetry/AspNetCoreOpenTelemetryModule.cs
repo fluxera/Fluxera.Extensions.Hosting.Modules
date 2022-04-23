@@ -8,6 +8,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn(typeof(OpenTelemetryModule))]
+	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class AspNetCoreOpenTelemetryModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

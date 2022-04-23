@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpPrincipal</Title>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal</Title>
 		<Description>A module that enables a principal accessor for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal;aspnet;http</PackageTags>
 	</PropertyGroup>
@@ -23,6 +23,10 @@
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.UnitTests" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,5 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
+	using System.Collections.Generic;
+	using System.Linq;
+	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Routing;
@@ -24,10 +27,25 @@
 		/// <summary>
 		///     Adds endpoints for controller actions to the <see cref="IEndpointRouteBuilder" /> without specifying any routes.
 		/// </summary>
-		public static IApplicationInitializationContext MapControllers(this IApplicationInitializationContext context)
+		public static IApplicationInitializationContext UseEndpoints(this IApplicationInitializationContext context)
 		{
 			WebApplication app = context.GetApplicationBuilder();
-			context.Log("MapControllers", _ => app.MapControllers());
+			context.Log("UseEndpoints", _ =>
+			{
+				app.UseRouting();
+				app.UseEndpoints(builder =>
+				{
+					IList<IRouteEndpointContributor> contributors = context.ServiceProvider
+						.GetObject<RouteEndpointContributorList>()
+						.OrderBy(contributor => contributor.Position)
+						.ToList();
+
+					foreach(IRouteEndpointContributor contributor in contributors)
+					{
+						contributor.MapRoute(builder);
+					}
+				});
+			});
 
 			return context;
 		}

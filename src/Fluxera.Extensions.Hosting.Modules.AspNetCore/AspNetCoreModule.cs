@@ -52,6 +52,13 @@
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(MvcBuilderContributorList)",
 				services => services.AddObjectAccessor(new MvcBuilderContributorList(), ObjectAccessorLifetime.ConfigureServices));
+
+			// Add the contributor list.
+			context.Log("AddObjectAccessor(RouteEndpointContributorList)",
+				services => services.AddObjectAccessor(new RouteEndpointContributorList(), ObjectAccessorLifetime.Configure));
+
+			// Add the route endpoint contributor.
+			context.Services.AddRouteEndpointContributor<RouteEndpointContributor>();
 		}
 
 		/// <inheritdoc />

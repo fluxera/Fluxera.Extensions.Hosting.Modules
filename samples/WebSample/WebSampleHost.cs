@@ -23,7 +23,7 @@
 			builder.AddSerilogLogging(loggerOptions =>
 			{
 				loggerOptions
-					.MinimumLevel.Verbose()
+					.MinimumLevel.Information()
 					.WriteTo.Console();
 			});
 		}

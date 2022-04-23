@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB
 {
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.Sequence;
 	using JetBrains.Annotations;
@@ -15,6 +16,9 @@
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
+			// Add the tracer provider contributor.
+			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
+
 			// Add the repository provider contributor.
 			context.Log("AddRepositoryProviderContributor(MongoDB)",
 				services => services.AddRepositoryProviderContributor<RepositoryProviderContributor>());

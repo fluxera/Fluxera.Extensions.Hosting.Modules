@@ -7,7 +7,7 @@
 	<PropertyGroup>
 		<Title>Fluxera.Extensions.Hosting.Modules.UnitTesting</Title>
 		<Description>A module that provides utilities for unit testing modules.</Description>
-		<PackageTags>library;extensions;hosting;modular;test</PackageTags>
+		<PackageTags>library;extensions;hosting;modular;unit-testing;test</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.6" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

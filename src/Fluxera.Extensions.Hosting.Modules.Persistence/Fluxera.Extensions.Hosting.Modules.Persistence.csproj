@@ -22,11 +22,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.6" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="Fluxera.Extensions.Validation.DataAnnotations" Version="6.0.27" />
 		<PackageReference Include="Fluxera.Extensions.Validation.FluentValidation" Version="6.0.27" />
-		<PackageReference Include="Fluxera.Repository" Version="6.0.13" />
-		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.0.13" />
+		<PackageReference Include="Fluxera.Repository" Version="6.0.14" />
+		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.0.14" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,6 +37,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
 	</ItemGroup>
 
 </Project>

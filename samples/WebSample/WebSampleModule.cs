@@ -9,13 +9,16 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
+	using Microsoft.Extensions.Hosting;
 	using WebSample.Contributors;
 
 	[PublicAPI]
+	[DependsOn(typeof(VersioningModule))]
 	[DependsOn(typeof(InMemoryPersistenceModule))]
 	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]

@@ -1,19 +1,24 @@
-namespace WebSample.Controllers
+namespace WebSample.Controllers.v1
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Threading.Tasks;
 	using Fluxera.Repository;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.Extensions.Logging;
 	using WebSample.Model;
 
 	[ApiController]
-	[Route("customers")]
-	public class CustomerController : ControllerBase
+	[ApiVersion("1.0", Deprecated = true)]
+	[Route("api/v{version:apiVersion}/[controller]")]
+	public class CustomersController : ControllerBase
 	{
-		private readonly ILogger<CustomerController> logger;
+		private readonly ILogger<CustomersController> logger;
 		private readonly IRepository<Customer, string> repository;
 
-		public CustomerController(
-			ILogger<CustomerController> logger,
+		public CustomersController(
+			ILogger<CustomersController> logger,
 			IRepository<Customer, string> repository)
 		{
 			this.logger = logger;
@@ -21,6 +26,7 @@ namespace WebSample.Controllers
 		}
 
 		[HttpGet("{id}")]
+		[MapToApiVersion("1.0")]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetAsync(string id)
 		{
@@ -28,6 +34,7 @@ namespace WebSample.Controllers
 			return this.Ok(customer);
 		}
 
+		[MapToApiVersion("1.0")]
 		[HttpGet("by-number/{number}")]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetAsync(int number)
@@ -36,6 +43,7 @@ namespace WebSample.Controllers
 			return this.Ok(customer);
 		}
 
+		[MapToApiVersion("1.0")]
 		[HttpGet]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetAsync()
@@ -44,6 +52,7 @@ namespace WebSample.Controllers
 			return this.Ok(customers);
 		}
 
+		[MapToApiVersion("1.0")]
 		[HttpPost]
 		[AllowAnonymous]
 		public async Task<IActionResult> PostAsync()
@@ -60,6 +69,7 @@ namespace WebSample.Controllers
 			return this.Ok(customer);
 		}
 
+		[MapToApiVersion("1.0")]
 		[HttpDelete("{id}")]
 		[AllowAnonymous]
 		public async Task<IActionResult> DeleteAsync([FromRoute] string id)

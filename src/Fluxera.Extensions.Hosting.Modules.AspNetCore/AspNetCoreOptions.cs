@@ -1,14 +1,26 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
+	using System;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///     The options for the ASP.NET Core module.
+	/// </summary>
 	[PublicAPI]
 	public sealed class AspNetCoreOptions
 	{
-		public bool UseMvc { get; set; }
+		/// <summary>
+		///     Gets or sets the base url of the application, f.e http://localhost:5000 or https://www.fluxera.com
+		/// </summary>
+		public Uri BaseUrl { get; set; }
 
-		public bool UseViews { get; set; }
+		// TODO
+		//public bool UseMvc { get; set; }
 
-		public bool RazorPages { get; set; }
+		// TODO
+		//public bool UseViews { get; set; }
+
+		// TODO
+		//public bool RazorPages { get; set; }
 	}
 }

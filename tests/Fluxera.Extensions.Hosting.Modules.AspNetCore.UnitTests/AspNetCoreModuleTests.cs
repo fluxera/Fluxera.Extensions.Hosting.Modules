@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.UnitTests
 {
+	using System;
 	using FluentAssertions;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.AspNetCore.Http;
@@ -42,6 +43,9 @@
 		{
 			IOptions<AspNetCoreOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<AspNetCoreOptions>>();
 			options.Value.Should().NotBeNull();
+			options.Value.BaseUrl.Should().NotBeNull();
+			options.Value.BaseUrl.Should().Be(new Uri("https://localhost:5001/"));
+			options.Value.BaseUrl.Should().Be(new Uri("https://localhost:5001"));
 		}
 	}
 }

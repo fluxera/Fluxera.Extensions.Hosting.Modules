@@ -6,6 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
@@ -42,6 +43,8 @@
 			}
 
 			context.UseHttpsRedirection();
+
+			context.UseCors();
 
 			context.UseRouting();
 

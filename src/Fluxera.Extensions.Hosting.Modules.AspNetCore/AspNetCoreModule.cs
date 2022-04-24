@@ -39,6 +39,9 @@
 			IMvcBuilder builder = context.Log("AddControllers",
 				services => services.AddControllers());
 
+			// Add discovered controllers as services.
+			context.Log("AddControllersAsServices", _ => builder.AddControllersAsServices());
+
 			// Add the modules as application parts.
 			context.Log("AddApplicationParts", _ => builder.AddApplicationParts());
 

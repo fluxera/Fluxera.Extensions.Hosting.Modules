@@ -4,6 +4,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Authentication;
+	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
@@ -19,8 +20,15 @@
 			// Add the authentication services.
 			AuthenticationBuilder builder = context.Log("AddAuthentication", services =>
 			{
-				AuthenticationOptions authenticationOptions = services.GetOptions<AuthenticationOptions>();
-				return services.AddAuthentication(authenticationOptions.DefaultScheme);
+				IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("Authentication"));
+				AuthenticationOptions authenticationOptions = section.Get<AuthenticationOptions>();
+
+				return services.AddAuthentication(options =>
+				{
+					options.DefaultScheme = authenticationOptions.DefaultScheme;
+					options.DefaultAuthenticateScheme = authenticationOptions.DefaultScheme;
+					options.DefaultChallengeScheme = authenticationOptions.DefaultScheme;
+				});
 			});
 
 			// Add the mvc builder.

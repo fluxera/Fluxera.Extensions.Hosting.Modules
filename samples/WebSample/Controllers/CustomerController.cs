@@ -5,7 +5,6 @@ namespace WebSample.Controllers
 	using Microsoft.AspNetCore.Mvc;
 	using WebSample.Model;
 
-	[AllowAnonymous]
 	[ApiController]
 	[Route("customers")]
 	public class CustomerController : ControllerBase
@@ -14,14 +13,31 @@ namespace WebSample.Controllers
 		private readonly IRepository<Customer, string> repository;
 
 		public CustomerController(
-			IRepository<Customer, string> repository,
-			ILogger<CustomerController> logger)
+			ILogger<CustomerController> logger,
+			IRepository<Customer, string> repository)
 		{
-			this.repository = repository;
 			this.logger = logger;
+			this.repository = repository;
+		}
+
+		[HttpGet("{id}")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetAsync(string id)
+		{
+			Customer customer = await this.repository.FindOneAsync(x => x.ID == id);
+			return this.Ok(customer);
+		}
+
+		[HttpGet("by-number/{number}")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetAsync(int number)
+		{
+			Customer customer = await this.repository.FindOneAsync(x => x.Number == number);
+			return this.Ok(customer);
 		}
 
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> GetAsync()
 		{
 			IReadOnlyCollection<Customer> customers = await this.repository.FindManyAsync(x => true);
@@ -29,11 +45,13 @@ namespace WebSample.Controllers
 		}
 
 		[HttpPost]
+		[AllowAnonymous]
 		public async Task<IActionResult> PostAsync()
 		{
 			Customer customer = new Customer
 			{
-				Name = Guid.NewGuid().ToString("N")
+				Name = Guid.NewGuid().ToString("N"),
+				Number = Random.Shared.Next(0, int.MaxValue)
 			};
 			await this.repository.AddAsync(customer);
 
@@ -43,6 +61,7 @@ namespace WebSample.Controllers
 		}
 
 		[HttpDelete("{id}")]
+		[AllowAnonymous]
 		public async Task<IActionResult> DeleteAsync([FromRoute] string id)
 		{
 			await this.repository.RemoveAsync(id);

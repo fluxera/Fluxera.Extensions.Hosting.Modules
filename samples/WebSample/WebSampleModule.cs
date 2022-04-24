@@ -8,6 +8,7 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
@@ -19,6 +20,7 @@
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(SwaggerModule))]
+	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(HealthChecksModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebSampleModule : ConfigureApplicationModule
@@ -40,6 +42,8 @@
 			}
 
 			context.UseHttpsRedirection();
+
+			context.UseRouting();
 
 			context.UseAuthentication();
 			context.UseAuthorization();

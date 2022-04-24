@@ -5,6 +5,7 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
+	using Microsoft.AspNetCore.Http;
 	using Microsoft.AspNetCore.Routing;
 
 	/// <summary>
@@ -25,14 +26,31 @@
 		}
 
 		/// <summary>
+		///     Adds a <see cref="EndpointRoutingMiddleware" /> middleware to the specified <see cref="IApplicationBuilder" />.
+		/// </summary>
+		/// <param name="context"></param>
+		/// <returns></returns>
+		public static IApplicationInitializationContext UseRouting(this IApplicationInitializationContext context)
+		{
+			WebApplication app = context.GetApplicationBuilder();
+			context.Log("UseRouting", _ => app.UseRouting());
+
+			return context;
+		}
+
+		/// <summary>
 		///     Adds endpoints for controller actions to the <see cref="IEndpointRouteBuilder" /> without specifying any routes.
+		///     <br /><br />
+		///     Adds a <see cref="EndpointMiddleware" /> middleware to the specified <see cref="IApplicationBuilder" />
+		///     with the <see cref="EndpointDataSource" /> instances built from configured <see cref="IEndpointRouteBuilder" />.
+		///     The <see cref="EndpointMiddleware" /> will execute the <see cref="Endpoint" /> associated with the current
+		///     request.
 		/// </summary>
 		public static IApplicationInitializationContext UseEndpoints(this IApplicationInitializationContext context)
 		{
 			WebApplication app = context.GetApplicationBuilder();
 			context.Log("UseEndpoints", _ =>
 			{
-				app.UseRouting();
 				app.UseEndpoints(builder =>
 				{
 					IList<IRouteEndpointContributor> contributors = context.ServiceProvider

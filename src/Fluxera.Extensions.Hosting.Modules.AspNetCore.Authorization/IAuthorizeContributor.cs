@@ -12,8 +12,8 @@
 		/// <summary>
 		///     Allow anonymous access for the given controller.
 		/// </summary>
-		/// <param name="controller"></param>
+		/// <param name="controllerModel"></param>
 		/// <returns></returns>
-		bool AllowAnonymous(ControllerModel controller);
+		bool AllowAnonymous(ControllerModel controllerModel);
 	}
 }

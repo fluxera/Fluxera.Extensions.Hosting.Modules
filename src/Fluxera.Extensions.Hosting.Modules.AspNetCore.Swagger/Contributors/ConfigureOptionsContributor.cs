@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<SwaggerOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Swagger";
+		public override string SectionName => "AspNetCore:Swagger";
 	}
 }

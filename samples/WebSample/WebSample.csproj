@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning\Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup\Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />

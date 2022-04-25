@@ -87,10 +87,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore", "src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj", "{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.csproj", "{F984C92C-A387-4650-8648-C5B9621998F0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests.csproj", "{7CEE38F7-DDC6-4604-8B46-AE2756C86798}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.csproj", "{236D7A8A-B923-48E3-8056-989F57DDF260}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.csproj", "{611811B4-112F-4242-B082-222DA2414B5F}"
@@ -125,9 +121,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors.UnitTests.csproj", "{8EE02B28-D349-427A-B60D-7E001750432C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning\Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning.csproj", "{FDECD2CC-14A3-4C4F-AD91-64B25D4A1819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.csproj", "{1B192D44-5F26-496E-ACAA-F03D74419067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.OData", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.OData\Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.csproj", "{43ADCC8D-F6ED-4BF2-9399-4245F9761DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.csproj", "{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests.csproj", "{E3CBEB85-342B-4E14-8F40-B6D53ABA091A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -243,14 +241,6 @@ Global
 		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F984C92C-A387-4650-8648-C5B9621998F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F984C92C-A387-4650-8648-C5B9621998F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F984C92C-A387-4650-8648-C5B9621998F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F984C92C-A387-4650-8648-C5B9621998F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CEE38F7-DDC6-4604-8B46-AE2756C86798}.Release|Any CPU.Build.0 = Release|Any CPU
 		{236D7A8A-B923-48E3-8056-989F57DDF260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{236D7A8A-B923-48E3-8056-989F57DDF260}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{236D7A8A-B923-48E3-8056-989F57DDF260}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -319,14 +309,18 @@ Global
 		{8EE02B28-D349-427A-B60D-7E001750432C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EE02B28-D349-427A-B60D-7E001750432C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EE02B28-D349-427A-B60D-7E001750432C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDECD2CC-14A3-4C4F-AD91-64B25D4A1819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDECD2CC-14A3-4C4F-AD91-64B25D4A1819}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDECD2CC-14A3-4C4F-AD91-64B25D4A1819}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDECD2CC-14A3-4C4F-AD91-64B25D4A1819}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43ADCC8D-F6ED-4BF2-9399-4245F9761DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43ADCC8D-F6ED-4BF2-9399-4245F9761DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43ADCC8D-F6ED-4BF2-9399-4245F9761DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43ADCC8D-F6ED-4BF2-9399-4245F9761DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B192D44-5F26-496E-ACAA-F03D74419067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B192D44-5F26-496E-ACAA-F03D74419067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B192D44-5F26-496E-ACAA-F03D74419067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B192D44-5F26-496E-ACAA-F03D74419067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -363,8 +357,6 @@ Global
 		{2CC40948-0E9B-49EB-9203-0459CBE317C0} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{FA9ED734-CFFB-4A55-AFCD-F7D5FE5F28DE} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{FEB62F8F-1FBE-4C09-A94C-0E50DF039326} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
-		{F984C92C-A387-4650-8648-C5B9621998F0} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
-		{7CEE38F7-DDC6-4604-8B46-AE2756C86798} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 		{236D7A8A-B923-48E3-8056-989F57DDF260} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{611811B4-112F-4242-B082-222DA2414B5F} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{C31B181C-C2B6-4A3A-B78C-89E20CB7BEA7} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
@@ -382,8 +374,9 @@ Global
 		{DEC456EB-17AD-438E-A3FF-56487721B936} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{74276E37-F979-4C41-8F4F-F140EBAE0641} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{8EE02B28-D349-427A-B60D-7E001750432C} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
-		{FDECD2CC-14A3-4C4F-AD91-64B25D4A1819} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
-		{43ADCC8D-F6ED-4BF2-9399-4245F9761DD4} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{1B192D44-5F26-496E-ACAA-F03D74419067} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
+		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

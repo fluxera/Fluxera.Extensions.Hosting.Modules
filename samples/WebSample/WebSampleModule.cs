@@ -8,8 +8,8 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
@@ -22,10 +22,10 @@
 	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
-	[DependsOn(typeof(SwaggerModule))]
+	[DependsOn(typeof(ODataModule))]
+	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(HealthChecksModule))]
-	[DependsOn(typeof(ODataModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebSampleModule : ConfigureApplicationModule
 	{
@@ -42,7 +42,6 @@
 			// Configure the HTTP request pipeline.
 			if(context.Environment.IsDevelopment())
 			{
-				context.UseSwagger();
 				context.UseSwaggerUI();
 			}
 

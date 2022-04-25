@@ -39,6 +39,16 @@
 				IList<ParameterDescriptor> parameters = actionDescriptor.Parameters;
 
 				string relativeUrl = route?.Template ?? string.Empty;
+
+				//if(actionDescriptor.EndpointMetadata.FirstOrDefault(x => x is ApiVersionMetadata) is ApiVersionMetadata versionMetadata)
+				//{
+				//	ApiVersionModel versionModel = typeof(ApiVersionMetadata)
+				//		.GetField("apiModel", BindingFlags.Instance | BindingFlags.NonPublic)?
+				//		.GetValue(versionMetadata) as ApiVersionModel;
+
+				//	relativeUrl = relativeUrl.Replace("{version:apiVersion}", versionModel.ToString());
+				//}
+
 				foreach(ParameterDescriptor parameter in parameters)
 				{
 					string dummyValue = GetDummyValueFor(parameter.ParameterType);

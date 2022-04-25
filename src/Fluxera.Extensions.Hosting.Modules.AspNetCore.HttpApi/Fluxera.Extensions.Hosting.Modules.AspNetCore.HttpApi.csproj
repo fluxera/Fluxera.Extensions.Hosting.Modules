@@ -5,9 +5,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup</Title>
-		<Description>A module that enables service warmup for ASP.NET Core services.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal;aspnet;warmup</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi</Title>
+		<Description>A module that enables HTTP APIs for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;http;api</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,18 +27,21 @@
 
 	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc" Version="6.0.0-preview.2" />
+		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.0.0-preview.2" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+		<PackageReference Include="Unchase.Swashbuckle.AspNetCore.Extensions" Version="2.6.12" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.HttpClient\Fluxera.Extensions.Hosting.Modules.HttpClient.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
 	</ItemGroup>
 
 </Project>

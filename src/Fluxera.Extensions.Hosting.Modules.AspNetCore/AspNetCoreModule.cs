@@ -65,7 +65,7 @@
 		}
 
 		/// <inheritdoc />
-		public override void PostConfigureServices(IServiceConfigurationContext context)
+		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Configure the mvc builder.
 			MvcBuilderContainer container = context.Services.GetObject<MvcBuilderContainer>();

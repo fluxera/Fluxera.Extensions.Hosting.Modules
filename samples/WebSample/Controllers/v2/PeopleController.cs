@@ -1,4 +1,4 @@
-﻿namespace WebSample.Controllers.v1
+﻿namespace WebSample.Controllers.v2
 {
 	using System.Threading.Tasks;
 	using Asp.Versioning;
@@ -10,7 +10,7 @@
 	using WebSample.Model;
 
 	[AllowAnonymous]
-	[ApiVersion("1.0")]
+	[ApiVersion("2.0")]
 	public class PeopleController : ODataController
 	{
 		private readonly IRepository<Person, string> repository;
@@ -22,7 +22,7 @@
 
 		[HttpGet]
 		[EnableQuery(AllowedQueryOptions = AllowedQueryOptions.None)]
-		[MapToApiVersion("1.0")]
+		[MapToApiVersion("2.0")]
 		public async Task<IActionResult> Get(string key)
 		{
 			Person person = await this.repository.GetAsync(key);

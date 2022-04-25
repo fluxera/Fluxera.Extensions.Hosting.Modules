@@ -26,6 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Asp.Versioning.Mvc" Version="6.0.0-preview.2" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>

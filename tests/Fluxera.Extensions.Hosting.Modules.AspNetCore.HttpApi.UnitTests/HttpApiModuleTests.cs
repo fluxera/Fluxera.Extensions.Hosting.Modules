@@ -1,7 +1,6 @@
 namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests
 {
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;
@@ -25,9 +24,8 @@ namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests
 		[Test]
 		public void ShouldConfigureCachingSwaggerOptions()
 		{
-			IOptions<SwaggerOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<SwaggerOptions>>();
+			IOptions<HttpApiOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<HttpApiOptions>>();
 			options.Value.Should().NotBeNull();
-			options.Value.Enabled.Should().BeTrue();
 		}
 	}
 }

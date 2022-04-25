@@ -20,7 +20,7 @@
 			// Add the authentication services.
 			AuthenticationBuilder builder = context.Log("AddAuthentication", services =>
 			{
-				IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("Authentication"));
+				IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("AspNetCore:Authentication"));
 				AuthenticationOptions authenticationOptions = section.Get<AuthenticationOptions>();
 
 				return services.AddAuthentication(options =>

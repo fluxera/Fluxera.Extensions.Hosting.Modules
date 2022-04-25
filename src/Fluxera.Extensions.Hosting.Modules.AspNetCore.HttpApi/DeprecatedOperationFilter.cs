@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
 	using System;
 	using System.Reflection;

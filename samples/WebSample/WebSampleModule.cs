@@ -8,13 +8,12 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
-	using Microsoft.AspNetCore.OData;
 	using Microsoft.Extensions.Hosting;
 	using WebSample.Contributors;
 
@@ -23,12 +22,10 @@
 	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
-	//[DependsOn(typeof(VersioningModule))]
-	//[DependsOn(typeof(ODataVersioningModule))]
-	[DependsOn(typeof(SwaggerModule))]
+	[DependsOn(typeof(ODataModule))]
+	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(HealthChecksModule))]
-	[DependsOn(typeof(ODataModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WebSampleModule : ConfigureApplicationModule
 	{
@@ -45,15 +42,12 @@
 			// Configure the HTTP request pipeline.
 			if(context.Environment.IsDevelopment())
 			{
-				context.UseSwagger();
 				context.UseSwaggerUI();
 			}
 
 			context.UseHttpsRedirection();
 
 			context.UseCors();
-
-			context.GetApplicationBuilder().UseODataRouteDebug();
 
 			context.UseRouting();
 

@@ -19,10 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Versioning\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Versioning.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.csproj" />
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger.csproj" />
-    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
   </ItemGroup>

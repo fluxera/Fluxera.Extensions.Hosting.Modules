@@ -3,7 +3,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using WebSample.Model;
 
-	public class RepositoryContributor : IRepositoryContributor
+	internal sealed class RepositoryContributor : IRepositoryContributor
 	{
 		/// <inheritdoc />
 		public void ConfigureAggregates(IRepositoryAggregatesBuilder builder)

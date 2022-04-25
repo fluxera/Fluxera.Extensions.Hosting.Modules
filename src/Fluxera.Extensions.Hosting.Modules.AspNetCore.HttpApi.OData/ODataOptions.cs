@@ -13,8 +13,14 @@
 		/// </summary>
 		public ODataOptions()
 		{
+			this.QueryOperator = new ODataQueryOperatorOptions();
 			this.Batching = new ODataBatchOptions();
 		}
+
+		/// <summary>
+		///     Gets or sets the query operator options.
+		/// </summary>
+		public ODataQueryOperatorOptions QueryOperator { get; set; }
 
 		/// <summary>
 		///     Gets or sets the batching options.

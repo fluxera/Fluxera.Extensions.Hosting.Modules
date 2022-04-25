@@ -4,6 +4,7 @@
 //	using System.Collections.Generic;
 //	using System.Net.Mime;
 //	using System.Threading.Tasks;
+//	using Asp.Versioning;
 //	using Fluxera.Repository;
 //	using Microsoft.AspNetCore.Authorization;
 //	using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@
 //	/// </summary>
 //	[ApiController]
 //	[ApiVersion("2.0")]
-//	[Route("api/v{version:apiVersion}/[controller]")]
+//	[Route("v{version:apiVersion}/[controller]")]
 //	public class CustomersController : ControllerBase
 //	{
 //		private readonly ILogger<CustomersController> logger;
@@ -90,5 +91,6 @@
 //		}
 //	}
 //}
+
 
 

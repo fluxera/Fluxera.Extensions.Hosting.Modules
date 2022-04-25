@@ -12,6 +12,7 @@
 	///     A module that enables API versioning.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(SwaggerModule))]
 	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class VersioningModule : ConfigureServicesModule
@@ -32,21 +33,24 @@
 			// Add API versioning.
 			context.Log("AddApiVersioning", services =>
 			{
-				// https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx
-				// https://github.com/Microsoft/aspnet-api-versioning/wiki
-				services
-					.AddApiVersioning(options =>
-					{
-						options.DefaultApiVersion = new ApiVersion(versioningOptions.DefaultApiVersion.Major, versioningOptions.DefaultApiVersion.Major);
-						options.AssumeDefaultVersionWhenUnspecified = true;
-						options.ReportApiVersions = true;
-					})
-					.AddMvc()
-					.AddApiExplorer(options =>
+				// https://github.com/dotnet/aspnet-api-versioning/wiki
+				IApiVersioningBuilder versioningBuilder = services.AddApiVersioning(options =>
+				{
+					options.DefaultApiVersion = new ApiVersion(versioningOptions.DefaultApiVersion.Major, versioningOptions.DefaultApiVersion.Major);
+					options.AssumeDefaultVersionWhenUnspecified = true;
+					options.ReportApiVersions = true;
+				});
+
+				versioningBuilder.AddMvc();
+
+				if(swaggerOptions.Enabled)
+				{
+					versioningBuilder.AddApiExplorer(options =>
 					{
 						options.GroupNameFormat = "'v'VVV";
 						options.SubstituteApiVersionInUrl = true;
 					});
+				}
 			});
 
 			// Configure additional operation filters.

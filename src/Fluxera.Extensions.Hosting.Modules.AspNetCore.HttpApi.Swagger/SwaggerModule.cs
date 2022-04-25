@@ -24,6 +24,7 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			SwaggerOptions swaggerOptions = context.Services.GetOptions<SwaggerOptions>();
+
 			if(swaggerOptions.Enabled)
 			{
 				context.Log("AddSwagger", services =>

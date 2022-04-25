@@ -2,6 +2,7 @@
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -11,11 +12,12 @@
 	using Microsoft.Extensions.DependencyInjection.Extensions;
 
 	/// <summary>
-	///     A module that enables OData.
+	///     A module that enables OData APIs.
 	/// </summary>
 	[PublicAPI]
 	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(AuthorizationModule))]
+	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class ODataModule : ConfigureServicesModule
 	{

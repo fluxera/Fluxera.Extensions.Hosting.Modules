@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger
 {
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
@@ -9,6 +10,7 @@
 	///     A module that enables Swagger.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class SwaggerModule : ConfigureServicesModule
 	{

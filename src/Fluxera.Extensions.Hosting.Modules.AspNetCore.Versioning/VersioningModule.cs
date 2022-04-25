@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning
 {
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
@@ -11,6 +12,7 @@
 	///     A module that enables API versioning.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class VersioningModule : ConfigureServicesModule
 	{

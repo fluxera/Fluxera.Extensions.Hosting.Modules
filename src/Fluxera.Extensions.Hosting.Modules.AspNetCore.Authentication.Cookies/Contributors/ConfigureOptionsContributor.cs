@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<CookiesAuthenticationOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Authentication:Schemes";
+		public override string SectionName => "AspNetCore:Authentication:Schemes";
 	}
 }

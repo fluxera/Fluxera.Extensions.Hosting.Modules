@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning
 {
 	using Asp.Versioning;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
@@ -26,6 +27,7 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			VersioningOptions versioningOptions = context.Services.GetOptions<VersioningOptions>();
+			SwaggerOptions swaggerOptions = context.Services.GetOptions<SwaggerOptions>();
 
 			// Add API versioning.
 			context.Log("AddApiVersioning", services =>
@@ -48,11 +50,14 @@
 			});
 
 			// Configure additional operation filters.
-			context.Services.Configure<SwaggerGenOptions>(options =>
+			if(swaggerOptions.Enabled)
 			{
-				options.OperationFilter<DefaultValuesFilter>();
-				options.OperationFilter<DeprecatedOperationFilter>();
-			});
+				context.Services.Configure<SwaggerGenOptions>(options =>
+				{
+					options.OperationFilter<DefaultValuesFilter>();
+					options.OperationFilter<DeprecatedOperationFilter>();
+				});
+			}
 		}
 	}
 }

@@ -17,6 +17,11 @@
 		}
 
 		/// <summary>
+		///     Gets or sets the name of the HTTP API.
+		/// </summary>
+		public string Name { get; set; } = "API";
+
+		/// <summary>
 		///     Gets or sets the HTTP API descriptions.
 		/// </summary>
 		public HttpApiDescriptions Descriptions { get; set; }

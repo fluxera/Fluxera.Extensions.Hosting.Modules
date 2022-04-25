@@ -1,6 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Versioning
 {
 	using Asp.Versioning;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Versioning.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
@@ -15,6 +17,13 @@
 	public class ODataVersioningModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
+		public override void PreConfigureServices(IServiceConfigurationContext context)
+		{
+			// Add the authorize contributor.
+			context.Services.AddAuthorizeContributor<AuthorizeContributor>();
+		}
+
+		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			VersioningOptions versioningOptions = context.Services.GetOptions<VersioningOptions>();
@@ -22,8 +31,7 @@
 			// Add OData API versioning.
 			context.Log("AddApiVersioning", services =>
 			{
-				// https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx
-				// https://github.com/Microsoft/aspnet-api-versioning/wiki
+				// https://github.com/dotnet/aspnet-api-versioning/wiki
 				services
 					.AddApiVersioning(options =>
 					{
@@ -41,6 +49,8 @@
 						options.SubstituteApiVersionInUrl = true;
 					});
 			});
+
+			//context.Services.TryAddTransient<VersionedMetadataController>();
 		}
 	}
 }

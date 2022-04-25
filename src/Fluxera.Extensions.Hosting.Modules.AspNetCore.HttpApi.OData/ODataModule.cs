@@ -3,18 +3,13 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Contributors;
-	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
-	using Microsoft.AspNetCore.OData;
-	using Microsoft.AspNetCore.OData.Routing.Controllers;
-	using Microsoft.Extensions.DependencyInjection.Extensions;
 
 	/// <summary>
 	///     A module that enables OData APIs.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
@@ -40,8 +35,8 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			context.Services.TryAddTransient<MetadataController>();
-			context.Services.AddODataQueryFilter();
+			//context.Services.TryAddTransient<MetadataController>();
+			//context.Services.AddODataQueryFilter();
 
 			//// Add the idempotent token filter.
 			//context.Log("AddIdempotentTokenFilter",

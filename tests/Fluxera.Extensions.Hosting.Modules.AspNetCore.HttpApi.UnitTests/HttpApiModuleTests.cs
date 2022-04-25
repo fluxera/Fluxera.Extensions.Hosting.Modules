@@ -8,7 +8,7 @@ namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests
 	using NUnit.Framework;
 
 	[TestFixture]
-	public class SwaggerModuleTests : StartupModuleTestBase<SwaggerModule>
+	public class HttpApiModuleTests : StartupModuleTestBase<TestModule>
 	{
 		[SetUp]
 		public void SetUp()

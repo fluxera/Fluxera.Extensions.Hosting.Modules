@@ -38,16 +38,12 @@
 				WebApplication app = context.GetApplicationBuilder();
 				context.Log("UseSwaggerUI", _ => app.UseSwaggerUI(options =>
 				{
-					//if(swaggerOptions.Descriptions.Any())
+					//if (swaggerOptions.Descriptions.Any())
 					//{
-					//	foreach((string groupName, SwaggerApiDescription _) in swaggerOptions.Descriptions)
+					//	foreach ((string groupName, SwaggerApiDescription _) in swaggerOptions.Descriptions)
 					//	{
 					//		options.SwaggerEndpoint($"/swagger/{groupName}/swagger.json", groupName.ToUpperInvariant());
 					//	}
-					//}
-					//else
-					//{
-					//	options.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
 					//}
 				}));
 			}

@@ -37,8 +37,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.OData\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning.csproj" />
 	</ItemGroup>
 
 </Project>

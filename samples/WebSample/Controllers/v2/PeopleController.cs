@@ -1,6 +1,7 @@
 ﻿//namespace WebSample.Controllers.v2
 //{
 //	using System.Threading.Tasks;
+//	using Asp.Versioning;
 //	using Fluxera.Repository;
 //	using Microsoft.AspNetCore.Mvc;
 //	using Microsoft.AspNetCore.OData.Query;

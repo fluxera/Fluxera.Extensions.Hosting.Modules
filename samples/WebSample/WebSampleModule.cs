@@ -24,6 +24,7 @@
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
 	//[DependsOn(typeof(VersioningModule))]
+	//[DependsOn(typeof(ODataVersioningModule))]
 	[DependsOn(typeof(SwaggerModule))]
 	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(HealthChecksModule))]

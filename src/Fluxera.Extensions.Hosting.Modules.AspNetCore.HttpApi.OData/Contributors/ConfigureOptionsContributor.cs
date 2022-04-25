@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<ODataOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "AspNetCore.HttpApi";
+		public override string SectionName => "AspNetCore:HttpApi";
 	}
 }

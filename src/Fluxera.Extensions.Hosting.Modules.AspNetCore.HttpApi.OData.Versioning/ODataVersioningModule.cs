@@ -1,33 +1,25 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Versioning
 {
 	using Asp.Versioning;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
-	using Swashbuckle.AspNetCore.SwaggerGen;
 
 	/// <summary>
-	///     A module that enables API versioning.
+	///     A module that enables versioning for OData.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(HttpApiModule))]
-	[DependsOn(typeof(AspNetCoreModule))]
-	public sealed class VersioningModule : ConfigureServicesModule
+	[DependsOn(typeof(VersioningModule))]
+	[DependsOn(typeof(ODataModule))]
+	public class ODataVersioningModule : ConfigureServicesModule
 	{
-		/// <inheritdoc />
-		public override void PreConfigureServices(IServiceConfigurationContext context)
-		{
-			// Add the configure options contributor.
-			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
-		}
-
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			VersioningOptions versioningOptions = context.Services.GetOptions<VersioningOptions>();
 
-			// Add API versioning.
+			// Add OData API versioning.
 			context.Log("AddApiVersioning", services =>
 			{
 				// https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx
@@ -39,19 +31,15 @@
 						options.AssumeDefaultVersionWhenUnspecified = true;
 						options.ReportApiVersions = true;
 					})
-					.AddMvc()
+					.AddOData(options =>
+					{
+						options.AddRouteComponents("api/v{version:apiVersion}");
+					})
 					.AddApiExplorer(options =>
 					{
 						options.GroupNameFormat = "'v'VVV";
 						options.SubstituteApiVersionInUrl = true;
 					});
-			});
-
-			// Configure additional operation filters.
-			context.Services.Configure<SwaggerGenOptions>(options =>
-			{
-				options.OperationFilter<DefaultValuesFilter>();
-				options.OperationFilter<DeprecatedOperationFilter>();
 			});
 		}
 	}

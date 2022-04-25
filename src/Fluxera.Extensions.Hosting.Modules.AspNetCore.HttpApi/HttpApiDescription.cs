@@ -1,17 +1,18 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
+	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     The API description options.
+	///     The HTTP API description options.
 	/// </summary>
 	[PublicAPI]
-	public sealed class SwaggerApiDescription
+	public sealed class HttpApiDescription
 	{
 		/// <summary>
 		///     Gets or sets the API version.
 		/// </summary>
-		public string Version { get; set; }
+		public Version Version { get; set; } = new Version(1, 0);
 
 		/// <summary>
 		///     Gets or sets the API title.

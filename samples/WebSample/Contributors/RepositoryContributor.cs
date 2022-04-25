@@ -8,7 +8,9 @@
 		/// <inheritdoc />
 		public void ConfigureAggregates(IRepositoryAggregatesBuilder builder)
 		{
-			builder.UseFor<Customer>();
+			builder
+				.UseFor<Customer>()
+				.UseFor<Person>();
 		}
 
 		/// <inheritdoc />

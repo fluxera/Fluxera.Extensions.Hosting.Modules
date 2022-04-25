@@ -2,8 +2,9 @@
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributor;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Caching;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.OData;
 	using Microsoft.AspNetCore.OData.Routing.Controllers;
@@ -26,6 +27,9 @@
 
 			// Add the mvc builder contributor.
 			context.Services.AddMvcBuilderContributor<MvcBuilderContributor>();
+
+			// Add the configure options contributor.
+			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
 
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(EdmModelContributorList)",

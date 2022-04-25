@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<VersioningOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "AspNetCore:Versioning";
+		public override string SectionName => "AspNetCore:HttpApi";
 	}
 }

@@ -14,6 +14,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using JetBrains.Annotations;
+	using Microsoft.AspNetCore.OData;
 	using Microsoft.Extensions.Hosting;
 	using WebSample.Contributors;
 
@@ -22,6 +23,7 @@
 	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
+	//[DependsOn(typeof(VersioningModule))]
 	[DependsOn(typeof(SwaggerModule))]
 	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(HealthChecksModule))]
@@ -49,6 +51,8 @@
 			context.UseHttpsRedirection();
 
 			context.UseCors();
+
+			context.GetApplicationBuilder().UseODataRouteDebug();
 
 			context.UseRouting();
 

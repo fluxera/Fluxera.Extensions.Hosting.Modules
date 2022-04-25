@@ -14,6 +14,6 @@
 		///     Configures <see cref="IEdmModel" /> instances in the given builder.
 		/// </summary>
 		/// <param name="builder"></param>
-		void Configure(ODataConventionModelBuilder builder /*, EdmModelContext context*/);
+		void Configure(ODataConventionModelBuilder builder);
 	}
 }

@@ -5,6 +5,7 @@
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.DependencyInjection;
+	using Swashbuckle.AspNetCore.SwaggerGen;
 
 	/// <summary>
 	///     A module that enables API versioning.
@@ -47,6 +48,13 @@
 					setup.GroupNameFormat = "'v'VVV";
 					setup.SubstituteApiVersionInUrl = true;
 				});
+			});
+
+			// Configure additional operation filters.
+			context.Services.Configure<SwaggerGenOptions>(options =>
+			{
+				options.OperationFilter<DefaultValuesFilter>();
+				options.OperationFilter<DeprecatedOperationFilter>();
 			});
 		}
 	}

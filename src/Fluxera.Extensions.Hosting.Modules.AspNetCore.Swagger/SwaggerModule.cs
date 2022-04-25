@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger
 {
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.Contributors;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +9,6 @@
 	///     A module that enables Swagger.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(VersioningModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class SwaggerModule : ConfigureServicesModule
 	{
@@ -34,9 +32,6 @@
 					services.AddSwaggerGen(options =>
 					{
 						options.IncludeXmlComments();
-
-						options.OperationFilter<DefaultValuesFilter>();
-						options.OperationFilter<DeprecatedOperationFilter>();
 
 						options.EnableAnnotations();
 						options.UseInlineDefinitionsForEnums();

@@ -2,7 +2,6 @@
 {
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
-	using Microsoft.AspNetCore.Mvc.ApiExplorer;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;
 
@@ -33,19 +32,23 @@
 		public static IApplicationInitializationContext UseSwaggerUI(this IApplicationInitializationContext context)
 		{
 			SwaggerOptions swaggerOptions = context.ServiceProvider.GetRequiredService<IOptions<SwaggerOptions>>().Value;
-			IApiVersionDescriptionProvider versionDescriptionProvider = context.ServiceProvider.GetRequiredService<IApiVersionDescriptionProvider>();
 
 			if(swaggerOptions.Enabled)
 			{
 				WebApplication app = context.GetApplicationBuilder();
 				context.Log("UseSwaggerUI", _ => app.UseSwaggerUI(options =>
 				{
-					foreach(ApiVersionDescription description in versionDescriptionProvider.ApiVersionDescriptions)
-					{
-						options.SwaggerEndpoint(
-							$"/swagger/{description.GroupName}/swagger.json",
-							description.GroupName.ToUpperInvariant());
-					}
+					//if(swaggerOptions.Descriptions.Any())
+					//{
+					//	foreach((string groupName, SwaggerApiDescription _) in swaggerOptions.Descriptions)
+					//	{
+					//		options.SwaggerEndpoint($"/swagger/{groupName}/swagger.json", groupName.ToUpperInvariant());
+					//	}
+					//}
+					//else
+					//{
+					//	options.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
+					//}
 				}));
 			}
 

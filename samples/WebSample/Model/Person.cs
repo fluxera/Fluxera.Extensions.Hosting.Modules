@@ -1,9 +1,9 @@
 ﻿namespace WebSample.Model
 {
-	public class Person
-	{
-		public string ID { get; set; }
+	using Fluxera.Entity;
 
+	public class Person : AggregateRoot<Person, string>
+	{
 		public string Firstname { get; set; }
 
 		public string Lastname { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributor
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using JetBrains.Annotations;

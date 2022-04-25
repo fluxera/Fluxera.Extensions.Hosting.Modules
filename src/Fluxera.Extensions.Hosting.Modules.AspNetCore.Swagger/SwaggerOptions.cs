@@ -14,17 +14,11 @@
 		public SwaggerOptions()
 		{
 			this.Enabled = true;
-			this.Descriptions = new SwaggerApiDescriptions();
 		}
 
 		/// <summary>
 		///     Flag, indicating if Swagger is enabled.
 		/// </summary>
 		public bool Enabled { get; set; }
-
-		/// <summary>
-		///     Gets or sets the Swagger API descriptions.
-		/// </summary>
-		public SwaggerApiDescriptions Descriptions { get; set; }
 	}
 }

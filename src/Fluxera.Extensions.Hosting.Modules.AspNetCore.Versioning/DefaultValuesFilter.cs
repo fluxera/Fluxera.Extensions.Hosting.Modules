@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning
 {
 	using System.Linq;
 	using JetBrains.Annotations;

@@ -8,5 +8,17 @@
 	[PublicAPI]
 	public sealed class ODataOptions
 	{
+		/// <summary>
+		///     Creates a new instance of the <see cref="ODataOptions" /> type.
+		/// </summary>
+		public ODataOptions()
+		{
+			this.Batching = new ODataBatchOptions();
+		}
+
+		/// <summary>
+		///     Gets or sets the batching options.
+		/// </summary>
+		public ODataBatchOptions Batching { get; set; }
 	}
 }

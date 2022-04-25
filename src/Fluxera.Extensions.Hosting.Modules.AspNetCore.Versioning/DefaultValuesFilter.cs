@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning
 {
 	using System.Linq;
 	using JetBrains.Annotations;

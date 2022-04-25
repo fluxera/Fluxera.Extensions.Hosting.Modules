@@ -5,9 +5,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger</Title>
-		<Description>A module that enables Swagger for ASP.NET Core.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal;aspnet;swagger;openapi</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Versioning</Title>
+		<Description>A module that enables API versioning for OData for ASP.NET Core.</Description>
+		<PackageTags>library;extensions;hosting;modular;principal;aspnet;odata;api;versioning</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -32,13 +32,10 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.csproj" />
 	</ItemGroup>
 
 </Project>

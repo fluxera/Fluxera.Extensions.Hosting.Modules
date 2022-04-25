@@ -1,6 +1,6 @@
 ﻿namespace WebSample.Contributors
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData;
 	using Microsoft.OData.ModelBuilder;
 	using WebSample.Model;
 

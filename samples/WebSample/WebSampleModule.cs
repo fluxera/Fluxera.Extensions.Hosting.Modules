@@ -8,8 +8,8 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;

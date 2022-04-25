@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger
 {
 	using Microsoft.Extensions.Options;
 	using Swashbuckle.AspNetCore.SwaggerGen;

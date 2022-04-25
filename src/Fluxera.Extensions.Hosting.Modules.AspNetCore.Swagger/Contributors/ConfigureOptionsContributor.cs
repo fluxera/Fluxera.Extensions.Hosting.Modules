@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 

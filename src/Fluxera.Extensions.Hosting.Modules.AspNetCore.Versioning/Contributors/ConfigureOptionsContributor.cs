@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Versioning.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Versioning.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 

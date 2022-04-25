@@ -1,7 +1,6 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;

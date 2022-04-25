@@ -1,8 +1,8 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 
-	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<OData.ODataOptions>
+	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<ODataOptions>
 	{
 		/// <inheritdoc />
 		public override string SectionName => "AspNetCore.HttpApi";

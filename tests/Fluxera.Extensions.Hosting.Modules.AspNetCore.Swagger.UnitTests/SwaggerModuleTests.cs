@@ -1,6 +1,7 @@
-namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Swagger.UnitTests
+namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests
 {
 	using FluentAssertions;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Swagger;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;

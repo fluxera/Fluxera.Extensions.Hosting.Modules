@@ -1,9 +1,8 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.OData
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.OData.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;

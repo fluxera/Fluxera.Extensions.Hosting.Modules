@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.OData
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData
 {
 	using System;
 	using JetBrains.Annotations;

@@ -10,8 +10,8 @@
 	[PublicAPI]
 	public static class ServiceCollectionExtensions
 	{
-		public static IServiceCollection AddRouteEndpointContributor<TContributor>(this IServiceCollection services)
-			where TContributor : class, IRouteEndpointContributor, new()
+		public static IServiceCollection AddEndpointRouteContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IEndpointRouteContributor, new()
 		{
 			RouteEndpointContributorList contributorList = services.GetObject<RouteEndpointContributorList>();
 			TContributor contributor = new TContributor();

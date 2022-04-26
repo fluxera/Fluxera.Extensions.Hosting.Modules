@@ -7,7 +7,7 @@
 	///     A contract for contributors that configure the endpoint routes.
 	/// </summary>
 	[PublicAPI]
-	public interface IRouteEndpointContributor
+	public interface IEndpointRouteContributor
 	{
 		/// <summary>
 		///     The position at which this contributor is executed.

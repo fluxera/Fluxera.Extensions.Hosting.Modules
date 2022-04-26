@@ -53,12 +53,12 @@
 			{
 				app.UseEndpoints(builder =>
 				{
-					IList<IRouteEndpointContributor> contributors = context.ServiceProvider
+					IList<IEndpointRouteContributor> contributors = context.ServiceProvider
 						.GetObject<RouteEndpointContributorList>()
 						.OrderBy(contributor => contributor.Position)
 						.ToList();
 
-					foreach(IRouteEndpointContributor contributor in contributors)
+					foreach(IEndpointRouteContributor contributor in contributors)
 					{
 						contributor.MapRoute(builder);
 					}

@@ -127,7 +127,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests.csproj", "{E3CBEB85-342B-4E14-8F40-B6D53ABA091A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.MultiTenancy", "src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj", "{4E497616-A21A-417C-ACE4-1A20C603B674}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.MultiTenancy", "src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj", "{4E497616-A21A-417C-ACE4-1A20C603B674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests\Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests.csproj", "{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -327,6 +329,10 @@ Global
 		{4E497616-A21A-417C-ACE4-1A20C603B674}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E497616-A21A-417C-ACE4-1A20C603B674}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E497616-A21A-417C-ACE4-1A20C603B674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,6 +390,7 @@ Global
 		{3EC9DF08-95A6-4D18-A58B-B9155FEB8A71} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 		{4E497616-A21A-417C-ACE4-1A20C603B674} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

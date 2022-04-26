@@ -1,6 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
-	using System;
+	using Asp.Versioning.ApiExplorer;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;
 	using Microsoft.OpenApi.Models;
@@ -9,18 +9,22 @@
 	internal sealed class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
 	{
 		private readonly HttpApiOptions options;
+		private readonly IApiVersionDescriptionProvider versionDescriptionProvider;
 
-		public ConfigureSwaggerOptions(IOptions<HttpApiOptions> options)
+		public ConfigureSwaggerOptions(
+			IApiVersionDescriptionProvider versionDescriptionProvider,
+			IOptions<HttpApiOptions> options)
 		{
+			this.versionDescriptionProvider = versionDescriptionProvider;
 			this.options = options.Value;
 		}
 
 		public void Configure(SwaggerGenOptions swaggerGenOptions)
 		{
 			// Add swagger document for every API version discovered.
-			foreach((string groupName, HttpApiDescription description) in this.options.Descriptions)
+			foreach(ApiVersionDescription versionDescription in this.versionDescriptionProvider.ApiVersionDescriptions)
 			{
-				swaggerGenOptions.SwaggerDoc(groupName, CreateVersionInfo(description));
+				swaggerGenOptions.SwaggerDoc(versionDescription.GroupName, this.CreateVersionInfo(versionDescription.GroupName, versionDescription));
 			}
 		}
 
@@ -29,40 +33,11 @@
 			this.Configure(swaggerGenOptions);
 		}
 
-		private static OpenApiInfo CreateVersionInfo(HttpApiDescription description)
+		private OpenApiInfo CreateVersionInfo(string groupName, ApiVersionDescription versionDescription)
 		{
-			Version version = description.Version;
+			this.options.Descriptions.TryGetValue(groupName, out HttpApiDescription apiDescription);
 
-			OpenApiInfo info = new OpenApiInfo
-			{
-				Version = version.ToString(2),
-				Title = $"{description.Title} V{version.Major}",
-				Description = description.Description,
-
-				// TODO: Extend options if needed.
-				//Contact = new OpenApiContact
-				//{
-				//	Url = new Uri(""),
-				//	Email = "",
-				//	Name = ""
-				//},
-				//License = new OpenApiLicense
-				//{
-				//	Url = new Uri(""),
-				//	Name = ""
-				//},
-				//TermsOfService = new Uri(""),
-				//Extensions =
-				//{
-				//}
-			};
-
-			//if(description.IsDeprecated)
-			//{
-			//	info.Description += "<br/><br/><strong>This API version has been deprecated.</strong>";
-			//}
-
-			return info;
+			return apiDescription.CreateApiInfo(versionDescription);
 		}
 	}
 }

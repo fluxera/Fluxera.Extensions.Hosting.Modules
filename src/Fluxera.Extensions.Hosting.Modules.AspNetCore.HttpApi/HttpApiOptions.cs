@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
 	using System;
-	using System.Linq;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -16,6 +15,7 @@
 		public HttpApiOptions()
 		{
 			this.Descriptions = new HttpApiDescriptions();
+			this.Versioning = new VersioningOptions();
 			this.Swagger = new SwaggerOptions();
 		}
 
@@ -35,13 +35,13 @@
 		public HttpApiDescriptions Descriptions { get; set; }
 
 		/// <summary>
+		///     Gets or sets the versioning options.
+		/// </summary>
+		public VersioningOptions Versioning { get; set; }
+
+		/// <summary>
 		///     Gets or sets the Swagger options.
 		/// </summary>
 		public SwaggerOptions Swagger { get; set; }
-
-		/// <summary>
-		///     Flag, indicating if the versioning is enabled.
-		/// </summary>
-		public bool IsVersioningEnabled => this.Descriptions.Any();
 	}
 }

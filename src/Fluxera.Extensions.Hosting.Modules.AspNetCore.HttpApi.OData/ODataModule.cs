@@ -45,7 +45,7 @@
 			ODataOptions oDataOptions = context.Services.GetOptions<ODataOptions>();
 
 			// Add OData API versioning.
-			if(httpApiOptions.IsVersioningEnabled)
+			if(httpApiOptions.Versioning.Enabled)
 			{
 				context.Log("AddApiVersioning", services =>
 				{
@@ -75,7 +75,7 @@
 						{
 							DefaultODataBatchHandler batchHandler = new DefaultODataBatchHandler
 							{
-								PrefixName = string.Empty,
+								PrefixName = "v{version:apiVersion}",
 								MessageQuotas =
 								{
 									MaxNestingDepth = oDataOptions.Batching.MessageQuotas.MaxNestingDepth,

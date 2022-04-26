@@ -9,7 +9,6 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
@@ -22,7 +21,7 @@
 	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
-	[DependsOn(typeof(ODataModule))]
+	//[DependsOn(typeof(ODataModule))]
 	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(HealthChecksModule))]
@@ -33,7 +32,7 @@
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			context.Services.AddRepositoryContributor<RepositoryContributor>("Test");
-			context.Services.AddEdmModelContributor<EdmModelContributor>();
+			//context.Services.AddEdmModelContributor<EdmModelContributor>();
 		}
 
 		/// <inheritdoc />

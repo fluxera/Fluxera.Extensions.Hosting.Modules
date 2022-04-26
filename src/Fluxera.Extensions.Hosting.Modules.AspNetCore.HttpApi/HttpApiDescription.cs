@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
-	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -9,11 +8,6 @@
 	[PublicAPI]
 	public sealed class HttpApiDescription
 	{
-		/// <summary>
-		///     Gets or sets the API version.
-		/// </summary>
-		public Version Version { get; set; } = new Version(1, 0);
-
 		/// <summary>
 		///     Gets or sets the API title.
 		/// </summary>

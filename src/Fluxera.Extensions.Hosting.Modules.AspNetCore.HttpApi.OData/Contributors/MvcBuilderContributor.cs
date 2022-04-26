@@ -20,40 +20,46 @@
 
 			builder.AddOData(options =>
 			{
-				if(oDataOptions.QueryOperator.EnableExpand)
-				{
-					options.Expand();
-				}
+				options.Count().Select().OrderBy();
+				options.RouteOptions.EnableKeyInParenthesis = false;
+				options.RouteOptions.EnableNonParenthesisForEmptyParameterFunction = true;
+				options.RouteOptions.EnableQualifiedOperationCall = false;
+				options.RouteOptions.EnableUnqualifiedOperationCall = true;
 
-				if(oDataOptions.QueryOperator.EnableSelect)
-				{
-					options.Select();
-				}
+				//if(oDataOptions.QueryOperator.EnableExpand)
+				//{
+				//	options.Expand();
+				//}
 
-				if(oDataOptions.QueryOperator.EnableCount)
-				{
-					options.Count();
-				}
+				//if(oDataOptions.QueryOperator.EnableSelect)
+				//{
+				//	options.Select();
+				//}
 
-				if(oDataOptions.QueryOperator.EnableOrderBy)
-				{
-					options.OrderBy();
-				}
+				//if(oDataOptions.QueryOperator.EnableCount)
+				//{
+				//	options.Count();
+				//}
 
-				if(oDataOptions.QueryOperator.EnableFilter)
-				{
-					options.Filter();
-				}
+				//if(oDataOptions.QueryOperator.EnableOrderBy)
+				//{
+				//	options.OrderBy();
+				//}
 
-				if(oDataOptions.QueryOperator.EnableSkipToken)
-				{
-					options.SkipToken();
-				}
+				//if(oDataOptions.QueryOperator.EnableFilter)
+				//{
+				//	options.Filter();
+				//}
 
-				options.SetMaxTop(oDataOptions.QueryOperator.MaxTop);
+				//if(oDataOptions.QueryOperator.EnableSkipToken)
+				//{
+				//	options.SkipToken();
+				//}
+
+				//options.SetMaxTop(oDataOptions.QueryOperator.MaxTop);
 
 				// Don't register any routes when versioning is enabled.
-				if(!httpApiOptions.IsVersioningEnabled)
+				if(!httpApiOptions.Versioning.Enabled)
 				{
 					foreach(IEdmModelContributor edmModelContributor in contributorList)
 					{

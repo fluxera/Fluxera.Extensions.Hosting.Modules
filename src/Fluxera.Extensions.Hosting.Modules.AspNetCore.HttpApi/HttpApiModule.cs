@@ -34,7 +34,7 @@
 			HttpApiOptions httpApiOptions = context.Services.GetOptions<HttpApiOptions>();
 
 			// Add API versioning.
-			if(httpApiOptions.IsVersioningEnabled)
+			if(httpApiOptions.Versioning.Enabled)
 			{
 				context.Log("AddApiVersioning", services =>
 				{
@@ -64,8 +64,6 @@
 			{
 				context.Log("AddSwagger", services =>
 				{
-					// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-					services.AddEndpointsApiExplorer();
 					services.AddSwaggerGen(options =>
 					{
 						options.OperationFilter<SwaggerDefaultValuesFilter>();
@@ -75,13 +73,17 @@
 						options.EnableAnnotations();
 						options.UseInlineDefinitionsForEnums();
 						options.IncludeXmlComments();
+
+						if(!httpApiOptions.Versioning.Enabled)
+						{
+							httpApiOptions.Descriptions.TryGetValue("v1", out HttpApiDescription apiDescription);
+							options.SwaggerDoc("v1", apiDescription.CreateApiInfo());
+						}
 					});
 
-					services.ConfigureOptions<ConfigureSwaggerOptions>();
-
-					if(httpApiOptions.IsVersioningEnabled)
+					if(httpApiOptions.Versioning.Enabled)
 					{
-						services.ConfigureOptions<VersioningConfigureSwaggerOptions>();
+						services.ConfigureOptions<ConfigureSwaggerOptions>();
 					}
 				});
 			}

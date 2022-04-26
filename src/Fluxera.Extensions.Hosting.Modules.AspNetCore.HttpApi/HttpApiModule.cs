@@ -25,7 +25,7 @@
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
 
 			// Add the swagger route contributor.
-			context.Services.AddRouteEndpointContributor<RouteEndpointContributor>();
+			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
 		}
 
 		/// <inheritdoc />

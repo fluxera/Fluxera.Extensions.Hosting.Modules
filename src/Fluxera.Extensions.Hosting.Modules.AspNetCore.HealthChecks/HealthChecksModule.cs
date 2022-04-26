@@ -16,7 +16,7 @@
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the health check route contributor.
-			context.Services.AddRouteEndpointContributor<RouteEndpointContributor>();
+			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
 
 			// Add health check services.
 			IHealthChecksBuilder healthChecksBuilder = context.Log("AddHealthChecks", services =>

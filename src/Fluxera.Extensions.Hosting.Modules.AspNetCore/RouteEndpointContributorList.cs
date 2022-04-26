@@ -2,7 +2,7 @@
 {
 	using System.Collections.Generic;
 
-	internal sealed class RouteEndpointContributorList : List<IRouteEndpointContributor>
+	internal sealed class RouteEndpointContributorList : List<IEndpointRouteContributor>
 	{
 	}
 }

@@ -5,7 +5,7 @@
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;
 
-	internal sealed class RouteEndpointContributor : IRouteEndpointContributor
+	internal sealed class EndpointRouteContributor : IEndpointRouteContributor
 	{
 		/// <inheritdoc />
 		public void MapRoute(IEndpointRouteBuilder routeBuilder)

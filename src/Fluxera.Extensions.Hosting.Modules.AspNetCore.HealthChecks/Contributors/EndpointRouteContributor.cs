@@ -9,11 +9,11 @@
 	using Microsoft.Extensions.Logging;
 
 	[UsedImplicitly]
-	internal sealed class RouteEndpointContributor : IRouteEndpointContributor
+	internal sealed class EndpointRouteContributor : IEndpointRouteContributor
 	{
 		public void MapRoute(IEndpointRouteBuilder routeBuilder)
 		{
-			ILogger<RouteEndpointContributor> logger = routeBuilder.ServiceProvider.GetRequiredService<ILogger<RouteEndpointContributor>>();
+			ILogger<EndpointRouteContributor> logger = routeBuilder.ServiceProvider.GetRequiredService<ILogger<EndpointRouteContributor>>();
 
 			logger.LogDebug("UseEndpoints -> MapHealthChecks(/healthz)");
 			routeBuilder.MapHealthChecks("/healthz", new HealthCheckOptions

@@ -61,7 +61,7 @@
 				services => services.AddObjectAccessor(new RouteEndpointContributorList(), ObjectAccessorLifetime.Configure));
 
 			// Add the route endpoint contributor.
-			context.Services.AddRouteEndpointContributor<RouteEndpointContributor>();
+			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
 		}
 
 		/// <inheritdoc />

@@ -2,7 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting;
 
-	public class ConsoleSampleHost : ConsoleApplicationHost<ConsoleSampleModule>
+	public sealed class ConsoleSampleHost : ConsoleApplicationHost<ConsoleSampleModule>
 	{
 	}
 }

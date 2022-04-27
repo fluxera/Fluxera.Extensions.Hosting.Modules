@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus</Title>
+		<Description>A module that enables Azure ServiceBus messaging for MassTransit.</Description>
+		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;azure;servicebus</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" Link="Properties\README.md">
+			<Pack>true</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\icon.png" Link="Properties\icon.png">
+			<Pack>true</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.7" />
+		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+		<PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
+	</ItemGroup>
+
+</Project>

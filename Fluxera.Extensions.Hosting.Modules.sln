@@ -129,7 +129,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.MultiTenancy", "src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj", "{4E497616-A21A-417C-ACE4-1A20C603B674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests\Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests.csproj", "{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests\Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests.csproj", "{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSample", "samples\ConsoleSample\ConsoleSample.csproj", "{B600DDC1-B56E-4EA0-BE66-9C2F67EBE90C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging", "src\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj", "{649B5D31-D7FD-4090-9338-F9D3BB7C3F96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.InMemory", "src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj", "{CD8D364C-819F-4062-912A-4B6DE3D5FCF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Messaging.UnitTests\Fluxera.Extensions.Hosting.Modules.Messaging.UnitTests.csproj", "{62E7BFE3-8FC9-4544-B471-73D1941B6B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ", "src\Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ\Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ.csproj", "{ABE13C7F-0FE0-42C6-84C3-814074950720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus", "src\Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus\Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus.csproj", "{8C32A005-17A9-47C7-9450-DB8A00B10BF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -333,6 +345,30 @@ Global
 		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B600DDC1-B56E-4EA0-BE66-9C2F67EBE90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B600DDC1-B56E-4EA0-BE66-9C2F67EBE90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B600DDC1-B56E-4EA0-BE66-9C2F67EBE90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B600DDC1-B56E-4EA0-BE66-9C2F67EBE90C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649B5D31-D7FD-4090-9338-F9D3BB7C3F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649B5D31-D7FD-4090-9338-F9D3BB7C3F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649B5D31-D7FD-4090-9338-F9D3BB7C3F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649B5D31-D7FD-4090-9338-F9D3BB7C3F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8D364C-819F-4062-912A-4B6DE3D5FCF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8D364C-819F-4062-912A-4B6DE3D5FCF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8D364C-819F-4062-912A-4B6DE3D5FCF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8D364C-819F-4062-912A-4B6DE3D5FCF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E7BFE3-8FC9-4544-B471-73D1941B6B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E7BFE3-8FC9-4544-B471-73D1941B6B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E7BFE3-8FC9-4544-B471-73D1941B6B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E7BFE3-8FC9-4544-B471-73D1941B6B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE13C7F-0FE0-42C6-84C3-814074950720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE13C7F-0FE0-42C6-84C3-814074950720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE13C7F-0FE0-42C6-84C3-814074950720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE13C7F-0FE0-42C6-84C3-814074950720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C32A005-17A9-47C7-9450-DB8A00B10BF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C32A005-17A9-47C7-9450-DB8A00B10BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C32A005-17A9-47C7-9450-DB8A00B10BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C32A005-17A9-47C7-9450-DB8A00B10BF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -391,6 +427,12 @@ Global
 		{E3CBEB85-342B-4E14-8F40-B6D53ABA091A} = {844D2B20-B80F-4432-85AB-D6C9033B95A2}
 		{4E497616-A21A-417C-ACE4-1A20C603B674} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{763C0AEC-DA4D-4EEA-9713-3E98E8B3BDE2} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
+		{B600DDC1-B56E-4EA0-BE66-9C2F67EBE90C} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
+		{649B5D31-D7FD-4090-9338-F9D3BB7C3F96} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{CD8D364C-819F-4062-912A-4B6DE3D5FCF1} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{62E7BFE3-8FC9-4544-B471-73D1941B6B4B} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
+		{ABE13C7F-0FE0-42C6-84C3-814074950720} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{8C32A005-17A9-47C7-9450-DB8A00B10BF7} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

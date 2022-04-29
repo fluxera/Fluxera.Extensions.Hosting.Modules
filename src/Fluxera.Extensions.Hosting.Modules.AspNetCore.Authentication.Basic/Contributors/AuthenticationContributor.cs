@@ -14,8 +14,8 @@
 		{
 			BasicAuthenticationOptions authenticationOptions = context.Services.GetOptions<BasicAuthenticationOptions>();
 
-			context.Log("AddBasicUserValidationServiceFactory",
-				services => services.AddTransient<IBasicUserValidationServiceFactory, BasicUserValidationServiceFactory>());
+			context.Log("AddBasicUserAuthenticationServiceFactory",
+				services => services.AddTransient<IBasicUserAuthenticationServiceFactory, BasicUserAuthenticationServiceFactory>());
 
 			// Add all configures Basic schemes.
 			foreach((string key, BasicAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)

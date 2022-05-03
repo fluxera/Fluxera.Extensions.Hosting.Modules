@@ -6,6 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.JwtBearer;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.Permissions;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
@@ -20,6 +21,7 @@
 	[DependsOn(typeof(InMemoryPersistenceModule))]
 	[DependsOn(typeof(JwtBearerAuthenticationModule))]
 	[DependsOn(typeof(AuthenticationModule))]
+	[DependsOn(typeof(PermissionsAuthorizationModule))]
 	[DependsOn(typeof(AuthorizationModule))]
 	//[DependsOn(typeof(ODataModule))]
 	[DependsOn(typeof(HttpApiModule))]

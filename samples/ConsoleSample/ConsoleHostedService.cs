@@ -1,5 +1,7 @@
 ﻿namespace ConsoleSample
 {
+	using System.Threading;
+	using System.Threading.Tasks;
 	using ConsoleSample.Contracts;
 	using MassTransit;
 	using Microsoft.Extensions.Hosting;

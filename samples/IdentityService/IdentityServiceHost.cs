@@ -3,6 +3,9 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Serilog;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.Hosting;
+	using Microsoft.Extensions.Logging;
 	using OpenTelemetry.Logs;
 	using Serilog;
 	using Serilog.Extensions.Hosting;

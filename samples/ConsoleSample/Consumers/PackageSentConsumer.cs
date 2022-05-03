@@ -1,5 +1,6 @@
 ﻿namespace ConsoleSample.Consumers
 {
+	using System.Threading.Tasks;
 	using ConsoleSample.Contracts;
 	using JetBrains.Annotations;
 	using MassTransit;

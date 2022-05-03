@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 

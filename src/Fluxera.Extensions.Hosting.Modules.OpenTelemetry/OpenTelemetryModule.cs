@@ -39,6 +39,9 @@
 			// Add the contributor list.
 			context.Log("AddObjectAccessor(ConfigureContributorList)",
 				services => services.AddObjectAccessor(new TracerProviderContributorList(), ObjectAccessorLifetime.ConfigureServices));
+
+			// Add the meter provider contributor.
+			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
 		}
 
 		/// <inheritdoc />

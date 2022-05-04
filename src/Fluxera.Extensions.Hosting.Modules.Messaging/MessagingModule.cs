@@ -7,6 +7,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Extensions;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using JetBrains.Annotations;
 	using MassTransit;
@@ -20,6 +21,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn(typeof(PrincipalModule))]
+	[DependsOn(typeof(OpenTelemetryModule))]
 	[DependsOn(typeof(ConfigurationModule))]
 	public sealed class MessagingModule : ConfigureApplicationModule
 	{
@@ -28,6 +30,9 @@
 		{
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+
+			// Add the tracer provider contributor.
+			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
 
 			// Add the consumer assembly contributor list.
 			context.Log("AddObjectAccessor(ConsumersAssemblyContributorList)", services =>

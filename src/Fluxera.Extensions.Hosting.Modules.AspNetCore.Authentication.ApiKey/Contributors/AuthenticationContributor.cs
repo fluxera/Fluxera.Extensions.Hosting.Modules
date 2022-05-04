@@ -14,8 +14,8 @@
 		{
 			ApiKeyAuthenticationOptions authenticationOptions = context.Services.GetOptions<ApiKeyAuthenticationOptions>();
 
-			context.Log("AddApiKeyProviderFactory",
-				services => services.AddTransient<IApiKeyProviderFactory, ApiKeyProviderFactory>());
+			context.Log("AddApiKeyAuthenticationServiceFactory",
+				services => services.AddTransient<IApiKeyAuthenticationServiceFactory, ApiKeyAuthenticationServiceFactory>());
 
 			// Add all configures ApiKey schemes.
 			foreach((string key, ApiKeyAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)

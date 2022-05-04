@@ -5,10 +5,10 @@
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class BasicUserValidationServiceFactory : IBasicUserValidationServiceFactory
+	internal sealed class BasicUserAuthenticationServiceFactory : IBasicUserAuthenticationServiceFactory
 	{
 		/// <inheritdoc />
-		public IBasicUserValidationService CreateBasicUserValidationService(string authenticationSchemaName)
+		public IBasicUserAuthenticationService CreateBasicUserAuthenticationService(string authenticationSchemaName)
 		{
 			throw new NotImplementedException();
 		}

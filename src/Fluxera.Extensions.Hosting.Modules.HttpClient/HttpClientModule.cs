@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.HttpClient
 {
+	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient.Contributors;
@@ -39,6 +40,9 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
+			// Adds the hash calculator.
+			context.Log("AddHashCalculator", services => services.AddHashCalculator());
+
 			// Add named http client services.
 			HttpClientServiceRegistrationContributorList contributorList = context.Services.GetObject<HttpClientServiceRegistrationContributorList>();
 			HttpClientBuilderContributorList httpClientBuilderContributorList = context.Services.GetObject<HttpClientBuilderContributorList>();

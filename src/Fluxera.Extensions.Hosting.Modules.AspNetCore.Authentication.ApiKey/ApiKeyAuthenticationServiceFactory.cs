@@ -5,10 +5,10 @@
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class ApiKeyProviderFactory : IApiKeyProviderFactory
+	internal sealed class ApiKeyAuthenticationServiceFactory : IApiKeyAuthenticationServiceFactory
 	{
 		/// <inheritdoc />
-		public IApiKeyProvider CreateApiKeyProvider(string authenticationSchemaName)
+		public IApiKeyAuthenticationService CreateApiKeyAuthenticationService(string authenticationSchemaName)
 		{
 			throw new NotImplementedException();
 		}

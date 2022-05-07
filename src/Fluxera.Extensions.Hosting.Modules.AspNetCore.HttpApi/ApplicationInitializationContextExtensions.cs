@@ -1,11 +1,12 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
+	using System;
 	using System.Linq;
 	using Asp.Versioning.ApiExplorer;
+	using global::AspNetCore.ProblemDetails;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Options;
 
 	/// <summary>
@@ -20,7 +21,6 @@
 		public static IApplicationInitializationContext UseSwaggerUI(this IApplicationInitializationContext context)
 		{
 			IApiVersionDescriptionProvider versionDescriptionProvider = context.ServiceProvider.GetService<IApiVersionDescriptionProvider>();
-			IHostEnvironment environment = context.ServiceProvider.GetRequiredService<IHostEnvironment>();
 			HttpApiOptions httpApiOptions = context.ServiceProvider.GetRequiredService<IOptions<HttpApiOptions>>().Value;
 
 			if(httpApiOptions.Swagger.Enabled)
@@ -28,7 +28,7 @@
 				WebApplication app = context.GetApplicationBuilder();
 				context.Log("UseSwaggerUI", _ => app.UseSwaggerUI(options =>
 				{
-					if((versionDescriptionProvider != null) && versionDescriptionProvider.ApiVersionDescriptions.Any())
+					if(versionDescriptionProvider != null && versionDescriptionProvider.ApiVersionDescriptions.Any())
 					{
 						foreach(ApiVersionDescription description in versionDescriptionProvider.ApiVersionDescriptions)
 						{
@@ -44,6 +44,20 @@
 				}));
 			}
 
+			return context;
+		}
+
+		/// <summary>
+		///     Adds the <see cref="ProblemDetailsMiddleware" /> to the application pipeline.
+		/// </summary>
+		/// <exception cref="InvalidOperationException">
+		///     Thrown if <see cref="MvcBuilderExtensions.AddProblemDetails(IMvcBuilder, Action{ProblemDetailsOptions})" />
+		///     hasn't been called.
+		/// </exception>
+		public static IApplicationInitializationContext UseProblemDetails(this IApplicationInitializationContext context)
+		{
+			WebApplication app = context.GetApplicationBuilder();
+			context.Log("UseProblemDetails", _ => app.UseProblemDetails());
 			return context;
 		}
 	}

@@ -1,8 +1,10 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
 	using Asp.Versioning;
+	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using global::AspNetCore.ProblemDetails;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -26,6 +28,13 @@
 
 			// Add the swagger route contributor.
 			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
+
+			// Add the problem details mvc builder contributor.
+			context.Services.AddMvcBuilderContributor<MvcBuilderContributor>();
+
+			// Add the contributor list.
+			context.Log("AddObjectAccessor(ProblemDetailsContributorList)",
+				services => services.AddObjectAccessor(new ProblemDetailsContributorList(), ObjectAccessorLifetime.ConfigureServices));
 		}
 
 		/// <inheritdoc />
@@ -85,6 +94,22 @@
 					{
 						services.ConfigureOptions<ConfigureSwaggerOptions>();
 					}
+				});
+			}
+		}
+
+		/// <inheritdoc />
+		public override void PostConfigureServices(IServiceConfigurationContext context)
+		{
+			// https://github.com/mgernand/AspNetCore.ProblemDetails/blob/main/samples/AspNetCore.ProblemDetails.Demo/Program.cs
+
+			// Configure the problem details options.
+			ProblemDetailsContributorList contributorList = context.Services.GetObject<ProblemDetailsContributorList>();
+			foreach(IProblemDetailsContributor contributor in contributorList)
+			{
+				context.Services.Configure<ProblemDetailsOptions>(options =>
+				{
+					contributor.Configure(options, context);
 				});
 			}
 		}

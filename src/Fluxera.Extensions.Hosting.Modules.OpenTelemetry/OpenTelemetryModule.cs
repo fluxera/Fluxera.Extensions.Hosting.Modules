@@ -16,16 +16,6 @@
 	[DependsOn(typeof(ConfigurationModule))]
 	public sealed class OpenTelemetryModule : ConfigureServicesModule
 	{
-		/// <summary>
-		///     Creates a new instance of the <see cref="OpenTelemetryModule" /> type.
-		/// </summary>
-		public OpenTelemetryModule()
-		{
-			// This is required if the collector doesn't expose an https endpoint. By default, .NET
-			// only allows http2 (required for gRPC) to secure endpoints.
-			AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-		}
-
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{

@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks
+﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
@@ -17,10 +17,10 @@
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
 		/// <returns></returns>
-		public static IServiceCollection AddHealthCheckContributor<TContributor>(this IServiceCollection services)
-			where TContributor : class, IHealthCheckContributor, new()
+		public static IServiceCollection AddProblemDetailsContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IProblemDetailsContributor, new()
 		{
-			HealthCheckContributorList contributorList = services.GetObjectOrDefault<HealthCheckContributorList>();
+			ProblemDetailsContributorList contributorList = services.GetObjectOrDefault<ProblemDetailsContributorList>();
 			if(contributorList != null)
 			{
 				TContributor contributor = new TContributor();
@@ -29,7 +29,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IHealthCheckContributor));
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IProblemDetailsContributor));
 			}
 
 			return services;

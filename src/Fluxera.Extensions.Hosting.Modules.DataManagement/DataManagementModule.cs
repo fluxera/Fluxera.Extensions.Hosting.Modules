@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.DataManagement
 {
-	using System.Collections.Generic;
 	using Fluxera.Extensions.DataManagement;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -10,7 +9,6 @@
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
 	using Microsoft.Extensions.Hosting;
-	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     A module that enables data management.
@@ -46,25 +44,17 @@
 			// We only support the data seeders in non-production environments.
 			if(!environment.IsProduction())
 			{
-				context.Log("DataSeed", serviceProvider =>
+				context.Log("ExecuteDataSeeding", serviceProvider =>
 				{
-					IEnumerable<IDataSeedingContributor> contributors = serviceProvider.GetServices<IDataSeedingContributor>();
+					DataSeedingContributorList contributorList = serviceProvider.GetObject<DataSeedingContributorList>();
 					AsyncHelper.RunSync(async () =>
 					{
-						foreach(IDataSeedingContributor contributor in contributors)
+						foreach(IDataSeedingContributor contributor in contributorList)
 						{
-							bool needsDataSeed = await contributor.NeedsDataSeedAsync();
-							if(needsDataSeed)
-							{
-								await contributor.SeedAsync();
-							}
+							await contributor.ExecuteAsync(serviceProvider);
 						}
 					});
 				});
-			}
-			else
-			{
-				context.Logger.LogInformation("The data seeders are not run in a production environment.");
 			}
 		}
 	}

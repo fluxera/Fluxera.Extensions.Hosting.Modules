@@ -4,6 +4,7 @@
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     Contains the service collection extensions of the module.
@@ -23,11 +24,19 @@
 		public static IServiceCollection AddConfigureOptionsContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IConfigureOptionsContributor, new()
 		{
-			Guard.Against.Null(services, nameof(services));
+			Guard.Against.Null(services);
 
-			ConfigureContributorList contributorList = services.GetObject<ConfigureContributorList>();
-			TContributor contributor = new TContributor();
-			contributorList.Add(contributor);
+			ConfigureContributorList contributorList = services.GetObjectOrDefault<ConfigureContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IConfigureOptionsContributor));
+			}
 
 			return services;
 		}

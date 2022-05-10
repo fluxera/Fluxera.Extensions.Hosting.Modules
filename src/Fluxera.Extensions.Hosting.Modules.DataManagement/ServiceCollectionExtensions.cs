@@ -4,6 +4,7 @@
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     Extension methods for the <see cref="IServiceCollection" /> type.
@@ -28,9 +29,17 @@
 			// We only support the data seeders in non-production environments.
 			if(!environment.IsProduction())
 			{
-				DataSeedingContributorList contributors = services.GetObject<DataSeedingContributorList>();
-				TContributor contributor = new TContributor();
-				contributors.Add(contributor);
+				DataSeedingContributorList contributorList = services.GetObjectOrDefault<DataSeedingContributorList>();
+				if(contributorList != null)
+				{
+					TContributor contributor = new TContributor();
+					contributorList.Add(contributor);
+				}
+				else
+				{
+					ILogger logger = services.GetObjectOrDefault<ILogger>();
+					logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IDataSeedingContributor));
+				}
 			}
 
 			return services;

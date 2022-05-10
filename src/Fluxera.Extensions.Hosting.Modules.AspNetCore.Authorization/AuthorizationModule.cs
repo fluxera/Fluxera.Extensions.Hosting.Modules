@@ -19,44 +19,43 @@
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the authorize contributor list.
-			context.Log("AddObjectAccessor(AuthorizeContributorList)", services =>
-			{
-				services.AddObjectAccessor(new AuthorizeContributorList(), ObjectAccessorLifetime.ConfigureServices);
-			});
+			context.Log("AddObjectAccessor(AuthorizeContributorList)",
+				services => services.AddObjectAccessor(new AuthorizeContributorList(), ObjectAccessorLifetime.ConfigureServices));
 
 			// Add the policies contributor list.
-			context.Log("AddObjectAccessor(PolicyContributorList)", services =>
-			{
-				services.AddObjectAccessor(new PolicyContributorList(), ObjectAccessorLifetime.ConfigureServices);
-			});
+			context.Log("AddObjectAccessor(PolicyContributorList)",
+				services => services.AddObjectAccessor(new PolicyContributorList(), ObjectAccessorLifetime.ConfigureServices));
 		}
 
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the authorization services.
-			context.Log("AddAuthorization", services => services.AddAuthorization());
+			context.Log("AddAuthorization",
+				services => services.AddAuthorization());
 		}
 
 		/// <inheritdoc />
 		public override void PostConfigureServices(IServiceConfigurationContext context)
 		{
-			AuthorizeContributorList authorizeContributorList = context.Services.GetObject<AuthorizeContributorList>();
-			PolicyContributorList policyContributorList = context.Services.GetObject<PolicyContributorList>();
-
 			// Configure options for global authorize attribute.
+			AuthorizeContributorList authorizeContributorList = context.Services.GetObject<AuthorizeContributorList>();
 			context.Services.Configure<MvcOptions>(options =>
 			{
 				options.Conventions.Add(new AddAuthorizeFiltersControllerConvention(authorizeContributorList));
 			});
 
 			// Configure the options for authorization policies.
-			context.Services.Configure<AuthorizationOptions>(options =>
+			PolicyContributorList policyContributorList = context.Services.GetObject<PolicyContributorList>();
+			context.Log("AddPolicies", services =>
 			{
-				foreach(IPolicyContributor policyContributor in policyContributorList)
+				services.Configure<AuthorizationOptions>(options =>
 				{
-					policyContributor.AddPolicy(options);
-				}
+					foreach(IPolicyContributor policyContributor in policyContributorList)
+					{
+						policyContributor.AddPolicy(options);
+					}
+				});
 			});
 
 			// Add policy requirements handlers.

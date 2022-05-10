@@ -8,14 +8,17 @@
 	internal sealed class EndpointRouteContributor : IEndpointRouteContributor
 	{
 		/// <inheritdoc />
-		public void MapRoute(IEndpointRouteBuilder routeBuilder)
+		public void MapRoute(IEndpointRouteBuilder routeBuilder, IApplicationInitializationContext context)
 		{
-			HttpApiOptions options = routeBuilder.ServiceProvider.GetRequiredService<IOptions<HttpApiOptions>>().Value;
-
-			if(options.Swagger.Enabled)
+			context.Log("MapSwagger", serviceProvider =>
 			{
-				routeBuilder.MapSwagger();
-			}
+				HttpApiOptions options = serviceProvider.GetRequiredService<IOptions<HttpApiOptions>>().Value;
+
+				if(options.Swagger.Enabled)
+				{
+					routeBuilder.MapSwagger();
+				}
+			});
 		}
 	}
 }

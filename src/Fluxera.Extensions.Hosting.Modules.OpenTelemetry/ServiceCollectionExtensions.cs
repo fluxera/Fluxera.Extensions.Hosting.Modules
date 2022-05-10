@@ -4,6 +4,7 @@
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     Contains the service collection extensions of the module.
@@ -23,11 +24,19 @@
 		public static IServiceCollection AddTracerProviderContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, ITracerProviderContributor, new()
 		{
-			Guard.Against.Null(services, nameof(services));
+			Guard.Against.Null(services);
 
-			TracerProviderContributorList contributorList = services.GetObject<TracerProviderContributorList>();
-			TContributor contributor = new TContributor();
-			contributorList.Add(contributor);
+			TracerProviderContributorList contributorList = services.GetObjectOrDefault<TracerProviderContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(ITracerProviderContributor));
+			}
 
 			return services;
 		}
@@ -44,11 +53,19 @@
 		public static IServiceCollection AddMeterProviderContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IMeterProviderContributor, new()
 		{
-			Guard.Against.Null(services, nameof(services));
+			Guard.Against.Null(services);
 
-			MeterProviderContributorList contributorList = services.GetObject<MeterProviderContributorList>();
-			TContributor contributor = new TContributor();
-			contributorList.Add(contributor);
+			MeterProviderContributorList contributorList = services.GetObjectOrDefault<MeterProviderContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IMeterProviderContributor));
+			}
 
 			return services;
 		}

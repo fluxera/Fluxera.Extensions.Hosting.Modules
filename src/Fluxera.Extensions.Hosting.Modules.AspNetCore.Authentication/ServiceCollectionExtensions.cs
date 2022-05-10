@@ -4,6 +4,7 @@
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     Contains the service collection extensions of the module.
@@ -20,11 +21,19 @@
 		public static IServiceCollection AddAuthenticationContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IAuthenticationContributor, new()
 		{
-			Guard.Against.Null(services, nameof(services));
+			Guard.Against.Null(services);
 
-			AuthenticationContributorList contributorList = services.GetObject<AuthenticationContributorList>();
-			TContributor contributor = new TContributor();
-			contributorList.Add(contributor);
+			AuthenticationContributorList contributorList = services.GetObjectOrDefault<AuthenticationContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IAuthenticationContributor));
+			}
 
 			return services;
 		}

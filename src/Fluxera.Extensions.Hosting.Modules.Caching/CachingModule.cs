@@ -24,11 +24,14 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add cache services. 
-			context.Log(services => services.AddMemoryCache());
-			context.Log(services => services.AddDistributedMemoryCache());
+			context.Log("AddMemoryCache",
+				services => services.AddMemoryCache());
+			context.Log("AddDistributedMemoryCache",
+				services => services.AddDistributedMemoryCache());
 
 			// Ass jitter service.
-			context.Log(services => services.AddJitterCalculator());
+			context.Log("AddJitterCalculator",
+				services => services.AddJitterCalculator());
 		}
 	}
 }

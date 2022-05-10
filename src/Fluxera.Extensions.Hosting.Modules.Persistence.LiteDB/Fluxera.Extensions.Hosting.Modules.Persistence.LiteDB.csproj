@@ -22,8 +22,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.8" />
-		<PackageReference Include="Fluxera.Repository.LiteDB" Version="6.0.16" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
+		<PackageReference Include="Fluxera.Repository.LiteDB" Version="6.0.18" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

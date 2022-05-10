@@ -5,6 +5,7 @@
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     Extension methods for the <see cref="IServiceCollection" /> type.
@@ -15,23 +16,32 @@
 		/// <summary>
 		///     Add the repository contributor to the contributors for the given repository name.
 		/// </summary>
-		/// <typeparam name="T"></typeparam>
+		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
 		/// <param name="repositoryName"></param>
 		/// <returns></returns>
-		public static IServiceCollection AddRepositoryContributor<T>(this IServiceCollection services, string repositoryName)
-			where T : class, IRepositoryContributor, new()
+		public static IServiceCollection AddRepositoryContributor<TContributor>(this IServiceCollection services, string repositoryName)
+			where TContributor : class, IRepositoryContributor, new()
 		{
-			Guard.Against.Null(services, nameof(services));
-			Guard.Against.NullOrWhiteSpace(repositoryName, nameof(repositoryName));
+			Guard.Against.Null(services);
+			Guard.Against.NullOrWhiteSpace(repositoryName);
 
-			RepositoryContributorDictionary contributorDictionary = services.GetObject<RepositoryContributorDictionary>();
-			if(!contributorDictionary.ContainsKey(repositoryName))
+			RepositoryContributorDictionary contributorDict = services.GetObjectOrDefault<RepositoryContributorDictionary>();
+			if(contributorDict != null)
 			{
-				contributorDictionary.Add(repositoryName, new List<IRepositoryContributor>());
-			}
+				if(!contributorDict.ContainsKey(repositoryName))
+				{
+					contributorDict.Add(repositoryName, new List<IRepositoryContributor>());
+				}
 
-			contributorDictionary[repositoryName].Add(new T());
+				TContributor contributor = new TContributor();
+				contributorDict[repositoryName].Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IRepositoryContributor));
+			}
 
 			return services;
 		}
@@ -39,16 +49,25 @@
 		/// <summary>
 		///     Adds the given repository contributor to the list of contributors.
 		/// </summary>
-		/// <typeparam name="T"></typeparam>
+		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
 		/// <returns></returns>
-		public static IServiceCollection AddRepositoryProviderContributor<T>(this IServiceCollection services)
-			where T : class, IRepositoryProviderContributor, new()
+		public static IServiceCollection AddRepositoryProviderContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IRepositoryProviderContributor, new()
 		{
-			Guard.Against.Null(services, nameof(services));
+			Guard.Against.Null(services);
 
-			RepositoryProviderContributorList contributorList = services.GetObject<RepositoryProviderContributorList>();
-			contributorList.Add(new T());
+			RepositoryProviderContributorList contributorList = services.GetObjectOrDefault<RepositoryProviderContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IRepositoryProviderContributor));
+			}
 
 			return services;
 		}

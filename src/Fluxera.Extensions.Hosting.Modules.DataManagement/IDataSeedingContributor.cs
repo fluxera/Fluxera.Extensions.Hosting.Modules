@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.DataManagement
 {
+	using System;
 	using System.Threading.Tasks;
 	using JetBrains.Annotations;
 
@@ -10,15 +11,10 @@
 	public interface IDataSeedingContributor
 	{
 		/// <summary>
-		///     Check if the contributor needs to be run.
-		/// </summary>
-		/// <returns></returns>
-		Task<bool> NeedsDataSeedAsync();
-
-		/// <summary>
 		///     Executes the data seeding of this contributor.
 		/// </summary>
+		/// <param name="serviceProvider"></param>
 		/// <returns></returns>
-		Task SeedAsync();
+		Task ExecuteAsync(IServiceProvider serviceProvider);
 	}
 }

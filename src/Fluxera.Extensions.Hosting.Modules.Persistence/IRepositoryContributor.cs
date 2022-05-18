@@ -3,7 +3,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     A contract for a contributor that provides settings for the repository it is registered for..
+	///     A contract for a contributor that provides settings for the repository it is registered for.
 	/// </summary>
 	[PublicAPI]
 	public interface IRepositoryContributor
@@ -18,19 +18,19 @@
 		///     Configures the domain event handlers to use.
 		/// </summary>
 		/// <param name="builder"></param>
-		void ConfigureEventHandling(IEventHandlersBuilder builder);
+		void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder);
 
 		/// <summary>
 		///     Configures the validators to use.
 		/// </summary>
 		/// <param name="builder"></param>
-		void ConfigureValidation(IValidatorBuilder builder);
+		void ConfigureValidators(IValidatorsBuilder builder);
 
 		/// <summary>
 		///     Configures the interceptors to use.
 		/// </summary>
 		/// <param name="builder"></param>
-		void ConfigureInterception(IInterceptionBuilder builder);
+		void ConfigureInterceptors(IInterceptorsBuilder builder);
 
 		/// <summary>
 		///     Configures the caching.

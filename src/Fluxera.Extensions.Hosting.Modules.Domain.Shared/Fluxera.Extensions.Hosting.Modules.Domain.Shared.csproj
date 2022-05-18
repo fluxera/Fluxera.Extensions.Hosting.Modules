@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB</Title>
-		<Description>A module that enables MongoDB persistence.</Description>
-		<PackageTags>library;extensions;hosting;modular;persistence;mongodb</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.Domain.Shared</Title>
+		<Description>A module that enables the domain.</Description>
+		<PackageTags>library;extensions;hosting;modular;domain;shared</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,18 +22,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
-		<PackageReference Include="Fluxera.Repository.MongoDB" Version="6.0.19" />
+		<PackageReference Include="Fluxera.Utilities" Version="6.0.16" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
-		<PackageReference Include="MongoDB.Driver.Core.Extensions.OpenTelemetry" Version="1.0.0" />
+		<PackageReference Include="MassTransit.Abstractions" Version="8.0.2" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
-  </ItemGroup>
 
 </Project>

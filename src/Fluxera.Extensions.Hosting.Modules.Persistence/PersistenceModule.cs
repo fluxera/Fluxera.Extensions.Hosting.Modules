@@ -111,8 +111,8 @@
 							{
 								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 								{
-									IEventHandlersBuilder eventHandlersBuilder = new EventHandlersBuilder(domainHandlerOptionsBuilder);
-									repositoryContributor.ConfigureEventHandling(eventHandlersBuilder);
+									IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);
+									repositoryContributor.ConfigureDomainEventHandlers(domainEventHandlersBuilder);
 								}
 							});
 
@@ -126,8 +126,8 @@
 									{
 										foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 										{
-											IValidatorBuilder validatorBuilder = new ValidatorBuilder(fluentValidationOptions);
-											repositoryContributor.ConfigureValidation(validatorBuilder);
+											IValidatorsBuilder validatorsBuilder = new ValidatorsBuilder(fluentValidationOptions);
+											repositoryContributor.ConfigureValidators(validatorsBuilder);
 										}
 									});
 								});
@@ -138,8 +138,8 @@
 							{
 								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 								{
-									IInterceptionBuilder interceptionBuilder = new InterceptionBuilder(interceptionOptionsBuilder);
-									repositoryContributor.ConfigureInterception(interceptionBuilder);
+									IInterceptorsBuilder interceptorsBuilder = new InterceptorsBuilder(interceptionOptionsBuilder);
+									repositoryContributor.ConfigureInterceptors(interceptorsBuilder);
 								}
 							});
 

@@ -25,8 +25,8 @@
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
 		<PackageReference Include="Fluxera.Extensions.Validation.DataAnnotations" Version="6.0.29" />
 		<PackageReference Include="Fluxera.Extensions.Validation.FluentValidation" Version="6.0.29" />
-		<PackageReference Include="Fluxera.Repository" Version="6.0.18" />
-		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.0.18" />
+		<PackageReference Include="Fluxera.Repository" Version="6.0.19" />
+		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.0.19" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

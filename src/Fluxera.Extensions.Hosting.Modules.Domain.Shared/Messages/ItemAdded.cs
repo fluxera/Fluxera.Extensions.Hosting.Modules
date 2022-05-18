@@ -8,7 +8,7 @@
 	[PublicAPI]
 	[Serializable]
 	[ExcludeFromTopology]
-	public abstract class ItemAdded
+	public abstract class ItemAdded : IEvent
 	{
 		[Required]
 		public ItemAddedData Metadata { get; set; }

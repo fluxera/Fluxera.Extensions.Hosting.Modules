@@ -6,45 +6,45 @@
 	using FluentValidation;
 	using Fluxera.Extensions.Validation.FluentValidation;
 
-	internal sealed class ValidatorBuilder : IValidatorBuilder
+	internal sealed class ValidatorsBuilder : IValidatorsBuilder
 	{
 		private readonly ValidatorRegistration validatorRegistration;
 
-		public ValidatorBuilder(ValidatorRegistration validatorRegistration)
+		public ValidatorsBuilder(ValidatorRegistration validatorRegistration)
 		{
 			this.validatorRegistration = validatorRegistration;
 		}
 
 		/// <inheritdoc />
-		public IValidatorBuilder AddValidators(IEnumerable<Assembly> assemblies)
+		public IValidatorsBuilder AddValidators(IEnumerable<Assembly> assemblies)
 		{
 			this.validatorRegistration.AddValidators(assemblies);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IValidatorBuilder AddValidators(Assembly assembly)
+		public IValidatorsBuilder AddValidators(Assembly assembly)
 		{
 			this.validatorRegistration.AddValidators(assembly);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IValidatorBuilder AddValidators(IEnumerable<Type> types)
+		public IValidatorsBuilder AddValidators(IEnumerable<Type> types)
 		{
 			this.validatorRegistration.AddValidators(types);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IValidatorBuilder AddValidator(Type type)
+		public IValidatorsBuilder AddValidator(Type type)
 		{
 			this.validatorRegistration.AddValidator(type);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IValidatorBuilder AddValidator<TValidator>() where TValidator : IValidator
+		public IValidatorsBuilder AddValidator<TValidator>() where TValidator : IValidator
 		{
 			this.validatorRegistration.AddValidator<TValidator>();
 			return this;

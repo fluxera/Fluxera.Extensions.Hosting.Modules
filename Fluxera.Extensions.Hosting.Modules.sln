@@ -149,6 +149,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleService", "samples\E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.HttpApi", "samples\Example.HttpApi\Example.HttpApi.csproj", "{98052A55-D5AF-4B0C-846B-3200D5227733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Domain", "src\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj", "{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Domain.Shared", "src\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj", "{C0E897A0-E9A3-4143-B240-94100E007560}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -387,6 +391,14 @@ Global
 		{98052A55-D5AF-4B0C-846B-3200D5227733}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98052A55-D5AF-4B0C-846B-3200D5227733}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98052A55-D5AF-4B0C-846B-3200D5227733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E897A0-E9A3-4143-B240-94100E007560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E897A0-E9A3-4143-B240-94100E007560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E897A0-E9A3-4143-B240-94100E007560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E897A0-E9A3-4143-B240-94100E007560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -454,6 +466,8 @@ Global
 		{24981CA9-4F6F-4617-8519-23C173776FD1} = {013DA0B6-4C2C-4931-8077-8620C60135A5}
 		{5FF5F2A2-1EEE-420F-B0FF-A6AE003D136D} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{98052A55-D5AF-4B0C-846B-3200D5227733} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
+		{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{C0E897A0-E9A3-4143-B240-94100E007560} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

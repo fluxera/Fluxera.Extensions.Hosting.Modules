@@ -24,8 +24,8 @@
 			{
 				ApiParameterDescription description = apiDescription.ParameterDescriptions.First(p => p.Name == parameter.Name);
 
-				parameter.Description ??= description.ModelMetadata?.Description;
-				parameter.Required = parameter.Required | description.IsRequired;
+				parameter.Description ??= description.ModelMetadata.Description;
+				parameter.Required |= description.IsRequired;
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
+	using System.ComponentModel.DataAnnotations;
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Options;
@@ -19,10 +20,10 @@ namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 		{
 			Guard.Against.Null(message, nameof(message));
 
-			//if(this.options.ValidationEnabled)
-			//{
-			//	Validator.ValidateObject(message, new ValidationContext(message), true);
-			//}
+			if(options.ValidationEnabled)
+			{
+				Validator.ValidateObject(message, new ValidationContext(message), true);
+			}
 		}
 	}
 }

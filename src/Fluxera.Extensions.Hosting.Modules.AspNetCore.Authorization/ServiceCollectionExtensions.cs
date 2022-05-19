@@ -35,6 +35,12 @@
 			return services;
 		}
 
+		/// <summary>
+		///     Adds the policy contributor to the list of contributors.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddPolicyContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IPolicyContributor, new()
 		{

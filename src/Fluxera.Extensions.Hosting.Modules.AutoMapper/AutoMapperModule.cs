@@ -1,15 +1,15 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AutoMapper
-{
-	using System;
-	using Fluxera.Extensions.DependencyInjection;
-	using Fluxera.Extensions.Hosting.Modules.AutoMapper.Contributors;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using global::AutoMapper;
-	using global::AutoMapper.Extensions.ExpressionMapping;
-	using JetBrains.Annotations;
-	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Options;
+﻿using System;
+using AutoMapper;
+using AutoMapper.Extensions.ExpressionMapping;
+using Fluxera.Extensions.DependencyInjection;
+using Fluxera.Extensions.Hosting.Modules.AutoMapper.Contributors;
+using Fluxera.Extensions.Hosting.Modules.Configuration;
+using JetBrains.Annotations;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
+namespace Fluxera.Extensions.Hosting.Modules.AutoMapper
+{
 	/// <summary>
 	///     A module that enables AutoMapper.
 	/// </summary>

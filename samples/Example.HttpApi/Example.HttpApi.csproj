@@ -14,4 +14,12 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Projekte\Foundation\Fluxera.Extensions.Hosting.Modules\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Projekte\Foundation\Fluxera.Extensions.Hosting.Modules\.editorconfig" />
+  </ItemGroup>
+
 </Project>

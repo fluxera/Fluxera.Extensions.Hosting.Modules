@@ -1,8 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model
 {
-	using System;
-	using System.Globalization;
-	using Fluxera.Utilities.Extensions;
+	using System.Collections.Generic;
+	using System.Dynamic;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -11,44 +10,23 @@
 	[PublicAPI]
 	public static class ExtraPropertiesObjectExtensions
 	{
-		public static bool HasProperty(this IExtraPropertiesObject source, string name, bool camelize = true)
+		/// <summary>
+		///     Gets the extra properties as dynamic instance.
+		/// </summary>
+		/// <param name="source"></param>
+		/// <returns></returns>
+		public static dynamic ToDynamic(this IExtraPropertiesObject source)
 		{
-			return source.ExtraProperties.ContainsKey(camelize ? name.Camelize() : name);
-		}
+			IDictionary<string, object> extraProperties = source.ExtraProperties ?? new Dictionary<string, object>();
+			ExpandoObject expandoObject = new ExpandoObject();
+			ICollection<KeyValuePair<string, object>> collection = expandoObject;
 
-		public static object GetProperty(this IExtraPropertiesObject source, string name, bool camelize = true)
-		{
-			return source.ExtraProperties?.GetOrDefault(camelize ? name.Camelize() : name);
-		}
-
-		public static TProperty GetProperty<TProperty>(this IExtraPropertiesObject source, string name, bool camelize = true)
-		{
-			object value = source.GetProperty(name, camelize);
-			if(value == default)
+			foreach(KeyValuePair<string, object> item in extraProperties)
 			{
-				return default;
+				collection.Add(item);
 			}
 
-			if(typeof(TProperty).IsPrimitive(true))
-			{
-				return (TProperty)Convert.ChangeType(value, typeof(TProperty), CultureInfo.InvariantCulture);
-			}
-
-			throw new NotSupportedException("Non-primitive types are not supported.");
-		}
-
-		public static TSource SetProperty<TSource>(this TSource source, string name, object value, bool camelize = true)
-			where TSource : IExtraPropertiesObject
-		{
-			source.ExtraProperties[camelize ? name.Camelize() : name] = value;
-			return source;
-		}
-
-		public static TSource RemoveProperty<TSource>(this TSource source, string name, bool camelize = true)
-			where TSource : IExtraPropertiesObject
-		{
-			source.ExtraProperties.Remove(camelize ? name.Camelize() : name);
-			return source;
+			return expandoObject;
 		}
 	}
 }

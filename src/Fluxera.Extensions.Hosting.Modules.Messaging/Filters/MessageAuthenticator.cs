@@ -19,18 +19,18 @@
 		/// <inheritdoc />
 		public async Task AuthenticateMessage<T>(SendContext<T> context) where T : class
 		{
-			Guard.Against.Null(context, nameof(context));
+			Guard.Against.Null(context);
 
-			//// Only try to acquire an access token when no principal is available in the headers already.
-			//bool accessTokenExists = context.Headers.TryGetHeader(TransportHeaders.AccessTokenHeaderName, out object _);
-			//if(!accessTokenExists)
-			//{
-			//	// Try to get an access token.
-			//	string accessToken = await this.principalAccessor.GetAccessTokenAsync();
+			// Only try to acquire an access token when no principal is available in the headers already.
+			bool accessTokenExists = context.Headers.TryGetHeader(TransportHeaders.AccessTokenHeaderName, out object _);
+			if(!accessTokenExists)
+			{
+				// Try to get an access token.
+				string accessToken = await principalAccessor.GetAccessTokenAsync();
 
-			//	// Set the access token on the context.
-			//	context.Headers.Set(TransportHeaders.AccessTokenHeaderName, accessToken);
-			//}
+				// Set the access token on the context.
+				context.Headers.Set(TransportHeaders.AccessTokenHeaderName, accessToken);
+			}
 		}
 	}
 }

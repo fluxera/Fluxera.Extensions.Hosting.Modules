@@ -10,7 +10,6 @@
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Messages;
 	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
-	using Fluxera.Utilities.Extensions;
 	using JetBrains.Annotations;
 	using MassTransit;
 	using ObjectDelta;
@@ -58,8 +57,7 @@
 				Path = x.Path,
 				BeforeUpdateValue = x.OldValue,
 				AfterUpdateValue = x.NewValue,
-				DataType = x.Type,
-				IsNumeric = x.Type.IsNumeric()
+				DataType = x.Type
 			}).ToList();
 
 			TAggregateRoot item = after;
@@ -74,7 +72,7 @@
 					EntityID = item.ID.ToString(),
 					EntityName = entityName,
 					EntityLongName = entityLongName,
-					LastModifiedAt = auditedObject?.LastModifiedAt ?? this.dateTimeOffsetProvider.UtcNow,
+					LastModifiedAt = auditedObject?.LastModifiedAt ?? dateTimeOffsetProvider.UtcNow,
 					LastModifiedBy = auditedObject?.LastModifiedBy,
 					BeforeUpdateState = JsonSerializer.Serialize(before),
 					AfterUpdateState = JsonSerializer.Serialize(after),
@@ -82,10 +80,10 @@
 				},
 			};
 
-			await this.InitializeAsync(message, item);
+			await InitializeAsync(message, item);
 
 			// Publish the event message on the message bus.
-			await this.publishEndpoint.Publish(message);
+			await publishEndpoint.Publish(message);
 		}
 
 		/// <summary>

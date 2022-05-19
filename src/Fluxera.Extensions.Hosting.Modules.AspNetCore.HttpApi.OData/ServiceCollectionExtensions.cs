@@ -13,6 +13,12 @@
 	[PublicAPI]
 	public static class ServiceCollectionExtensions
 	{
+		/// <summary>
+		///     Add an edm model contributor.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddEdmModelContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IEdmModelContributor, new()
 		{

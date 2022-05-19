@@ -1,9 +1,9 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies
-{
-	using System;
-	using JetBrains.Annotations;
-	using Microsoft.AspNetCore.Http;
+﻿using System;
+using JetBrains.Annotations;
+using Microsoft.AspNetCore.Http;
 
+namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Cookies
+{
 	/// <summary>
 	///     The options for a Cookies authentication scheme.
 	/// </summary>
@@ -15,7 +15,7 @@
 		/// </summary>
 		public CookiesAuthenticationSchemeOptions()
 		{
-			this.Cookie = new CookieOptions();
+			Cookie = new CookieOptions();
 		}
 
 		/// <summary>
@@ -57,7 +57,7 @@
 		///         even if it is passed to the server after the browser should have purged it.
 		///     </para>
 		///     <para>
-		///         This is separate from the value of <see cref="CookieOptions.Expires" />, which specifies
+		///         This is separate from the value of <c>CookieOptions.Expires</c>, which specifies
 		///         how long the browser will keep the cookie.
 		///     </para>
 		/// </summary>

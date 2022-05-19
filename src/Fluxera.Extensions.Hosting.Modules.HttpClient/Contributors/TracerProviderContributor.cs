@@ -8,7 +8,7 @@
 		/// <inheritdoc />
 		public void Configure(TracerProviderBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddHttpClientInstrumentation(options =>
+			builder.AddHttpClientInstrumentation(_ =>
 			{
 				//options.Enrich = (activity, eventName, rawObject) =>
 				//{

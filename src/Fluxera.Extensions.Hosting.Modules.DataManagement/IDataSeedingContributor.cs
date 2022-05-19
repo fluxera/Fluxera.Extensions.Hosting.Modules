@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.DataManagement
 {
-	using System;
 	using System.Threading.Tasks;
 	using JetBrains.Annotations;
 
@@ -13,8 +12,8 @@
 		/// <summary>
 		///     Executes the data seeding of this contributor.
 		/// </summary>
-		/// <param name="serviceProvider"></param>
+		/// <param name="context"></param>
 		/// <returns></returns>
-		Task ExecuteAsync(IServiceProvider serviceProvider);
+		Task ExecuteAsync(IApplicationInitializationContext context);
 	}
 }

@@ -13,6 +13,7 @@
 		///     Configure the OpenTelemetry tracing.
 		/// </summary>
 		/// <param name="builder"></param>
-		void Configure(TracerProviderBuilder builder);
+		/// <param name="context"></param>
+		void Configure(TracerProviderBuilder builder, IServiceConfigurationContext context);
 	}
 }

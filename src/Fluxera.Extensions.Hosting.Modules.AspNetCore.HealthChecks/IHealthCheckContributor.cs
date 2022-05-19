@@ -12,7 +12,8 @@
 		///     Creates health check descriptor. The health check is added to the existing
 		///     health checks using the data from the descriptor.
 		/// </summary>
+		/// <param name="context"></param>
 		/// <returns></returns>
-		HealthCheckDescriptor CreateHealthCheck();
+		HealthCheckDescriptor CreateHealthCheck(IServiceConfigurationContext context);
 	}
 }

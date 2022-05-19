@@ -13,6 +13,7 @@
 		///     Configures the given <see cref="IHttpClientBuilder" />.
 		/// </summary>
 		/// <param name="builder"></param>
-		void Configure(IHttpClientBuilder builder);
+		/// <param name="context"></param>
+		void Configure(IHttpClientBuilder builder, IServiceConfigurationContext context);
 	}
 }

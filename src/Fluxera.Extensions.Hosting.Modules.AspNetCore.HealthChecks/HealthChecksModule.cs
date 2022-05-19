@@ -52,7 +52,7 @@
 
 				foreach(IHealthCheckContributor contributor in healthCheckContributorList)
 				{
-					HealthCheckDescriptor descriptor = contributor.CreateHealthCheck();
+					HealthCheckDescriptor descriptor = contributor.CreateHealthCheck(context);
 
 					container.Builder.AddCheck(descriptor.Name, descriptor.Type, tags: new string[]
 					{

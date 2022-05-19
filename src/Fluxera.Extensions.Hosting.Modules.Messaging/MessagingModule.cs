@@ -127,7 +127,7 @@
 					// Add consumers.
 					foreach(IConsumersContributor contributor in contributorList)
 					{
-						contributor.ConfigureConsumers(options);
+						contributor.ConfigureConsumers(options, context);
 					}
 
 					// Add the transport.
@@ -147,7 +147,7 @@
 				foreach(ISendEndpointsContributor sendEndpointMappingContributor in sendEndpointsContributorList)
 				{
 					ISendEndpointMappingConfigurator configurator = new SendEndpointMappingConfigurator(serviceProvider);
-					sendEndpointMappingContributor.Configure(configurator);
+					sendEndpointMappingContributor.Configure(configurator, context);
 				}
 			});
 		}

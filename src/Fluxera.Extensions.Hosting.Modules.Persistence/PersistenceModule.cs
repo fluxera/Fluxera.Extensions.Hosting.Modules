@@ -101,10 +101,10 @@
 							foreach(IRepositoryContributor persistenceContributor in repositoryContributors)
 							{
 								IRepositoryAggregatesBuilder repositoryAggregatesBuilder = new RepositoryAggregatesBuilder(repositoryOptionsBuilder);
-								persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder);
+								persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder, context);
 							}
 
-							repositoryProviderContributor.ConfigureRepository(repositoryOptionsBuilder, connectionString, repositoryOptions);
+							repositoryProviderContributor.ConfigureRepository(repositoryOptionsBuilder, connectionString, repositoryOptions, context);
 
 							// Configure the domain event handlers.
 							repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>
@@ -112,7 +112,7 @@
 								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 								{
 									IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);
-									repositoryContributor.ConfigureDomainEventHandlers(domainEventHandlersBuilder);
+									repositoryContributor.ConfigureDomainEventHandlers(domainEventHandlersBuilder, context);
 								}
 							});
 
@@ -127,7 +127,7 @@
 										foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 										{
 											IValidatorsBuilder validatorsBuilder = new ValidatorsBuilder(fluentValidationOptions);
-											repositoryContributor.ConfigureValidators(validatorsBuilder);
+											repositoryContributor.ConfigureValidators(validatorsBuilder, context);
 										}
 									});
 								});
@@ -139,7 +139,7 @@
 								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 								{
 									IInterceptorsBuilder interceptorsBuilder = new InterceptorsBuilder(interceptionOptionsBuilder);
-									repositoryContributor.ConfigureInterceptors(interceptorsBuilder);
+									repositoryContributor.ConfigureInterceptors(interceptorsBuilder, context);
 								}
 							});
 
@@ -149,10 +149,10 @@
 								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 								{
 									ICachingBuilder cachingBuilder = new CachingBuilder(cachingOptionsBuilder);
-									repositoryContributor.ConfigureCaching(cachingBuilder);
+									repositoryContributor.ConfigureCaching(cachingBuilder, context);
 								}
 							});
-						});
+						}, context);
 					});
 				}
 			});

@@ -45,7 +45,7 @@
 			{
 				foreach(IMeterProviderContributor contributor in meterProviderContributorList)
 				{
-					contributor.Configure(builder);
+					contributor.Configure(builder, context);
 				}
 
 				//builder.AddAspNetCoreInstrumentation();
@@ -59,7 +59,7 @@
 			{
 				foreach(ITracerProviderContributor contributor in tracerProviderContributorList)
 				{
-					contributor.Configure(builder);
+					contributor.Configure(builder, context);
 				}
 
 				//builder.AddAspNetCoreInstrumentation();

@@ -13,6 +13,7 @@
 		///     Configure the OpenTelemetry metering.
 		/// </summary>
 		/// <param name="builder"></param>
-		void Configure(MeterProviderBuilder builder);
+		/// <param name="context"></param>
+		void Configure(MeterProviderBuilder builder, IServiceConfigurationContext context);
 	}
 }

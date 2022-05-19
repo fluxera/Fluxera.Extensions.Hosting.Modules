@@ -18,11 +18,11 @@
 		/// <summary>
 		///     Gets an action that adds a repository provided by this contributor.
 		/// </summary>
-		Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>> AddRepository { get; }
+		Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository { get; }
 
 		/// <summary>
 		///     Gets an action that configures a repository.
 		/// </summary>
-		Action<IRepositoryOptionsBuilder, string, RepositoryOptions> ConfigureRepository { get; }
+		Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository { get; }
 	}
 }

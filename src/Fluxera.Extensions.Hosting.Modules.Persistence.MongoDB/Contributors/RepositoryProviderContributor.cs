@@ -10,22 +10,22 @@
 	{
 		public string RepositoryProviderName => RepositoryProviderNames.MongoDB;
 
-		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>> AddRepository
+		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
 		{
 			get
 			{
-				return (builder, repositoryName, optionsAction) =>
+				return (builder, repositoryName, optionsAction, context) =>
 				{
 					builder.AddMongoRepository(repositoryName, optionsAction);
 				};
 			}
 		}
 
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions> ConfigureRepository
+		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository
 		{
 			get
 			{
-				return (builder, connectionString, options) =>
+				return (builder, connectionString, options, contexts) =>
 				{
 					builder
 						.AddSetting("Mongo.ConnectionString", connectionString)

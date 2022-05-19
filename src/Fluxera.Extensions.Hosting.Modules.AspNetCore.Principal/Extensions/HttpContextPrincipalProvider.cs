@@ -1,8 +1,10 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.Extensions
 {
 	using System.Security.Claims;
+	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using JetBrains.Annotations;
+	using Microsoft.AspNetCore.Authentication;
 	using Microsoft.AspNetCore.Http;
 
 	[UsedImplicitly]
@@ -19,6 +21,18 @@
 		public int Position => 0;
 
 		/// <inheritdoc />
-		public ClaimsPrincipal User => this.httpContextAccessor.HttpContext?.User;
+		public ClaimsPrincipal User => httpContextAccessor.HttpContext?.User;
+
+		/// <inheritdoc />
+		public async Task<string> GetAccessTokenAsync()
+		{
+			HttpContext httpContext = httpContextAccessor.HttpContext;
+			if(httpContext != null)
+			{
+				return await httpContext.GetTokenAsync("access_token");
+			}
+
+			return null;
+		}
 	}
 }

@@ -5,7 +5,6 @@
 	using System.Text.Json;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Mvc.ApiExplorer;
-	using Microsoft.AspNetCore.Mvc.ModelBinding;
 	using Microsoft.OpenApi.Models;
 	using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -35,7 +34,7 @@
 
 				foreach(string contentType in response.Content.Keys)
 				{
-					if(!responseType.ApiResponseFormats.Any(x => x.MediaType == contentType))
+					if(responseType.ApiResponseFormats.All(x => x.MediaType != contentType))
 					{
 						response.Content.Remove(contentType);
 					}
@@ -53,18 +52,12 @@
 			{
 				ApiParameterDescription description = apiDescription.ParameterDescriptions.First(p => p.Name == parameter.Name);
 
-				if(parameter.Description == null)
-				{
-					parameter.Description = description.ModelMetadata?.Description;
-				}
+				parameter.Description ??= description.ModelMetadata.Description;
 
-				if((parameter.Schema.Default == null) &&
-				   (description.DefaultValue != null) &&
-				   description.DefaultValue is not DBNull &&
-				   description.ModelMetadata is ModelMetadata modelMetadata)
+				if(parameter.Schema.Default == null && description.DefaultValue != null && description.DefaultValue is not DBNull)
 				{
 					// REF: https://github.com/Microsoft/aspnet-api-versioning/issues/429#issuecomment-605402330
-					string json = JsonSerializer.Serialize(description.DefaultValue, modelMetadata.ModelType);
+					string json = JsonSerializer.Serialize(description.DefaultValue, description.ModelMetadata.ModelType);
 					parameter.Schema.Default = OpenApiAnyFactory.CreateFromJson(json);
 				}
 

@@ -12,11 +12,8 @@
 	public static class ServiceCollectionExtensions
 	{
 		/// <summary>
-		///     Adds the given data seeder contributor to the list of contributors.
+		///     Adds the given http client service contributor to the list of contributors.
 		/// </summary>
-		/// <remarks>
-		///     The seeders are only added in a non-production environment.
-		/// </remarks>
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
 		/// <returns></returns>
@@ -38,6 +35,12 @@
 			return services;
 		}
 
+		/// <summary>
+		///     Adds the given http client builder contributor to the list of contributors.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddHttpClientBuilderContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IHttpClientBuilderContributor, new()
 		{

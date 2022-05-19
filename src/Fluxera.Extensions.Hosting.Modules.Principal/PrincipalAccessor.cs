@@ -3,6 +3,7 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Security.Claims;
+	using System.Threading.Tasks;
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
@@ -13,11 +14,7 @@
 
 		public PrincipalAccessor(IEnumerable<IPrincipalProvider> contributors)
 		{
-			// ReSharper disable PossibleMultipleEnumeration
-			Guard.Against.Null(contributors, nameof(contributors));
-
-			this.contributors = contributors;
-			// ReSharper enable PossibleMultipleEnumeration
+			this.contributors = Guard.Against.Null(contributors);
 		}
 
 		public ClaimsPrincipal User
@@ -26,9 +23,9 @@
 			{
 				ClaimsPrincipal user = null;
 
-				if(this.contributors.Any())
+				if(contributors.Any())
 				{
-					foreach(IPrincipalProvider contributor in this.contributors)
+					foreach(IPrincipalProvider contributor in contributors)
 					{
 						user = contributor.User;
 						if(user != null)
@@ -40,6 +37,26 @@
 
 				return user;
 			}
+		}
+
+		/// <inheritdoc />
+		public async Task<string> GetAccessTokenAsync()
+		{
+			string accessToken = null;
+
+			if(contributors.Any())
+			{
+				foreach(IPrincipalProvider contributor in contributors)
+				{
+					accessToken = await contributor.GetAccessTokenAsync();
+					if(!string.IsNullOrWhiteSpace(accessToken))
+					{
+						break;
+					}
+				}
+			}
+
+			return accessToken;
 		}
 	}
 }

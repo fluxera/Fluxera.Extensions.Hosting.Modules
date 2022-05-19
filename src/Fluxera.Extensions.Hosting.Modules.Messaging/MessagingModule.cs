@@ -57,6 +57,10 @@
 			// Add the hash calculator service.
 			context.Log("AddHashCalculator", services => services.AddHashCalculator());
 
+			// Add the principal factory service.
+			context.Log("AddPrincipalFactory",
+				services => services.AddTransient<IPrincipalFactory, PrincipalFactory>());
+
 			// Add the consume context accessor.
 			context.Log("AddConsumeContextAccessor", services =>
 			{
@@ -98,7 +102,8 @@
 						globalSubscriptionID = $"{environment.EnvironmentName}-{environment.ApplicationName}";
 						globalSubscriptionID = hashCalculator.ComputeHash(globalSubscriptionID);
 
-						logger.LogInformation($"Global subscription ID: {globalSubscriptionID}. EnvironmentName={environment.EnvironmentName}, ApplicationName={environment.ApplicationName}");
+						logger.LogInformation("Global subscription ID: {GlobalSubscriptionID}. EnvironmentName={Environment}, ApplicationName={Application}",
+							globalSubscriptionID, environment.EnvironmentName, environment.ApplicationName);
 					}
 
 					IEndpointNameFormatter endpointNameFormatter = new EndpointNameFormatter(globalSubscriptionID);

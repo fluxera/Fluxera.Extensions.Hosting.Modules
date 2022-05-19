@@ -2,9 +2,15 @@
 {
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///     A static class containing transport header constants.
+	/// </summary>
 	[PublicAPI]
 	public static class TransportHeaders
 	{
+		/// <summary>
+		///     The name of the header containing an access-token.
+		/// </summary>
 		public const string AccessTokenHeaderName = "X-Access-Token";
 	}
 }

@@ -11,6 +11,12 @@
 	[PublicAPI]
 	public static class ServiceCollectionExtensions
 	{
+		/// <summary>
+		///     Add a route endpoint contributor.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddEndpointRouteContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IEndpointRouteContributor, new()
 		{
@@ -29,6 +35,12 @@
 			return services;
 		}
 
+		/// <summary>
+		///     Add a mvc builder contributor.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddMvcBuilderContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IMvcBuilderContributor, new()
 		{

@@ -10,11 +10,11 @@
 	internal sealed class AuthorizeContributor : IAuthorizeContributor
 	{
 		/// <inheritdoc />
-		public bool AllowAnonymous(ControllerModel controllerModel)
+		public bool AllowAnonymous(ControllerModel controllerModel, IServiceConfigurationContext context)
 		{
 			return
-				(controllerModel.ControllerType == typeof(MetadataController)) ||
-				(controllerModel.ControllerType == typeof(VersionedMetadataController));
+				controllerModel.ControllerType == typeof(MetadataController) ||
+				controllerModel.ControllerType == typeof(VersionedMetadataController);
 		}
 	}
 }

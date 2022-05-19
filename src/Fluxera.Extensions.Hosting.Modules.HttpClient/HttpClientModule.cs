@@ -58,7 +58,7 @@
 
 				foreach(IHttpClientBuilderContributor httpClientBuilderContributor in httpClientBuilderContributorList)
 				{
-					httpClientBuilderContributor.Configure(builder);
+					httpClientBuilderContributor.Configure(builder, context);
 				}
 
 				// TODO: Polly, settings per service configurable.
@@ -79,7 +79,7 @@
 
 				foreach(IHttpClientBuilderContributor httpClientBuilderContributor in httpClientBuilderContributorList)
 				{
-					httpClientBuilderContributor.Configure(builder);
+					httpClientBuilderContributor.Configure(builder, context);
 				}
 			});
 		}

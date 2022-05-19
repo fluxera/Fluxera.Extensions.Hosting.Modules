@@ -9,9 +9,16 @@
 	public interface IMappingProfileContributor
 	{
 		/// <summary>
+		///     Configure the mapper profiles as services. This is optional.
+		/// </summary>
+		/// <param name="context"></param>
+		void ConfigureProfileServices(IServiceConfigurationContext context);
+
+		/// <summary>
 		///     Configures the profiles to use for mapping.
 		/// </summary>
 		/// <param name="options"></param>
-		void ConfigureProfiles(AutoMapperOptions options);
+		/// <param name="context"></param>
+		void ConfigureProfiles(AutoMapperOptions options, IApplicationInitializationContext context);
 	}
 }

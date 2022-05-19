@@ -10,35 +10,26 @@
 	{
 		public string RepositoryProviderName => RepositoryProviderNames.EntityFrameworkCore;
 
-		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>> AddRepository
+		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
 		{
 			get
 			{
-				return (builder, repositoryName, optionsAction) =>
+				return (builder, repositoryName, optionsAction, context) =>
 				{
 					builder.AddEntityFrameworkRepository(repositoryName, optionsAction);
 				};
 			}
 		}
 
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions> ConfigureRepository
+		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository
 		{
 			get
 			{
-				return (builder, connectionString, repositoryOptions) =>
+				return (builder, connectionString, repositoryOptions, context) =>
 				{
-					bool logSQL = false;
-					if(repositoryOptions.Settings.TryGetValue("LogSQL", out string setting))
-					{
-						logSQL = bool.Parse(setting);
-					}
-
-					Type dbContextType = null;
-
 					builder
-						.AddSetting("EntityFrameworkCore.DbContext", connectionString)
-						.AddSetting("EntityFrameworkCore.ConnectionString", connectionString)
-						.AddSetting("EntityFrameworkCore.LogSQL", logSQL);
+						//.AddSetting("EntityFrameworkCore.DbContext", connectionString)
+						.AddSetting("EntityFrameworkCore.ConnectionString", connectionString);
 				};
 			}
 		}

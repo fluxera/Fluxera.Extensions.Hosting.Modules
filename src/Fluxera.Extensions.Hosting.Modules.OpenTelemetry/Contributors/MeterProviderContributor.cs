@@ -5,7 +5,7 @@
 	internal sealed class MeterProviderContributor : IMeterProviderContributor
 	{
 		/// <inheritdoc />
-		public void Configure(MeterProviderBuilder builder)
+		public void Configure(MeterProviderBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.AddRuntimeMetrics(options =>
 			{

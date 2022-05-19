@@ -41,6 +41,17 @@
 		}
 
 		/// <inheritdoc />
+		public override void PostConfigureServices(IServiceConfigurationContext context)
+		{
+			// Configure the mapping profiles as services.
+			MappingProfileContributorList contributorList = context.Services.GetObject<MappingProfileContributorList>();
+			foreach(IMappingProfileContributor contributor in contributorList)
+			{
+				contributor.ConfigureProfileServices(context);
+			}
+		}
+
+		/// <inheritdoc />
 		public override void PreConfigure(IApplicationInitializationContext context)
 		{
 			context.Log("Initialize(AutoMapper)", serviceProvider =>
@@ -48,11 +59,11 @@
 				IOptions<AutoMapperOptions> optionsService = serviceProvider.GetRequiredService<IOptions<AutoMapperOptions>>();
 				AutoMapperOptions options = optionsService.Value;
 
-				// Configure the module options.
+				// Configure the mapping profiles.
 				MappingProfileContributorList contributorList = context.ServiceProvider.GetObject<MappingProfileContributorList>();
 				foreach(IMappingProfileContributor contributor in contributorList)
 				{
-					contributor.ConfigureProfiles(options);
+					contributor.ConfigureProfiles(options, context);
 				}
 
 				MapperConfiguration configuration = new MapperConfiguration(cfg =>

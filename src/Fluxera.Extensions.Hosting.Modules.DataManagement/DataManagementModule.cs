@@ -51,7 +51,7 @@
 					{
 						foreach(IDataSeedingContributor contributor in contributorList)
 						{
-							await contributor.ExecuteAsync(serviceProvider);
+							await contributor.ExecuteAsync(context);
 						}
 					});
 				});

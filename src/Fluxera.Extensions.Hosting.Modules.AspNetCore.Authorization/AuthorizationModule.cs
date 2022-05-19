@@ -42,7 +42,7 @@
 			AuthorizeContributorList authorizeContributorList = context.Services.GetObject<AuthorizeContributorList>();
 			context.Services.Configure<MvcOptions>(options =>
 			{
-				options.Conventions.Add(new AddAuthorizeFiltersControllerConvention(authorizeContributorList));
+				options.Conventions.Add(new AddAuthorizeFiltersControllerConvention(authorizeContributorList, context));
 			});
 
 			// Configure the options for authorization policies.
@@ -53,17 +53,17 @@
 				{
 					foreach(IPolicyContributor policyContributor in policyContributorList)
 					{
-						policyContributor.AddPolicy(options);
+						policyContributor.AddPolicy(options, context);
 					}
 				});
 			});
 
 			// Add policy requirements handlers.
-			context.Log("AddPolicyHandlers", services =>
+			context.Log("AddPolicyHandlers", _ =>
 			{
 				foreach(IPolicyContributor policyContributor in policyContributorList)
 				{
-					policyContributor.AddPolicyHandlers(services);
+					policyContributor.AddPolicyHandlers(context);
 				}
 			});
 		}

@@ -9,15 +9,17 @@
 	internal sealed class AddAuthorizeFiltersControllerConvention : IControllerModelConvention
 	{
 		private readonly AuthorizeContributorList authorizeContributorList;
+		private readonly IServiceConfigurationContext context;
 
-		public AddAuthorizeFiltersControllerConvention(AuthorizeContributorList authorizeContributorList)
+		public AddAuthorizeFiltersControllerConvention(AuthorizeContributorList authorizeContributorList, IServiceConfigurationContext context)
 		{
 			this.authorizeContributorList = authorizeContributorList;
+			this.context = context;
 		}
 
 		public void Apply(ControllerModel controller)
 		{
-			bool allowAnonymous = this.authorizeContributorList.Any(x => x.AllowAnonymous(controller));
+			bool allowAnonymous = this.authorizeContributorList.Any(x => x.AllowAnonymous(controller, this.context));
 			if(allowAnonymous)
 			{
 				return;

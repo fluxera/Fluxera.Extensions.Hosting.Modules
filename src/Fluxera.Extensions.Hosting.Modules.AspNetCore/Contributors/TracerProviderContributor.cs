@@ -6,7 +6,7 @@
 	internal sealed class TracerProviderContributor : ITracerProviderContributor
 	{
 		/// <inheritdoc />
-		public void Configure(TracerProviderBuilder builder)
+		public void Configure(TracerProviderBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.AddAspNetCoreInstrumentation();
 		}

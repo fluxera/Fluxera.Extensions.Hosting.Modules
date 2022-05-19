@@ -13,6 +13,7 @@
 		///     Configure consumers.
 		/// </summary>
 		/// <param name="configurator"></param>
-		void ConfigureConsumers(IRegistrationConfigurator configurator);
+		/// <param name="context"></param>
+		void ConfigureConsumers(IRegistrationConfigurator configurator, IServiceConfigurationContext context);
 	}
 }

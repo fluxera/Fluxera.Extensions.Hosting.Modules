@@ -13,7 +13,8 @@
 		///     Allow anonymous access for the given controller.
 		/// </summary>
 		/// <param name="controllerModel"></param>
+		/// <param name="context"></param>
 		/// <returns></returns>
-		bool AllowAnonymous(ControllerModel controllerModel);
+		bool AllowAnonymous(ControllerModel controllerModel, IServiceConfigurationContext context);
 	}
 }

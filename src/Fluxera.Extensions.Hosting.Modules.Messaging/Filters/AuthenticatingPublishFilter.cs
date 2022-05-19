@@ -6,6 +6,11 @@
 	using MassTransit;
 	using Microsoft.Extensions.Logging;
 
+	/// <summary>
+	///     A publish filter that utilizes the <see cref="IMessageAuthenticator" /> to add
+	///     an access token to the consume context headers.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	[PublicAPI]
 	public sealed class AuthenticatingPublishFilter<T> : IFilter<PublishContext<T>>
 		where T : class
@@ -13,11 +18,16 @@
 		private readonly ILogger logger;
 		private readonly IMessageAuthenticator messageAuthenticator;
 
+		/// <summary>
+		///     Creates a new instance of the <see cref="AuthenticatingPublishFilter{T}" /> type.
+		/// </summary>
+		/// <param name="loggerFactory"></param>
+		/// <param name="messageAuthenticator"></param>
 		public AuthenticatingPublishFilter(
 			ILoggerFactory loggerFactory,
 			IMessageAuthenticator messageAuthenticator)
 		{
-			this.logger = loggerFactory.CreateLogger(this.GetType());
+			logger = loggerFactory.CreateLogger(GetType());
 			this.messageAuthenticator = messageAuthenticator;
 		}
 
@@ -27,7 +37,7 @@
 			try
 			{
 				// Executed before the message is published.
-				await this.messageAuthenticator.AuthenticateMessage(context);
+				await messageAuthenticator.AuthenticateMessage(context);
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
@@ -37,7 +47,7 @@
 			}
 			catch(Exception ex)
 			{
-				this.logger.LogError($"The message authentication failed: {ex.Message}");
+				logger.LogError($"The message authentication failed: {ex.Message}");
 
 				// Propagate the exception up the call stack.
 				throw;

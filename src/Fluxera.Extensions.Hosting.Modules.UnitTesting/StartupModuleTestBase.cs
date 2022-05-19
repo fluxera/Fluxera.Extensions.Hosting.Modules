@@ -7,12 +7,22 @@ namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Hosting.Internal;
 
+	/// <summary>
+	///     A base class for testing modules.
+	/// </summary>
+	/// <typeparam name="TStartupModule"></typeparam>
 	[PublicAPI]
 	public abstract class StartupModuleTestBase<TStartupModule> : TestBase
 		where TStartupModule : class, IModule
 	{
+		/// <summary>
+		///     Gets or sets the application loader instance.
+		/// </summary>
 		protected IApplicationLoader ApplicationLoader { get; private set; }
 
+		/// <summary>
+		///     Starts the application.
+		/// </summary>
 		protected void StartApplication()
 		{
 			IServiceProvider serviceProvider = BuildServiceProvider(services =>
@@ -37,6 +47,9 @@ namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 			this.ApplicationLoader.Initialize(new ApplicationLoaderInitializationContext(serviceProvider));
 		}
 
+		/// <summary>
+		///     Stops the application.
+		/// </summary>
 		protected void StopApplication()
 		{
 			if(this.ApplicationLoader != null)

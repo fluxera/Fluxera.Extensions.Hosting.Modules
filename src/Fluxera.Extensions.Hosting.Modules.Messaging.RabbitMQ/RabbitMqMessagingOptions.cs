@@ -3,9 +3,15 @@
 	using Fluxera.Extensions.DataManagement;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///     The options for the RabbitMQ messaging module.
+	/// </summary>
 	[PublicAPI]
 	public sealed class RabbitMqMessagingOptions
 	{
+		/// <summary>
+		///     Creates new instance of the <see cref="RabbitMqMessagingOptions" /> type.
+		/// </summary>
 		public RabbitMqMessagingOptions()
 		{
 			this.ConnectionStrings = new ConnectionStrings();

@@ -50,9 +50,9 @@
 		[Test]
 		public void ShouldUseThreadBasedPrincipalProvider()
 		{
-			IEnumerable<IPrincipalProvider> principalProviders = this.ApplicationLoader.ServiceProvider.GetServices<IPrincipalProvider>();
+			IList<IPrincipalProvider> principalProviders = this.ApplicationLoader.ServiceProvider.GetServices<IPrincipalProvider>().ToList();
 			principalProviders.Should().NotBeNull();
-			principalProviders.Count().Should().Be(2);
+			principalProviders.Count.Should().Be(2);
 			principalProviders.Last().Should().BeOfType<HttpContextPrincipalProvider>();
 			principalProviders.Last().Position.Should().Be(0);
 		}

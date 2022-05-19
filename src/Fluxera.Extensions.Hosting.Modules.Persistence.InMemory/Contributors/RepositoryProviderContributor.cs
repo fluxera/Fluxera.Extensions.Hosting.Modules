@@ -16,7 +16,8 @@
 			{
 				return (builder, repositoryName, configureAction, context) =>
 				{
-					builder.AddInMemoryRepository(repositoryName, configureAction);
+					context.Log("AddInMemoryRepository",
+						_ => builder.AddInMemoryRepository(repositoryName, configureAction));
 				};
 			}
 		}
@@ -25,7 +26,7 @@
 		{
 			get
 			{
-				return (builder, connectionString, options, context) =>
+				return (_, _, _, _) =>
 				{
 				};
 			}

@@ -77,7 +77,7 @@
 						throw new InvalidOperationException($"No repository contributor was added for repository '{repositoryName}'.");
 					}
 
-					context.Log($"AddRepository({repositoryName}, {repositoryOptions.ProviderName})", s =>
+					context.Log($"AddRepository({repositoryName}, {repositoryOptions.ProviderName})", _ =>
 					{
 						if(string.IsNullOrWhiteSpace(repositoryOptions.ProviderName))
 						{

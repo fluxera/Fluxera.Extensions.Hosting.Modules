@@ -11,6 +11,12 @@
 	[PublicAPI]
 	public static class ServiceCollectionExtensions
 	{
+		/// <summary>
+		///     Adds a consumer contributor to the list of contributors.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddConsumersContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IConsumersContributor, new()
 		{
@@ -29,6 +35,12 @@
 			return services;
 		}
 
+		/// <summary>
+		///     Adds a send endpoint mapping contributor to the list of contributors.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddSendEndpointMappingContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, ISendEndpointsContributor, new()
 		{
@@ -47,6 +59,12 @@
 			return services;
 		}
 
+		/// <summary>
+		///     Adds the transport contributor if no other transport contributor was already added.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddTransportContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, ITransportContributor, new()
 		{

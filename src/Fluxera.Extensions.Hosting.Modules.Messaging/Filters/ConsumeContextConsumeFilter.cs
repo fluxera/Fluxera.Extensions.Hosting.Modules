@@ -6,6 +6,11 @@
 	using MassTransit;
 	using Microsoft.Extensions.Logging;
 
+	/// <summary>
+	///     A consume filter that utilizes the <see cref="IConsumeContextAccessor" /> to add
+	///     the consume context to the current accessor.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	[PublicAPI]
 	public sealed class ConsumeContextConsumeFilter<T> : IFilter<ConsumeContext<T>>
 		where T : class
@@ -13,11 +18,16 @@
 		private readonly IConsumeContextAccessor consumeContextAccessor;
 		private readonly ILogger logger;
 
+		/// <summary>
+		///     Creates a new instance of the <see cref="ConsumeContextConsumeFilter{T}" /> type.
+		/// </summary>
+		/// <param name="loggerFactory"></param>
+		/// <param name="consumeContextAccessor"></param>
 		public ConsumeContextConsumeFilter(
 			ILoggerFactory loggerFactory,
 			IConsumeContextAccessor consumeContextAccessor)
 		{
-			this.logger = loggerFactory.CreateLogger(this.GetType());
+			logger = loggerFactory.CreateLogger(GetType());
 			this.consumeContextAccessor = consumeContextAccessor;
 		}
 
@@ -27,17 +37,17 @@
 			try
 			{
 				// Executed before the message is consumed.
-				this.consumeContextAccessor.ConsumeContext = context;
+				consumeContextAccessor.ConsumeContext = context;
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
 
 				// Executed after the message was consumed.
-				this.consumeContextAccessor.ConsumeContext = null;
+				consumeContextAccessor.ConsumeContext = null;
 			}
 			catch(Exception ex)
 			{
-				this.logger.LogError($"Setting the consume context failed: {ex.Message}");
+				logger.LogError($"Setting the consume context failed: {ex.Message}");
 
 				// Propagate the exception up the call stack.
 				throw;

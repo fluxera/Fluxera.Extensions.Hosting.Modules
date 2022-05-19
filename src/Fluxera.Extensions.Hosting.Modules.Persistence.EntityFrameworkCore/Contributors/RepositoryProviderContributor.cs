@@ -16,7 +16,8 @@
 			{
 				return (builder, repositoryName, optionsAction, context) =>
 				{
-					builder.AddEntityFrameworkRepository(repositoryName, optionsAction);
+					context.Log("AddEntityFrameworkRepository",
+						_ => builder.AddEntityFrameworkRepository(repositoryName, optionsAction));
 				};
 			}
 		}
@@ -25,7 +26,7 @@
 		{
 			get
 			{
-				return (builder, connectionString, repositoryOptions, context) =>
+				return (builder, connectionString, _, _) =>
 				{
 					builder
 						//.AddSetting("EntityFrameworkCore.DbContext", connectionString)

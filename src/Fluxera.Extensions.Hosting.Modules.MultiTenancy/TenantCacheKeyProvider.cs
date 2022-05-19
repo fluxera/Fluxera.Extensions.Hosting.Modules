@@ -30,7 +30,8 @@
 		{
 			string cachePrefix = base.GetCachePrefix(repositoryName, type);
 
-			TenantOptions tenantOptions = this.options.Repositories[repositoryName.Value];
+			string repositoryNameValue = repositoryName.Value ?? string.Empty;
+			TenantOptions tenantOptions = this.options.Repositories[repositoryNameValue];
 
 			if(tenantOptions.Enabled)
 			{

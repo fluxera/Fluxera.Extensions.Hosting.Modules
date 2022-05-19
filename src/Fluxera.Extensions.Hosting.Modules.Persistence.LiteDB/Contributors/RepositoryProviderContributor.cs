@@ -16,7 +16,8 @@
 			{
 				return (builder, repositoryName, optionsAction, context) =>
 				{
-					builder.AddLiteRepository(repositoryName, optionsAction);
+					context.Log("AddLiteRepository",
+						_ => builder.AddLiteRepository(repositoryName, optionsAction));
 				};
 			}
 		}
@@ -25,7 +26,7 @@
 		{
 			get
 			{
-				return (builder, connectionString, options, context) =>
+				return (builder, connectionString, _, _) =>
 				{
 					builder.AddSetting("Lite.Database", connectionString);
 				};

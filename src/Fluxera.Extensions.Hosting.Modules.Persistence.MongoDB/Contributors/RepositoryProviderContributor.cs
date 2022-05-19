@@ -16,7 +16,8 @@
 			{
 				return (builder, repositoryName, optionsAction, context) =>
 				{
-					builder.AddMongoRepository(repositoryName, optionsAction);
+					context.Log("AddMongoRepository",
+						_ => builder.AddMongoRepository(repositoryName, optionsAction));
 				};
 			}
 		}
@@ -25,7 +26,7 @@
 		{
 			get
 			{
-				return (builder, connectionString, options, contexts) =>
+				return (builder, connectionString, options, _) =>
 				{
 					builder
 						.AddSetting("Mongo.ConnectionString", connectionString)

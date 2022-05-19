@@ -9,9 +9,12 @@
 	[PublicAPI]
 	public sealed class AzureServiceBusMessagingOptions
 	{
+		/// <summary>
+		///     Creates a new instance of the <see cref="AzureServiceBusMessagingOptions" /> type.
+		/// </summary>
 		public AzureServiceBusMessagingOptions()
 		{
-			this.ConnectionStrings = new ConnectionStrings();
+			ConnectionStrings = new ConnectionStrings();
 		}
 
 		/// <summary>

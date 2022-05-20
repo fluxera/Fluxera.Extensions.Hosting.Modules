@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj" />
+    <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
     <ProjectReference Include="..\Example.HttpApi\Example.HttpApi.csproj" />
   </ItemGroup>

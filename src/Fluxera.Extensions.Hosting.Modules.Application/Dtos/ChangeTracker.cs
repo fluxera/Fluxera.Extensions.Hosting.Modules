@@ -82,5 +82,11 @@
 			dynamic dynamicObject = expandoObject;
 			return dynamicObject;
 		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return $"ChangeTracker<{typeof(TDto).Name}>";
+		}
 	}
 }

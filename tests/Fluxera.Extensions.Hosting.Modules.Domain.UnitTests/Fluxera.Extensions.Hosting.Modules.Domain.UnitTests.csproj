@@ -2,8 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
@@ -19,16 +17,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
-	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj" />
-	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
-	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
+		<ProjectReference
+			Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
+		<ProjectReference
+			Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj" />
+		<ProjectReference
+			Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
+		<ProjectReference
+			Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>

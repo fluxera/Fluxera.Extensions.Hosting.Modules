@@ -31,6 +31,7 @@
 			this.Items = items;
 		}
 
+		/// <inheritdoc />
 		public IReadOnlyList<T> Items
 		{
 			get => this.items ??= new List<T>();

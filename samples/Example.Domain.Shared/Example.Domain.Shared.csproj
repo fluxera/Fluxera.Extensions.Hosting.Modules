@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +11,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ExampleAggregate\Messages\Commands\" />
+    <Folder Include="ExampleAggregate\Services\" />
   </ItemGroup>
 
 </Project>

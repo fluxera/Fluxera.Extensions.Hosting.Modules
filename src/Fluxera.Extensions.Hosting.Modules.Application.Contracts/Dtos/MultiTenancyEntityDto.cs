@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Dtos
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos
 {
 	using System;
 	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;

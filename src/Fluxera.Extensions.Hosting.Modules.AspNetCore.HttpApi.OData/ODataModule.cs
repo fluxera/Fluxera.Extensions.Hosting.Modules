@@ -16,7 +16,6 @@
 	///     A module that enables OData APIs.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class ODataModule : ConfigureServicesModule

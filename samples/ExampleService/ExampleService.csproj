@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,7 @@
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory\Fluxera.Extensions.Hosting.Modules.Persistence.InMemory.csproj" />
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
+    <ProjectReference Include="..\Example.Application\Example.Application.csproj" />
     <ProjectReference Include="..\Example.HttpApi\Example.HttpApi.csproj" />
   </ItemGroup>
 

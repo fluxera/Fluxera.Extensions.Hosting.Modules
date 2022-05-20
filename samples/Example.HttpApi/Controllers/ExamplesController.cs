@@ -34,12 +34,12 @@
 		[HttpPost]
 		public async Task<IActionResult> Add(ExampleDto dto)
 		{
-			ExampleDto result = await this.exampleApplicationService.AddExample(dto);
-
-			if(result is null)
+			if(!this.ModelState.IsValid)
 			{
-				return this.NoContent();
+				return this.BadRequest(this.ModelState);
 			}
+
+			ExampleDto result = await this.exampleApplicationService.AddExample(dto);
 
 			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.ID }, result);
 		}

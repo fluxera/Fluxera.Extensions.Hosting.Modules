@@ -8,6 +8,9 @@
 	[PublicAPI]
 	public interface IEntityDto
 	{
+		/// <summary>
+		///     Gets or sets the ID.
+		/// </summary>
 		string /*TKey*/ ID { get; set; }
 	}
 }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.3.0-beta.2" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
   </ItemGroup>
@@ -14,14 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
     <ProjectReference Include="..\Example.HttpApi\Example.HttpApi.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EditorConfigFiles Remove="D:\Projekte\Foundation\Fluxera.Extensions.Hosting.Modules\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EditorConfigFiles Remove="D:\Projekte\Foundation\Fluxera.Extensions.Hosting.Modules\.editorconfig" />
   </ItemGroup>
 
 </Project>

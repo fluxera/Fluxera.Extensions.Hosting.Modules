@@ -9,13 +9,13 @@ namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 	public class TestApplicationLifetime : IHostApplicationLifetime
 	{
 		/// <inheritdoc />
-		public CancellationToken ApplicationStarted { get; }
+		public CancellationToken ApplicationStarted => default;
 
 		/// <inheritdoc />
-		public CancellationToken ApplicationStopping { get; }
+		public CancellationToken ApplicationStopping => default;
 
 		/// <inheritdoc />
-		public CancellationToken ApplicationStopped { get; }
+		public CancellationToken ApplicationStopped => default;
 
 		/// <inheritdoc />
 		public void StopApplication()

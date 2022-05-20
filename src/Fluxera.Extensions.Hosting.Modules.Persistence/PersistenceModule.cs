@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using Fluxera.Extensions.DataManagement;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -64,7 +63,7 @@
 
 			// Get persistence options to use in service configuration.
 			PersistenceOptions persistenceOptions = context.Services.GetOptions<PersistenceOptions>();
-			persistenceOptions.ConnectionStrings = context.Services.GetObject<ConnectionStrings>();
+			persistenceOptions.ConnectionStrings = persistenceOptions.ConnectionStrings;
 
 			// Add default services and the repositories.
 			context.Services.AddRepository(builder =>

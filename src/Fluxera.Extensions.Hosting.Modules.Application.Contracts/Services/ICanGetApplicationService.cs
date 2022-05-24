@@ -15,11 +15,30 @@
 	public interface ICanGetApplicationService<TDto> : IApplicationService
 		where TDto : class, IEntityDto
 	{
+		/// <summary>
+		///     Gets the item identified by the given id.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		Task<TDto> GetAsync(string id, CancellationToken cancellationToken = default);
 
-		Task<TResult> GetAsync<TResult>(string id, Expression<Func<TDto, TResult>> selector,
-			CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Gets the selected result value of the item identified by the given id.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="id"></param>
+		/// <param name="selector"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<TResult> GetAsync<TResult>(string id, Expression<Func<TDto, TResult>> selector, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		///     Checks, if a item identified by the given id exists.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		Task<bool> ExistsAsync(string id, CancellationToken cancellationToken = default);
 	}
 }

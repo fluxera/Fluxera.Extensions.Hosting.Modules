@@ -6,6 +6,7 @@
 	using System.Linq.Expressions;
 	using System.Reflection;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
 	using Microsoft.AspNetCore.OData.Query;
 	using Microsoft.OData;
 
@@ -17,11 +18,11 @@
 				.Body.Unquote())
 			.Method.GetGenericMethodDefinition();
 
-		private static readonly MethodInfo QueryableSelect =
-			((MethodCallExpression)((Expression<Func<IQueryable<bool>>>)
-					(() => ((IQueryable<bool>)null).Select(x => true)))
-				.Body.Unquote())
-			.Method.GetGenericMethodDefinition();
+		//private static readonly MethodInfo QueryableSelect =
+		//	((MethodCallExpression)((Expression<Func<IQueryable<bool>>>)
+		//			(() => ((IQueryable<bool>)null).Select(x => true)))
+		//		.Body.Unquote())
+		//	.Method.GetGenericMethodDefinition();
 
 		private static readonly MethodInfo QueryableOrderBy =
 			((MethodCallExpression)((Expression<Func<IQueryable<string>>>)
@@ -73,73 +74,85 @@
 			return null;
 		}
 
-		//internal static IQueryOptions<TDto> ApplyTo<TDto>(this OrderByQueryOption orderBy,
-		//	IQueryOptions<TDto> queryOptions)
-		//	where TDto : class, IEntityDto
-		//{
-		//	Guard.AgainstNull(nameof(queryOptions), queryOptions);
+		internal static ISortingOptions<TDto> ApplyTo<TDto>(this OrderByQueryOption orderBy)
+			where TDto : class, IEntityDto
+		{
+			ISortingOptions<TDto> options = null;
 
-		//	if (orderBy != null)
-		//	{
-		//		IList<OrderExpressionContainer<TDto>> orderExpressions = orderBy.ToExpressions<TDto>();
-		//		IThenByOptions<TDto> thenBy = null;
-		//		for (int i = 0; i < orderExpressions.Count; i++)
-		//		{
-		//			OrderExpressionContainer<TDto> container = orderExpressions[i];
+			if(orderBy != null)
+			{
+				IList<OrderExpressionContainer<TDto>> orderExpressions = orderBy.ToExpressions<TDto>();
 
-		//			// First item is OrderBy | OrderByDescending
-		//			if (i == 0)
-		//			{
-		//				thenBy = container.IsDescending
-		//					? queryOptions.OrderByDescending(container.Expression)
-		//					: queryOptions.OrderBy(container.Expression);
-		//			}
-		//			else
-		//			{
-		//				if (thenBy != null)
-		//				{
-		//					thenBy = container.IsDescending
-		//						? thenBy.ThenByDescending(container.Expression)
-		//						: thenBy.ThenBy(container.Expression);
-		//				}
-		//			}
-		//		}
-		//	}
+				for(int i = 0; i < orderExpressions.Count; i++)
+				{
+					OrderExpressionContainer<TDto> container = orderExpressions[i];
 
-		//	return queryOptions;
-		//}
+					// First item is OrderBy | OrderByDescending
+					if(i == 0)
+					{
+						options = container.IsDescending
+							? QueryOptions<TDto>.OrderByDescending(container.Expression)
+							: QueryOptions<TDto>.OrderBy(container.Expression);
+					}
+					else
+					{
+						if(options != null)
+						{
+							options = container.IsDescending
+								? options.ThenByDescending(container.Expression)
+								: options.ThenBy(container.Expression);
+						}
+					}
+				}
+			}
 
-		//internal static IQueryOptions<TDto> ApplyTo<TDto>(this SkipQueryOption skip, IQueryOptions<TDto> queryOptions)
-		//	where TDto : class, IEntityDto
-		//{
-		//	Guard.AgainstNull(nameof(queryOptions), queryOptions);
+			return options;
+		}
 
-		//	if (skip != null)
-		//	{
-		//		int skipValue = skip.Value;
-		//		queryOptions.Skip(skipValue);
-		//	}
+		internal static ISkipTakeOptions<TDto> ApplyTo<TDto>(this SkipQueryOption skip, IQueryOptions<TDto> options)
+			where TDto : class, IEntityDto
+		{
+			ISkipTakeOptions<TDto> skipTakeOptions = null;
 
-		//	return queryOptions;
-		//}
+			if(skip != null)
+			{
+				int skipValue = skip.Value;
 
-		//internal static IQueryOptions<TDto> ApplyTo<TDto>(this TopQueryOption top, IQueryOptions<TDto> queryOptions)
-		//	where TDto : class, IEntityDto
-		//{
-		//	Guard.AgainstNull(nameof(queryOptions), queryOptions);
+				skipTakeOptions = options == null
+					? QueryOptions<TDto>.Skip(skipValue)
+					: ((ISortingOptions<TDto>)options).Skip(skipValue);
+			}
 
-		//	if (top != null)
-		//	{
-		//		int topValue = top.Value;
-		//		queryOptions.Take(topValue);
-		//	}
-		//	else
-		//	{
-		//		queryOptions.Take(25);
-		//	}
+			return skipTakeOptions;
+		}
 
-		//	return queryOptions;
-		//}
+		internal static ISkipTakeOptions<TDto> ApplyTo<TDto>(this TopQueryOption top, IQueryOptions<TDto> options)
+			where TDto : class, IEntityDto
+		{
+			ISkipTakeOptions<TDto> result = null;
+
+			if(top != null)
+			{
+				int topValue = top.Value;
+
+				if(options == null)
+				{
+					result = QueryOptions<TDto>.Take(topValue);
+				}
+
+				if(options is ISortingOptions<TDto> sortingOptions)
+				{
+					result = sortingOptions.Take(topValue);
+				}
+
+				if(options is ISkipTakeOptions<TDto> skipTakeOptions)
+				{
+					result = skipTakeOptions.Take(topValue);
+				}
+			}
+
+			return result;
+		}
 
 		private static IList<OrderExpressionContainer<TDto>> ToExpressions<TDto>(this OrderByQueryOption orderBy)
 			where TDto : class, IEntityDto

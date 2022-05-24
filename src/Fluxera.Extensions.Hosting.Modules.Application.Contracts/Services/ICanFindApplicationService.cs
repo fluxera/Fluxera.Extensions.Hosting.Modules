@@ -6,6 +6,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -16,20 +17,68 @@
 	public interface ICanFindApplicationService<TDto> : IApplicationService
 		where TDto : class, IEntityDto
 	{
-		Task<TDto> FindOneAsync(Expression<Func<TDto, bool>> predicate, /* IQueryOptions<TDto> queryOptions = null,*/
+		/// <summary>
+		///     Find the first item that satisfies the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<TDto> FindOneAsync(
+			Expression<Func<TDto, bool>> predicate,
+			IQueryOptions<TDto> queryOptions = null,
 			CancellationToken cancellationToken = default);
 
-		Task<TResult> FindOneAsync<TResult>(Expression<Func<TDto, bool>> predicate,
-			Expression<Func<TDto, TResult>> selector, /* IQueryOptions<TDto> queryOptions = null,*/
+		/// <summary>
+		///     Find the first item that satisfies the given predicate and result the selected result.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="predicate"></param>
+		/// <param name="selector"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<TResult> FindOneAsync<TResult>(
+			Expression<Func<TDto, bool>> predicate,
+			Expression<Func<TDto, TResult>> selector,
+			IQueryOptions<TDto> queryOptions = null,
 			CancellationToken cancellationToken = default);
 
-		Task<bool> ExistsAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Checks if an item exists that satisfies the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<bool> ExistsAsync(
+			Expression<Func<TDto, bool>> predicate,
+			CancellationToken cancellationToken = default);
 
-		Task<IReadOnlyList<TDto>> FindManyAsync(Expression<Func<TDto, bool>> predicate,
-			/*IQueryOptions<TDto> queryOptions = null, */CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Find the items that satisfy the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<IReadOnlyList<TDto>> FindManyAsync(
+			Expression<Func<TDto, bool>> predicate,
+			IQueryOptions<TDto> queryOptions = null,
+			CancellationToken cancellationToken = default);
 
-		Task<IReadOnlyList<TResult>> FindManyAsync<TResult>(Expression<Func<TDto, bool>> predicate,
-			Expression<Func<TDto, TResult>> selector, /* IQueryOptions<TDto> queryOptions = null,*/
+		/// <summary>
+		///     Find the items that satisfy the given predicate and return the selected results.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="predicate"></param>
+		/// <param name="selector"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<IReadOnlyList<TResult>> FindManyAsync<TResult>(
+			Expression<Func<TDto, bool>> predicate,
+			Expression<Func<TDto, TResult>> selector,
+			IQueryOptions<TDto> queryOptions = null,
 			CancellationToken cancellationToken = default);
 	}
 }

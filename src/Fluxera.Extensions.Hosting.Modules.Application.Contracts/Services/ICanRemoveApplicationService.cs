@@ -16,12 +16,36 @@
 	public interface ICanRemoveApplicationService<TDto> : IApplicationService
 		where TDto : class, IEntityDto
 	{
-		Task DeleteAsync(TDto dto, CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Remove the given item.
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task RemoveRangeAsync(TDto dto, CancellationToken cancellationToken = default);
 
-		Task DeleteAsync(string id, CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Remove the item identifier by the given id.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task RemoveRangeAsync(string id, CancellationToken cancellationToken = default);
 
-		Task DeleteAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Remove all items that satisfy the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task RemoveRangeAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken = default);
 
-		Task DeleteAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Remove the given items.
+		/// </summary>
+		/// <param name="dtos"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task RemoveRangeAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default);
 	}
 }

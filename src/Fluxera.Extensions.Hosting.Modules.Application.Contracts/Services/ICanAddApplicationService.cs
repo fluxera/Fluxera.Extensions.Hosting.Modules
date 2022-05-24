@@ -14,8 +14,20 @@
 	public interface ICanAddApplicationService<in TDto> : IApplicationService
 		where TDto : class, IEntityDto
 	{
+		/// <summary>
+		///     Adds the given item.
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		Task AddAsync(TDto dto, CancellationToken cancellationToken = default);
 
-		Task AddAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default);
+		/// <summary>
+		///     Adds teh given items.
+		/// </summary>
+		/// <param name="dtos"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task AddRangeAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default);
 	}
 }

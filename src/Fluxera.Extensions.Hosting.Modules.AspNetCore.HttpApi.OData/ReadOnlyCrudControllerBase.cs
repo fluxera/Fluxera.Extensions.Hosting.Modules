@@ -7,40 +7,47 @@
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.AspNetCore.OData.Abstracts;
 	using Microsoft.AspNetCore.OData.Extensions;
 	using Microsoft.AspNetCore.OData.Query;
-	using Microsoft.AspNetCore.OData.Query.Validator;
 	using Microsoft.AspNetCore.OData.Routing.Controllers;
 	using Microsoft.OData.UriParser;
 
+	/// <summary>
+	///     A base controller for OData read-only operations.
+	/// </summary>
+	/// <typeparam name="TDto"></typeparam>
 	[PublicAPI]
 	public abstract class ReadOnlyCrudControllerBase<TDto> : ODataController
 		where TDto : class, IEntityDto
 	{
 		private IReadOnlyCrudApplicationService<TDto> applicationService;
 
+		/// <summary>
+		///     Initializes a new instance of the <see cref="ReadOnlyCrudControllerBase{T}" /> type.
+		/// </summary>
+		/// <param name="applicationService"></param>
 		protected ReadOnlyCrudControllerBase(IReadOnlyCrudApplicationService<TDto> applicationService)
 		{
 			this.applicationService = applicationService;
-
-			this.ValidationSettings = new ODataValidationSettings
-			{
-				AllowedArithmeticOperators = AllowedArithmeticOperators.All,
-				AllowedFunctions = AllowedFunctions.All,
-				AllowedLogicalOperators = AllowedLogicalOperators.All,
-				AllowedQueryOptions = AllowedQueryOptions.All
-			};
 		}
 
-		protected ODataValidationSettings ValidationSettings { get; set; }
-
+		/// <summary>
+		///     Flag, indicating if the controller supports the get-by-id operation.
+		/// </summary>
 		protected virtual bool SupportsGet => true;
 
+		/// <summary>
+		///     Flag, indicating if the controller supports the count operation.
+		/// </summary>
 		protected virtual bool SupportsCount => true;
 
+		/// <summary>
+		///     Flag, indicating if the controller supports the find operation.
+		/// </summary>
 		protected virtual bool SupportsFind => true;
 
 		private bool IsCountRequest
@@ -60,6 +67,13 @@
 
 		// GET: odata/{Items}
 		// GET: odata/{Items}(5)
+		/// <summary>
+		///     An OData Get endpoint that supports get-by-id, count and find operations depending on the
+		///     route and query parameters.
+		/// </summary>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpGet]
 		[EnableQuery]
 		public virtual async Task<IActionResult> Get(ODataQueryOptions<TDto> queryOptions, CancellationToken cancellationToken = default)
@@ -134,25 +148,12 @@
 			// Execute the find query.
 			try
 			{
-				// TODO
-				//IQueryOptions<TDto> options = QueryOptions.CreateFor<TDto>();
-				//if(queryOptions.OrderBy != null)
-				//{
-				//	options = queryOptions.OrderBy.ApplyTo(options);
-				//}
-
-				//if(queryOptions.Skip != null)
-				//{
-				//	options = queryOptions.Skip.ApplyTo(options);
-				//}
-
-				//if(queryOptions.Top != null)
-				//{
-				//	options = queryOptions.Top.ApplyTo(options);
-				//}
+				IQueryOptions<TDto> options = queryOptions.OrderBy.ApplyTo<TDto>();
+				options = queryOptions.Skip.ApplyTo(options);
+				options = queryOptions.Top.ApplyTo(options);
 
 				Expression<Func<TDto, bool>> predicate = queryOptions.Filter?.ToExpression<TDto>() ?? (x => true);
-				IReadOnlyList<TDto> result = await this.applicationService.FindManyAsync(predicate, /*options, */cancellationToken);
+				IReadOnlyList<TDto> result = await this.applicationService.FindManyAsync(predicate, options, cancellationToken);
 				return this.Ok(result);
 			}
 			catch(NotSupportedException)

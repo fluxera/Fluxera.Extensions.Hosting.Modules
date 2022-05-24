@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData
 {
+	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
 	using System.Text;
@@ -14,7 +15,7 @@
 	using Microsoft.Extensions.Primitives;
 
 	[PublicAPI]
-	public sealed class IdempotentTokenFilter : IAsyncActionFilter, IAsyncResultFilter
+	internal sealed class IdempotentTokenFilter : IAsyncActionFilter, IAsyncResultFilter
 	{
 		private const string ItemKey = "__IdempotentResponseData";
 
@@ -55,7 +56,7 @@
 							IdempotentResponseData data = (IdempotentResponseData)httpContext.Items[ItemKey];
 
 							// Add the response headers.
-							foreach((string key, string value) in data.Headers)
+							foreach((string key, string value) in data?.Headers ?? new Dictionary<string, string>())
 							{
 								httpContext.Response.Headers[key] = value;
 							}

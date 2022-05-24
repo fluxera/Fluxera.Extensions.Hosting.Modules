@@ -12,6 +12,10 @@
 	using Microsoft.AspNetCore.OData.Deltas;
 	using Microsoft.AspNetCore.OData.Formatter;
 
+	/// <summary>
+	///     A base controller for OData CRUD operations.
+	/// </summary>
+	/// <typeparam name="TDto"></typeparam>
 	[PublicAPI]
 	public abstract class CrudControllerBase<TDto> : ReadOnlyCrudControllerBase<TDto>
 		where TDto : class, IEntityDto
@@ -25,13 +29,28 @@
 			this.applicationService = applicationService;
 		}
 
+		/// <summary>
+		///     Flag, indicating if the controller supports the insert operation.
+		/// </summary>
 		protected virtual bool SupportsInsert => true;
 
+		/// <summary>
+		///     Flag, indicating if the controller supports the update operation.
+		/// </summary>
 		protected virtual bool SupportsUpdate => true;
 
+		/// <summary>
+		///     Flag, indicating if the controller supports the delete operation.
+		/// </summary>
 		protected virtual bool SupportsDelete => true;
 
 		// POST: odata/{Items}
+		/// <summary>
+		///     Insert the given item.
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpPost]
 		[ServiceFilter(typeof(IdempotentTokenFilter))]
 		public virtual async Task<IActionResult> Post([FromBody] TDto dto, CancellationToken cancellationToken = default)
@@ -63,6 +82,13 @@
 		}
 
 		// PUT: odata/{Items}(5)
+		/// <summary>
+		///     Update (by replacing) the given item.
+		/// </summary>
+		/// <param name="key"></param>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpPut]
 		public virtual async Task<IActionResult> Put([FromODataUri] string key, [FromBody] TDto dto, CancellationToken cancellationToken = default)
 		{
@@ -125,6 +151,13 @@
 
 		// PATCH: odata/{Items}(5)
 		// MERGE: odata/{Items}(5)
+		/// <summary>
+		///     Update (by patching) the given item delta to the existing item.
+		/// </summary>
+		/// <param name="key"></param>
+		/// <param name="delta"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpPatch]
 		[HttpMerge]
 		public virtual async Task<IActionResult> Patch([FromODataUri] string key, [FromBody] Delta<TDto> delta, CancellationToken cancellationToken = default)
@@ -193,6 +226,12 @@
 		}
 
 		// DELETE: odata/{Items}(5)
+		/// <summary>
+		///     Delete the item identified by the given key.
+		/// </summary>
+		/// <param name="key"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpDelete]
 		public virtual async Task<IActionResult> Delete([FromODataUri] string key, CancellationToken cancellationToken = default)
 		{
@@ -211,7 +250,7 @@
 				}
 
 				// Delete the item.
-				await this.applicationService.DeleteAsync(key, cancellationToken);
+				await this.applicationService.RemoveRangeAsync(key, cancellationToken);
 				return this.NoContent();
 			}
 			catch(NotSupportedException)

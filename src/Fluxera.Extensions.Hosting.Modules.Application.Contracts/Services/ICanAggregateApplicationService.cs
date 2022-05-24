@@ -15,8 +15,19 @@
 	public interface ICanAggregateApplicationService<TDto> : IApplicationService
 		where TDto : class, IEntityDto
 	{
+		/// <summary>
+		///     Gets the absolute count for the item type.
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		Task<long> CountAsync(CancellationToken cancellationToken = default);
 
+		/// <summary>
+		///     Gets the count of items that satisfy the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		Task<long> CountAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken = default);
 	}
 }

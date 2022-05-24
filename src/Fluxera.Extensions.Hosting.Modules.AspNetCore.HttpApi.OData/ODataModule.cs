@@ -6,6 +6,7 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.OData.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Caching;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.OData.Batch;
@@ -13,9 +14,10 @@
 	using Microsoft.Extensions.DependencyInjection.Extensions;
 
 	/// <summary>
-	///     A module that enables OData APIs.
+	///     A module that enables OData REST APIs.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class ODataModule : ConfigureServicesModule
@@ -114,9 +116,9 @@
 
 			//context.Services.AddODataQueryFilter();
 
-			//// Add the idempotent token filter.
-			//context.Log("AddIdempotentTokenFilter",
-			//	services => services.TryAddScoped<IdempotentTokenFilter>());
+			// Add the idempotent token filter.
+			context.Log("AddIdempotentTokenFilter",
+				services => services.TryAddScoped<IdempotentTokenFilter>());
 
 			// TODO: Change the base address used by OData to create link refs.
 			//context.Services.Configure<MvcOptions>(options =>

@@ -6,6 +6,7 @@
 	using Example.Domain;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
+	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Extensions.Hosting.Modules.AutoMapper;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
@@ -14,10 +15,11 @@
 	using Microsoft.Extensions.DependencyInjection.Extensions;
 
 	[PublicAPI]
+	[DependsOn(typeof(ExampleDomainModule))]
 	[DependsOn(typeof(AutoMapperModule))]
 	[DependsOn(typeof(PersistenceModule))]
+	[DependsOn(typeof(ApplicationModule))]
 	[DependsOn(typeof(ConfigurationModule))]
-	[DependsOn(typeof(ExampleDomainModule))]
 	public class ExampleApplicationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

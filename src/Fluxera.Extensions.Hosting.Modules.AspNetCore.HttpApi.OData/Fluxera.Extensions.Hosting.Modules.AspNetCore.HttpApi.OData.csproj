@@ -29,6 +29,7 @@
 		<PackageReference Include="Asp.Versioning.OData" Version="6.0.0-preview.3" />
 		<PackageReference Include="Asp.Versioning.OData.ApiExplorer" Version="6.0.0-preview.3" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.0.29" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -40,6 +41,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.csproj" />
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi\Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
 	</ItemGroup>
 
 </Project>

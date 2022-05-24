@@ -250,7 +250,7 @@
 				}
 
 				// Delete the item.
-				await this.applicationService.RemoveRangeAsync(key, cancellationToken);
+				await this.applicationService.RemoveAsync(key, cancellationToken);
 				return this.NoContent();
 			}
 			catch(NotSupportedException)

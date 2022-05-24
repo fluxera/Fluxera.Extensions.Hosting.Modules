@@ -153,7 +153,7 @@
 				options = queryOptions.Top.ApplyTo(options);
 
 				Expression<Func<TDto, bool>> predicate = queryOptions.Filter?.ToExpression<TDto>() ?? (x => true);
-				IReadOnlyList<TDto> result = await this.applicationService.FindManyAsync(predicate, options, cancellationToken);
+				IReadOnlyCollection<TDto> result = await this.applicationService.FindManyAsync(predicate, options, cancellationToken);
 				return this.Ok(result);
 			}
 			catch(NotSupportedException)

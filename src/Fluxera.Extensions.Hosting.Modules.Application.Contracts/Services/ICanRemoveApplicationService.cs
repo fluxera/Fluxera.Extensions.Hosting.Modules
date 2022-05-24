@@ -22,7 +22,7 @@
 		/// <param name="dto"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		Task RemoveRangeAsync(TDto dto, CancellationToken cancellationToken = default);
+		Task RemoveAsync(TDto dto, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		///     Remove the item identifier by the given id.
@@ -30,7 +30,7 @@
 		/// <param name="id"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		Task RemoveRangeAsync(string id, CancellationToken cancellationToken = default);
+		Task RemoveAsync(string id, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		///     Remove all items that satisfy the given predicate.

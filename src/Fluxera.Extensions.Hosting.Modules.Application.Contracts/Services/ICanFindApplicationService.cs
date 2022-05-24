@@ -61,7 +61,7 @@
 		/// <param name="queryOptions"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		Task<IReadOnlyList<TDto>> FindManyAsync(
+		Task<IReadOnlyCollection<TDto>> FindManyAsync(
 			Expression<Func<TDto, bool>> predicate,
 			IQueryOptions<TDto> queryOptions = null,
 			CancellationToken cancellationToken = default);
@@ -75,7 +75,7 @@
 		/// <param name="queryOptions"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		Task<IReadOnlyList<TResult>> FindManyAsync<TResult>(
+		Task<IReadOnlyCollection<TResult>> FindManyAsync<TResult>(
 			Expression<Func<TDto, bool>> predicate,
 			Expression<Func<TDto, TResult>> selector,
 			IQueryOptions<TDto> queryOptions = null,

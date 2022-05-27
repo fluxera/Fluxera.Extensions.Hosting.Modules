@@ -7,8 +7,8 @@
 	using System.Threading.Tasks;
 	using Fluxera.Entity;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
 	using Fluxera.Repository;
 	using Fluxera.Utilities.Extensions;
 	using global::AutoMapper;
@@ -88,7 +88,7 @@
 		public virtual async Task<TDto> FindOneAsync(Expression<Func<TDto, bool>> predicate, IQueryOptions<TDto> queryOptions = null, CancellationToken cancellationToken = default)
 		{
 			Expression<Func<TAggregateRoot, bool>> mappedPredicate = this.Mapper.MapExpression<Expression<Func<TAggregateRoot, bool>>>(predicate);
-			Repository.Query.IQueryOptions<TAggregateRoot> mappedQueryOptions = this.MapQueryOptions(queryOptions);
+			Repository.Query.IQueryOptions<TAggregateRoot> mappedQueryOptions = queryOptions.MapQueryOptions<TDto, TAggregateRoot>(this.Mapper);
 
 			TAggregateRoot item = await this.Repository.FindOneAsync(mappedPredicate, mappedQueryOptions, cancellationToken).ConfigureAwait(false);
 			TDto dto = this.Mapper.Map<TDto>(item);
@@ -100,7 +100,7 @@
 		{
 			Expression<Func<TAggregateRoot, bool>> mappedPredicate = this.Mapper.MapExpression<Expression<Func<TAggregateRoot, bool>>>(predicate);
 			Expression<Func<TAggregateRoot, TResult>> mappedSelector = this.Mapper.MapExpression<Expression<Func<TAggregateRoot, TResult>>>(selector);
-			Repository.Query.IQueryOptions<TAggregateRoot> mappedQueryOptions = this.MapQueryOptions(queryOptions);
+			Repository.Query.IQueryOptions<TAggregateRoot> mappedQueryOptions = queryOptions.MapQueryOptions<TDto, TAggregateRoot>(this.Mapper);
 
 			return await this.Repository.FindOneAsync(mappedPredicate, mappedSelector, mappedQueryOptions, cancellationToken).ConfigureAwait(false);
 		}
@@ -109,7 +109,7 @@
 		public virtual async Task<IReadOnlyCollection<TDto>> FindManyAsync(Expression<Func<TDto, bool>> predicate, IQueryOptions<TDto> queryOptions, CancellationToken cancellationToken = default)
 		{
 			Expression<Func<TAggregateRoot, bool>> mappedPredicate = this.Mapper.MapExpression<Expression<Func<TAggregateRoot, bool>>>(predicate);
-			Repository.Query.IQueryOptions<TAggregateRoot> mappedQueryOptions = this.MapQueryOptions(queryOptions);
+			Repository.Query.IQueryOptions<TAggregateRoot> mappedQueryOptions = queryOptions.MapQueryOptions<TDto, TAggregateRoot>(this.Mapper);
 
 			IReadOnlyCollection<TAggregateRoot> items = await this.Repository.FindManyAsync(mappedPredicate, mappedQueryOptions, cancellationToken).ConfigureAwait(false);
 			IList<TDto> dtos = this.Mapper.Map<IList<TDto>>(items);
@@ -125,76 +125,5 @@
 			IReadOnlyCollection<TResult> results = await this.Repository.FindManyAsync(mappedPredicate, mappedSelector, null, cancellationToken).ConfigureAwait(false);
 			return results;
 		}
-
-		private Repository.Query.IQueryOptions<TAggregateRoot> MapQueryOptions(IQueryOptions<TDto> options)
-		{
-			Repository.Query.IQueryOptions<TAggregateRoot> queryOptions = Fluxera.Repository.Query.QueryOptions<TAggregateRoot>.Empty();
-
-			// TODO
-
-			return queryOptions;
-		}
-
-		//private IQueryOptions<TAggregateRoot> MapQueryOptions(IQueryOptions<TDto> dtoQueryOptions)
-		//{
-		//	IQueryOptions<TAggregateRoot> queryOptions = QueryOptions.CreateFor<TAggregateRoot>();
-		//	QueryOptions<TAggregateRoot> options = (QueryOptions<TAggregateRoot>)queryOptions;
-
-		//	if (options.HasPagingOptions())
-		//	{
-		//		if (options.PagingOptions is PagingOptions<TAggregateRoot> pagingOptions)
-		//		{
-		//			queryOptions.Paging(pagingOptions.PageNumber, pagingOptions.PageSize);
-		//		}
-		//	}
-
-		//	if (options.HasSkipTakeOptions())
-		//	{
-		//		if (options.SkipTakeOptions != null)
-		//		{
-		//			if (options.SkipTakeOptions.Skip.HasValue)
-		//			{
-		//				queryOptions.Skip(options.SkipTakeOptions.Skip.Value);
-		//			}
-
-		//			if (options.SkipTakeOptions.Take.HasValue)
-		//			{
-		//				queryOptions.Skip(options.SkipTakeOptions.Take.Value);
-		//			}
-		//		}
-		//	}
-
-		//	if (options.HasOrderByOptions())
-		//	{
-		//		OrderByOptions<TAggregateRoot>
-		//			orderByOptions = options.OrderByOptions as OrderByOptions<TAggregateRoot>;
-		//		OrderByExpressionContainer<TAggregateRoot> orderByBy = orderByOptions?.OrderByExpression;
-		//		if (orderByBy != null)
-		//		{
-		//			Expression<Func<TAggregateRoot, object>> mappedOrderByExpression =
-		//				this.Mapper.MapExpression<Expression<Func<TAggregateRoot, object>>>(orderByBy.SortExpression);
-
-		//			IThenByOptions<TAggregateRoot> thenByOptions = orderByBy.IsDescending
-		//				? queryOptions.OrderByDescending(mappedOrderByExpression)
-		//				: queryOptions.OrderBy(mappedOrderByExpression);
-
-		//			if (orderByOptions.ThenByExpressions != null)
-		//			{
-		//				foreach (OrderByExpressionContainer<TAggregateRoot> thenBy in orderByOptions.ThenByExpressions)
-		//				{
-		//					Expression<Func<TAggregateRoot, object>> mappedThenByExpression =
-		//						this.Mapper.MapExpression<Expression<Func<TAggregateRoot, object>>>(
-		//							thenBy.SortExpression);
-
-		//					thenByOptions = thenBy.IsDescending
-		//						? thenByOptions.ThenBy(mappedThenByExpression)
-		//						: thenByOptions.ThenByDescending(mappedThenByExpression);
-		//				}
-		//			}
-		//		}
-		//	}
-
-		//	return queryOptions;
-		//}
 	}
 }

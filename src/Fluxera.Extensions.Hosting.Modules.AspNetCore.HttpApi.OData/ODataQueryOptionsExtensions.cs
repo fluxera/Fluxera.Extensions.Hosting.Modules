@@ -6,7 +6,7 @@
 	using System.Linq.Expressions;
 	using System.Reflection;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query;
 	using Microsoft.AspNetCore.OData.Query;
 	using Microsoft.OData;
 
@@ -74,7 +74,7 @@
 			return null;
 		}
 
-		internal static ISortingOptions<TDto> ApplyTo<TDto>(this OrderByQueryOption orderBy)
+		internal static IQueryOptions<TDto> ApplyTo<TDto>(this OrderByQueryOption orderBy)
 			where TDto : class, IEntityDto
 		{
 			ISortingOptions<TDto> options = null;
@@ -109,10 +109,10 @@
 			return options;
 		}
 
-		internal static ISkipTakeOptions<TDto> ApplyTo<TDto>(this SkipQueryOption skip, IQueryOptions<TDto> options)
+		internal static IQueryOptions<TDto> ApplyTo<TDto>(this SkipQueryOption skip, IQueryOptions<TDto> options)
 			where TDto : class, IEntityDto
 		{
-			ISkipTakeOptions<TDto> skipTakeOptions = null;
+			IQueryOptions<TDto> skipTakeOptions = null;
 
 			if(skip != null)
 			{
@@ -126,10 +126,10 @@
 			return skipTakeOptions;
 		}
 
-		internal static ISkipTakeOptions<TDto> ApplyTo<TDto>(this TopQueryOption top, IQueryOptions<TDto> options)
+		internal static IQueryOptions<TDto> ApplyTo<TDto>(this TopQueryOption top, IQueryOptions<TDto> options)
 			where TDto : class, IEntityDto
 		{
-			ISkipTakeOptions<TDto> result = null;
+			IQueryOptions<TDto> result = null;
 
 			if(top != null)
 			{

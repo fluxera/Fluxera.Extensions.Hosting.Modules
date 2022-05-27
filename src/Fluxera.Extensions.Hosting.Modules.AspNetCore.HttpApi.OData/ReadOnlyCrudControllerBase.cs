@@ -6,8 +6,8 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.AspNetCore.OData.Abstracts;
@@ -24,7 +24,7 @@
 	public abstract class ReadOnlyCrudControllerBase<TDto> : ODataController
 		where TDto : class, IEntityDto
 	{
-		private IReadOnlyCrudApplicationService<TDto> applicationService;
+		private readonly IReadOnlyCrudApplicationService<TDto> applicationService;
 
 		/// <summary>
 		///     Initializes a new instance of the <see cref="ReadOnlyCrudControllerBase{T}" /> type.

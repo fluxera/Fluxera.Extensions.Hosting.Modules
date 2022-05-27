@@ -1,4 +1,4 @@
-namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query
+namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query
 {
 	using System;
 	using System.Collections.Generic;
@@ -63,5 +63,13 @@ namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Quer
 		/// <param name="take"></param>
 		/// <returns></returns>
 		ISkipTakeOptions<T> Take(int take);
+
+		/// <summary>
+		///     Configures an optional skip/take amount.
+		/// </summary>
+		/// <param name="skip"></param>
+		/// <param name="take"></param>
+		/// <returns></returns>
+		ISkipTakeOptions<T> SkipTake(int skip, int take);
 	}
 }

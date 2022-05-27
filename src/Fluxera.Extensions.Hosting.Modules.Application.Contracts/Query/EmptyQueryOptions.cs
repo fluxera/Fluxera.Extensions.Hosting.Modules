@@ -1,4 +1,4 @@
-namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query
+namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query
 {
 	using System.Linq;
 	using Fluxera.Utilities.Extensions;
@@ -12,23 +12,29 @@ namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Quer
 		}
 
 		/// <inheritdoc />
-		public bool TryGetPagingOptions(out IPagingOptions<T> pagingOptions)
+		public bool IsEmpty()
 		{
-			pagingOptions = null;
+			return true;
+		}
+
+		/// <inheritdoc />
+		public bool TryGetPagingOptions(out IPagingOptions<T> options)
+		{
+			options = null;
 			return false;
 		}
 
 		/// <inheritdoc />
-		public bool TryGetSkipTakeOptions(out ISkipTakeOptions<T> skipTakeOptions)
+		public bool TryGetSkipTakeOptions(out ISkipTakeOptions<T> options)
 		{
-			skipTakeOptions = null;
+			options = null;
 			return false;
 		}
 
 		/// <inheritdoc />
-		public bool TryGetSortingOptions(out ISortingOptions<T> sortingOptions)
+		public bool TryGetSortingOptions(out ISortingOptions<T> options)
 		{
-			sortingOptions = null;
+			options = null;
 			return false;
 		}
 

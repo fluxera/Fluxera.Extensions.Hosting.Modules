@@ -6,7 +6,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services.Query;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query;
 	using JetBrains.Annotations;
 
 	/// <summary>

@@ -20,6 +20,7 @@
 	[PublicAPI]
 	public abstract class ItemRemovedEventHandlerBase<TAggregateRoot, TKey, TEvent> : CommittedDomainEventHandler<ItemRemoved<TAggregateRoot, TKey>>
 		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+		where TKey : IComparable<TKey>, IEquatable<TKey>
 		where TEvent : ItemRemoved, new()
 	{
 		private readonly IDateTimeOffsetProvider dateTimeOffsetProvider;
@@ -45,7 +46,7 @@
 					"The event name of a removed event handler must start with the matching entity name.");
 			}
 
-			TAggregateRoot item = domainEvent.DeletedItem;
+			TAggregateRoot item = domainEvent.RemovedItem;
 
 			// ReSharper disable once SuspiciousTypeConversion.Global
 			IAuditedObject auditedObject = item as IAuditedObject;

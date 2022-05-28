@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="MadEyeMatt.AspNetCore.Authentication.Basic" Version="6.2.1" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.10" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

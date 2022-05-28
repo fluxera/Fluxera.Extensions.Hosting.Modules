@@ -24,11 +24,11 @@
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="11.0.2" />
 		<PackageReference Include="Fluxera.ComponentModel.Annotations" Version="6.0.9" />
-		<PackageReference Include="Fluxera.Entity" Version="6.0.16" />
-		<PackageReference Include="Fluxera.Enumeration" Version="6.0.12" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
-		<PackageReference Include="Fluxera.Repository" Version="6.0.21" />
-		<PackageReference Include="Fluxera.ValueObject" Version="6.0.10" />
+		<PackageReference Include="Fluxera.Entity" Version="6.1.0" />
+		<PackageReference Include="Fluxera.Enumeration" Version="6.0.13" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.10" />
+		<PackageReference Include="Fluxera.Repository" Version="6.1.0" />
+		<PackageReference Include="Fluxera.ValueObject" Version="6.1.0" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

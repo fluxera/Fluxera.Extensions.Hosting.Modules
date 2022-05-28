@@ -22,11 +22,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Common" Version="6.0.32" />
-		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.0.32" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.9" />
-		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.0.32" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.0.32" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="6.0.33" />
+		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.0.33" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.10" />
+		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.0.33" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.0.33" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

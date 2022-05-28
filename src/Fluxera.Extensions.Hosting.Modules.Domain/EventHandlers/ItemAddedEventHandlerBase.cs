@@ -20,6 +20,7 @@
 	[PublicAPI]
 	public abstract class ItemAddedEventHandlerBase<TAggregateRoot, TKey, TEvent> : CommittedDomainEventHandler<ItemAdded<TAggregateRoot, TKey>>
 		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+		where TKey : IComparable<TKey>, IEquatable<TKey>
 		where TEvent : ItemAdded, new()
 	{
 		private readonly IDateTimeOffsetProvider dateTimeOffsetProvider;

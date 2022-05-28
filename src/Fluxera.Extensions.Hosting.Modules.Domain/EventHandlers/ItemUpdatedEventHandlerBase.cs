@@ -23,6 +23,7 @@
 	[PublicAPI]
 	public abstract class ItemUpdatedEventHandlerBase<TAggregateRoot, TKey, TEvent> : CommittedDomainEventHandler<ItemUpdated<TAggregateRoot, TKey>>
 		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+		where TKey : IComparable<TKey>, IEquatable<TKey>
 		where TEvent : ItemUpdated, new()
 	{
 		private readonly IDateTimeOffsetProvider dateTimeOffsetProvider;
@@ -72,7 +73,7 @@
 					EntityID = item.ID.ToString(),
 					EntityName = entityName,
 					EntityLongName = entityLongName,
-					LastModifiedAt = auditedObject?.LastModifiedAt ?? dateTimeOffsetProvider.UtcNow,
+					LastModifiedAt = auditedObject?.LastModifiedAt ?? this.dateTimeOffsetProvider.UtcNow,
 					LastModifiedBy = auditedObject?.LastModifiedBy,
 					BeforeUpdateState = JsonSerializer.Serialize(before),
 					AfterUpdateState = JsonSerializer.Serialize(after),
@@ -80,10 +81,10 @@
 				},
 			};
 
-			await InitializeAsync(message, item);
+			await this.InitializeAsync(message, item);
 
 			// Publish the event message on the message bus.
-			await publishEndpoint.Publish(message);
+			await this.publishEndpoint.Publish(message);
 		}
 
 		/// <summary>

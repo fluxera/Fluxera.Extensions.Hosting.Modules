@@ -19,6 +19,7 @@
 	[PublicAPI]
 	public abstract class MultiTenancyInterceptorBase<TAggregateRoot, TKey> : InterceptorBase<TAggregateRoot, TKey>
 		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>, IMultiTenancyObject
+		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
 		///     Gets the ID of the current tenant.

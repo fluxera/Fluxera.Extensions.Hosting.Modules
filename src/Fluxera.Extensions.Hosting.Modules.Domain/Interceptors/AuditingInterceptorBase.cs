@@ -19,6 +19,7 @@
 	[PublicAPI]
 	public abstract class AuditingInterceptorBase<TAggregateRoot, TKey> : InterceptorBase<TAggregateRoot, TKey>
 		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>, IAuditedObject
+		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
 		///     Gets the current timestamp.

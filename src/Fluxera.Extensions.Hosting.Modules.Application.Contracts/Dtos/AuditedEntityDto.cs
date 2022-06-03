@@ -9,7 +9,8 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public abstract class AuditedEntityDto : EntityDto, IAuditedObject
+	public abstract class AuditedEntityDto<TKey> : EntityDto<TKey>, IAuditedObject
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <inheritdoc />
 		public DateTimeOffset? CreatedAt { get; set; }

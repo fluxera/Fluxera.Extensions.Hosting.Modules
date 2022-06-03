@@ -12,9 +12,11 @@
 	///     The contract exposes only "Delete" methods as an application service.
 	/// </summary>
 	/// <typeparam name="TDto">The DTO type.</typeparam>
+	/// <typeparam name="TKey">The type of the key.</typeparam>
 	[PublicAPI]
-	public interface ICanRemoveApplicationService<TDto> : IApplicationService
-		where TDto : class, IEntityDto
+	public interface ICanRemoveApplicationService<TDto, TKey> : IApplicationService
+		where TDto : class, IEntityDto<TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
 		///     Remove the given item.
@@ -30,7 +32,7 @@
 		/// <param name="id"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		Task RemoveAsync(string id, CancellationToken cancellationToken = default);
+		Task RemoveAsync(TKey id, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		///     Remove all items that satisfy the given predicate.

@@ -20,17 +20,19 @@
 	///     A base controller for OData read-only operations.
 	/// </summary>
 	/// <typeparam name="TDto"></typeparam>
+	/// <typeparam name="TKey">The type of the key.</typeparam>
 	[PublicAPI]
-	public abstract class ReadOnlyCrudControllerBase<TDto> : ODataController
-		where TDto : class, IEntityDto
+	public abstract class ReadOnlyCrudControllerBase<TDto, TKey> : ODataController
+		where TDto : class, IEntityDto<TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
-		private readonly IReadOnlyCrudApplicationService<TDto> applicationService;
+		private readonly IReadOnlyCrudApplicationService<TDto, TKey> applicationService;
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="ReadOnlyCrudControllerBase{T}" /> type.
+		///     Initializes a new instance of the <see cref="ReadOnlyCrudControllerBase{T, TKey}" /> type.
 		/// </summary>
 		/// <param name="applicationService"></param>
-		protected ReadOnlyCrudControllerBase(IReadOnlyCrudApplicationService<TDto> applicationService)
+		protected ReadOnlyCrudControllerBase(IReadOnlyCrudApplicationService<TDto, TKey> applicationService)
 		{
 			this.applicationService = applicationService;
 		}
@@ -80,7 +82,7 @@
 		{
 			if(this.IsGetByKeyRequest)
 			{
-				string key = this.ControllerContext.RouteData.Values["key"] as string;
+				TKey key = (TKey)this.ControllerContext.RouteData.Values["key"];
 				return await this.GetByKeyAsync(key, cancellationToken);
 			}
 
@@ -112,7 +114,7 @@
 			}
 		}
 
-		private async Task<IActionResult> GetByKeyAsync(string key, CancellationToken cancellationToken)
+		private async Task<IActionResult> GetByKeyAsync(TKey key, CancellationToken cancellationToken)
 		{
 			if(!this.SupportsGet)
 			{

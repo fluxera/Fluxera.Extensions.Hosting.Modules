@@ -11,9 +11,11 @@
 	///     The contract exposes only "Aggregate" methods as an application service.
 	/// </summary>
 	/// <typeparam name="TDto">The DTO type.</typeparam>
+	/// <typeparam name="TKey">The type of the key.</typeparam>
 	[PublicAPI]
-	public interface ICanAggregateApplicationService<TDto> : IApplicationService
-		where TDto : class, IEntityDto
+	public interface ICanAggregateApplicationService<TDto, TKey> : IApplicationService
+		where TDto : class, IEntityDto<TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
 		///     Gets the absolute count for the item type.

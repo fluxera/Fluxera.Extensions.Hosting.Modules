@@ -16,14 +16,16 @@
 	///     A base controller for OData CRUD operations.
 	/// </summary>
 	/// <typeparam name="TDto"></typeparam>
+	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
-	public abstract class CrudControllerBase<TDto> : ReadOnlyCrudControllerBase<TDto>
-		where TDto : class, IEntityDto
+	public abstract class CrudControllerBase<TDto, TKey> : ReadOnlyCrudControllerBase<TDto, TKey>
+		where TDto : class, IEntityDto<TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
-		private readonly ICrudApplicationService<TDto> applicationService;
+		private readonly ICrudApplicationService<TDto, TKey> applicationService;
 
 		/// <inheritdoc />
-		protected CrudControllerBase(ICrudApplicationService<TDto> applicationService)
+		protected CrudControllerBase(ICrudApplicationService<TDto, TKey> applicationService)
 			: base(applicationService)
 		{
 			this.applicationService = applicationService;
@@ -90,7 +92,7 @@
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
 		[HttpPut]
-		public virtual async Task<IActionResult> Put([FromODataUri] string key, [FromBody] TDto dto, CancellationToken cancellationToken = default)
+		public virtual async Task<IActionResult> Put([FromODataUri] TKey key, [FromBody] TDto dto, CancellationToken cancellationToken = default)
 		{
 			if(!this.SupportsUpdate)
 			{
@@ -160,7 +162,7 @@
 		/// <returns></returns>
 		[HttpPatch]
 		[HttpMerge]
-		public virtual async Task<IActionResult> Patch([FromODataUri] string key, [FromBody] Delta<TDto> delta, CancellationToken cancellationToken = default)
+		public virtual async Task<IActionResult> Patch([FromODataUri] TKey key, [FromBody] Delta<TDto> delta, CancellationToken cancellationToken = default)
 		{
 			if(!this.SupportsUpdate)
 			{
@@ -233,7 +235,7 @@
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
 		[HttpDelete]
-		public virtual async Task<IActionResult> Delete([FromODataUri] string key, CancellationToken cancellationToken = default)
+		public virtual async Task<IActionResult> Delete([FromODataUri] TKey key, CancellationToken cancellationToken = default)
 		{
 			if(!this.SupportsDelete)
 			{

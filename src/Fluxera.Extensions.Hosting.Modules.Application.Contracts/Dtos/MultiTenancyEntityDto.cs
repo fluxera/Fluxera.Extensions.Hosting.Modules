@@ -9,7 +9,8 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public abstract class MultiTenancyEntityDto : EntityDto, IMultiTenancyObject
+	public abstract class MultiTenancyEntityDto<TKey> : EntityDto<TKey>, IMultiTenancyObject
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <inheritdoc />
 		public string TenantID { get; set; }

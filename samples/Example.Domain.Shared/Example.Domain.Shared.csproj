@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ExampleAggregate\Services\**" />
+    <EmbeddedResource Remove="ExampleAggregate\Services\**" />
+    <None Remove="ExampleAggregate\Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
   </ItemGroup>
 
@@ -15,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="ExampleAggregate\Messages\Commands\" />
-    <Folder Include="ExampleAggregate\Services\" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,13 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
+	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
+	using Fluxera.Spatial.SystemTextJson;
+	using Fluxera.StronglyTypedId.SystemTextJson;
+	using Fluxera.ValueObject.SystemTextJson;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -28,25 +32,28 @@
 			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
 
 			// Add the http context accessor.
-			context.Log("AddHttpContextAccessor",
-				services => services.AddHttpContextAccessor());
+			context.Log("AddHttpContextAccessor", services => services.AddHttpContextAccessor());
 
 			// Add the action context accessor.
-			context.Log("AddActionContextAccessor",
-				services => services.AddActionContextAccessor());
+			context.Log("AddActionContextAccessor", services => services.AddActionContextAccessor());
 
 			// Add the controller services.
-			IMvcBuilder builder = context.Log("AddControllers",
-				services => services.AddControllers());
-
-			// Add discovered controllers as services.
-			context.Log("AddControllersAsServices", _ => builder.AddControllersAsServices());
+			IMvcBuilder builder = context.Log("AddControllers", services => services.AddControllers());
 
 			// Add the modules as application parts.
 			context.Log("AddApplicationParts", _ => builder.AddApplicationParts());
 
-			// Add controllers as services.
+			// Add the discovered controllers as services.
 			context.Log("AddControllersAsServices", _ => builder.AddControllersAsServices());
+
+			// Configure the JSON serializer defaults.
+			context.Log("AddJsonOptions", _ => builder.AddJsonOptions(options =>
+			{
+				options.JsonSerializerOptions.UseSpatial();
+				options.JsonSerializerOptions.UseEnumeration();
+				options.JsonSerializerOptions.UsePrimitiveValueObject();
+				options.JsonSerializerOptions.UseStronglyTypedId();
+			}));
 
 			// Add the mvc builder.
 			context.Log("AddObjectAccessor(MvcBuilder)",

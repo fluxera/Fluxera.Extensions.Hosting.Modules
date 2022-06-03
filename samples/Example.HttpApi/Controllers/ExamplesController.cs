@@ -3,6 +3,7 @@
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
 	using Example.Application.Contracts.Services;
+	using Example.Domain.Shared.ExampleAggregate.Model;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,7 @@
 		}
 
 		[HttpGet("{id:required}")]
-		public async Task<IActionResult> GetByID(string id)
+		public async Task<IActionResult> GetByID(ExampleId id)
 		{
 			ExampleDto result = await this.exampleApplicationService.GetExampleAsync(id);
 

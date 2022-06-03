@@ -13,9 +13,11 @@
 	///     The contract exposes only "Find" methods as an application service.
 	/// </summary>
 	/// <typeparam name="TDto">The DTO type.</typeparam>
+	/// <typeparam name="TKey">The type of the key.</typeparam>
 	[PublicAPI]
-	public interface ICanFindApplicationService<TDto> : IApplicationService
-		where TDto : class, IEntityDto
+	public interface ICanFindApplicationService<TDto, TKey> : IApplicationService
+		where TDto : class, IEntityDto<TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
 		///     Find the first item that satisfies the given predicate.

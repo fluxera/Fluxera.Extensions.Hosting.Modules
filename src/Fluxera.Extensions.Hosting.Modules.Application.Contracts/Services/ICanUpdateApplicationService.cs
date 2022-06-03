@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Threading;
 	using System.Threading.Tasks;
@@ -10,9 +11,11 @@
 	///     The contract exposes only "Update" methods as an application service.
 	/// </summary>
 	/// <typeparam name="TDto">The DTO type.</typeparam>
+	/// <typeparam name="TKey">The type of the key.</typeparam>
 	[PublicAPI]
-	public interface ICanUpdateApplicationService<in TDto> : IApplicationService
-		where TDto : class, IEntityDto
+	public interface ICanUpdateApplicationService<in TDto, TKey> : IApplicationService
+		where TDto : class, IEntityDto<TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
 		///     Update the given item.

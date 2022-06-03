@@ -8,7 +8,7 @@
 	///     A dto that provides the data of an example.
 	/// </summary>
 	[PublicAPI]
-	public sealed class ExampleDto : EntityDto
+	public sealed class ExampleDto : EntityDto<ExampleId>
 	{
 		/// <summary>
 		///     Gets or sets the name of the example.

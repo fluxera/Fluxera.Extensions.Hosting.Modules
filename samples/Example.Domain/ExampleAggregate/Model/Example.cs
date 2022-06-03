@@ -9,7 +9,7 @@
 	/// </summary>
 	/// <seealso cref="AggregateRoot{TAggregateRoot,TKey}" />
 	[PublicAPI]
-	public sealed class Example : AggregateRoot<Example, string>
+	public sealed class Example : AggregateRoot<Example, ExampleId>
 	{
 		/// <summary>
 		///     Gets or sets the name of the example.

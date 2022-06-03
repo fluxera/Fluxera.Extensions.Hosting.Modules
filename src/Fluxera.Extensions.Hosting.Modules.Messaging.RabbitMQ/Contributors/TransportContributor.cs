@@ -1,7 +1,12 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ.Contributors
 {
+	using System.Text.Json;
+	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
+	using Fluxera.Spatial.SystemTextJson;
+	using Fluxera.StronglyTypedId.SystemTextJson;
+	using Fluxera.ValueObject.SystemTextJson;
 	using JetBrains.Annotations;
 	using MassTransit;
 
@@ -22,6 +27,18 @@
 				{
 					hostOptions.Username(rabbitConnectionString.Username);
 					hostOptions.Password(rabbitConnectionString.Password);
+				});
+
+				cfg.ConfigureJsonSerializerOptions(serializerOptions =>
+				{
+					JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions(serializerOptions);
+
+					jsonSerializerOptions.UseSpatial();
+					jsonSerializerOptions.UseEnumeration();
+					jsonSerializerOptions.UsePrimitiveValueObject();
+					jsonSerializerOptions.UseStronglyTypedId();
+
+					return jsonSerializerOptions;
 				});
 
 				// Configure publish and send filters for message validation.

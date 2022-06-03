@@ -19,23 +19,25 @@
 	/// </summary>
 	/// <typeparam name="TDto"></typeparam>
 	/// <typeparam name="TAggregateRoot"></typeparam>
+	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
-	public abstract class CrudApplicationService<TDto, TAggregateRoot> : ReadOnlyCrudApplicationService<TDto, TAggregateRoot>, ICrudApplicationService<TDto>
-		where TDto : class, IEntityDto
-		where TAggregateRoot : AggregateRoot<TAggregateRoot, string>
+	public abstract class CrudApplicationService<TDto, TAggregateRoot, TKey> : ReadOnlyCrudApplicationService<TDto, TAggregateRoot, TKey>, ICrudApplicationService<TDto, TKey>
+		where TDto : class, IEntityDto<TKey>
+		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
-		///     Initializes a new instance of the <see cref="CrudApplicationService{TDto, TAggregateRoot}" /> type.
+		///     Initializes a new instance of the <see cref="CrudApplicationService{TDto, TAggregateRoot, TKey}" /> type.
 		/// </summary>
 		/// <param name="repository"></param>
 		/// <param name="mapper"></param>
-		protected CrudApplicationService(IRepository<TAggregateRoot, string> repository, IMapper mapper)
+		protected CrudApplicationService(IRepository<TAggregateRoot, TKey> repository, IMapper mapper)
 			: base(repository, mapper)
 		{
 			this.Repository = repository;
 		}
 
-		private IRepository<TAggregateRoot, string> Repository { get; }
+		private IRepository<TAggregateRoot, TKey> Repository { get; }
 
 		/// <inheritdoc />
 		public virtual async Task AddAsync(TDto dto, CancellationToken cancellationToken = default)
@@ -78,7 +80,7 @@
 		}
 
 		/// <inheritdoc />
-		public virtual async Task RemoveAsync(string id, CancellationToken cancellationToken = default)
+		public virtual async Task RemoveAsync(TKey id, CancellationToken cancellationToken = default)
 		{
 			await this.Repository.RemoveAsync(id, cancellationToken);
 		}

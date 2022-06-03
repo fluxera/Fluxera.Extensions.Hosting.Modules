@@ -10,7 +10,8 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public abstract class AuditedMultiTenancyEntityDto : AuditedEntityDto, IMultiTenancyObject
+	public abstract class AuditedMultiTenancyEntityDto<TKey> : AuditedEntityDto<TKey>, IMultiTenancyObject
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <inheritdoc />
 		public string TenantID { get; set; }

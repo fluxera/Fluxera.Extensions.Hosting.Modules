@@ -20,23 +20,25 @@
 	/// </summary>
 	/// <typeparam name="TDto"></typeparam>
 	/// <typeparam name="TAggregateRoot"></typeparam>
+	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
-	public abstract class ReadOnlyCrudApplicationService<TDto, TAggregateRoot> : IReadOnlyCrudApplicationService<TDto>
-		where TDto : class, IEntityDto
-		where TAggregateRoot : AggregateRoot<TAggregateRoot, string>
+	public abstract class ReadOnlyCrudApplicationService<TDto, TAggregateRoot, TKey> : IReadOnlyCrudApplicationService<TDto, TKey>
+		where TDto : class, IEntityDto<TKey>
+		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>
-		///     Initializes a new instance of the <see cref="ReadOnlyCrudApplicationService{TDto, TAggregateRoot}" /> type.
+		///     Initializes a new instance of the <see cref="ReadOnlyCrudApplicationService{TDto, TAggregateRoot, TKey}" /> type.
 		/// </summary>
 		/// <param name="repository"></param>
 		/// <param name="mapper"></param>
-		protected ReadOnlyCrudApplicationService(IReadOnlyRepository<TAggregateRoot, string> repository, IMapper mapper)
+		protected ReadOnlyCrudApplicationService(IReadOnlyRepository<TAggregateRoot, TKey> repository, IMapper mapper)
 		{
 			this.Repository = repository;
 			this.Mapper = mapper;
 		}
 
-		private IReadOnlyRepository<TAggregateRoot, string> Repository { get; }
+		private IReadOnlyRepository<TAggregateRoot, TKey> Repository { get; }
 
 		/// <summary>
 		///     Gets the mapper.
@@ -44,7 +46,7 @@
 		protected IMapper Mapper { get; }
 
 		/// <inheritdoc />
-		public virtual async Task<TDto> GetAsync(string id, CancellationToken cancellationToken = default)
+		public virtual async Task<TDto> GetAsync(TKey id, CancellationToken cancellationToken = default)
 		{
 			TAggregateRoot result = await this.Repository.GetAsync(id, cancellationToken).ConfigureAwait(false);
 			TDto resultDto = this.Mapper.Map<TDto>(result);
@@ -52,14 +54,14 @@
 		}
 
 		/// <inheritdoc />
-		public virtual async Task<TResult> GetAsync<TResult>(string id, Expression<Func<TDto, TResult>> selector, CancellationToken cancellationToken = default)
+		public virtual async Task<TResult> GetAsync<TResult>(TKey id, Expression<Func<TDto, TResult>> selector, CancellationToken cancellationToken = default)
 		{
 			Expression<Func<TAggregateRoot, TResult>> mappedSelector = this.Mapper.MapExpression<Expression<Func<TAggregateRoot, TResult>>>(selector);
 			return await this.Repository.GetAsync(id, mappedSelector, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <inheritdoc />
-		public virtual async Task<bool> ExistsAsync(string id, CancellationToken cancellationToken = default)
+		public virtual async Task<bool> ExistsAsync(TKey id, CancellationToken cancellationToken = default)
 		{
 			return await this.Repository.ExistsAsync(id, cancellationToken).ConfigureAwait(false);
 		}

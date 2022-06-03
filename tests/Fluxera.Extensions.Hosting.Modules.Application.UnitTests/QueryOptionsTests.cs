@@ -95,7 +95,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests
 			public int Number { get; set; }
 		}
 
-		public class CustomerDto : EntityDto
+		public class CustomerDto : EntityDto<string>
 		{
 			public string Name { get; set; }
 

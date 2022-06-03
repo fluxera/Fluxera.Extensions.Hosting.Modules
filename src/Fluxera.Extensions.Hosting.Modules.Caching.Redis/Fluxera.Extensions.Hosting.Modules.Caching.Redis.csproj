@@ -23,17 +23,19 @@
 
 	<ItemGroup>
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.10" />
-		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
+		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.5" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.0.0-rc9.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
 	</ItemGroup>
 
 </Project>

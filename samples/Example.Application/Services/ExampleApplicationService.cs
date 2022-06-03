@@ -6,6 +6,7 @@
 	using Example.Application.Contracts.Services;
 	using Example.Domain.ExampleAggregate.Model;
 	using Example.Domain.ExampleAggregate.Repositories;
+	using Example.Domain.Shared.ExampleAggregate.Model;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
@@ -21,7 +22,7 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<ExampleDto> GetExampleAsync(string id)
+		public async Task<ExampleDto> GetExampleAsync(ExampleId id)
 		{
 			Example entity = await this.repository.GetAsync(id);
 			ExampleDto dto = this.mapper.Map<ExampleDto>(entity);

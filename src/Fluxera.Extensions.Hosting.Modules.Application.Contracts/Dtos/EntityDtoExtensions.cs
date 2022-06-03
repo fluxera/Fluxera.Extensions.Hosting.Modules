@@ -18,7 +18,7 @@
 		/// </returns>
 		public static bool IsTransient<TDto>(this TDto dto) where TDto : class, IEntityDto
 		{
-			return string.IsNullOrWhiteSpace(dto.ID);
+			return dto.ID != null;
 		}
 	}
 }

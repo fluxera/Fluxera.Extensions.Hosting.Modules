@@ -2,6 +2,7 @@
 {
 	using Example.Domain.ExampleAggregate.Model;
 	using Example.Domain.Shared.ExampleAggregate.Messages.Events;
+	using Example.Domain.Shared.ExampleAggregate.Model;
 	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
@@ -13,7 +14,7 @@
 	///     to the <see cref="ExampleRemoved" /> messaging event message.
 	/// </summary>
 	[UsedImplicitly]
-	public sealed class ExampleRemovedHandler : ItemRemovedEventHandlerBase<Example, string, ExampleRemoved>
+	public sealed class ExampleRemovedHandler : ItemRemovedEventHandlerBase<Example, ExampleId, ExampleRemoved>
 	{
 		/// <summary>
 		///     Initializes a new instance of the <see cref="ExampleRemovedHandler" /> class.

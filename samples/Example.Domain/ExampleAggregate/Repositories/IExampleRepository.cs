@@ -1,6 +1,7 @@
 ﻿namespace Example.Domain.ExampleAggregate.Repositories
 {
 	using Example.Domain.ExampleAggregate.Model;
+	using Example.Domain.Shared.ExampleAggregate.Model;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;
 
@@ -8,7 +9,7 @@
 	///     A contract for a repository that handles example instances.
 	/// </summary>
 	[PublicAPI]
-	public interface IExampleRepository : IRepository<Example, string>
+	public interface IExampleRepository : IRepository<Example, ExampleId>
 	{
 	}
 }

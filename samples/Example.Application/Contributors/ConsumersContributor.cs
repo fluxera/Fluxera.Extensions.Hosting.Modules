@@ -13,6 +13,7 @@
 		public void ConfigureConsumers(IRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
 			configurator.AddConsumer<ExampleAddedConsumer>();
+			configurator.AddConsumer<ExampleUpdatedConsumer>();
 		}
 	}
 }

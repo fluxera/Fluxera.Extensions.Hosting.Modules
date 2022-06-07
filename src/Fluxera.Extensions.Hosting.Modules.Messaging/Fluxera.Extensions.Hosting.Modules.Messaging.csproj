@@ -23,13 +23,13 @@
 
 	<ItemGroup>
 		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="6.1.0" />
-		<PackageReference Include="Fluxera.Extensions.Common" Version="6.0.33" />
-		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.0.33" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="6.1.1" />
+		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.1.1" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.10" />
-		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.0.33" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.0.33" />
+		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.1.1" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.1.1" />
 		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="6.0.9" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="6.0.4" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="6.0.5" />
 		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="6.1.2" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
 			<PrivateAssets>all</PrivateAssets>
@@ -37,7 +37,7 @@
 		</PackageReference>
 		<PackageReference Include="IdentityModel" Version="6.0.0" />
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
-		<PackageReference Include="MassTransit" Version="8.0.2" />
+		<PackageReference Include="MassTransit" Version="8.0.3" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.MassTransit" Version="1.0.0-beta.3" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.18.0" />
 	</ItemGroup>

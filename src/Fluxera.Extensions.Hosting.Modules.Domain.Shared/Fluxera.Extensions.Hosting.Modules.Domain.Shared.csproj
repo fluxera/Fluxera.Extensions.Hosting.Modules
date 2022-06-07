@@ -26,14 +26,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.StronglyTypedId" Version="6.0.4" />
-		<PackageReference Include="Fluxera.Utilities" Version="6.0.16" />
+		<PackageReference Include="Fluxera.StronglyTypedId" Version="6.1.1" />
+		<PackageReference Include="Fluxera.Utilities" Version="6.1.1" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
-		<PackageReference Include="MassTransit.Abstractions" Version="8.0.2" />
+		<PackageReference Include="MassTransit.Abstractions" Version="8.0.3" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
 

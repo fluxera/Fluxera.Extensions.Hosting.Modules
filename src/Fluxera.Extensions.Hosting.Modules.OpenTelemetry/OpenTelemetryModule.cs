@@ -48,7 +48,6 @@
 					contributor.Configure(builder, context);
 				}
 
-				//builder.AddAspNetCoreInstrumentation();
 				builder.AddMeter($"{context.Environment.ApplicationName}");
 				builder.AddOtlpExporter(options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
 			});
@@ -62,7 +61,6 @@
 					contributor.Configure(builder, context);
 				}
 
-				//builder.AddAspNetCoreInstrumentation();
 				builder.AddSource($"{context.Environment.ApplicationName}");
 				builder.AddOtlpExporter(options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
 			});

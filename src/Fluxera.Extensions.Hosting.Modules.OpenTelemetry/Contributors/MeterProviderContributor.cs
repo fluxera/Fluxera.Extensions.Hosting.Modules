@@ -7,7 +7,7 @@
 		/// <inheritdoc />
 		public void Configure(MeterProviderBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddRuntimeMetrics(_ =>
+			builder.AddRuntimeInstrumentation(_ =>
 			{
 				// Note: All enabled
 				//options.AssembliesEnabled = true;

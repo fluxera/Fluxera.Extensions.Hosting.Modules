@@ -22,15 +22,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="6.1.2" />
-		<PackageReference Include="Fluxera.Extensions.Common" Version="6.1.3" />
-		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.1.3" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.12" />
-		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.1.3" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.1.3" />
-		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="6.1.1" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="6.1.2" />
-		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="6.1.5" />
+		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="6.1.3" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="6.1.4" />
+		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.1.4" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.13" />
+		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.1.4" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.1.4" />
+		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="6.1.2" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="6.1.3" />
+		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="6.1.6" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -39,7 +39,7 @@
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 		<PackageReference Include="MassTransit" Version="8.0.3" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.MassTransit" Version="1.0.0-beta.3" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
 	</ItemGroup>
 
 	<ItemGroup>

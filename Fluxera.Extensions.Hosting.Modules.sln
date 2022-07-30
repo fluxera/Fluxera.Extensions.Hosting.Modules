@@ -167,7 +167,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Domain", "samples\E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Domain.Shared", "samples\Example.Domain.Shared\Example.Domain.Shared.csproj", "{AC3DB0CE-E604-47BD-8CA9-AAF8491AFFF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Application.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Application.UnitTests\Fluxera.Extensions.Hosting.Modules.Application.UnitTests.csproj", "{ADA3C394-5198-4213-8B11-0AF89A6CF1AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Application.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Application.UnitTests\Fluxera.Extensions.Hosting.Modules.Application.UnitTests.csproj", "{ADA3C394-5198-4213-8B11-0AF89A6CF1AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

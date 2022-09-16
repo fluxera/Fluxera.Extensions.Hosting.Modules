@@ -27,8 +27,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="6.1.5" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.17" />
-		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.0.17" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.1.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.1.0" />
 		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.1.6" />
 		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="6.1.4" />
 		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="6.1.5" />

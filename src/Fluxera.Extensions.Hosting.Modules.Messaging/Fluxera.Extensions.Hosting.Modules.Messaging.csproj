@@ -25,7 +25,7 @@
 		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="6.1.5" />
 		<PackageReference Include="Fluxera.Extensions.Common" Version="6.1.6" />
 		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="6.1.6" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.0.17" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.1.0" />
 		<PackageReference Include="Fluxera.Extensions.Localization" Version="6.1.6" />
 		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.1.6" />
 		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="6.1.4" />

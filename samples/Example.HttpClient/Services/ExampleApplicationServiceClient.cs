@@ -20,13 +20,16 @@
 		/// <inheritdoc />
 		public async Task<ExampleDto> GetExampleAsync(ExampleId id)
 		{
-			return null;
+			HttpResponseMessage response = await this.HttpClient.GetAsync($"/examples/{id}");
+			return await response.Content.ReadAsAsync<ExampleDto>();
 		}
 
 		/// <inheritdoc />
 		public async Task<ExampleDto> AddExample(ExampleDto item)
 		{
-			return null;
+			HttpContent content = await item.AsJsonContentAsync();
+			HttpResponseMessage response = await this.HttpClient.PostAsync("/examples", content);
+			return await response.Content.ReadAsAsync<ExampleDto>();
 		}
 	}
 }

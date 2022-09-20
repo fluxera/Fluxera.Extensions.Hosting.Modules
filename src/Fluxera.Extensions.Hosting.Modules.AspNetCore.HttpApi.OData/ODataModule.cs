@@ -17,6 +17,7 @@
 	///     A module that enables OData REST APIs.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn(typeof(AuthorizationModule))]
 	[DependsOn(typeof(CachingModule))]
 	[DependsOn(typeof(HttpApiModule))]
 	[DependsOn(typeof(AspNetCoreModule))]

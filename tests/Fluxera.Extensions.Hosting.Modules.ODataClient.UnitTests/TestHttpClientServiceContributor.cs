@@ -7,11 +7,11 @@ namespace Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests
 	public class TestHttpClientServiceContributor : IHttpClientServiceContributor
 	{
 		/// <inheritdoc />
-		public IHttpClientBuilder AddNamedHttpClientService(IServiceConfigurationContext context)
+		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
 			IHttpClientBuilder httpClientBuilder = context.Services.AddODataClientService<ITestService, TestService>(
 				"People",
-				ctx =>
+				(ctx, sp) =>
 				{
 					TestService testService = new TestService(ctx.Name, ctx.CollectionName, ctx.ODataClient, ctx.Options);
 					return testService;

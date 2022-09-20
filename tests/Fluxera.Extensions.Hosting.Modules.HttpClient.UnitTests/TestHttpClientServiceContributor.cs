@@ -6,10 +6,10 @@ namespace Fluxera.Extensions.Hosting.Modules.HttpClient.UnitTests
 	public class TestHttpClientServiceContributor : IHttpClientServiceContributor
 	{
 		/// <inheritdoc />
-		public IHttpClientBuilder AddNamedHttpClientService(IServiceConfigurationContext context)
+		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
 			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<ITestService, TestService>(
-				ctx =>
+				(ctx, sp) =>
 				{
 					TestService testService = new TestService(ctx.Name, ctx.HttpClient, ctx.Options);
 					return testService;

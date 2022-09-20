@@ -9,7 +9,7 @@
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class ExampleApplicationServiceClient : HttpClientServiceBase, IExampleApplicationService, IHttpClientService
+	internal sealed class ExampleApplicationServiceClient : HttpClientServiceBase, IExampleApplicationService
 	{
 		/// <inheritdoc />
 		public ExampleApplicationServiceClient(string name, HttpClient httpClient, RemoteService options)

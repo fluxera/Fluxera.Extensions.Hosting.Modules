@@ -49,7 +49,7 @@
 
 			foreach(IHttpClientServiceContributor contributor in contributorList)
 			{
-				IHttpClientBuilder builder = contributor.AddNamedHttpClientService(context);
+				IHttpClientBuilder builder = contributor.AddNamedHttpClientServices(context);
 				builder
 					.AddAuthenticateRequestHandler()
 					.AddIdempotentPostRequestHandler()

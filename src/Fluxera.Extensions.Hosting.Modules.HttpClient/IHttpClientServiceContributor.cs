@@ -10,9 +10,9 @@
 	public interface IHttpClientServiceContributor
 	{
 		/// <summary>
-		///     Add a named http client service.
+		///     Add named http client services.
 		/// </summary>
 		/// <returns></returns>
-		IHttpClientBuilder AddNamedHttpClientService(IServiceConfigurationContext context);
+		IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context);
 	}
 }

@@ -26,7 +26,7 @@
 			if(!accessTokenExists)
 			{
 				// Try to get an access token.
-				string accessToken = await principalAccessor.GetAccessTokenAsync();
+				string accessToken = await this.principalAccessor.GetAccessTokenAsync();
 
 				// Set the access token on the context.
 				context.Headers.Set(TransportHeaders.AccessTokenHeaderName, accessToken);

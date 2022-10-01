@@ -18,14 +18,15 @@
 
 		private static Task WriteHealthCheckResponse(HttpContext httpContext, HealthReport report, Action<JsonSerializerOptions> configureAction)
 		{
-			string response = "{}";
+			string response = string.Empty;
 
-			if(report != null)
+			if(report is not null)
 			{
 				JsonSerializerOptions settings = new JsonSerializerOptions
 				{
-					WriteIndented = true,
-					PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+					WriteIndented = false,
+					PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
 				};
 
 				configureAction?.Invoke(settings);
@@ -36,7 +37,7 @@
 
 				FormattedHealthReport healthReport = FormattedHealthReport.CreateFrom(report);
 
-				response = JsonSerializer.Serialize(healthReport);
+				response = JsonSerializer.Serialize(healthReport, settings);
 			}
 
 			return httpContext.Response.WriteAsync(response);

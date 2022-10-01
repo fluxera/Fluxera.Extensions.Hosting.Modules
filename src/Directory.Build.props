@@ -6,6 +6,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<NoWarn>$(NoWarn);SYSLIB1006</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup>

@@ -15,19 +15,8 @@
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
-			// Add the health check route contributor.
-			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
-
 			// Add health check services.
-			IHealthChecksBuilder healthChecksBuilder = context.Log("AddHealthChecks", services =>
-			{
-				return services
-					.AddHealthChecks()
-					.AddCheck<DefaultHealthCheck>("Default", tags: new string[]
-					{
-						HealthCheckCategory.Healthy.ToString("G"),
-					});
-			});
+			IHealthChecksBuilder healthChecksBuilder = context.Log("AddHealthChecks", services => services.AddHealthChecks());
 
 			// Add health checks builder as singleton.
 			context.Log("AddObjectAccessor(HealthChecksBuilder)", services =>
@@ -40,6 +29,16 @@
 			{
 				services.AddObjectAccessor(new HealthCheckContributorList(), ObjectAccessorLifetime.ConfigureServices);
 			});
+		}
+
+		/// <inheritdoc />
+		public override void ConfigureServices(IServiceConfigurationContext context)
+		{
+			// Add the health check route contributor.
+			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
+
+			// Add the default health check contributor.
+			context.Services.AddHealthCheckContributor<HealthCheckContributor>();
 		}
 
 		/// <inheritdoc />

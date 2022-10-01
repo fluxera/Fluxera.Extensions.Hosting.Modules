@@ -44,14 +44,14 @@
 					ValidateTokenReplay = false,
 					NameClaimType = JwtClaimTypes.Name,
 					RoleClaimType = JwtClaimTypes.Role,
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(options.SigningKey))
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(this.options.SigningKey))
 				};
 
 				principal = handler.ValidateToken(accessToken, tokenValidationParameters, out _);
 			}
 			catch(Exception ex)
 			{
-				logger.LogError(ex, ex.Message);
+				this.logger.LogPrincipalCreationFailed(ex);
 			}
 
 			return principal ?? new ClaimsPrincipal(new ClaimsIdentity());

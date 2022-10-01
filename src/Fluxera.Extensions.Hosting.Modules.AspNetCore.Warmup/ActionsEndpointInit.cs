@@ -26,18 +26,20 @@
 			IActionDescriptorCollectionProvider actionDescriptorCollectionProvider,
 			IActionInvokerFactory invokerFactory)
 		{
-			logger = loggerFactory.CreateLogger("Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.EndpointInit");
+			this.logger = loggerFactory.CreateLogger("Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.EndpointInit");
 			this.serviceProvider = serviceProvider;
 			this.actionDescriptorCollectionProvider = actionDescriptorCollectionProvider;
 			this.invokerFactory = invokerFactory;
 		}
 
 		/// <inheritdoc />
-		public Task InitializeEndpointsAsync()
+		public Task InitializeAsync()
 		{
-			ActionDescriptorCollection actions = actionDescriptorCollectionProvider.ActionDescriptors;
+			this.logger.LogInitializingEndpoints();
 
-			using(IServiceScope serviceScope = serviceProvider.CreateScope())
+			ActionDescriptorCollection actions = this.actionDescriptorCollectionProvider.ActionDescriptors;
+
+			using(IServiceScope serviceScope = this.serviceProvider.CreateScope())
 			{
 				HttpContext httpContext = new DefaultHttpContext
 				{
@@ -46,7 +48,7 @@
 
 				foreach(ActionDescriptor actionDescriptor in actions.Items)
 				{
-					logger.LogInformation("Initializing endpoint: {Controller}.{Action}",
+					this.logger.LogInitializingEndpoint(
 						actionDescriptor.RouteValues["controller"],
 						actionDescriptor.RouteValues["action"]);
 
@@ -64,7 +66,7 @@
 					}
 
 					ActionContext context = new ActionContext(httpContext, routeData, descriptor);
-					IActionInvoker _ = invokerFactory.CreateInvoker(context);
+					IActionInvoker _ = this.invokerFactory.CreateInvoker(context);
 				}
 			}
 

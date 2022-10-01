@@ -27,7 +27,7 @@
 			ILoggerFactory loggerFactory,
 			IMessageAuthenticator messageAuthenticator)
 		{
-			logger = loggerFactory.CreateLogger(GetType());
+			this.logger = loggerFactory.CreateLogger(this.GetType());
 			this.messageAuthenticator = messageAuthenticator;
 		}
 
@@ -37,7 +37,7 @@
 			try
 			{
 				// Executed before the message is send.
-				await messageAuthenticator.AuthenticateMessage(context);
+				await this.messageAuthenticator.AuthenticateMessage(context);
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
@@ -47,7 +47,7 @@
 			}
 			catch(Exception ex)
 			{
-				logger.LogError($"The message authentication failed: {ex.Message}");
+				this.logger.LogMessageAuthenticationFailed(ex);
 
 				// Propagate the exception up the call stack.
 				throw;

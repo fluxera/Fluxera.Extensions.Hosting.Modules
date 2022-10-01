@@ -2,7 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 
-	internal sealed class WarmupHealthCheckContributor : IHealthCheckContributor
+	internal sealed class HealthCheckContributor : IHealthCheckContributor
 	{
 		/// <inheritdoc />
 		public HealthCheckDescriptor CreateHealthCheck(IServiceConfigurationContext context)

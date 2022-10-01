@@ -27,7 +27,7 @@
 			ILoggerFactory loggerFactory,
 			IConsumeContextAccessor consumeContextAccessor)
 		{
-			logger = loggerFactory.CreateLogger(GetType());
+			this.logger = loggerFactory.CreateLogger(this.GetType());
 			this.consumeContextAccessor = consumeContextAccessor;
 		}
 
@@ -37,17 +37,17 @@
 			try
 			{
 				// Executed before the message is consumed.
-				consumeContextAccessor.ConsumeContext = context;
+				this.consumeContextAccessor.ConsumeContext = context;
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
 
 				// Executed after the message was consumed.
-				consumeContextAccessor.ConsumeContext = null;
+				this.consumeContextAccessor.ConsumeContext = null;
 			}
 			catch(Exception ex)
 			{
-				logger.LogError($"Setting the consume context failed: {ex.Message}");
+				this.logger.LogSettingConsumeContextFailed(ex);
 
 				// Propagate the exception up the call stack.
 				throw;

@@ -1,9 +1,18 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup
 {
 	using System.Threading.Tasks;
+	using JetBrains.Annotations;
 
-	internal interface IEndpointInit
+	/// <summary>
+	///     A contract for a warmup routine.
+	/// </summary>
+	[PublicAPI]
+	public interface IEndpointInit
 	{
-		Task InitializeEndpointsAsync();
+		/// <summary>
+		///     Executed the warmup routine.
+		/// </summary>
+		/// <returns></returns>
+		Task InitializeAsync();
 	}
 }

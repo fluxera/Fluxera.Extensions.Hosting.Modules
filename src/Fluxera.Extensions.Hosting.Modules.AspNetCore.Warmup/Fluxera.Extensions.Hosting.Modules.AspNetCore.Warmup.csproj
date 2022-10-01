@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc" Version="6.0.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.1.1" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.2.0" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -38,7 +38,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.HttpClient\Fluxera.Extensions.Hosting.Modules.HttpClient.csproj" />
 	</ItemGroup>
 
 </Project>

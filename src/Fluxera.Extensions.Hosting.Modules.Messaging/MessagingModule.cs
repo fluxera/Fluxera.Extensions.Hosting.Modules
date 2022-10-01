@@ -102,8 +102,7 @@
 						globalSubscriptionID = $"{environment.EnvironmentName}-{environment.ApplicationName}";
 						globalSubscriptionID = hashCalculator.ComputeHash(globalSubscriptionID);
 
-						logger.LogInformation("Global Subscription ID: {GlobalSubscriptionID}, Environment={Environment}, Application={Application}",
-							globalSubscriptionID, environment.EnvironmentName, environment.ApplicationName);
+						logger.LogServiceSubscriptionInfo(globalSubscriptionID, environment.EnvironmentName, environment.ApplicationName);
 					}
 
 					IEndpointNameFormatter endpointNameFormatter = new EndpointNameFormatter(globalSubscriptionID);

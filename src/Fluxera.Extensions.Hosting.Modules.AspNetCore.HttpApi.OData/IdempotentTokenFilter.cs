@@ -47,8 +47,7 @@
 						await this.distributedCache.GetAsJsonAsync<IdempotentResponseData>(token, Encoding.UTF8);
 					if(responseData != null)
 					{
-						this.logger.LogDebug("Found duplicate request, acquired data from cache: {IdempotentToken}",
-							token);
+						this.logger.LogFoundDuplicateRequest(token);
 
 						context.HttpContext.Response.OnStarting(state =>
 						{
@@ -91,8 +90,7 @@
 		/// <inheritdoc />
 		public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
 		{
-			if(context.HttpContext.Request.Method == "POST" &&
-			   !context.HttpContext.Items.ContainsKey(ItemKey))
+			if(context.HttpContext.Request.Method == "POST" && !context.HttpContext.Items.ContainsKey(ItemKey))
 			{
 				string token = context.HttpContext.Request.Headers["X-Idempotent-Token"].FirstOrDefault();
 				if(!string.IsNullOrWhiteSpace(token))
@@ -133,7 +131,7 @@
 							// Read the status code.
 							toStore.StatusCode = context.HttpContext.Response.StatusCode;
 
-							this.logger.LogDebug("Storing response data in cache: {IdempotentToken}", token);
+							this.logger.LogStoringResponseData(token);
 
 							await this.distributedCache.SetAsJsonAsync(token, toStore, Encoding.UTF8);
 						}

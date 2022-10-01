@@ -11,7 +11,7 @@
 		/// <inheritdoc />
 		public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
 		{
-			return Task.FromResult(HealthCheckResult.Healthy());
+			return Task.FromResult(HealthCheckResult.Healthy("Default health check successful."));
 		}
 	}
 }

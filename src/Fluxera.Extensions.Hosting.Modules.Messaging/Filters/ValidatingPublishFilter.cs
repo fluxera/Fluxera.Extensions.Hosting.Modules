@@ -27,7 +27,7 @@
 			ILoggerFactory loggerFactory,
 			IMessageValidator messageValidator)
 		{
-			logger = loggerFactory.CreateLogger(GetType());
+			this.logger = loggerFactory.CreateLogger(this.GetType());
 			this.messageValidator = messageValidator;
 		}
 
@@ -37,7 +37,7 @@
 			try
 			{
 				// Executed before the message is published.
-				messageValidator.ValidateMessage(context.Message);
+				this.messageValidator.ValidateMessage(context.Message);
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
@@ -47,7 +47,7 @@
 			}
 			catch(ValidationException ex)
 			{
-				logger.LogError($"The message was not valid: {ex.Message}");
+				this.logger.LogMessageValidationFailed(ex);
 
 				// Propagate the exception up the call stack.
 				throw;

@@ -20,21 +20,23 @@
 			IServiceCollection services,
 			IServiceProvider provider)
 		{
-			logger = loggerFactory.CreateLogger("Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.EndpointInit");
+			this.logger = loggerFactory.CreateLogger("Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.EndpointInit");
 			this.services = services;
 			this.provider = provider;
 		}
 
 		/// <inheritdoc />
-		public Task InitializeEndpointsAsync()
+		public Task InitializeAsync()
 		{
-			logger.LogInformation("Initializing endpoint services dependencies.");
+			this.logger.LogInitializingServicesDependencies();
 
-			using(IServiceScope scope = provider.CreateScope())
+			using(IServiceScope scope = this.provider.CreateScope())
 			{
-				IEnumerable<Type> enumerable = GetServices(services);
+				IEnumerable<Type> enumerable = GetServices(this.services);
 				foreach(Type service in enumerable)
 				{
+					this.logger.LogInitializingServicesDependency(service);
+
 					scope.ServiceProvider.GetServices(service);
 				}
 			}

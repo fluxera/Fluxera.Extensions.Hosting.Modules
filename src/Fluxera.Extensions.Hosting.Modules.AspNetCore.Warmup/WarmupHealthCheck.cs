@@ -25,13 +25,13 @@
 			{
 				foreach(IEndpointInit endpointInit in this.endpointInitServices)
 				{
-					await endpointInit.InitializeEndpointsAsync();
+					await endpointInit.InitializeAsync();
 				}
 
 				isWarmedUp = true;
 			}
 
-			return HealthCheckResult.Healthy();
+			return HealthCheckResult.Healthy("Warmup execution successful.");
 		}
 	}
 }

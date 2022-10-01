@@ -8,12 +8,14 @@
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Validation;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 
 	[PublicAPI]
+	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(ExampleHttpApiModule))]
 	[DependsOn(typeof(ExampleApplicationModule))]
 	public sealed class ExampleServiceModule : ConfigureApplicationModule

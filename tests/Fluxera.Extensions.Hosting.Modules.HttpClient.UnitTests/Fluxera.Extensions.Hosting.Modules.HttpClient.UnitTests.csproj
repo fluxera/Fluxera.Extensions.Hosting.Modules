@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Asp.Versioning.Http.Client" Version="6.0.0" />
+		<PackageReference Include="Asp.Versioning.Http.Client" Version="6.1.0" />
 		<PackageReference Include="FluentAssertions" Version="6.7.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
 		<PackageReference Include="NUnit" Version="3.13.3" />

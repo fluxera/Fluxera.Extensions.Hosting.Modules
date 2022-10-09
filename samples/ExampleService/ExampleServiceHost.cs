@@ -29,16 +29,17 @@
 		protected override void ConfigureHostBuilder(IHostBuilder builder)
 		{
 			// Add OpenTelemetry logging.
-			builder.AddOpenTelemetryLogging(loggerOptions =>
+			builder.AddOpenTelemetryLogging(options =>
 			{
-				loggerOptions.AddConsoleExporter();
+				options.AddConsoleExporter();
 			});
 
 			// Add Serilog logging
-			builder.AddSerilogLogging(loggerOptions =>
+			builder.AddSerilogLogging((context, options) =>
 			{
-				loggerOptions
-					.MinimumLevel.Information()
+				options
+					.ReadFrom.Configuration(context.Configuration)
+					.Enrich.FromLogContext()
 					.WriteTo.Console();
 			});
 		}
@@ -47,8 +48,8 @@
 		protected override ILoggerFactory CreateBootstrapperLoggerFactory(IConfiguration configuration)
 		{
 			ReloadableLogger bootstrapLogger = new LoggerConfiguration()
-				.Enrich.FromLogContext()
 				.ReadFrom.Configuration(configuration)
+				.Enrich.FromLogContext()
 				.WriteTo.Console()
 				.CreateBootstrapLogger();
 

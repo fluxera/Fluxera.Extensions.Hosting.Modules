@@ -20,11 +20,11 @@
 		/// <param name="builder"></param>
 		/// <param name="configureAction">Configure additional options.</param>
 		/// <returns></returns>
-		public static IHostBuilder AddOpenTelemetryLogging(this IHostBuilder builder, Action<HostBuilderContext, OpenTelemetryLoggerOptions> configureAction = null)
+		public static IHostBuilder AddOpenTelemetryLogging(this IHostBuilder builder, Action<HostBuilderContext, OpenTelemetryLoggerOptions> configureAction)
 		{
-			return builder.ConfigureLogging((hostingContext, loggingBuilder) =>
+			return builder.ConfigureLogging((context, loggingBuilder) =>
 			{
-				IConfigurationSection section = hostingContext.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("OpenTelemetry"));
+				IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("OpenTelemetry"));
 				OpenTelemetryOptions telemetryOptions = section.Get<OpenTelemetryOptions>() ?? new OpenTelemetryOptions();
 
 				loggingBuilder.AddOpenTelemetry(loggerOptions =>
@@ -35,7 +35,7 @@
 
 					loggerOptions.AddOtlpExporter(options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
 
-					configureAction?.Invoke(hostingContext, loggerOptions);
+					configureAction?.Invoke(context, loggerOptions);
 				});
 			});
 		}
@@ -46,11 +46,23 @@
 		/// <param name="builder"></param>
 		/// <param name="configureAction">Configure additional options.</param>
 		/// <returns></returns>
-		public static IHostBuilder AddOpenTelemetryLogging(this IHostBuilder builder, Action<OpenTelemetryLoggerOptions> configureAction = null)
+		public static IHostBuilder AddOpenTelemetryLogging(this IHostBuilder builder, Action<OpenTelemetryLoggerOptions> configureAction)
 		{
-			return builder.AddOpenTelemetryLogging((_, loggerOptions) =>
+			return builder.AddOpenTelemetryLogging((_, options) =>
 			{
-				configureAction?.Invoke(loggerOptions);
+				configureAction?.Invoke(options);
+			});
+		}
+
+		/// <summary>
+		///     Adds the OpenTelemetry logging.
+		/// </summary>
+		/// <param name="builder"></param>
+		/// <returns></returns>
+		public static IHostBuilder AddOpenTelemetryLogging(this IHostBuilder builder)
+		{
+			return builder.AddOpenTelemetryLogging((_, _) =>
+			{
 			});
 		}
 	}

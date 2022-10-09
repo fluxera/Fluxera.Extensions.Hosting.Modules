@@ -39,6 +39,8 @@
 				context.UseSwaggerUI();
 			}
 
+			context.UseHsts();
+
 			context.UseHttpsRedirection();
 
 			context.UseRouting();

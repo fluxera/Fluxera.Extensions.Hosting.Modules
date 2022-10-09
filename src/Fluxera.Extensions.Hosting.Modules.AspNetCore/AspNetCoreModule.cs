@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
+	using System;
 	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Contributors;
@@ -9,7 +10,9 @@
 	using Fluxera.StronglyTypedId.SystemTextJson;
 	using Fluxera.ValueObject.SystemTextJson;
 	using JetBrains.Annotations;
+	using Microsoft.AspNetCore.Builder;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Hosting;
 
 	/// <summary>
 	///     A module that enables ASP.NET Core basic features.
@@ -74,6 +77,15 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
+			// Add the HSTS options.
+			if(!context.Environment.IsDevelopment())
+			{
+				context.Log("AddHsts", services => services.AddHsts(options =>
+				{
+					options.MaxAge = TimeSpan.FromDays(365);
+				}));
+			}
+
 			// Configure the mvc builder.
 			MvcBuilderContainer container = context.Services.GetObject<MvcBuilderContainer>();
 			MvcBuilderContributorList contributorList = context.Services.GetObject<MvcBuilderContributorList>();

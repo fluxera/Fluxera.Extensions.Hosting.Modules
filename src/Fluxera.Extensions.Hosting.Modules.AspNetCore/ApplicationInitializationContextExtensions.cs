@@ -15,6 +15,17 @@
 	public static class ApplicationInitializationContextExtensions
 	{
 		/// <summary>
+		///     Adds middleware for using HSTS, which adds the Strict-Transport-Security header.
+		/// </summary>
+		public static IApplicationInitializationContext UseHsts(this IApplicationInitializationContext context)
+		{
+			WebApplication app = context.GetApplicationBuilder();
+			context.Log("UseHsts", _ => app.UseHsts());
+
+			return context;
+		}
+
+		/// <summary>
 		///     Adds middleware for redirecting HTTP Requests to HTTPS.
 		/// </summary>
 		public static IApplicationInitializationContext UseHttpsRedirection(this IApplicationInitializationContext context)

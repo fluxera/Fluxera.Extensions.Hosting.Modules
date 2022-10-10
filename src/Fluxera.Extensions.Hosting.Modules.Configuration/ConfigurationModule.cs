@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Configuration
 {
+	using System.Reflection;
 	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Configuration;
@@ -14,13 +15,26 @@
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
+			Assembly assembly = Assembly.GetCallingAssembly();
+
 			// Configure the options.
 			context.Log("Configure(HostingOptions)",
-				services => services.Configure<HostingOptions>(context.Configuration.GetSection("Hosting")));
+				services =>
+				{
+					return services
+						.Configure<HostingOptions>(context.Configuration.GetSection("Hosting"))
+						.Configure<HostingOptions>(options =>
+						{
+							options.AppName = context.Environment.ApplicationName;
+							options.Version = assembly.GetName().Version;
+						});
+				});
 
 			// Add the options to the services.
 			IConfigurationSection section = context.Configuration.GetSection("Hosting");
 			HostingOptions hostingOptions = section.Get<HostingOptions>();
+			hostingOptions.AppName = context.Environment.ApplicationName;
+			hostingOptions.Version = assembly.GetName().Version;
 
 			context.Log("AddObjectAccessor(HostingOptions)",
 				services => services.AddObjectAccessor(hostingOptions, ObjectAccessorLifetime.ConfigureServices));

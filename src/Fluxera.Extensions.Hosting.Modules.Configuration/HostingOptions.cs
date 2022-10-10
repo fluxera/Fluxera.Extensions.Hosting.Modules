@@ -13,11 +13,11 @@
 		/// <summary>
 		///     Gets or sets the application name.
 		/// </summary>
-		public string AppName { get; set; }
+		public string AppName { get; internal set; }
 
 		/// <summary>
 		///     Gets or sets the application version.
 		/// </summary>
-		public Version Version { get; set; }
+		public Version Version { get; internal set; }
 	}
 }

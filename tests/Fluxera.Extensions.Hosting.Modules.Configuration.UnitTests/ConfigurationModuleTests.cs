@@ -1,6 +1,5 @@
 namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 {
-	using System;
 	using FluentAssertions;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
@@ -30,7 +29,8 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 			HostingOptions options = this.ApplicationLoader.Services.GetObject<HostingOptions>();
 			options.Should().NotBeNull();
 			options.AppName.Should().Be("UnitTests");
-			options.Version.Should().Be(Version.Parse("1.0.0"));
+
+			options.Version.Should().Be(typeof(ConfigurationModule).Assembly.GetName().Version);
 		}
 
 		[Test]
@@ -39,7 +39,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 			IOptions<HostingOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<HostingOptions>>();
 			options.Value.Should().NotBeNull();
 			options.Value.AppName.Should().Be("UnitTests");
-			options.Value.Version.Should().Be(Version.Parse("1.0.0"));
+			options.Value.Version.Should().Be(typeof(ConfigurationModule).Assembly.GetName().Version);
 		}
 	}
 }

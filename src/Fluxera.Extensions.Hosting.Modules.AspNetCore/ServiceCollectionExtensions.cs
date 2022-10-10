@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Logging;
@@ -29,7 +30,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IEndpointRouteContributor));
+				logger.LogContributorListNotAvailable(typeof(IEndpointRouteContributor));
 			}
 
 			return services;
@@ -53,7 +54,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IMvcBuilderContributor));
+				logger.LogContributorListNotAvailable(typeof(IMvcBuilderContributor));
 			}
 
 			return services;

@@ -2,6 +2,7 @@
 {
 	using System.Collections.Generic;
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +41,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IRepositoryContributor));
+				logger.LogContributorListNotAvailable(typeof(IRepositoryContributor));
 			}
 
 			return services;
@@ -66,7 +67,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IRepositoryProviderContributor));
+				logger.LogContributorListNotAvailable(typeof(IRepositoryProviderContributor));
 			}
 
 			return services;

@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +33,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IAuthenticationContributor));
+				logger.LogContributorListNotAvailable(typeof(IAuthenticationContributor));
 			}
 
 			return services;

@@ -35,7 +35,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IConfigureOptionsContributor));
+				logger.LogContributorListNotAvailable(typeof(IConfigureOptionsContributor));
 			}
 
 			return services;

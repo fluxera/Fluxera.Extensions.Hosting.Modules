@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.OpenTelemetry
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Guards;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +36,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(ITracerProviderContributor));
+				logger.LogContributorListNotAvailable(typeof(ITracerProviderContributor));
 			}
 
 			return services;
@@ -64,7 +65,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IMeterProviderContributor));
+				logger.LogContributorListNotAvailable(typeof(IMeterProviderContributor));
 			}
 
 			return services;

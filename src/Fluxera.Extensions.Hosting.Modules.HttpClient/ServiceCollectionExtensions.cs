@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.HttpClient
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Logging;
@@ -29,7 +30,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IHttpClientServiceContributor));
+				logger.LogContributorListNotAvailable(typeof(IHttpClientServiceContributor));
 			}
 
 			return services;
@@ -53,7 +54,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IHttpClientBuilderContributor));
+				logger.LogContributorListNotAvailable(typeof(IHttpClientBuilderContributor));
 			}
 
 			return services;

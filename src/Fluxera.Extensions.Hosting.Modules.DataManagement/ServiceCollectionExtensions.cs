@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.DataManagement
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
@@ -38,7 +39,7 @@
 				else
 				{
 					ILogger logger = services.GetObjectOrDefault<ILogger>();
-					logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IDataSeedingContributor));
+					logger.LogContributorListNotAvailable(typeof(IDataSeedingContributor));
 				}
 			}
 

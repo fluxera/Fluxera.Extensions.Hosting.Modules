@@ -2,6 +2,7 @@
 {
 	using Asp.Versioning.OData;
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -33,7 +34,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger?.LogWarning("The contributor list for {Contributor} was not available.", typeof(IEdmModelContributor));
+				logger.LogContributorListNotAvailable(typeof(IEdmModelContributor));
 			}
 
 			return services;

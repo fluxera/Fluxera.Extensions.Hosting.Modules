@@ -83,6 +83,8 @@
 				context.Log("AddHsts", services => services.AddHsts(options =>
 				{
 					options.MaxAge = TimeSpan.FromDays(365);
+					options.IncludeSubDomains = true;
+					options.Preload = true;
 				}));
 			}
 

@@ -13,14 +13,5 @@
 		///     Gets or sets the base url of the application, f.e http://localhost:5000 or https://www.fluxera.com
 		/// </summary>
 		public Uri BaseUrl { get; set; }
-
-		// TODO
-		//public bool UseMvc { get; set; }
-
-		// TODO
-		//public bool UseViews { get; set; }
-
-		// TODO
-		//public bool RazorPages { get; set; }
 	}
 }

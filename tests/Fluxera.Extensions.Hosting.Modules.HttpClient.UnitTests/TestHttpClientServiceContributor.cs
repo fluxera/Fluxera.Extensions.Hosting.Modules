@@ -9,7 +9,7 @@ namespace Fluxera.Extensions.Hosting.Modules.HttpClient.UnitTests
 		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
 			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<ITestService, TestService>(
-				(ctx, sp) =>
+				(ctx, _) =>
 				{
 					TestService testService = new TestService(ctx.Name, ctx.HttpClient, ctx.Options);
 					return testService;

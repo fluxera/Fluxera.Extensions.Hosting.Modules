@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.StronglyTypedId" Version="6.1.5" />
+		<PackageReference Include="Fluxera.StronglyTypedId" Version="6.1.6" />
 		<PackageReference Include="Fluxera.Utilities" Version="6.1.1" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
 			<PrivateAssets>all</PrivateAssets>

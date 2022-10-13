@@ -13,7 +13,7 @@
 		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
 			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<IExampleApplicationService, ExampleApplicationServiceClient>(
-				(ctx, sp) =>
+				(ctx, _) =>
 				{
 					ExampleApplicationServiceClient client = new ExampleApplicationServiceClient(ctx.Name, ctx.HttpClient, ctx.Options);
 					return client;

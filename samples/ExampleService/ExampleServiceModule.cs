@@ -43,6 +43,8 @@
 
 			context.UseHttpsRedirection();
 
+			context.UseSecurityHeaders();
+
 			context.UseRouting();
 
 			context.UseEndpoints();

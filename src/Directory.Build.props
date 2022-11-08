@@ -17,8 +17,8 @@
 
 	<PropertyGroup>
 		<Authors>Matthias Gernand</Authors>
-		<RepositoryUrl>https://github.com/fluxera/Fluxera.Guard</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/fluxera/Fluxera.Guard</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/fluxera/Fluxera.Extensions.Hosting.Modules</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/fluxera/Fluxera.Extensions.Hosting.Modules</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

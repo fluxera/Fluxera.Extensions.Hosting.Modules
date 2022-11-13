@@ -27,11 +27,11 @@
 		<PackageReference Include="Fluxera.Extensions.Validation.FluentValidation" Version="6.1.8" />
 		<PackageReference Include="Fluxera.Repository" Version="6.2.1" />
 		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="6.2.1" />
-		<PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
+		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>

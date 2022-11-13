@@ -9,7 +9,6 @@
 	using Fluxera.Spatial.SystemTextJson;
 	using Fluxera.StronglyTypedId.SystemTextJson;
 	using Fluxera.ValueObject.SystemTextJson;
-	using global::AspNetCore.SecurityHeaders;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.Extensions.DependencyInjection;
@@ -87,12 +86,6 @@
 					options.IncludeSubDomains = true;
 					options.Preload = true;
 				}));
-			}
-
-			// Add the Security Headers options.
-			if(!context.Environment.IsDevelopment())
-			{
-				context.Log("AddSecurityHeaders", services => services.AddSecurityHeaders());
 			}
 
 			// Configure the mvc builder.

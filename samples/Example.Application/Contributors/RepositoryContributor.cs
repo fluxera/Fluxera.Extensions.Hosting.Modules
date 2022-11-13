@@ -1,9 +1,8 @@
 ﻿namespace Example.Application.Contributors
 {
-	using Example.Domain.ExampleAggregate.EventHandlers;
-	using Example.Domain.ExampleAggregate.Interceptors;
-	using Example.Domain.ExampleAggregate.Model;
-	using Example.Domain.ExampleAggregate.Validation;
+	using Example.Domain.Example;
+	using Example.Domain.Example.Validation;
+	using Example.Infrastructure.Example;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 
@@ -40,6 +39,12 @@
 		public void ConfigureCaching(ICachingBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.UseNoCaching();
+		}
+
+		/// <inheritdoc />
+		public void ConfigureContext<TContext>() where TContext : class
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }

@@ -27,10 +27,5 @@
 		///     The MongoDB repository provider.
 		/// </summary>
 		public const string MongoDB = "MongoDB";
-
-		///// <summary>
-		/////     The OData repository provider.
-		///// </summary>
-		//public const string OData = "OData";
 	}
 }

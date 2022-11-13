@@ -1,4 +1,4 @@
-﻿namespace Example.Domain.Shared.ExampleAggregate.Model
+﻿namespace Example.Domain.Shared.Example
 {
 	using JetBrains.Annotations;
 

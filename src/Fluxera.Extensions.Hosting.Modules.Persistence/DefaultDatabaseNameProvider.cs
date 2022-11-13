@@ -6,16 +6,16 @@
 	using Microsoft.Extensions.Options;
 
 	/// <summary>
-	///     A default database name provider adapter that gets the name from configuration.
+	///     A default database name provider that gets the name from configuration.
 	/// </summary>
 	[PublicAPI]
-	public class DefaultDatabaseNameProviderAdapter : IDatabaseNameProviderAdapter
+	public class DefaultDatabaseNameProvider : IDatabaseNameProvider
 	{
 		/// <summary>
-		///     Crates a new instance of the <see cref="DefaultDatabaseNameProviderAdapter" /> type.
+		///     Crates a new instance of the <see cref="DefaultDatabaseNameProvider" /> type.
 		/// </summary>
 		/// <param name="persistenceOptions"></param>
-		public DefaultDatabaseNameProviderAdapter(IOptions<PersistenceOptions> persistenceOptions)
+		public DefaultDatabaseNameProvider(IOptions<PersistenceOptions> persistenceOptions)
 		{
 			this.Options = persistenceOptions.Value;
 		}

@@ -7,22 +7,22 @@
 	[UsedImplicitly]
 	internal sealed class SequenceServiceFactory : ISequenceServiceFactory
 	{
-		private readonly IDatabaseNameProviderAdapter databaseNameProviderAdapter;
+		private readonly IDatabaseNameProvider databaseNameProvider;
 		private readonly PersistenceOptions options;
 
 		public SequenceServiceFactory(
 			IOptions<PersistenceOptions> options,
-			IDatabaseNameProviderAdapter databaseNameProviderAdapter)
+			IDatabaseNameProvider databaseNameProvider)
 		{
 			this.options = options.Value;
-			this.databaseNameProviderAdapter = databaseNameProviderAdapter;
+			this.databaseNameProvider = databaseNameProvider;
 		}
 
 		public ISequenceService CreateSequenceService(RepositoryName repositoryName)
 		{
 			RepositoryOptions configuration = this.options.Repositories[(string)repositoryName];
 			string connectionString = this.options.ConnectionStrings[configuration.ConnectionStringName];
-			string databaseName = this.databaseNameProviderAdapter.GetDatabaseName(repositoryName);
+			string databaseName = this.databaseNameProvider.GetDatabaseName(repositoryName);
 
 			ISequenceService sequenceService = new SequenceService(connectionString, databaseName);
 			return sequenceService;

@@ -1,8 +1,8 @@
-﻿namespace Example.Domain.ExampleAggregate.Repositories
+﻿namespace Example.Infrastructure.Example
 {
-	using Example.Domain.ExampleAggregate.Model;
-	using Example.Domain.Shared.ExampleAggregate.Model;
 	using Fluxera.Repository;
+	using global::Example.Domain.Example;
+	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 
 	/// <summary>

@@ -2,7 +2,7 @@
 {
 	using AutoMapper;
 	using Example.Application.Contracts.Dtos;
-	using Example.Domain.ExampleAggregate.Model;
+	using Example.Domain.Example;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]

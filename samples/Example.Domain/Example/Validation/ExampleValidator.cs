@@ -1,6 +1,5 @@
-﻿namespace Example.Domain.ExampleAggregate.Validation
+﻿namespace Example.Domain.Example.Validation
 {
-	using Example.Domain.ExampleAggregate.Model;
 	using FluentValidation;
 	using JetBrains.Annotations;
 

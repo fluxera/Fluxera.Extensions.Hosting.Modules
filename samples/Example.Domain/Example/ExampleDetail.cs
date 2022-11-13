@@ -1,4 +1,4 @@
-﻿namespace Example.Domain.ExampleAggregate.Model
+﻿namespace Example.Domain.Example
 {
 	using Fluxera.ValueObject;
 	using JetBrains.Annotations;

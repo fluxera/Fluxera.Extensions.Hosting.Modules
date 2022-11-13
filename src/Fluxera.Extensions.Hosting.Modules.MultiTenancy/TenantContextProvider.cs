@@ -33,6 +33,7 @@
 			ClaimsPrincipal claimsPrincipal = this.principalAccessor.User;
 			string tenantID = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantID);
 			string tenantName = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantName);
+			string tenantConnectionString = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantConnectionString);
 
 			if(string.IsNullOrWhiteSpace(tenantID))
 			{
@@ -40,7 +41,7 @@
 				return false;
 			}
 
-			tenantContext = new TenantContext(tenantID, tenantName);
+			tenantContext = new TenantContext(tenantID, tenantName, tenantConnectionString);
 			return true;
 		}
 	}

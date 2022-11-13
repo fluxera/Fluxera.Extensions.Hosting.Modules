@@ -1,11 +1,11 @@
-﻿namespace Example.Domain.ExampleAggregate.EventHandlers
+﻿namespace Example.Infrastructure.Example
 {
-	using Example.Domain.ExampleAggregate.Model;
-	using Example.Domain.Shared.ExampleAggregate.Messages.Events;
-	using Example.Domain.Shared.ExampleAggregate.Model;
 	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
+	using global::Example.Domain.Example;
+	using global::Example.Domain.Shared.Example;
+	using global::Example.Domain.Shared.Example.Events;
 	using JetBrains.Annotations;
 	using MassTransit;
 

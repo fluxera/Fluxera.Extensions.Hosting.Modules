@@ -19,6 +19,7 @@
 		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
 		<ProjectReference Include="..\Example.Application.Contracts\Example.Application.Contracts.csproj" />
 		<ProjectReference Include="..\Example.Domain\Example.Domain.csproj" />
+		<ProjectReference Include="..\Example.Infrastructure\Example.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

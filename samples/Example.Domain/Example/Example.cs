@@ -1,7 +1,7 @@
-﻿namespace Example.Domain.ExampleAggregate.Model
+﻿namespace Example.Domain.Example
 {
 	using Fluxera.Entity;
-	using global::Example.Domain.Shared.ExampleAggregate.Model;
+	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 
 	/// <summary>

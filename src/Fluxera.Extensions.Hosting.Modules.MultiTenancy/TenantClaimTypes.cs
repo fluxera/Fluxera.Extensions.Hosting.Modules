@@ -17,5 +17,10 @@
 		///     Default: "tenant-name".
 		/// </summary>
 		public static string TenantName { get; set; } = "tenant-name";
+
+		/// <summary>
+		///     Default: "tenant-connection-string".
+		/// </summary>
+		public static string TenantConnectionString { get; set; } = "tenant-connection-string";
 	}
 }

@@ -7,12 +7,13 @@
 	using Microsoft.Extensions.Options;
 
 	[UsedImplicitly]
-	internal sealed class TenantDatabaseNameProviderAdapter : DefaultDatabaseNameProviderAdapter
+	internal sealed class TenantDatabaseNameProvider : DefaultDatabaseNameProvider
 	{
 		private readonly MultiTenancyOptions multiTenancyOptions;
 		private readonly ITenantContextProvider tenantContextProvider;
 
-		public TenantDatabaseNameProviderAdapter(
+		/// <inheritdoc />
+		public TenantDatabaseNameProvider(
 			ITenantContextProvider tenantContextProvider,
 			IOptions<MultiTenancyOptions> multiTenancyOptions,
 			IOptions<PersistenceOptions> repositoryOptions) : base(repositoryOptions)
@@ -29,10 +30,10 @@
 
 			string databaseName;
 
-			if(tenantOptions.Enabled && (tenantOptions.Mode == MultiTenancyMode.DatabasePerTenant))
+			if(tenantOptions.Enabled && tenantOptions.Mode == MultiTenancyMode.DatabasePerTenant)
 			{
 				// A tenant is used to create the database name.
-				// All other data belonging to the merchant is stored in a separate database for each merchant.
+				// All other data belonging to the tenant is stored in a separate database for each tenant.
 				TenantContext tenantContext = this.tenantContextProvider.GetTenantContext();
 				string tenantID = tenantContext.TenantID;
 

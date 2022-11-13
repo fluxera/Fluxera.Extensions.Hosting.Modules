@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.MultiTenancy
 {
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -13,10 +14,12 @@
 		/// </summary>
 		/// <param name="tenantID"></param>
 		/// <param name="tenantName"></param>
-		public TenantContext(string tenantID, string tenantName)
+		/// <param name="tenantConnectionString"></param>
+		public TenantContext(string tenantID, string tenantName, string tenantConnectionString)
 		{
-			this.TenantID = tenantID;
+			this.TenantID = Guard.Against.NullOrWhiteSpace(tenantID);
 			this.TenantName = tenantName;
+			this.TenantConnectionString = tenantConnectionString;
 		}
 
 		/// <summary>
@@ -28,5 +31,10 @@
 		///     Gets the name of the tenant.
 		/// </summary>
 		public string TenantName { get; }
+
+		/// <summary>
+		///     Gets the connection string of the tenant.
+		/// </summary>
+		public string TenantConnectionString { get; }
 	}
 }

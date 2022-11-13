@@ -4,11 +4,10 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     A contract for a database name provider adapter
+	///     A contract for a database name provider.
 	/// </summary>
-	/// .
 	[PublicAPI]
-	public interface IDatabaseNameProviderAdapter
+	public interface IDatabaseNameProvider
 	{
 		/// <summary>
 		///     Gets the database name for the given repository name.

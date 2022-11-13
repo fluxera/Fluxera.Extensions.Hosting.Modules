@@ -15,6 +15,18 @@
 	public static class ServiceCollectionExtensions
 	{
 		/// <summary>
+		///     Add the repository contributor to the contributors for the default repository name.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
+		public static IServiceCollection AddRepositoryContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IRepositoryContributor, new()
+		{
+			return services.AddRepositoryContributor<TContributor>("Default");
+		}
+
+		/// <summary>
 		///     Add the repository contributor to the contributors for the given repository name.
 		/// </summary>
 		/// <typeparam name="TContributor"></typeparam>

@@ -1,4 +1,4 @@
-﻿namespace Example.Domain.Shared.ExampleAggregate.Messages.Events
+﻿namespace Example.Domain.Shared.Example.Events
 {
 	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Messages;
 	using JetBrains.Annotations;

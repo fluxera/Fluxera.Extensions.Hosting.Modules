@@ -3,7 +3,7 @@
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
 	using Example.Application.Contracts.Services;
-	using Example.Domain.Shared.ExampleAggregate.Model;
+	using Example.Domain.Shared.Example;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 

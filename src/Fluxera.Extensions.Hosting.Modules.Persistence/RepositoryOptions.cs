@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence
 {
-	using System.Collections.Generic;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -15,7 +14,6 @@
 		public RepositoryOptions()
 		{
 			this.ConnectionStringName = "Database";
-			this.Settings = new Dictionary<string, string>();
 		}
 
 		/// <summary>
@@ -39,8 +37,8 @@
 		public string ConnectionStringName { get; set; }
 
 		/// <summary>
-		///     Gets the repository provider specific settings.
+		///     Flag, indicating if the repository uses UoW. The default is <c>true</c>.
 		/// </summary>
-		public IDictionary<string, string> Settings { get; set; }
+		public bool EnableUnitOfWork { get; set; } = true;
 	}
 }

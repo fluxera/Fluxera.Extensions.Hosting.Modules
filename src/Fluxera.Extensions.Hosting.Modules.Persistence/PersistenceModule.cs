@@ -51,8 +51,13 @@
 			// Add database name provider.
 			context.Log("AddDatabaseNameProvider", services =>
 			{
-				services.TryAddTransient<IDatabaseNameProviderAdapter, DefaultDatabaseNameProviderAdapter>();
-				//services.ReplaceTransient<IDatabaseNameProvider, DatabaseNameProvider>();
+				services.TryAddTransient<IDatabaseNameProvider, DefaultDatabaseNameProvider>();
+			});
+
+			// Add database name provider.
+			context.Log("AddDatabaseConnectionStringProvider", services =>
+			{
+				services.TryAddTransient<IDatabaseConnectionStringProvider, DefaultDatabaseConnectionStringProvider>();
 			});
 
 			// Get the assembly contributors.
@@ -83,9 +88,6 @@
 							throw new InvalidOperationException("No repository provider specified.");
 						}
 
-						// Get the connection string for the repository.
-						string connectionString = persistenceOptions.ConnectionStrings[repositoryOptions.ConnectionStringName];
-
 						// Select a configured repository provider.
 						IRepositoryProviderContributor repositoryProviderContributor = contributorList.FirstOrDefault(x => x.RepositoryProviderName == repositoryOptions.ProviderName);
 						if(repositoryProviderContributor == null)
@@ -96,14 +98,18 @@
 						// Configure the used provider.
 						repositoryProviderContributor.AddRepository(builder, repositoryName, contextType, repositoryOptionsBuilder =>
 						{
+							// Enable/Disable the UoW feature.
+							if(repositoryOptions.EnableUnitOfWork)
+							{
+								repositoryOptionsBuilder.EnableUnitOfWork();
+							}
+
 							// Configure for what aggregate root types this repository uses.
 							foreach(IRepositoryContributor persistenceContributor in repositoryContributors)
 							{
 								IRepositoryAggregatesBuilder repositoryAggregatesBuilder = new RepositoryAggregatesBuilder(repositoryOptionsBuilder);
 								persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder, context);
 							}
-
-							repositoryProviderContributor.ConfigureRepository(repositoryOptionsBuilder, connectionString, repositoryOptions, context);
 
 							// Configure the domain event handlers.
 							repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>

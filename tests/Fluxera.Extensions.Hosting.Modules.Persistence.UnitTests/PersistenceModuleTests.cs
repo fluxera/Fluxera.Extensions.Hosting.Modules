@@ -23,13 +23,6 @@ namespace Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests
 		}
 
 		[Test]
-		public void ShouldAddDatabaseNameProvider()
-		{
-			IDatabaseNameProvider databaseNameProvider = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProvider>();
-			databaseNameProvider.Should().NotBeNull();
-		}
-
-		[Test]
 		public void ShouldAddDatabaseNameProviderAdapter()
 		{
 			IDatabaseNameProviderAdapter databaseNameProviderAdapter = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProviderAdapter>();
@@ -52,15 +45,6 @@ namespace Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests
 			repositoryOptions.Settings.Should().ContainKey("TestSetting");
 			repositoryOptions.Settings.Should().ContainValue("TestValue");
 			repositoryOptions.Settings["TestSetting"].Should().Be("TestValue");
-		}
-
-		[Test]
-		public void ShouldGetDatabaseNameFromProvider()
-		{
-			IDatabaseNameProvider databaseNameProvider = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProvider>();
-			string databaseName = databaseNameProvider.GetDatabaseName(typeof(Customer));
-			databaseName.Should().NotBeNullOrWhiteSpace();
-			databaseName.Should().Be("prefix-database");
 		}
 
 		[Test]

@@ -52,7 +52,7 @@
 			context.Log("AddDatabaseNameProvider", services =>
 			{
 				services.TryAddTransient<IDatabaseNameProviderAdapter, DefaultDatabaseNameProviderAdapter>();
-				services.ReplaceTransient<IDatabaseNameProvider, DatabaseNameProvider>();
+				//services.ReplaceTransient<IDatabaseNameProvider, DatabaseNameProvider>();
 			});
 
 			// Get the assembly contributors.
@@ -94,7 +94,7 @@
 						}
 
 						// Configure the used provider.
-						repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryOptionsBuilder =>
+						repositoryProviderContributor.AddRepository(builder, repositoryName, contextType, repositoryOptionsBuilder =>
 						{
 							// Configure for what aggregate root types this repository uses.
 							foreach(IRepositoryContributor persistenceContributor in repositoryContributors)

@@ -10,28 +10,14 @@
 	{
 		public string RepositoryProviderName => RepositoryProviderNames.MongoDB;
 
-		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
+		public Action<IRepositoryBuilder, string, Type, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
 		{
 			get
 			{
-				return (builder, repositoryName, optionsAction, context) =>
+				return (builder, repositoryName, contextType, optionsAction, context) =>
 				{
 					context.Log("AddMongoRepository",
-						_ => builder.AddMongoRepository(repositoryName, optionsAction));
-				};
-			}
-		}
-
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository
-		{
-			get
-			{
-				return (builder, connectionString, options, _) =>
-				{
-					builder
-						.AddSetting("Mongo.ConnectionString", connectionString)
-						.AddSetting("Mongo.UseSsl", connectionString.Contains("ssl=true"))
-						.AddSetting("Mongo.Database", options.DatabaseName);
+						_ => builder.AddMongoRepository(repositoryName, contextType, optionsAction));
 				};
 			}
 		}

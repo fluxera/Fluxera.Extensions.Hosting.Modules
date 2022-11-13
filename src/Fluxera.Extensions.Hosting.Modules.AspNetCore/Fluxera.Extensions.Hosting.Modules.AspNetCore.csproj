@@ -26,13 +26,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="6.1.6" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="6.2.2" />
-		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="6.2.2" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="6.1.8" />
-		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="6.1.4" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="6.1.6" />
-		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="6.1.9" />
+		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="7.0.2" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="7.0.1" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.0.1" />
+		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="7.0.2" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.0.1" />
+		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="7.0.1" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

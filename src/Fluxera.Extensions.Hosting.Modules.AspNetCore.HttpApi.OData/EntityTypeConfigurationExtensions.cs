@@ -23,11 +23,12 @@
 		/// <returns></returns>
 		public static EntityTypeConfiguration<TDto> HasID<TDto, TKey>(
 			this EntityTypeConfiguration<TDto> entityType,
-			Expression<Func<TDto, string>> keyDefinitionExpression)
+			Expression<Func<TDto, TKey>> keyDefinitionExpression)
 			where TDto : class, IEntityDto<TKey>
-			where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
+			where TKey : struct, IComparable<TKey>, IEquatable<TKey>
 		{
-			entityType.HasKey(keyDefinitionExpression)
+			entityType
+				.HasKey(keyDefinitionExpression)
 				.Property(keyDefinitionExpression)
 				.IsNullable()
 				.IsConcurrencyToken();
@@ -48,10 +49,12 @@
 			this EntityTypeConfiguration<TDto> entityType)
 			where TDto : class, IAuditedObject
 		{
-			entityType.Property(x => x.CreatedAt)
+			entityType
+				.Property(x => x.CreatedAt)
 				.IsConcurrencyToken();
 
-			entityType.Property(x => x.LastModifiedAt)
+			entityType
+				.Property(x => x.LastModifiedAt)
 				.IsConcurrencyToken();
 
 			return entityType;

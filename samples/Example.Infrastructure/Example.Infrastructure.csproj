@@ -17,4 +17,8 @@
 	  <ProjectReference Include="..\Example.Domain\Example.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Contributors\" />
+	</ItemGroup>
+
 </Project>

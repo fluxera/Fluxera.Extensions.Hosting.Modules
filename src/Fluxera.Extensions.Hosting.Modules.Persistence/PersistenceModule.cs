@@ -11,6 +11,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence.Contributors;
 	using Fluxera.Extensions.Validation.DataAnnotations;
 	using Fluxera.Extensions.Validation.FluentValidation;
+	using Fluxera.Guards;
 	using Fluxera.Repository;
 	using Fluxera.Repository.Caching;
 	using Fluxera.Utilities.Extensions;
@@ -36,13 +37,17 @@
 			// Add the tracer provider contributor.
 			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
 
-			// Initialize the assembly contributor list.
-			context.Log("AddObjectAccessor(RepositoryContributorDictionary)",
-				services => services.AddObjectAccessor(new RepositoryContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
-
 			// Initialize the repository provider contributor list.
 			context.Log("AddObjectAccessor(RepositoryProviderContributorList)",
 				services => services.AddObjectAccessor(new RepositoryProviderContributorList(), ObjectAccessorLifetime.ConfigureServices));
+
+			// Initialize the repository contributor list.
+			context.Log("AddObjectAccessor(RepositoryContributorDictionary)",
+				services => services.AddObjectAccessor(new RepositoryContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
+
+			// Initialize the repository context contributor list.
+			context.Log("AddObjectAccessor(RepositoryContextContributorList)",
+				services => services.AddObjectAccessor(new RepositoryContextContributorList(), ObjectAccessorLifetime.ConfigureServices));
 		}
 
 		/// <inheritdoc />
@@ -54,7 +59,7 @@
 				services.TryAddTransient<IDatabaseNameProvider, DefaultDatabaseNameProvider>();
 			});
 
-			// Add database name provider.
+			// Add database connection string provider.
 			context.Log("AddDatabaseConnectionStringProvider", services =>
 			{
 				services.TryAddTransient<IDatabaseConnectionStringProvider, DefaultDatabaseConnectionStringProvider>();
@@ -75,6 +80,9 @@
 			{
 				foreach((string repositoryName, RepositoryOptions repositoryOptions) in persistenceOptions.Repositories)
 				{
+					Type contextType = repositoryOptions.ContextType;
+					Guard.Against.Null(contextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
+
 					IList<IRepositoryContributor> repositoryContributors = contributorDictionary.GetOrDefault(repositoryName);
 					if(repositoryContributors == null)
 					{

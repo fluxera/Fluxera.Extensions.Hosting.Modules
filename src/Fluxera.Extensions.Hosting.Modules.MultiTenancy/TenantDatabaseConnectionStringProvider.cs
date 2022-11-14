@@ -24,7 +24,6 @@
 		/// <inheritdoc />
 		public override string GetConnectionString(RepositoryName repositoryName)
 		{
-			RepositoryOptions repositoryOptions = this.Options.Repositories[repositoryName.Name];
 			TenantOptions tenantOptions = this.multiTenancyOptions.Repositories[repositoryName.Name];
 
 			string connectionString;

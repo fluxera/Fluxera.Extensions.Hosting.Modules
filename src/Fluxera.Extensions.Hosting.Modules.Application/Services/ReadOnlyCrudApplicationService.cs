@@ -10,7 +10,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services;
 	using Fluxera.Repository;
-	using Fluxera.Utilities.Extensions;
 	using global::AutoMapper;
 	using global::AutoMapper.Extensions.ExpressionMapping;
 	using JetBrains.Annotations;

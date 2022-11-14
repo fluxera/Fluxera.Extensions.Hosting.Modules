@@ -40,11 +40,5 @@
 		{
 			builder.UseNoCaching();
 		}
-
-		/// <inheritdoc />
-		public void ConfigureContext<TContext>() where TContext : class
-		{
-			throw new System.NotImplementedException();
-		}
 	}
 }

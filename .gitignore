@@ -348,5 +348,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-/src/Fluxera.Extensions.Hosting.Modules.Persistence/RepositoryContextContributorList.cs
-/src/Fluxera.Extensions.Hosting.Modules.Persistence/IRepositoryContextContributor.cs

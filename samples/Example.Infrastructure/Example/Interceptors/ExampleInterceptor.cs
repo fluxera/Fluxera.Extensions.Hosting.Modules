@@ -1,4 +1,4 @@
-﻿namespace Example.Infrastructure.Example
+﻿namespace Example.Infrastructure.Example.Interceptors
 {
 	using Fluxera.Repository.Interception;
 	using global::Example.Domain.Example;

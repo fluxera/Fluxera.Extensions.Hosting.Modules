@@ -1,11 +1,14 @@
-﻿namespace Example.Application.Contributors
+﻿namespace Example.Infrastructure.Contributors
 {
-	using Example.Domain.Example;
-	using Example.Domain.Example.Validation;
-	using Example.Infrastructure.Example;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
+	using global::Example.Domain.Example;
+	using global::Example.Domain.Example.Validation;
+	using global::Example.Infrastructure.Example.Handlers;
+	using global::Example.Infrastructure.Example.Interceptors;
+	using JetBrains.Annotations;
 
+	[UsedImplicitly]
 	internal sealed class RepositoryContributor : IRepositoryContributor
 	{
 		/// <inheritdoc />

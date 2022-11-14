@@ -3,9 +3,11 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
 	using Fluxera.Repository.InMemory;
+	using JetBrains.Annotations;
 	using Microsoft.Extensions.Logging;
 
-	public class ExampleContext : InMemoryContext
+	[PublicAPI]
+	public sealed class ExampleContext : InMemoryContext
 	{
 		private readonly ILogger<ExampleContext> logger;
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;

@@ -1,4 +1,4 @@
-﻿namespace Example.Infrastructure.Example
+﻿namespace Example.Infrastructure.Example.Handlers
 {
 	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Extensions.Common;

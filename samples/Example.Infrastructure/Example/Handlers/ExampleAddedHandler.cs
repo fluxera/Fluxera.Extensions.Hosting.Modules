@@ -1,4 +1,4 @@
-﻿namespace Example.Infrastructure.Example
+﻿namespace Example.Infrastructure.Example.Handlers
 {
 	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Extensions.Common;
@@ -10,18 +10,18 @@
 	using MassTransit;
 
 	/// <summary>
-	///     An event handler for bridging the <see cref="ItemUpdated{TAggregateRoot,TKey}" /> domain event
-	///     to the <see cref="ExampleUpdated" /> messaging event message.
+	///     An event handler for bridging the <see cref="ItemAdded{TAggregateRoot,TKey}" /> domain event
+	///     to the <see cref="ExampleAdded" /> messaging event message.
 	/// </summary>
 	[UsedImplicitly]
-	public sealed class ExampleUpdatedHandler : ItemUpdatedEventHandlerBase<Example, ExampleId, ExampleUpdated>
+	public sealed class ExampleAddedHandler : ItemAddedEventHandlerBase<Example, ExampleId, ExampleAdded>
 	{
 		/// <summary>
-		///     Initializes a new instance of the <see cref="ExampleUpdatedHandler" /> class.
+		///     Initializes a new instance of the <see cref="ExampleAddedHandler" /> class.
 		/// </summary>
 		/// <param name="publishEndpoint">The publish endpoint.</param>
 		/// <param name="dateTimeOffsetProvider">The date time offset provider.</param>
-		public ExampleUpdatedHandler(
+		public ExampleAddedHandler(
 			IPublishEndpoint publishEndpoint,
 			IDateTimeOffsetProvider dateTimeOffsetProvider) : base(publishEndpoint, dateTimeOffsetProvider)
 		{

@@ -2,7 +2,7 @@
 {
 	using System.Collections.Generic;
 
-	internal sealed class RepositoryContextContributorList : List<IRepositoryContextContributor>
+	internal sealed class RepositoryContextContributorDictionary : Dictionary<string, IRepositoryContextContributor>
 	{
 	}
 }

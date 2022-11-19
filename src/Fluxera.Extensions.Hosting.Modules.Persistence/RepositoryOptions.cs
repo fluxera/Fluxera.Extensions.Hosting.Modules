@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence
 {
-	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -41,10 +40,5 @@
 		///     Flag, indicating if the repository uses UoW. The default is <c>true</c>.
 		/// </summary>
 		public bool EnableUnitOfWork { get; set; } = true;
-
-		/// <summary>
-		///     Gets or sets the repository context type to use for this repository.
-		/// </summary>
-		public Type ContextType { get; set; }
 	}
 }

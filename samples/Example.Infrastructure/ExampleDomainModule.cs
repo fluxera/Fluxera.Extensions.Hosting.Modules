@@ -29,6 +29,9 @@
 			// Add the repository contributor for the 'Default' repository.
 			context.Services.AddRepositoryContributor<RepositoryContributor>("Default");
 
+			// Add the repository context contributor for the 'Default' repository.
+			context.Services.AddRepositoryContextContributor<RepositoryContextContributor>("Default");
+
 			// Add repositories.
 			context.Log("AddRepositories", services =>
 				services.TryAddTransient<IExampleRepository, ExampleRepository>());

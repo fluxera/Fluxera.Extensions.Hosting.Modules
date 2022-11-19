@@ -46,8 +46,8 @@
 				services => services.AddObjectAccessor(new RepositoryContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
 
 			// Initialize the repository context contributor list.
-			context.Log("AddObjectAccessor(RepositoryContextContributorList)",
-				services => services.AddObjectAccessor(new RepositoryContextContributorList(), ObjectAccessorLifetime.ConfigureServices));
+			context.Log("AddObjectAccessor(RepositoryContextContributorDictionary)",
+				services => services.AddObjectAccessor(new RepositoryContextContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
 		}
 
 		/// <inheritdoc />
@@ -65,8 +65,11 @@
 				services.TryAddTransient<IDatabaseConnectionStringProvider, DefaultDatabaseConnectionStringProvider>();
 			});
 
-			// Get the assembly contributors.
+			// Get the repository contributors.
 			RepositoryContributorDictionary contributorDictionary = context.Services.GetObject<RepositoryContributorDictionary>();
+
+			// Get the repository context contributors.
+			RepositoryContextContributorDictionary contributorContextDictionary = context.Services.GetObject<RepositoryContextContributorDictionary>();
 
 			// Get the repository provider contributors.
 			RepositoryProviderContributorList contributorList = context.Services.GetObject<RepositoryProviderContributorList>();
@@ -80,7 +83,12 @@
 			{
 				foreach((string repositoryName, RepositoryOptions repositoryOptions) in persistenceOptions.Repositories)
 				{
-					Type contextType = repositoryOptions.ContextType;
+					Type contextType = null;
+					if(contributorContextDictionary.TryGetValue(repositoryName, out IRepositoryContextContributor repositoryContextContributor))
+					{
+						contextType = repositoryContextContributor.ConfigureRepositoryContext();
+					}
+
 					Guard.Against.Null(contextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
 
 					IList<IRepositoryContributor> repositoryContributors = contributorDictionary.GetOrDefault(repositoryName);

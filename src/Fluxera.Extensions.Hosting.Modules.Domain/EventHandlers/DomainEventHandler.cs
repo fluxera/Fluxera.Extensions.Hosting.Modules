@@ -7,7 +7,7 @@
 	///     A base class for the added, updated and removed domain events.
 	/// </summary>
 	/// <typeparam name="TDomainEvent"></typeparam>
-	public abstract class CommittedDomainEventHandler<TDomainEvent> : ICommittedDomainEventHandler<TDomainEvent>
+	public abstract class DomainEventHandler<TDomainEvent> : IDomainEventHandler<TDomainEvent>
 		where TDomainEvent : class, IDomainEvent
 	{
 		/// <inheritdoc />

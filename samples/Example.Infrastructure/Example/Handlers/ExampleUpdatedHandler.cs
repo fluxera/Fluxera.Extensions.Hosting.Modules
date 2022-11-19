@@ -1,20 +1,20 @@
 ﻿namespace Example.Infrastructure.Example.Handlers
 {
-	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
 	using global::Example.Domain.Example;
 	using global::Example.Domain.Shared.Example;
-	using global::Example.Domain.Shared.Example.Events;
 	using JetBrains.Annotations;
 	using MassTransit;
+	using ExampleUpdatedDomainEvent = global::Example.Domain.Example.Events.ExampleUpdated;
+	using ExampleUpdatedIntegrationEvent = global::Example.Domain.Shared.Example.Events.ExampleUpdated;
 
 	/// <summary>
-	///     An event handler for bridging the <see cref="ItemUpdated{TAggregateRoot,TKey}" /> domain event
-	///     to the <see cref="ExampleUpdated" /> messaging event message.
+	///     An event handler for bridging the <see cref="ExampleUpdatedDomainEvent" /> domain event
+	///     to the <see cref="ExampleUpdatedIntegrationEvent" /> integration event message.
 	/// </summary>
 	[UsedImplicitly]
-	public sealed class ExampleUpdatedHandler : ItemUpdatedEventHandlerBase<Example, ExampleId, ExampleUpdated>
+	public sealed class ExampleUpdatedHandler : ItemUpdatedEventHandlerBase<Example, ExampleId, ExampleUpdatedDomainEvent, ExampleUpdatedIntegrationEvent>
 	{
 		/// <summary>
 		///     Initializes a new instance of the <see cref="ExampleUpdatedHandler" /> class.

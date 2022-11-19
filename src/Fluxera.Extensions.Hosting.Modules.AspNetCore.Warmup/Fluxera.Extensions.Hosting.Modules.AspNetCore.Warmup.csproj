@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc" Version="6.2.1" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.2" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

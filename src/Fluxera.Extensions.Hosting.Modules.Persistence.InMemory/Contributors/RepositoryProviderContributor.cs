@@ -10,24 +10,14 @@
 	{
 		public string RepositoryProviderName => RepositoryProviderNames.InMemory;
 
-		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
+		public Action<IRepositoryBuilder, string, Type, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
 		{
 			get
 			{
-				return (builder, repositoryName, configureAction, context) =>
+				return (builder, repositoryName, contextType, configureAction, context) =>
 				{
 					context.Log("AddInMemoryRepository",
-						_ => builder.AddInMemoryRepository(repositoryName, configureAction));
-				};
-			}
-		}
-
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository
-		{
-			get
-			{
-				return (_, _, _, _) =>
-				{
+						_ => builder.AddInMemoryRepository(repositoryName, contextType, configureAction));
 				};
 			}
 		}

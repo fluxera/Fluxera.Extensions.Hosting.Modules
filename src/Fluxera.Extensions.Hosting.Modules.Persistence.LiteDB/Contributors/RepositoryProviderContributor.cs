@@ -10,25 +10,14 @@
 	{
 		public string RepositoryProviderName => RepositoryProviderNames.InMemory;
 
-		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
+		public Action<IRepositoryBuilder, string, Type, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
 		{
 			get
 			{
-				return (builder, repositoryName, optionsAction, context) =>
+				return (builder, repositoryName, contextType, optionsAction, context) =>
 				{
 					context.Log("AddLiteRepository",
-						_ => builder.AddLiteRepository(repositoryName, optionsAction));
-				};
-			}
-		}
-
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository
-		{
-			get
-			{
-				return (builder, connectionString, _, _) =>
-				{
-					builder.AddSetting("Lite.Database", connectionString);
+						_ => builder.AddLiteRepository(repositoryName, contextType, optionsAction));
 				};
 			}
 		}

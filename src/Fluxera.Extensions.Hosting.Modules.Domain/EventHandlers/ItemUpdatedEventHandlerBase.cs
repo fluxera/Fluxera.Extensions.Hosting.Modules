@@ -6,10 +6,10 @@
 	using System.Text.Json;
 	using System.Threading.Tasks;
 	using Fluxera.Entity;
-	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Messages;
 	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
+	using Fluxera.Repository.DomainEvents;
 	using JetBrains.Annotations;
 	using MassTransit;
 	using ObjectDelta;
@@ -19,11 +19,13 @@
 	/// </summary>
 	/// <typeparam name="TAggregateRoot"></typeparam>
 	/// <typeparam name="TKey"></typeparam>
+	/// <typeparam name="TDomainEvent"></typeparam>
 	/// <typeparam name="TEvent"></typeparam>
 	[PublicAPI]
-	public abstract class ItemUpdatedEventHandlerBase<TAggregateRoot, TKey, TEvent> : CommittedDomainEventHandler<ItemUpdated<TAggregateRoot, TKey>>
+	public abstract class ItemUpdatedEventHandlerBase<TAggregateRoot, TKey, TDomainEvent, TEvent> : DomainEventHandler<TDomainEvent>
 		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
 		where TKey : IComparable<TKey>, IEquatable<TKey>
+		where TDomainEvent : ItemUpdated<TAggregateRoot, TKey>
 		where TEvent : ItemUpdated, new()
 	{
 		private readonly IDateTimeOffsetProvider dateTimeOffsetProvider;
@@ -37,7 +39,7 @@
 		}
 
 		/// <inheritdoc />
-		public sealed override async Task HandleAsync(ItemUpdated<TAggregateRoot, TKey> domainEvent)
+		public sealed override async Task HandleAsync(TDomainEvent domainEvent)
 		{
 			// The event name must start with the entity name.
 			string eventName = typeof(TEvent).Name;

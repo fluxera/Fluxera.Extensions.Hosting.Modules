@@ -4,9 +4,8 @@
 	using AutoMapper;
 	using Example.Application.Contracts.Dtos;
 	using Example.Application.Contracts.Services;
-	using Example.Domain.ExampleAggregate.Model;
-	using Example.Domain.ExampleAggregate.Repositories;
-	using Example.Domain.Shared.ExampleAggregate.Model;
+	using Example.Domain.Example;
+	using Example.Domain.Shared.Example;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;
 

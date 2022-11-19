@@ -23,17 +23,10 @@ namespace Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests
 		}
 
 		[Test]
-		public void ShouldAddDatabaseNameProvider()
+		public void ShouldAddDatabaseNameProviderAdapter()
 		{
 			IDatabaseNameProvider databaseNameProvider = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProvider>();
 			databaseNameProvider.Should().NotBeNull();
-		}
-
-		[Test]
-		public void ShouldAddDatabaseNameProviderAdapter()
-		{
-			IDatabaseNameProviderAdapter databaseNameProviderAdapter = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProviderAdapter>();
-			databaseNameProviderAdapter.Should().NotBeNull();
 		}
 
 		[Test]
@@ -49,25 +42,13 @@ namespace Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests
 			repositoryOptions.DatabaseNamePrefix.Should().Be("prefix");
 			repositoryOptions.ConnectionStringName.Should().Be("Default");
 			options.Value.ConnectionStrings[repositoryOptions.ConnectionStringName].Should().Be("localhost");
-			repositoryOptions.Settings.Should().ContainKey("TestSetting");
-			repositoryOptions.Settings.Should().ContainValue("TestValue");
-			repositoryOptions.Settings["TestSetting"].Should().Be("TestValue");
-		}
-
-		[Test]
-		public void ShouldGetDatabaseNameFromProvider()
-		{
-			IDatabaseNameProvider databaseNameProvider = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProvider>();
-			string databaseName = databaseNameProvider.GetDatabaseName(typeof(Customer));
-			databaseName.Should().NotBeNullOrWhiteSpace();
-			databaseName.Should().Be("prefix-database");
 		}
 
 		[Test]
 		public void ShouldGetDatabaseNameFromProviderAdapter()
 		{
-			IDatabaseNameProviderAdapter databaseNameProviderAdapter = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProviderAdapter>();
-			string databaseName = databaseNameProviderAdapter.GetDatabaseName((RepositoryName)"Test");
+			IDatabaseNameProvider databaseNameProvider = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDatabaseNameProvider>();
+			string databaseName = databaseNameProvider.GetDatabaseName((RepositoryName)"Test");
 			databaseName.Should().NotBeNullOrWhiteSpace();
 			databaseName.Should().Be("prefix-database");
 		}

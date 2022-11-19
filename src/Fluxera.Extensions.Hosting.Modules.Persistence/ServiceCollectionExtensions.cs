@@ -15,6 +15,61 @@
 	public static class ServiceCollectionExtensions
 	{
 		/// <summary>
+		///     Add the repository context contributor to the contributors for the default repository name.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
+		public static IServiceCollection AddRepositoryContextContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IRepositoryContextContributor, new()
+		{
+			return services.AddRepositoryContextContributor<TContributor>("Default");
+		}
+
+		/// <summary>
+		///     Add the repository context contributor to the contributors for the given repository name.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <param name="repositoryName"></param>
+		/// <returns></returns>
+		public static IServiceCollection AddRepositoryContextContributor<TContributor>(this IServiceCollection services, string repositoryName)
+			where TContributor : class, IRepositoryContextContributor, new()
+		{
+			Guard.Against.Null(services);
+			Guard.Against.NullOrWhiteSpace(repositoryName);
+
+			RepositoryContextContributorDictionary contributorDict = services.GetObjectOrDefault<RepositoryContextContributorDictionary>();
+			if(contributorDict != null)
+			{
+				if(!contributorDict.ContainsKey(repositoryName))
+				{
+					TContributor contributor = new TContributor();
+					contributorDict.Add(repositoryName, contributor);
+				}
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger.LogContributorListNotAvailable(typeof(IRepositoryContextContributor));
+			}
+
+			return services;
+		}
+
+		/// <summary>
+		///     Add the repository contributor to the contributors for the default repository name.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
+		public static IServiceCollection AddRepositoryContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IRepositoryContributor, new()
+		{
+			return services.AddRepositoryContributor<TContributor>("Default");
+		}
+
+		/// <summary>
 		///     Add the repository contributor to the contributors for the given repository name.
 		/// </summary>
 		/// <typeparam name="TContributor"></typeparam>

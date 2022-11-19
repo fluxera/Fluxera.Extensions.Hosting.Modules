@@ -33,12 +33,16 @@
 				services => services.TryAddTransient<ITenantContextProvider, TenantContextProvider>());
 
 			// Add services for multiple, per-tenant databases.
-			context.Log("AddTenantDatabaseNameProviderAdapter",
-				services => services.ReplaceTransient<IDatabaseNameProviderAdapter, TenantDatabaseNameProviderAdapter>());
+			context.Log("AddTenantDatabaseNameProvider",
+				services => services.ReplaceTransient<IDatabaseNameProvider, TenantDatabaseNameProvider>());
+
+			// Add services for connection-string-based, multiple, per-tenant databases.
+			context.Log("AddTenantDatabaseNameProvider",
+				services => services.ReplaceTransient<IDatabaseConnectionStringProvider, TenantDatabaseConnectionStringProvider>());
 
 			// Add services for single, multi-tenant database.
 			// Note: This must be done using tenant interceptors.
-			// TODO: A check that looks for interceptors for multi-tenant aggregates?
+
 			context.Log("AddTenantCacheKeyProvider",
 				services => services.ReplaceTransient<ICacheKeyProvider, TenantCacheKeyProvider>());
 		}

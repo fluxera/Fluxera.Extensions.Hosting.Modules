@@ -11,6 +11,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence.Contributors;
 	using Fluxera.Extensions.Validation.DataAnnotations;
 	using Fluxera.Extensions.Validation.FluentValidation;
+	using Fluxera.Guards;
 	using Fluxera.Repository;
 	using Fluxera.Repository.Caching;
 	using Fluxera.Utilities.Extensions;
@@ -36,13 +37,17 @@
 			// Add the tracer provider contributor.
 			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
 
-			// Initialize the assembly contributor list.
-			context.Log("AddObjectAccessor(RepositoryContributorDictionary)",
-				services => services.AddObjectAccessor(new RepositoryContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
-
 			// Initialize the repository provider contributor list.
 			context.Log("AddObjectAccessor(RepositoryProviderContributorList)",
 				services => services.AddObjectAccessor(new RepositoryProviderContributorList(), ObjectAccessorLifetime.ConfigureServices));
+
+			// Initialize the repository contributor list.
+			context.Log("AddObjectAccessor(RepositoryContributorDictionary)",
+				services => services.AddObjectAccessor(new RepositoryContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
+
+			// Initialize the repository context contributor list.
+			context.Log("AddObjectAccessor(RepositoryContextContributorDictionary)",
+				services => services.AddObjectAccessor(new RepositoryContextContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
 		}
 
 		/// <inheritdoc />
@@ -51,12 +56,20 @@
 			// Add database name provider.
 			context.Log("AddDatabaseNameProvider", services =>
 			{
-				services.TryAddTransient<IDatabaseNameProviderAdapter, DefaultDatabaseNameProviderAdapter>();
-				services.ReplaceTransient<IDatabaseNameProvider, DatabaseNameProvider>();
+				services.TryAddTransient<IDatabaseNameProvider, DefaultDatabaseNameProvider>();
 			});
 
-			// Get the assembly contributors.
+			// Add database connection string provider.
+			context.Log("AddDatabaseConnectionStringProvider", services =>
+			{
+				services.TryAddTransient<IDatabaseConnectionStringProvider, DefaultDatabaseConnectionStringProvider>();
+			});
+
+			// Get the repository contributors.
 			RepositoryContributorDictionary contributorDictionary = context.Services.GetObject<RepositoryContributorDictionary>();
+
+			// Get the repository context contributors.
+			RepositoryContextContributorDictionary contributorContextDictionary = context.Services.GetObject<RepositoryContextContributorDictionary>();
 
 			// Get the repository provider contributors.
 			RepositoryProviderContributorList contributorList = context.Services.GetObject<RepositoryProviderContributorList>();
@@ -70,6 +83,14 @@
 			{
 				foreach((string repositoryName, RepositoryOptions repositoryOptions) in persistenceOptions.Repositories)
 				{
+					Type contextType = null;
+					if(contributorContextDictionary.TryGetValue(repositoryName, out IRepositoryContextContributor repositoryContextContributor))
+					{
+						contextType = repositoryContextContributor.ConfigureRepositoryContext();
+					}
+
+					Guard.Against.Null(contextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
+
 					IList<IRepositoryContributor> repositoryContributors = contributorDictionary.GetOrDefault(repositoryName);
 					if(repositoryContributors == null)
 					{
@@ -83,9 +104,6 @@
 							throw new InvalidOperationException("No repository provider specified.");
 						}
 
-						// Get the connection string for the repository.
-						string connectionString = persistenceOptions.ConnectionStrings[repositoryOptions.ConnectionStringName];
-
 						// Select a configured repository provider.
 						IRepositoryProviderContributor repositoryProviderContributor = contributorList.FirstOrDefault(x => x.RepositoryProviderName == repositoryOptions.ProviderName);
 						if(repositoryProviderContributor == null)
@@ -94,16 +112,20 @@
 						}
 
 						// Configure the used provider.
-						repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryOptionsBuilder =>
+						repositoryProviderContributor.AddRepository(builder, repositoryName, contextType, repositoryOptionsBuilder =>
 						{
+							// Enable/Disable the UoW feature.
+							if(repositoryOptions.EnableUnitOfWork)
+							{
+								repositoryOptionsBuilder.EnableUnitOfWork();
+							}
+
 							// Configure for what aggregate root types this repository uses.
 							foreach(IRepositoryContributor persistenceContributor in repositoryContributors)
 							{
 								IRepositoryAggregatesBuilder repositoryAggregatesBuilder = new RepositoryAggregatesBuilder(repositoryOptionsBuilder);
 								persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder, context);
 							}
-
-							repositoryProviderContributor.ConfigureRepository(repositoryOptionsBuilder, connectionString, repositoryOptions, context);
 
 							// Configure the domain event handlers.
 							repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>

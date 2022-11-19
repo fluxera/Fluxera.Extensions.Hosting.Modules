@@ -3,7 +3,6 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using Fluxera.Extensions.DependencyInjection;
-	using global::AspNetCore.SecurityHeaders;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Http;
@@ -22,17 +21,6 @@
 		{
 			WebApplication app = context.GetApplicationBuilder();
 			context.Log("UseHsts", _ => app.UseHsts());
-
-			return context;
-		}
-
-		/// <summary>
-		///     Adds middleware for writing security response headers.
-		/// </summary>
-		public static IApplicationInitializationContext UseSecurityHeaders(this IApplicationInitializationContext context)
-		{
-			WebApplication app = context.GetApplicationBuilder();
-			context.Log("UseSecurityHeaders", _ => app.UseSecurityHeaders());
 
 			return context;
 		}

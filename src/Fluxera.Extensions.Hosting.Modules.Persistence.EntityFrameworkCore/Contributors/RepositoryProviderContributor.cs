@@ -10,27 +10,14 @@
 	{
 		public string RepositoryProviderName => RepositoryProviderNames.EntityFrameworkCore;
 
-		public Action<IRepositoryBuilder, string, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
+		public Action<IRepositoryBuilder, string, Type, Action<IRepositoryOptionsBuilder>, IServiceConfigurationContext> AddRepository
 		{
 			get
 			{
-				return (builder, repositoryName, optionsAction, context) =>
+				return (builder, repositoryName, contextType, optionsAction, context) =>
 				{
 					context.Log("AddEntityFrameworkRepository",
-						_ => builder.AddEntityFrameworkRepository(repositoryName, optionsAction));
-				};
-			}
-		}
-
-		public Action<IRepositoryOptionsBuilder, string, RepositoryOptions, IServiceConfigurationContext> ConfigureRepository
-		{
-			get
-			{
-				return (builder, connectionString, _, _) =>
-				{
-					builder
-						//.AddSetting("EntityFrameworkCore.DbContext", connectionString)
-						.AddSetting("EntityFrameworkCore.ConnectionString", connectionString);
+						_ => builder.AddEntityFrameworkRepository(repositoryName, contextType, optionsAction));
 				};
 			}
 		}

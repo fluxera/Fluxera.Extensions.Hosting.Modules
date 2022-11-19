@@ -1,6 +1,6 @@
 ﻿namespace Example.Application.Contracts.Dtos
 {
-	using Example.Domain.Shared.ExampleAggregate.Model;
+	using Example.Domain.Shared.Example;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
 
@@ -28,6 +28,6 @@
 		/// <summary>
 		///     Gets or sets the text of the example detail.
 		/// </summary>
-		public string DetailText { get; set; }
+		public string DetailText { get; }
 	}
 }

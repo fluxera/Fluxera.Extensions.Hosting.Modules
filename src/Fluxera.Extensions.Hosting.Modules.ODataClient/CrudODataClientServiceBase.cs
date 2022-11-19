@@ -39,7 +39,7 @@
 		{
 			Guard.Against.Null(item);
 
-			if(!ODataClientServiceExtensions.IsTransient(item))
+			if(!item.IsTransient())
 			{
 				throw Errors.CanNotAddExistingItem();
 			}
@@ -65,7 +65,7 @@
 			items = Guard.Against.Null(items);
 
 			IList<T> instanceList = items.ToList();
-			if(instanceList.Any(x => !ODataClientServiceExtensions.IsTransient(x)))
+			if(instanceList.Any(x => !x.IsTransient()))
 			{
 				throw Errors.CanNotAddExistingItem();
 			}
@@ -82,11 +82,8 @@
 						.InsertEntryAsync(cancellationToken)
 						.ConfigureAwait(false);
 
-					if(result != null)
-					{
-						dto.ID = result.ID;
-						this.TransferAuditValues(result, dto);
-					}
+					dto.ID = result.ID;
+					this.TransferAuditValues(result, dto);
 				};
 			}
 
@@ -104,7 +101,7 @@
 			// ReSharper disable SuspiciousTypeConversion.Global
 			Guard.Against.Null(item);
 
-			if(ODataClientServiceExtensions.IsTransient(item))
+			if(item.IsTransient())
 			{
 				throw Errors.CanNotUpdateTransientItem();
 			}
@@ -138,7 +135,7 @@
 			items = Guard.Against.Null(items);
 
 			IList<T> instanceList = items.ToList();
-			if(instanceList.Any(x => ODataClientServiceExtensions.IsTransient(x)))
+			if(instanceList.Any(x => x.IsTransient()))
 			{
 				throw Errors.CanNotUpdateTransientItem();
 			}
@@ -180,7 +177,7 @@
 		{
 			Guard.Against.Null(item);
 
-			if(ODataClientServiceExtensions.IsTransient(item))
+			if(item.IsTransient())
 			{
 				throw Errors.CanNotDeleteTransientItem();
 			}
@@ -221,7 +218,7 @@
 			items = Guard.Against.Null(items);
 
 			IList<T> instanceList = items.ToList();
-			if(instanceList.Any(x => ODataClientServiceExtensions.IsTransient(x)))
+			if(instanceList.Any(x => x.IsTransient()))
 			{
 				throw Errors.CanNotDeleteTransientItem();
 			}

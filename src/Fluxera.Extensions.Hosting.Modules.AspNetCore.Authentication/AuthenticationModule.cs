@@ -25,9 +25,9 @@
 
 				return services.AddAuthentication(options =>
 				{
-					options.DefaultScheme = authenticationOptions.DefaultScheme;
-					options.DefaultAuthenticateScheme = authenticationOptions.DefaultScheme;
-					options.DefaultChallengeScheme = authenticationOptions.DefaultScheme;
+					options.DefaultScheme = authenticationOptions?.DefaultScheme;
+					options.DefaultAuthenticateScheme = authenticationOptions?.DefaultScheme;
+					options.DefaultChallengeScheme = authenticationOptions?.DefaultScheme;
 				});
 			});
 

@@ -4,6 +4,7 @@
 	using Example.Application.Contributors;
 	using Example.Application.Services;
 	using Example.Domain;
+	using Example.Infrastructure;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Application;
@@ -16,6 +17,7 @@
 
 	[PublicAPI]
 	[DependsOn(typeof(ExampleDomainModule))]
+	[DependsOn(typeof(ExampleInfrastructureModule))]
 	[DependsOn(typeof(AutoMapperModule))]
 	[DependsOn(typeof(PersistenceModule))]
 	[DependsOn(typeof(ApplicationModule))]
@@ -25,9 +27,6 @@
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
-			// Add the repository contributor for the 'Default' repository.
-			context.Services.AddRepositoryContributor<RepositoryContributor>("Default");
-
 			// Add the consumers contributor.
 			context.Services.AddConsumersContributor<ConsumersContributor>();
 

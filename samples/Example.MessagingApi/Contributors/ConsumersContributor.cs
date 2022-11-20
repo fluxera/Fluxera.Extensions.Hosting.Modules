@@ -1,6 +1,6 @@
-﻿namespace Example.Application.Contributors
+﻿namespace Example.MessagingApi.Contributors
 {
-	using Example.Application.Consumers;
+	using Example.MessagingApi.Consumers;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using JetBrains.Annotations;

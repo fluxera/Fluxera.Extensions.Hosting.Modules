@@ -3,6 +3,7 @@
 	using System.Net;
 	using Example.Application;
 	using Example.HttpApi;
+	using Example.MessagingApi;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
@@ -17,6 +18,7 @@
 	[PublicAPI]
 	[DependsOn(typeof(WarmupModule))]
 	[DependsOn(typeof(ExampleHttpApiModule))]
+	[DependsOn(typeof(ExampleMessagingApiModule))]
 	[DependsOn(typeof(ExampleApplicationModule))]
 	public sealed class ExampleServiceModule : ConfigureApplicationModule
 	{

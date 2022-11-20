@@ -3,7 +3,7 @@
 	using System;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Utilities.Extensions;
-	using global::AspNetCore.Authentication.ApiKey;
+	using MadEyeMatt.AspNetCore.Authentication.ApiKey;
 	using Microsoft.AspNetCore.Authentication;
 	using Microsoft.Extensions.DependencyInjection;
 

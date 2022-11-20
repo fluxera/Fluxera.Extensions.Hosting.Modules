@@ -3,8 +3,8 @@
 	using System;
 	using System.Linq;
 	using Asp.Versioning.ApiExplorer;
-	using global::AspNetCore.ProblemDetails;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;

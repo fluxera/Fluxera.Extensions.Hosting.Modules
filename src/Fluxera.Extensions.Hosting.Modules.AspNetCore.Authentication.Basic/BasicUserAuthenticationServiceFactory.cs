@@ -1,8 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.Basic
 {
 	using System;
-	using global::AspNetCore.Authentication.Basic;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.Authentication.Basic;
 
 	[UsedImplicitly]
 	internal sealed class BasicUserAuthenticationServiceFactory : IBasicUserAuthenticationServiceFactory

@@ -4,8 +4,8 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using global::AspNetCore.ProblemDetails;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>

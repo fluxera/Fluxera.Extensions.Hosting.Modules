@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi
 {
-	using global::AspNetCore.ProblemDetails;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.ProblemDetails;
 
 	/// <summary>
 	///     A contract for contributors that configure the problem details middleware.

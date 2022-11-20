@@ -1,7 +1,6 @@
 ﻿namespace ExampleService
 {
 	using System.Net;
-	using AspNetCore.ProblemDetails;
 	using Example.Application;
 	using Example.HttpApi;
 	using Fluxera.Extensions.Hosting;
@@ -11,6 +10,7 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
 	using Fluxera.Extensions.Validation;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 

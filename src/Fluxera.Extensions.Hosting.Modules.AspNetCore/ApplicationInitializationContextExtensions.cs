@@ -62,6 +62,7 @@
 			WebApplication app = context.GetApplicationBuilder();
 			context.Log("UseEndpoints", _ =>
 			{
+#pragma warning disable ASP0014 // Suggest using top level route registrations
 				app.UseEndpoints(builder =>
 				{
 					RouteEndpointContributorList contributorList = context.ServiceProvider.GetObjectOrDefault<RouteEndpointContributorList>();
@@ -77,6 +78,7 @@
 						}
 					}
 				});
+#pragma warning restore ASP0014 // Suggest using top level route registrations
 			});
 
 			return context;

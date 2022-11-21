@@ -5,6 +5,7 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{75AC41E9-2B8B-4D76-A7DF-A18F4FB9D6D6}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		GitVersion.yml = GitVersion.yml
@@ -183,7 +184,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanArchitecture", "{E4277AC4-1F6B-499F-A2CF-FA689A281344}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.MessagingApi", "samples\Example.MessagingApi\Example.MessagingApi.csproj", "{28B145B3-347B-4FBB-9DF5-AA4A81F2BFBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.MessagingApi", "samples\Example.MessagingApi\Example.MessagingApi.csproj", "{28B145B3-347B-4FBB-9DF5-AA4A81F2BFBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

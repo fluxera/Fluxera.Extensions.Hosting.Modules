@@ -28,7 +28,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Caching.Redis.UnitTests
 		{
 			IDistributedCache distributedCache = this.ApplicationLoader.ServiceProvider.GetRequiredService<IDistributedCache>();
 			distributedCache.Should().NotBeNull();
-			distributedCache.Should().BeOfType<RedisCache>();
+			distributedCache.Should().BeAssignableTo<RedisCache>();
 		}
 
 		[Test]

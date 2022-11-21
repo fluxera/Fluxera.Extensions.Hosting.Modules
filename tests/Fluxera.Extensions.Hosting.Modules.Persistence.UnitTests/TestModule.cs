@@ -9,6 +9,8 @@ namespace Fluxera.Extensions.Hosting.Modules.Persistence.UnitTests
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			context.Services.AddRepositoryContributor<RepositoryContributor>("Test");
+
+			context.Services.AddRepositoryContextContributor<RepositoryContextContributor>("Test");
 		}
 	}
 }

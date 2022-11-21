@@ -2,7 +2,7 @@
 {
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
-	using Example.Application.Contracts.Services;
+	using Example.Application.Contracts.Requests;
 	using Example.Domain.Shared.Example;
 	using MediatR;
 	using Microsoft.AspNetCore.Authorization;
@@ -13,7 +13,6 @@
 	[Route("examples")]
 	public class ExamplesController : ControllerBase
 	{
-		// https://github.com/jbogard/MediatR/wiki
 		private readonly ISender sender;
 
 		public ExamplesController(ISender sender)

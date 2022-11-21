@@ -1,4 +1,4 @@
-﻿namespace Example.Application.Contracts.Services
+﻿namespace Example.Application.Contracts.Requests
 {
 	using Example.Application.Contracts.Dtos;
 	using JetBrains.Annotations;

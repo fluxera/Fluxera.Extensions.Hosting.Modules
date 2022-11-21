@@ -1,10 +1,10 @@
-﻿namespace Example.Application.Services
+﻿namespace Example.Application.Handlers
 {
 	using System.Threading;
 	using System.Threading.Tasks;
 	using AutoMapper;
 	using Example.Application.Contracts.Dtos;
-	using Example.Application.Contracts.Services;
+	using Example.Application.Contracts.Requests;
 	using Example.Domain.Example;
 	using Example.Domain.Shared.Example;
 	using Fluxera.Repository;

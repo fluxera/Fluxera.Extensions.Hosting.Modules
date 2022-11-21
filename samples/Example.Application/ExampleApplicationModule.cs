@@ -31,6 +31,9 @@
 		{
 			// Add the application services.
 			context.Services.TryAddTransient<IExampleApplicationService, ExampleApplicationService>();
+
+			// Add the MediatR services.
+			context.Services.AddMediatR();
 		}
 	}
 }

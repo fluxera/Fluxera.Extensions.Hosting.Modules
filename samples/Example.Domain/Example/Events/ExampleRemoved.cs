@@ -5,8 +5,7 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	public sealed class
-		ExampleRemoved : ItemRemoved<Example, ExampleId>
+	public sealed class ExampleRemoved : ItemRemoved<Example, ExampleId>
 	{
 		/// <inheritdoc />
 		public ExampleRemoved(ExampleId id, Example item)

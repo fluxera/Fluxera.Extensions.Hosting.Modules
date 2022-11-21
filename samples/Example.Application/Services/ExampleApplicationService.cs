@@ -1,43 +1,33 @@
 ﻿namespace Example.Application.Services
 {
 	using System.Threading.Tasks;
-	using AutoMapper;
 	using Example.Application.Contracts.Dtos;
 	using Example.Application.Contracts.Services;
-	using Example.Domain.Example;
 	using Example.Domain.Shared.Example;
-	using Fluxera.Repository;
 	using JetBrains.Annotations;
+	using MediatR;
 
 	[UsedImplicitly]
 	internal sealed class ExampleApplicationService : IExampleApplicationService
 	{
-		private readonly IMapper mapper;
-		private readonly IRepository<Example, ExampleId> repository;
+		// https://github.com/jbogard/MediatR/wiki
+		private readonly ISender sender;
 
-		public ExampleApplicationService(IExampleRepository repository, IMapper mapper)
+		public ExampleApplicationService(ISender sender)
 		{
-			this.repository = repository;
-			this.mapper = mapper;
+			this.sender = sender;
 		}
 
 		/// <inheritdoc />
-		public async Task<ExampleDto> GetExampleAsync(ExampleId id)
+		public Task<ExampleDto> GetExampleAsync(ExampleId id)
 		{
-			Example entity = await this.repository.FindOneAsync(x => x.ID == id);
-			ExampleDto dto = this.mapper.Map<ExampleDto>(entity);
-
-			return dto;
+			return this.sender.Send(new GetExampleRequest(id));
 		}
 
 		/// <inheritdoc />
-		public async Task<ExampleDto> AddExample(ExampleDto item)
+		public Task<ExampleDto> AddExample(ExampleDto item)
 		{
-			Example entity = this.mapper.Map<Example>(item);
-			await this.repository.AddAsync(entity);
-			ExampleDto dto = this.mapper.Map<ExampleDto>(entity);
-
-			return dto;
+			return this.sender.Send(new AddExampleRequest());
 		}
 	}
 }

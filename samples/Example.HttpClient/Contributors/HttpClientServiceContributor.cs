@@ -1,6 +1,5 @@
 ﻿namespace Example.HttpClient.Contributors
 {
-	using Example.Application.Contracts.Services;
 	using Example.HttpClient.Services;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient;
@@ -12,10 +11,10 @@
 		/// <inheritdoc />
 		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
-			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<IExampleApplicationService, ExampleApplicationServiceClient>(
+			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<IExampleHttpClient, ExampleHttpClient>(
 				(ctx, _) =>
 				{
-					ExampleApplicationServiceClient client = new ExampleApplicationServiceClient(ctx.Name, ctx.HttpClient, ctx.Options);
+					ExampleHttpClient client = new ExampleHttpClient(ctx.Name, ctx.HttpClient, ctx.Options);
 					return client;
 				});
 

@@ -3,28 +3,25 @@
 	using System.Net.Http;
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
-	using Example.Application.Contracts.Services;
 	using Example.Domain.Shared.Example;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class ExampleApplicationServiceClient : HttpClientServiceBase, IExampleApplicationService
+	internal sealed class ExampleHttpClient : HttpClientServiceBase, IExampleHttpClient
 	{
 		/// <inheritdoc />
-		public ExampleApplicationServiceClient(string name, HttpClient httpClient, RemoteService options)
+		public ExampleHttpClient(string name, HttpClient httpClient, RemoteService options)
 			: base(name, httpClient, options)
 		{
 		}
 
-		/// <inheritdoc />
 		public async Task<ExampleDto> GetExampleAsync(ExampleId id)
 		{
 			HttpResponseMessage response = await this.HttpClient.GetAsync($"/examples/{id}");
 			return await response.Content.ReadAsAsync<ExampleDto>();
 		}
 
-		/// <inheritdoc />
 		public async Task<ExampleDto> AddExample(ExampleDto item)
 		{
 			HttpContent content = await item.AsJsonContentAsync();

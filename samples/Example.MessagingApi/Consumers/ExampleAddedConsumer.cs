@@ -1,5 +1,6 @@
-﻿namespace Example.Application.Consumers
+﻿namespace Example.MessagingApi.Consumers
 {
+	using System;
 	using System.Threading.Tasks;
 	using Example.Domain.Shared.Example.Events;
 	using JetBrains.Annotations;
@@ -14,6 +15,8 @@
 		/// <inheritdoc />
 		public Task Consume(ConsumeContext<ExampleAdded> context)
 		{
+			Console.WriteLine("CONSUMED EXAMPLE ADDED");
+
 			return Task.CompletedTask;
 		}
 	}

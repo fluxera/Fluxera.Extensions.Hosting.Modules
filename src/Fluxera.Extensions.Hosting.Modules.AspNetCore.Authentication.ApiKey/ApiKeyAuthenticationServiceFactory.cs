@@ -1,8 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey
 {
 	using System;
-	using global::AspNetCore.Authentication.ApiKey;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.Authentication.ApiKey;
 
 	[UsedImplicitly]
 	internal sealed class ApiKeyAuthenticationServiceFactory : IApiKeyAuthenticationServiceFactory

@@ -1,6 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Contributors
 {
-	using global::AspNetCore.ProblemDetails;
+	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.Extensions.DependencyInjection;
 
 	internal sealed class MvcBuilderContributor : IMvcBuilderContributor

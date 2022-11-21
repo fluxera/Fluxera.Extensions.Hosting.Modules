@@ -14,8 +14,13 @@
 		Easy,
 
 		/// <summary>
-		///     The example is difficult to follow.
+		///     The example is medium to follow.
 		/// </summary>
-		Difficult
+		Medium,
+
+		/// <summary>
+		///     The example is hard to follow.
+		/// </summary>
+		Hard
 	}
 }

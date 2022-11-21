@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.Permissions
 {
-	using global::AspNetCore.Authorization.Permissions;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.Authorization.Permissions;
 
 	/// <summary>
 	///     A module that enabled permission-based authorization.

@@ -18,10 +18,13 @@
 		private readonly IRepository<Example, ExampleId> repository;
 		private readonly IUnitOfWork unitOfWork;
 
-		public AddExampleRequestHandler(IExampleRepository repository, IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper)
+		public AddExampleRequestHandler(
+			IExampleRepository repository,
+			IUnitOfWorkFactory unitOfWorkFactory,
+			IMapper mapper)
 		{
 			this.repository = repository;
-			this.unitOfWork = unitOfWorkFactory.CreateUnitOfWork("Default");
+			this.unitOfWork = unitOfWorkFactory.CreateUnitOfWork(repository.RepositoryName);
 			this.mapper = mapper;
 		}
 

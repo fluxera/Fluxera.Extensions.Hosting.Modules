@@ -4,6 +4,7 @@
 	using System.Threading.Tasks;
 	using AutoMapper;
 	using Example.Application.Contracts.Dtos;
+	using Example.Application.Contracts.Services;
 	using Example.Domain.Example;
 	using Example.Domain.Shared.Example;
 	using Fluxera.Repository;
@@ -15,21 +16,24 @@
 	{
 		private readonly IMapper mapper;
 		private readonly IRepository<Example, ExampleId> repository;
+		private readonly IUnitOfWork unitOfWork;
 
-		public AddExampleRequestHandler(IExampleRepository repository, IMapper mapper)
+		public AddExampleRequestHandler(IExampleRepository repository, IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper)
 		{
 			this.repository = repository;
+			this.unitOfWork = unitOfWorkFactory.CreateUnitOfWork("Default");
 			this.mapper = mapper;
 		}
 
 		/// <inheritdoc />
 		public async Task<ExampleDto> Handle(AddExampleRequest request, CancellationToken cancellationToken)
 		{
-			Example entity = this.mapper.Map<Example>(request);
-			await this.repository.AddAsync(entity, cancellationToken);
-			ExampleDto dto = this.mapper.Map<ExampleDto>(entity);
+			Example example = this.mapper.Map<Example>(request.ExampleDto);
+			await this.repository.AddAsync(example, cancellationToken);
+			await this.unitOfWork.SaveChangesAsync(cancellationToken);
+			ExampleDto exampleDto = this.mapper.Map<ExampleDto>(example);
 
-			return dto;
+			return exampleDto;
 		}
 	}
 }

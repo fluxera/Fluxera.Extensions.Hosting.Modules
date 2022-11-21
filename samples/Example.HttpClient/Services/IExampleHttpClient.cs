@@ -1,15 +1,13 @@
-﻿namespace Example.Application.Contracts.Services
+﻿namespace Example.HttpClient.Services
 {
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
 	using Example.Domain.Shared.Example;
+	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 
-	/// <summary>
-	///     A contract for application service implementations for client and service side.
-	/// </summary>
 	[PublicAPI]
-	public interface IExampleApplicationService
+	public interface IExampleHttpClient : IHttpClientService
 	{
 		Task<ExampleDto> GetExampleAsync(ExampleId id);
 

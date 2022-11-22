@@ -2,11 +2,12 @@
 {
 	using Example.Application.Contracts.Dtos;
 	using Example.Domain.Shared.Example;
+	using FluentResults;
 	using JetBrains.Annotations;
 	using MediatR;
 
 	[PublicAPI]
-	public sealed class GetExampleRequest : IRequest<ExampleDto>
+	public sealed class GetExampleRequest : IRequest<Result<ExampleDto>>
 	{
 		public GetExampleRequest(ExampleId exampleId)
 		{

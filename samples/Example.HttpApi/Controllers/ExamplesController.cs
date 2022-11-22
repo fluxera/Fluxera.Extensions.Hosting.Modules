@@ -1,9 +1,11 @@
 ﻿namespace Example.HttpApi.Controllers
 {
+	using System.Net;
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
 	using Example.Application.Contracts.Requests;
 	using Example.Domain.Shared.Example;
+	using FluentResults;
 	using MediatR;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
@@ -23,9 +25,14 @@
 		[HttpGet("{id:required}")]
 		public async Task<IActionResult> GetByID(ExampleId id)
 		{
-			ExampleDto result = await this.sender.Send(new GetExampleRequest(id));
+			Result<ExampleDto> result = await this.sender.Send(new GetExampleRequest(id));
 
-			if(result is null)
+			if(result.IsFailed)
+			{
+				return this.StatusCode((int)HttpStatusCode.InternalServerError, result.Errors);
+			}
+
+			if(result.Value is null)
 			{
 				return this.NotFound(id);
 			}
@@ -41,9 +48,14 @@
 				return this.BadRequest(this.ModelState);
 			}
 
-			ExampleDto result = await this.sender.Send(new AddExampleRequest(dto));
+			Result<ExampleDto> result = await this.sender.Send(new AddExampleRequest(dto));
 
-			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.ID }, result);
+			if(result.IsFailed)
+			{
+				return this.StatusCode((int)HttpStatusCode.InternalServerError, result.Errors);
+			}
+
+			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.Value.ID }, result);
 		}
 	}
 }

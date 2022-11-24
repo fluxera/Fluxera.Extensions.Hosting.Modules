@@ -74,5 +74,20 @@
 
 			return services;
 		}
+
+		/// <summary>
+		///     Adds the outbox contributor if no other outbox contributor was already added.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
+		public static IServiceCollection AddOutboxContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IOutboxContributor, new()
+		{
+			TContributor contributor = new TContributor();
+			services.TryAddObjectAccessor<IOutboxContributor>(contributor);
+
+			return services;
+		}
 	}
 }

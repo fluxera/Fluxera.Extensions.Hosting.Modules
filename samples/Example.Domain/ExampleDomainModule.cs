@@ -10,8 +10,8 @@
 	///     The domain module of the component.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(DomainModule))]
-	[DependsOn(typeof(ConfigurationModule))]
+	[DependsOn<DomainModule>]
+	[DependsOn<ConfigurationModule>]
 	public sealed class ExampleDomainModule : ConfigureServicesModule
 	{
 	}

@@ -22,11 +22,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation" Version="11.3.0" />
 		<PackageReference Include="Fluxera.ComponentModel.Annotations" Version="7.0.3" />
 		<PackageReference Include="Fluxera.Entity" Version="7.0.4" />
 		<PackageReference Include="Fluxera.Enumeration" Version="7.0.3" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.2" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.3" />
 		<PackageReference Include="Fluxera.Repository" Version="7.0.3" />
 		<PackageReference Include="Fluxera.ValueObject" Version="7.0.2" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">

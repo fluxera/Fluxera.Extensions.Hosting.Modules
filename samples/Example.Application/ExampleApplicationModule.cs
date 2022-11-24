@@ -10,10 +10,10 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	[DependsOn(typeof(ExampleInfrastructureModule))]
-	[DependsOn(typeof(AutoMapperModule))]
-	[DependsOn(typeof(ApplicationModule))]
-	[DependsOn(typeof(ConfigurationModule))]
+	[DependsOn<ExampleInfrastructureModule>]
+	[DependsOn<AutoMapperModule>]
+	[DependsOn<ApplicationModule>]
+	[DependsOn<ConfigurationModule>]
 	public class ExampleApplicationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

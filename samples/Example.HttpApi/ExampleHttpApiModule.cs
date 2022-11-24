@@ -8,9 +8,9 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	[DependsOn(typeof(HttpApiModule))]
-	[DependsOn(typeof(ODataModule))]
-	[DependsOn(typeof(ConfigurationModule))]
+	[DependsOn<HttpApiModule>]
+	[DependsOn<ODataModule>]
+	[DependsOn<ConfigurationModule>]
 	public sealed class ExampleHttpApiModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

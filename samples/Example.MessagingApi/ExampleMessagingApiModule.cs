@@ -8,8 +8,8 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	[DependsOn(typeof(MessagingModule))]
-	[DependsOn(typeof(ConfigurationModule))]
+	[DependsOn<MessagingModule>]
+	[DependsOn<ConfigurationModule>]
 	public sealed class ExampleMessagingApiModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

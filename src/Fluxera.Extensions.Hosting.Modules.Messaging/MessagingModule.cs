@@ -126,8 +126,13 @@
 					throw new InvalidOperationException("No transport contributor was found.");
 				}
 
+				IOutboxContributor outboxContributor = context.Services.GetObjectOrDefault<IOutboxContributor>();
+
 				services.AddMassTransit(options =>
 				{
+					// Add outbox implementation.
+					outboxContributor.ConfigureOutbox(options, context);
+
 					// Add consumers.
 					foreach(IConsumersContributor contributor in contributorList)
 					{

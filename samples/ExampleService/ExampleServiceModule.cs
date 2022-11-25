@@ -1,9 +1,7 @@
 ﻿namespace ExampleService
 {
 	using System.Net;
-	using Example.Application;
-	using Example.HttpApi;
-	using Example.MessagingApi;
+	using ExampleComponent;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
@@ -16,10 +14,8 @@
 	using Microsoft.Extensions.Hosting;
 
 	[PublicAPI]
-	[DependsOn(typeof(WarmupModule))]
-	[DependsOn(typeof(ExampleHttpApiModule))]
-	[DependsOn(typeof(ExampleMessagingApiModule))]
-	[DependsOn(typeof(ExampleApplicationModule))]
+	[DependsOn<WarmupModule>]
+	[DependsOn<ExampleComponentModule>]
 	public sealed class ExampleServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

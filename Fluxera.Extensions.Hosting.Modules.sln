@@ -188,6 +188,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.MessagingApi", "sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj", "{626AD6A1-BD3B-463C-9FC8-F56612572343}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleComponent", "samples\ExampleComponent\ExampleComponent.csproj", "{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -482,6 +484,10 @@ Global
 		{626AD6A1-BD3B-463C-9FC8-F56612572343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{626AD6A1-BD3B-463C-9FC8-F56612572343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{626AD6A1-BD3B-463C-9FC8-F56612572343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -568,6 +574,7 @@ Global
 		{E4277AC4-1F6B-499F-A2CF-FA689A281344} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{28B145B3-347B-4FBB-9DF5-AA4A81F2BFBB} = {FE71E3E8-B1DE-473A-83C3-56D20EB6E1AC}
 		{626AD6A1-BD3B-463C-9FC8-F56612572343} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

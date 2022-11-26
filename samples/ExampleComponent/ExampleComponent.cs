@@ -11,7 +11,7 @@
 	[DependsOn<ExampleHttpApiModule>]
 	[DependsOn<ExampleMessagingApiModule>]
 	[DependsOn<ExampleApplicationModule>]
-	public sealed class ExampleComponentModule : IModule
+	public sealed class ExampleComponent : IModule
 	{
 	}
 }

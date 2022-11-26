@@ -15,7 +15,7 @@
 
 	[PublicAPI]
 	[DependsOn<WarmupModule>]
-	[DependsOn<ExampleComponentModule>]
+	[DependsOn<ExampleComponent>]
 	public sealed class ExampleServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

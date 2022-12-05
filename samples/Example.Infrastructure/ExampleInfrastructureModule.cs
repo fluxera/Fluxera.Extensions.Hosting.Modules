@@ -6,7 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Messaging.InMemory;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
-	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
+	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
 	using global::Example.Domain;
 	using global::Example.Domain.Example;
 	using global::Example.Infrastructure.Contributors;
@@ -22,7 +22,7 @@
 	[DependsOn<ExampleDomainModule>]
 	[DependsOn<InMemoryMessagingModule>]
 	[DependsOn<TransactionalOutboxModule<ExampleDbContext>>]
-	[DependsOn<InMemoryPersistenceModule>]
+	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class ExampleInfrastructureModule : ConfigureServicesModule
 	{

@@ -66,24 +66,6 @@ namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query
 		}
 
 		/// <inheritdoc />
-		public bool TryGetPagingOptions(out IPagingOptions<T> options)
-		{
-			return this.queryOptions.TryGetPagingOptions(out options);
-		}
-
-		/// <inheritdoc />
-		public bool TryGetSkipTakeOptions(out ISkipTakeOptions<T> options)
-		{
-			return this.queryOptions.TryGetSkipTakeOptions(out options);
-		}
-
-		/// <inheritdoc />
-		public bool TryGetSortingOptions(out ISortingOptions<T> options)
-		{
-			return this.queryOptions.TryGetSortingOptions(out options);
-		}
-
-		/// <inheritdoc />
 		public override string ToString()
 		{
 			return "(PageSize: {0}, PageNumber: {1})".FormatInvariantWith(this.PageSizeAmount, this.PageNumberAmount);

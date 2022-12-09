@@ -2,12 +2,12 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
-	using Fluxera.Repository.InMemory;
+	using Fluxera.Repository.EntityFrameworkCore;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Logging;
 
 	[PublicAPI]
-	public sealed class ExampleContext : InMemoryContext
+	public sealed class ExampleContext : EntityFrameworkCoreContext
 	{
 		private readonly ILogger<ExampleContext> logger;
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
@@ -24,7 +24,7 @@
 		}
 
 		/// <inheritdoc />
-		protected override void ConfigureOptions(InMemoryContextOptions options)
+		protected override void ConfigureOptions(EntityFrameworkCoreContextOptions options)
 		{
 			RepositoryName repositoryName = new RepositoryName("Default");
 
@@ -34,7 +34,7 @@
 			this.logger.LogInformation("Using database name: '{DatabaseName}'.", databaseName);
 			this.logger.LogInformation("Using connection string: '{ConnectionString}'.", connectionString);
 
-			options.Database = databaseName;
+			options.UseDbContext<ExampleDbContext>();
 		}
 	}
 }

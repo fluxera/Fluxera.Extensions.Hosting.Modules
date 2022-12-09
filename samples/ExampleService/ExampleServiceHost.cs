@@ -1,9 +1,7 @@
 ﻿namespace ExampleService
 {
 	using Fluxera.Extensions.Hosting;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.InMemory;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
-	using Fluxera.Extensions.Hosting.Modules.Persistence.InMemory;
 	using Fluxera.Extensions.Hosting.Modules.Serilog;
 	using Fluxera.Extensions.Hosting.Plugins;
 	using Microsoft.Extensions.Configuration;
@@ -19,10 +17,7 @@
 		/// <inheritdoc />
 		protected override void ConfigureApplicationPlugins(IPluginConfigurationContext context)
 		{
-			context
-				.AddPlugin<SerilogModule>()
-				.AddPlugin<InMemoryPersistenceModule>()
-				.AddPlugin<InMemoryMessagingModule>();
+			context.AddPlugin<SerilogModule>();
 		}
 
 		/// <inheritdoc />

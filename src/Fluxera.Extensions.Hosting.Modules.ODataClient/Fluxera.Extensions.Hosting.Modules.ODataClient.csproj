@@ -22,8 +22,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.OData" Version="7.0.2" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.3" />
+		<PackageReference Include="Fluxera.Extensions.OData" Version="7.0.3" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.4" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

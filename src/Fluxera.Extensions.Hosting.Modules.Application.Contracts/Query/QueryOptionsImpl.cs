@@ -29,27 +29,6 @@ namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Query
 			return false;
 		}
 
-		/// <inheritdoc />
-		public bool TryGetPagingOptions(out IPagingOptions<T> options)
-		{
-			options = this.PagingOptions;
-			return this.PagingOptions is not null;
-		}
-
-		/// <inheritdoc />
-		public bool TryGetSkipTakeOptions(out ISkipTakeOptions<T> options)
-		{
-			options = this.SkipTakeOptions;
-			return this.SkipTakeOptions is not null;
-		}
-
-		/// <inheritdoc />
-		public bool TryGetSortingOptions(out ISortingOptions<T> options)
-		{
-			options = this.SortingOptions;
-			return this.SortingOptions is not null;
-		}
-
 		internal ISortingOptions<T> OrderBy(Expression<Func<T, object>> sortExpression)
 		{
 			this.SortingOptions ??= new SortingOptions<T>(this, sortExpression);

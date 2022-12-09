@@ -23,6 +23,8 @@
 
 			configurator.UsingRabbitMq((ctx, cfg) =>
 			{
+				//cfg.UseInMemoryOutbox();
+
 				cfg.Host(rabbitConnectionString.Host, hostOptions =>
 				{
 					hostOptions.Username(rabbitConnectionString.Username);

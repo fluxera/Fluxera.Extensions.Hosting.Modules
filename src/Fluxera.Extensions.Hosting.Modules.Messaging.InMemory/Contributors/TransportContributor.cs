@@ -17,6 +17,8 @@
 		{
 			configurator.UsingInMemory((ctx, cfg) =>
 			{
+				//cfg.UseInMemoryOutbox();
+
 				cfg.ConfigureJsonSerializerOptions(serializerOptions =>
 				{
 					JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions(serializerOptions);

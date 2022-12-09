@@ -21,6 +21,8 @@
 
 			configurator.UsingAzureServiceBus((ctx, cfg) =>
 			{
+				//cfg.UseInMemoryOutbox();
+
 				cfg.Host(connectionString);
 
 				cfg.ConfigureJsonSerializerOptions(serializerOptions =>

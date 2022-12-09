@@ -130,8 +130,8 @@
 
 				services.AddMassTransit(options =>
 				{
-					// Add outbox implementation.
-					outboxContributor.ConfigureOutbox(options, context);
+					// Add (optional) outbox implementation.
+					outboxContributor?.ConfigureOutbox(options, context);
 
 					// Add consumers.
 					foreach(IConsumersContributor contributor in contributorList)

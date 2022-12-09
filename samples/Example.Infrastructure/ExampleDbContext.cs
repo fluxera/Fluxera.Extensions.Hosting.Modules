@@ -3,25 +3,26 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
 	using Fluxera.Repository.EntityFrameworkCore;
+	using Fluxera.Utilities.Extensions;
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Diagnostics;
-	using Microsoft.Extensions.Logging;
 
 	public sealed class ExampleDbContext : DbContext
 	{
-		private readonly ILogger<ExampleDbContext> logger;
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
 		private readonly IDatabaseNameProvider databaseNameProvider;
 
+		public ExampleDbContext()
+		{
+		}
+
 		public ExampleDbContext(
 			DbContextOptions<ExampleDbContext> options,
-			ILogger<ExampleDbContext> logger,
 			IDatabaseNameProvider databaseNameProvider = null,
 			IDatabaseConnectionStringProvider databaseConnectionStringProvider = null)
 			: base(options)
 		{
-			this.logger = logger;
 			this.databaseNameProvider = databaseNameProvider;
 			this.databaseConnectionStringProvider = databaseConnectionStringProvider;
 		}
@@ -38,13 +39,12 @@
 				RepositoryName repositoryName = new RepositoryName("Default");
 
 				string databaseName = this.databaseNameProvider?.GetDatabaseName(repositoryName);
-				string connectionStringEx = this.databaseConnectionStringProvider?.GetConnectionString(repositoryName);
+				string connectionString = this.databaseConnectionStringProvider?.GetConnectionString(repositoryName);
 
-				this.logger.LogInformation("Using database name: '{DatabaseName}'.", databaseName);
-				this.logger.LogInformation("Using connection string: '{ConnectionString}'.", connectionStringEx);
+				connectionString ??= "Server=localhost;Integrated Security=True;TrustServerCertificate=True;";
+				connectionString = connectionString.EnsureEndsWith(";");
+				connectionString += $"Database={databaseName ?? "demo-database"}";
 
-				string connectionString =
-					$"Server=MARS;Database={databaseName};Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 				optionsBuilder.UseSqlServer(connectionString);
 
 				optionsBuilder.ConfigureWarnings(builder =>

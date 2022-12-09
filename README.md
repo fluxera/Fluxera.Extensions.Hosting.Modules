@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/fluxera/Foundation/_apis/build/status/GitHub/fluxera.Fluxera.Extensions.Hosting.Modules?branchName=main)](https://dev.azure.com/fluxera/Foundation/_build/latest?definitionId=72&branchName=main)
+[![Build Status](https://dev.azure.com/fluxera/Foundation/_apis/build/status/GitHub/fluxera.Fluxera.Extensions.Hosting.Modules?branchName=main&stageName=BuildAndTest)](https://dev.azure.com/fluxera/Foundation/_build/latest?definitionId=89&branchName=main)
 
 # Fluxera.Extensions.Hosting.Modules
 

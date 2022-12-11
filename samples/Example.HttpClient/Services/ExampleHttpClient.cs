@@ -22,9 +22,9 @@
 			return await response.Content.ReadAsAsync<ExampleDto>();
 		}
 
-		public async Task<ExampleDto> AddExample(ExampleDto item)
+		public async Task<ExampleDto> AddExample(ExampleDto dto)
 		{
-			HttpContent content = await item.AsJsonContentAsync();
+			HttpContent content = await dto.AsJsonContentAsync();
 			HttpResponseMessage response = await this.HttpClient.PostAsync("/examples", content);
 			return await response.Content.ReadAsAsync<ExampleDto>();
 		}

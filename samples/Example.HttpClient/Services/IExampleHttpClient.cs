@@ -11,6 +11,6 @@
 	{
 		Task<ExampleDto> GetExampleAsync(ExampleId id);
 
-		Task<ExampleDto> AddExample(ExampleDto item);
+		Task<ExampleDto> AddExample(ExampleDto dto);
 	}
 }

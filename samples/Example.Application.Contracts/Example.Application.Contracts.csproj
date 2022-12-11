@@ -16,4 +16,8 @@
 		<ProjectReference Include="..\Example.Domain.Shared\Example.Domain.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	</ItemGroup>
+
 </Project>

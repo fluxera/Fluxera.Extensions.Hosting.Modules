@@ -3,10 +3,9 @@
 	using System.Net;
 	using System.Threading.Tasks;
 	using Example.Application.Contracts.Dtos;
-	using Example.Application.Contracts.Requests;
+	using Example.Application.Contracts.Services;
 	using Example.Domain.Shared.Example;
 	using FluentResults;
-	using MediatR;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
@@ -15,17 +14,17 @@
 	[Route("examples")]
 	public class ExamplesController : ControllerBase
 	{
-		private readonly ISender sender;
+		private readonly IExampleApplicationService exampleApplicationService;
 
-		public ExamplesController(ISender sender)
+		public ExamplesController(IExampleApplicationService exampleApplicationService)
 		{
-			this.sender = sender;
+			this.exampleApplicationService = exampleApplicationService;
 		}
 
 		[HttpGet("{id:required}")]
 		public async Task<IActionResult> GetByID(ExampleId id)
 		{
-			Result<ExampleDto> result = await this.sender.Send(new GetExampleRequest(id));
+			Result<ExampleDto> result = await this.exampleApplicationService.GetExampleAsync(id);
 
 			if(result.IsFailed)
 			{
@@ -48,7 +47,7 @@
 				return this.BadRequest(this.ModelState);
 			}
 
-			Result<ExampleDto> result = await this.sender.Send(new AddExampleRequest(dto));
+			Result<ExampleDto> result = await this.exampleApplicationService.AddExample(dto);
 
 			if(result.IsFailed)
 			{

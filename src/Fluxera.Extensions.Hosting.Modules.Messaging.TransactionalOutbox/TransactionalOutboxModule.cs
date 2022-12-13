@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox
 {
+	using System.Collections.Generic;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.Contributors;
 	using JetBrains.Annotations;
@@ -18,6 +19,14 @@
 		{
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+		}
+
+		/// <inheritdoc />
+		public override void ConfigureServices(IServiceConfigurationContext context)
+		{
+			IDictionary<string, object> contextItems = context.Items;
+
+			TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
 
 			// Add the outbox contributor.
 			context.Services.AddOutboxContributor<OutboxContributor<TContext>>();

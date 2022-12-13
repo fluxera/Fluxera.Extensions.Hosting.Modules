@@ -3,7 +3,7 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.InMemory;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
@@ -20,7 +20,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn<ExampleDomainModule>]
-	[DependsOn<InMemoryMessagingModule>]
+	[DependsOn<RabbitMqMessagingModule>]
 	[DependsOn<TransactionalOutboxModule<ExampleDbContext>>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]

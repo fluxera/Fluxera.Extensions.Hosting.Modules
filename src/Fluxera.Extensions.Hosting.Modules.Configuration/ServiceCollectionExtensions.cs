@@ -52,7 +52,7 @@
 		public static TOptions GetOptions<TOptions>(this IServiceCollection services)
 			where TOptions : class, new()
 		{
-			Guard.Against.Null(services, nameof(services));
+			Guard.Against.Null(services);
 
 			return services.GetObjectOrDefault<TOptions>() ?? new TOptions();
 		}

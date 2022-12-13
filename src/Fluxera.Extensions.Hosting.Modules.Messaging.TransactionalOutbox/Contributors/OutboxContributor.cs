@@ -2,9 +2,11 @@
 {
 	using System.Diagnostics;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using JetBrains.Annotations;
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;
 
+	[UsedImplicitly]
 	internal sealed class OutboxContributor<TContext> : IOutboxContributor
 		where TContext : DbContext
 	{

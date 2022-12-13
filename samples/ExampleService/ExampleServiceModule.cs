@@ -6,7 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup;
+	using Fluxera.Extensions.Hosting.Modules.MultiTenancy;
 	using Fluxera.Extensions.Validation;
 	using JetBrains.Annotations;
 	using MadEyeMatt.AspNetCore.ProblemDetails;
@@ -14,8 +14,8 @@
 	using Microsoft.Extensions.Hosting;
 
 	[PublicAPI]
-	[DependsOn<WarmupModule>]
 	[DependsOn<ExampleComponent>]
+	[DependsOn<MultiTenancyModule>]
 	public sealed class ExampleServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

@@ -4,6 +4,7 @@
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.DataManagement;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Extensions;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
@@ -22,6 +23,7 @@
 	[PublicAPI]
 	[DependsOn(typeof(PrincipalModule))]
 	[DependsOn(typeof(OpenTelemetryModule))]
+	[DependsOn(typeof(DataManagementModule))]
 	[DependsOn(typeof(ConfigurationModule))]
 	public sealed class MessagingModule : ConfigureApplicationModule
 	{

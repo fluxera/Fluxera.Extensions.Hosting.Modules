@@ -13,7 +13,7 @@
 		/// </summary>
 		public SwaggerOptions()
 		{
-			this.Enabled = false;
+			this.Enabled = true;
 		}
 
 		/// <summary>

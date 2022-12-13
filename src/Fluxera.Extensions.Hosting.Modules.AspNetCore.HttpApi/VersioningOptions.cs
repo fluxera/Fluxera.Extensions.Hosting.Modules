@@ -13,7 +13,7 @@
 		/// </summary>
 		public VersioningOptions()
 		{
-			this.Enabled = false;
+			this.Enabled = true;
 		}
 
 		/// <summary>

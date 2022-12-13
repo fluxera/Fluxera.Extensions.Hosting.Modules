@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup\Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.csproj" />
+		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj" />
 		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
 		<ProjectReference Include="..\ExampleComponent\ExampleComponent.csproj" />
 	</ItemGroup>

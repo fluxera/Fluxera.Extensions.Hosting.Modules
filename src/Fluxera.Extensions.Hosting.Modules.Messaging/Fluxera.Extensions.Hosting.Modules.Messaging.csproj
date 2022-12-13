@@ -22,15 +22,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="7.0.5" />
-		<PackageReference Include="Fluxera.Extensions.Common" Version="7.0.3" />
-		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="7.0.3" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.4" />
-		<PackageReference Include="Fluxera.Extensions.Localization" Version="7.0.3" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.0.3" />
-		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="7.0.4" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.0.4" />
-		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="7.0.4" />
+		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="7.0.6" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="7.0.4" />
+		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="7.0.4" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.5" />
+		<PackageReference Include="Fluxera.Extensions.Localization" Version="7.0.4" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.0.4" />
+		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="7.0.5" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.0.5" />
+		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="7.0.5" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -44,6 +44,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Principal\Fluxera.Extensions.Hosting.Modules.Principal.csproj" />
 	</ItemGroup>

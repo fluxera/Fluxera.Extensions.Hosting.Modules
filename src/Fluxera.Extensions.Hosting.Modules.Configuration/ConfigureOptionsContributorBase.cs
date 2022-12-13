@@ -17,7 +17,7 @@
 		public void Configure(IServiceConfigurationContext context)
 		{
 			string optionsTypeName = typeof(TOptions).Name;
-			IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName(this.SectionName));
+			IConfigurationSection section = context.Configuration.GetSection(this.SectionName);
 			TOptions options = section.Get<TOptions>() ?? new TOptions();
 
 			// Configure as IOptions<T>

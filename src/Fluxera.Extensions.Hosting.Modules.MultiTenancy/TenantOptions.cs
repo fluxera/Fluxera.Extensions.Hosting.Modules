@@ -14,7 +14,7 @@
 		/// </summary>
 		public TenantOptions()
 		{
-			this.Enabled = false;
+			this.Enabled = true;
 			this.Mode = MultiTenancyMode.DatabasePerTenant;
 		}
 

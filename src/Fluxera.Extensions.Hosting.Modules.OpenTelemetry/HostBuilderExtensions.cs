@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.OpenTelemetry
 {
 	using System;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using global::OpenTelemetry.Logs;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Configuration;
@@ -24,7 +23,7 @@
 		{
 			return builder.ConfigureLogging((context, loggingBuilder) =>
 			{
-				IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("OpenTelemetry"));
+				IConfigurationSection section = context.Configuration.GetSection("OpenTelemetry");
 				OpenTelemetryOptions telemetryOptions = section.Get<OpenTelemetryOptions>() ?? new OpenTelemetryOptions();
 
 				loggingBuilder.AddOpenTelemetry(loggerOptions =>

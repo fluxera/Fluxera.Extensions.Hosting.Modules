@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication
 {
 	using Fluxera.Extensions.DependencyInjection;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Authentication;
 	using Microsoft.Extensions.Configuration;
@@ -20,7 +19,7 @@
 			// Add the authentication services.
 			AuthenticationBuilder builder = context.Log("AddAuthentication", services =>
 			{
-				IConfigurationSection section = context.Configuration.GetSection(ConfigurationSectionUtil.GetSectionName("AspNetCore:Authentication"));
+				IConfigurationSection section = context.Configuration.GetSection("AspNetCore:Authentication");
 				AuthenticationOptions authenticationOptions = section.Get<AuthenticationOptions>();
 
 				return services.AddAuthentication(options =>

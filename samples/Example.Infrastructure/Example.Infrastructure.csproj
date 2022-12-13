@@ -23,7 +23,6 @@
 	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj" />
 	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj" />
 	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
-	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
 	  <ProjectReference Include="..\Example.Domain\Example.Domain.csproj" />
 	</ItemGroup>
 

@@ -62,9 +62,9 @@
 				entity.ToTable("Examples");
 
 				entity.OwnsOne(x => x.Detail);
-			});
 
-			modelBuilder.UseRepositoryDefaults();
+				entity.UseRepositoryDefaults();
+			});
 
 			modelBuilder.AddInboxStateEntity();
 			modelBuilder.AddOutboxMessageEntity();

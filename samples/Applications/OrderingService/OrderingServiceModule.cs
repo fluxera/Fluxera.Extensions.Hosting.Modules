@@ -1,7 +1,6 @@
-﻿namespace CatalogService
+﻿namespace OrderingService
 {
 	using System.Net;
-	using Catalog;
 	using FluentValidation;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
@@ -12,11 +11,12 @@
 	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using Ordering;
 
 	[PublicAPI]
-	[DependsOn<CatalogComponent>]
+	[DependsOn<OrderingComponent>]
 	[DependsOn<MultiTenancyModule>]
-	public sealed class CatalogServiceModule : ConfigureApplicationModule
+	public sealed class OrderingServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)

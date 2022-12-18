@@ -14,4 +14,10 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj" />
+		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
+		<ProjectReference Include="..\..\Components\Ordering\Ordering\Ordering.csproj" />
+	</ItemGroup>
+
 </Project>

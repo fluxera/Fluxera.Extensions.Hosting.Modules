@@ -11,10 +11,10 @@
 		/// <inheritdoc />
 		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
-			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<IExampleHttpClient, ExampleHttpClient>(
+			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<ICatalogHttpClient, CatalogHttpClient>(
 				(ctx, _) =>
 				{
-					ExampleHttpClient client = new ExampleHttpClient(ctx.Name, ctx.HttpClient, ctx.Options);
+					CatalogHttpClient client = new CatalogHttpClient(ctx.Name, ctx.HttpClient, ctx.Options);
 					return client;
 				});
 

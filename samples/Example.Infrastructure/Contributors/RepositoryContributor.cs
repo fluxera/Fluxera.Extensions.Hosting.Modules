@@ -1,9 +1,9 @@
 ﻿namespace Catalog.Infrastructure.Contributors
 {
-	using Catalog.Domain.Example;
-	using Catalog.Domain.Example.Validation;
-	using Catalog.Infrastructure.Example.Handlers;
-	using Catalog.Infrastructure.Example.Interceptors;
+	using Catalog.Domain.Product;
+	using Catalog.Domain.Product.Validation;
+	using Catalog.Infrastructure.Product.Handlers;
+	using Catalog.Infrastructure.Product.Interceptors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using JetBrains.Annotations;
@@ -14,28 +14,28 @@
 		/// <inheritdoc />
 		public void ConfigureAggregates(IRepositoryAggregatesBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.UseFor<Example>();
+			builder.UseFor<Product>();
 		}
 
 		/// <inheritdoc />
 		public void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
 		{
 			builder
-				.AddDomainEventHandler<ExampleAddedHandler>()
-				.AddDomainEventHandler<ExampleUpdatedHandler>()
-				.AddDomainEventHandler<ExampleRemovedHandler>();
+				.AddDomainEventHandler<ProductAddedHandler>()
+				.AddDomainEventHandler<ProductUpdatedHandler>()
+				.AddDomainEventHandler<ProductRemovedHandler>();
 		}
 
 		/// <inheritdoc />
 		public void ConfigureValidators(IValidatorsBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddValidator<ExampleValidator>();
+			builder.AddValidator<ProductValidator>();
 		}
 
 		/// <inheritdoc />
 		public void ConfigureInterceptors(IInterceptorsBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddInterceptor<ExampleInterceptor>();
+			builder.AddInterceptor<ProductInterceptor>();
 		}
 
 		/// <inheritdoc />

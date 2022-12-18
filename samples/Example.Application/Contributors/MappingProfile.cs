@@ -2,7 +2,7 @@
 {
 	using AutoMapper;
 	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Domain.Example;
+	using Catalog.Domain.Product;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
@@ -10,7 +10,7 @@
 	{
 		public MappingProfile()
 		{
-			this.CreateMap<Example, ExampleDto>().ReverseMap();
+			this.CreateMap<Product, ProductDto>().ReverseMap();
 		}
 	}
 }

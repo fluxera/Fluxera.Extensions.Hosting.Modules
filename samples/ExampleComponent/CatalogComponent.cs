@@ -8,10 +8,10 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	[DependsOn<ExampleHttpApiModule>]
-	[DependsOn<ExampleMessagingApiModule>]
-	[DependsOn<ExampleApplicationModule>]
-	public sealed class ExampleComponent : IModule
+	[DependsOn<CatalogHttpApiModule>]
+	[DependsOn<CatalogMessagingApiModule>]
+	[DependsOn<CatalogApplicationModule>]
+	public sealed class CatalogComponent : IModule
 	{
 	}
 }

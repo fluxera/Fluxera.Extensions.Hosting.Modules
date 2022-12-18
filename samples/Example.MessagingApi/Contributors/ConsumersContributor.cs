@@ -12,8 +12,8 @@
 		/// <inheritdoc />
 		public void ConfigureConsumers(IRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
-			configurator.AddConsumer<ExampleAddedConsumer, ExampleAddedConsumerDefinition>();
-			configurator.AddConsumer<ExampleUpdatedConsumer>();
+			configurator.AddConsumer<ProductAddedConsumer, CatalogAddedConsumerDefinition>();
+			configurator.AddConsumer<ProductUpdatedConsumer>();
 		}
 	}
 }

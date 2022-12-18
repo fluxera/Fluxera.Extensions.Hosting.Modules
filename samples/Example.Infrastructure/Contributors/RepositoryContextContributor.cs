@@ -1,6 +1,7 @@
 ﻿namespace Catalog.Infrastructure.Contributors
 {
 	using System;
+	using Catalog.Infrastructure.Contexts;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using JetBrains.Annotations;
 
@@ -10,7 +11,7 @@
 		/// <inheritdoc />
 		public Type ConfigureRepositoryContext()
 		{
-			return typeof(ExampleContext);
+			return typeof(CatalogRepositoryContext);
 		}
 	}
 }

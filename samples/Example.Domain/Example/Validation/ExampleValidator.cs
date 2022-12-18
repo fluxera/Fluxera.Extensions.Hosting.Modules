@@ -1,4 +1,4 @@
-﻿namespace Example.Domain.Example.Validation
+﻿namespace Catalog.Domain.Example.Validation
 {
 	using FluentValidation;
 	using JetBrains.Annotations;

@@ -1,4 +1,4 @@
-﻿namespace Example.Application.Contributors
+﻿namespace Catalog.Application.Contributors
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.AutoMapper;

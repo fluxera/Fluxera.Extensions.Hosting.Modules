@@ -1,4 +1,4 @@
-﻿namespace Example.Application
+﻿namespace Catalog.Application
 {
 	using System.Reflection;
 	using JetBrains.Annotations;

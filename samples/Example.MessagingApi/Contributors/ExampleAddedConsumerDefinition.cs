@@ -1,6 +1,6 @@
-﻿namespace Example.MessagingApi.Contributors
+﻿namespace Catalog.MessagingApi.Contributors
 {
-	using Example.MessagingApi.Consumers;
+	using Catalog.MessagingApi.Consumers;
 	using JetBrains.Annotations;
 	using MassTransit;
 

@@ -32,5 +32,15 @@
 		///     testing purposes only.
 		/// </summary>
 		public bool UseInMemoryInboxOutbox { get; set; }
+
+		/// <summary>
+		///     Flag, indicating if the cleanup background service is enabled.
+		/// </summary>
+		public bool InboxCleanupServiceEnabled { get; set; } = true;
+
+		/// <summary>
+		///     Flag, indicating if the delivery background service is enabled.
+		/// </summary>
+		public bool DeliveryServiceEnabled { get; set; } = true;
 	}
 }

@@ -1,6 +1,6 @@
-﻿namespace Example.HttpClient.Contributors
+﻿namespace Catalog.HttpClient.Contributors
 {
-	using Example.HttpClient.Services;
+	using Catalog.HttpClient.Services;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient;
 	using Fluxera.Extensions.Http;

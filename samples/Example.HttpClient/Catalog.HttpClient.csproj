@@ -14,7 +14,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.HttpClient\Fluxera.Extensions.Hosting.Modules.HttpClient.csproj" />
-	  <ProjectReference Include="..\Example.Application.Contracts\Example.Application.Contracts.csproj" />
+	  <ProjectReference Include="..\Example.Application.Contracts\Catalog.Application.Contracts.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,7 +1,7 @@
-﻿namespace Example.Domain.Example.Events
+﻿namespace Catalog.Domain.Example.Events
 {
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Entity.DomainEvents;
-	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 
 	[PublicAPI]

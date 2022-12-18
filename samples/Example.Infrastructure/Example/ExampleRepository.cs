@@ -1,8 +1,8 @@
-﻿namespace Example.Infrastructure.Example
+﻿namespace Catalog.Infrastructure.Example
 {
+	using Catalog.Domain.Example;
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Repository;
-	using global::Example.Domain.Example;
-	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 
 	/// <summary>

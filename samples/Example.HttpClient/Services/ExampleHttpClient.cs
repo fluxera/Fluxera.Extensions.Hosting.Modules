@@ -1,9 +1,9 @@
-﻿namespace Example.HttpClient.Services
+﻿namespace Catalog.HttpClient.Services
 {
 	using System.Net.Http;
 	using System.Threading.Tasks;
-	using Example.Application.Contracts.Dtos;
-	using Example.Domain.Shared.Example;
+	using Catalog.Application.Contracts.Dtos;
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 

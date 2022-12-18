@@ -1,4 +1,4 @@
-﻿namespace Example.Infrastructure
+﻿namespace Catalog.Infrastructure
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;

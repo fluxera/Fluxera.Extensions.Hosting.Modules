@@ -1,4 +1,4 @@
-﻿namespace Example.Domain.Shared.Example
+﻿namespace Catalog.Domain.Shared.Example
 {
 	using JetBrains.Annotations;
 

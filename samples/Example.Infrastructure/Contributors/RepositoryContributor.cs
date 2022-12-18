@@ -1,11 +1,11 @@
-﻿namespace Example.Infrastructure.Contributors
+﻿namespace Catalog.Infrastructure.Contributors
 {
+	using Catalog.Domain.Example;
+	using Catalog.Domain.Example.Validation;
+	using Catalog.Infrastructure.Example.Handlers;
+	using Catalog.Infrastructure.Example.Interceptors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
-	using global::Example.Domain.Example;
-	using global::Example.Domain.Example.Validation;
-	using global::Example.Infrastructure.Example.Handlers;
-	using global::Example.Infrastructure.Example.Interceptors;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]

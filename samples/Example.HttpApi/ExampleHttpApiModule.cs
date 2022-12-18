@@ -1,4 +1,4 @@
-﻿namespace Example.HttpApi
+﻿namespace Catalog.HttpApi
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;

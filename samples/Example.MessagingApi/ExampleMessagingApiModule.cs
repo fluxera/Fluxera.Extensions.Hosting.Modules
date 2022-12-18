@@ -1,6 +1,6 @@
-﻿namespace Example.MessagingApi
+﻿namespace Catalog.MessagingApi
 {
-	using Example.MessagingApi.Contributors;
+	using Catalog.MessagingApi.Contributors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;

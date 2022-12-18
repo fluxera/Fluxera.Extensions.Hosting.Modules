@@ -12,9 +12,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Example.Application\Example.Application.csproj" />
-		<ProjectReference Include="..\Example.HttpApi\Example.HttpApi.csproj" />
-		<ProjectReference Include="..\Example.MessagingApi\Example.MessagingApi.csproj" />
+		<ProjectReference Include="..\Example.Application\Catalog.Application.csproj" />
+		<ProjectReference Include="..\Example.HttpApi\Catalog.HttpApi.csproj" />
+		<ProjectReference Include="..\Example.MessagingApi\Catalog.MessagingApi.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,5 +1,9 @@
-﻿namespace Example.Infrastructure
+﻿namespace Catalog.Infrastructure
 {
+	using Catalog.Domain;
+	using Catalog.Domain.Example;
+	using Catalog.Infrastructure.Contributors;
+	using Catalog.Infrastructure.Example;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -7,10 +11,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
-	using global::Example.Domain;
-	using global::Example.Domain.Example;
-	using global::Example.Infrastructure.Contributors;
-	using global::Example.Infrastructure.Example;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;

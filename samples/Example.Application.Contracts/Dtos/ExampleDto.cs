@@ -1,6 +1,6 @@
-﻿namespace Example.Application.Contracts.Dtos
+﻿namespace Catalog.Application.Contracts.Dtos
 {
-	using Example.Domain.Shared.Example;
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
 

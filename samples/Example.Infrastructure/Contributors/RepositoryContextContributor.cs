@@ -1,4 +1,4 @@
-﻿namespace Example.Infrastructure.Contributors
+﻿namespace Catalog.Infrastructure.Contributors
 {
 	using System;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;

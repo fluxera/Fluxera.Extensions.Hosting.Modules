@@ -5,6 +5,7 @@
 	using JetBrains.Annotations;
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;
+	using Microsoft.Extensions.Logging;
 
 	[UsedImplicitly]
 	internal sealed class OutboxContributor<TContext> : IOutboxContributor
@@ -13,11 +14,15 @@
 		/// <inheritdoc />
 		public void ConfigureOutbox(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
+			ILogger logger = context.Logger;
+
 			TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
 
 			if(options.UseInMemoryInboxOutbox)
 			{
 				configurator.AddInMemoryInboxOutbox();
+
+				logger.LogInMemoryInboxOutboxUsed();
 			}
 			else
 			{
@@ -63,10 +68,22 @@
 							throw new UnreachableException($"Undefined lock statement provider: '{(int)options.Outbox.LockStatementProvider}'.");
 					}
 
+					// Disable cleanup service if requested.
+					if(!options.InboxCleanupServiceEnabled)
+					{
+						cfg.DisableInboxCleanupService();
+					}
+
 					if(options.BusOutbox.UseBusOutbox)
 					{
 						cfg.UseBusOutbox(config =>
 						{
+							// Disable delivery service if requested.
+							if(!options.DeliveryServiceEnabled)
+							{
+								config.DisableDeliveryService();
+							}
+
 							if(options.BusOutbox.MessageDeliveryLimit.HasValue)
 							{
 								config.MessageDeliveryLimit = options.BusOutbox.MessageDeliveryLimit.Value;
@@ -79,6 +96,8 @@
 						});
 					}
 				});
+
+				logger.LogEntityFrameworkCoreInboxOutboxUsed();
 			}
 		}
 	}

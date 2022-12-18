@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox
 {
-	using System.Collections.Generic;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.Contributors;
 	using JetBrains.Annotations;
@@ -24,9 +23,14 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			IDictionary<string, object> contextItems = context.Items;
-
-			TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
+			// Disable the cleanup and delivery services if the multi tenancy module is loaded.
+			bool isMultiTenancyModuleLoaded = context.Items.ContainsKey("IsMultiTenancyModuleLoaded");
+			if(isMultiTenancyModuleLoaded)
+			{
+				TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
+				options.InboxCleanupServiceEnabled = false;
+				options.DeliveryServiceEnabled = false;
+			}
 
 			// Add the outbox contributor.
 			context.Services.AddOutboxContributor<OutboxContributor<TContext>>();

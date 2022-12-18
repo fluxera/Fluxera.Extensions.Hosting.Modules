@@ -1,8 +1,8 @@
-﻿namespace Example.Infrastructure.Example.Interceptors
+﻿namespace Catalog.Infrastructure.Example.Interceptors
 {
+	using Catalog.Domain.Example;
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Repository.Interception;
-	using global::Example.Domain.Example;
-	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 
 	/// <summary>

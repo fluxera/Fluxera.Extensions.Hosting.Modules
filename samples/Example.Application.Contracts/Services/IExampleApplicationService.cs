@@ -1,8 +1,8 @@
-﻿namespace Example.Application.Contracts.Services
+﻿namespace Catalog.Application.Contracts.Services
 {
 	using System.Threading.Tasks;
-	using Example.Application.Contracts.Dtos;
-	using Example.Domain.Shared.Example;
+	using Catalog.Application.Contracts.Dtos;
+	using Catalog.Domain.Shared.Example;
 	using FluentResults;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services;
 	using JetBrains.Annotations;

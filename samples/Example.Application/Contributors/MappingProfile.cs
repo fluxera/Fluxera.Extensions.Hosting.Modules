@@ -1,8 +1,8 @@
-﻿namespace Example.Application.Contributors
+﻿namespace Catalog.Application.Contributors
 {
 	using AutoMapper;
-	using Example.Application.Contracts.Dtos;
-	using Example.Domain.Example;
+	using Catalog.Application.Contracts.Dtos;
+	using Catalog.Domain.Example;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]

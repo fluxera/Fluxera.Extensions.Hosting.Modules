@@ -1,13 +1,13 @@
-﻿namespace Example.Infrastructure.Example.Handlers
+﻿namespace Catalog.Infrastructure.Example.Handlers
 {
+	using Catalog.Domain.Example;
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
-	using global::Example.Domain.Example;
-	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using ExampleRemovedDomainEvent = global::Example.Domain.Example.Events.ExampleRemoved;
-	using ExampleRemovedIntegrationEvent = global::Example.Domain.Shared.Example.Events.ExampleRemoved;
+	using ExampleRemovedDomainEvent = global::Catalog.Domain.Example.Events.ExampleRemoved;
+	using ExampleRemovedIntegrationEvent = global::Catalog.Domain.Shared.Example.Events.ExampleRemoved;
 
 	/// <summary>
 	///     An event handler for bridging the <see cref="ExampleRemovedDomainEvent" /> domain event

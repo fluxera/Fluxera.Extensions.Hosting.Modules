@@ -1,4 +1,4 @@
-namespace ExampleService
+namespace CatalogService
 {
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting;

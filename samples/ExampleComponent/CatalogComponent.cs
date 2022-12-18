@@ -1,8 +1,8 @@
-﻿namespace ExampleComponent
+﻿namespace CatalogComponent
 {
-	using Example.Application;
-	using Example.HttpApi;
-	using Example.MessagingApi;
+	using Catalog.Application;
+	using Catalog.HttpApi;
+	using Catalog.MessagingApi;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using JetBrains.Annotations;

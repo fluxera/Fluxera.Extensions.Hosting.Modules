@@ -1,13 +1,13 @@
-﻿namespace Example.Application.Handlers
+﻿namespace Catalog.Application.Handlers
 {
 	using System;
 	using System.Threading;
 	using System.Threading.Tasks;
 	using AutoMapper;
-	using Example.Application.Contracts.Dtos;
-	using Example.Application.Contracts.Requests;
-	using Example.Domain.Example;
-	using Example.Domain.Shared.Example;
+	using Catalog.Application.Contracts.Dtos;
+	using Catalog.Application.Contracts.Requests;
+	using Catalog.Domain.Example;
+	using Catalog.Domain.Shared.Example;
 	using FluentResults;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;

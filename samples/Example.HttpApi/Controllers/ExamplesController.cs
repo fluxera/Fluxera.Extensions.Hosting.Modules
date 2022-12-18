@@ -1,10 +1,10 @@
-﻿namespace Example.HttpApi.Controllers
+﻿namespace Catalog.HttpApi.Controllers
 {
 	using System.Net;
 	using System.Threading.Tasks;
-	using Example.Application.Contracts.Dtos;
-	using Example.Application.Contracts.Services;
-	using Example.Domain.Shared.Example;
+	using Catalog.Application.Contracts.Dtos;
+	using Catalog.Application.Contracts.Services;
+	using Catalog.Domain.Shared.Example;
 	using FluentResults;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;

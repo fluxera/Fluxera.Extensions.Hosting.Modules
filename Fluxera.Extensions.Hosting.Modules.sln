@@ -146,9 +146,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages", "src\Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages\Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages.csproj", "{24981CA9-4F6F-4617-8519-23C173776FD1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleService", "samples\ExampleService\ExampleService.csproj", "{5FF5F2A2-1EEE-420F-B0FF-A6AE003D136D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService", "samples\ExampleService\CatalogService.csproj", "{5FF5F2A2-1EEE-420F-B0FF-A6AE003D136D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.HttpApi", "samples\Example.HttpApi\Example.HttpApi.csproj", "{98052A55-D5AF-4B0C-846B-3200D5227733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.HttpApi", "samples\Example.HttpApi\Catalog.HttpApi.csproj", "{98052A55-D5AF-4B0C-846B-3200D5227733}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Domain", "src\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj", "{5C2D01E1-C2F7-4D66-BE62-964426BE7C7C}"
 EndProject
@@ -160,19 +160,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Application.Contracts", "src\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj", "{5115A476-7AA1-4139-B0F8-5E65C1A83750}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Application", "samples\Example.Application\Example.Application.csproj", "{045FEC49-949C-4CA0-B4B8-AEC286C67476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Application", "samples\Example.Application\Catalog.Application.csproj", "{045FEC49-949C-4CA0-B4B8-AEC286C67476}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Application.Contracts", "samples\Example.Application.Contracts\Example.Application.Contracts.csproj", "{5FCD4C42-C4E0-4857-A525-F240433445F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Application.Contracts", "samples\Example.Application.Contracts\Catalog.Application.Contracts.csproj", "{5FCD4C42-C4E0-4857-A525-F240433445F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Domain", "samples\Example.Domain\Example.Domain.csproj", "{59E4AA1F-72B4-4128-9F18-D67BC391331E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Domain", "samples\Example.Domain\Catalog.Domain.csproj", "{59E4AA1F-72B4-4128-9F18-D67BC391331E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Domain.Shared", "samples\Example.Domain.Shared\Example.Domain.Shared.csproj", "{AC3DB0CE-E604-47BD-8CA9-AAF8491AFFF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Domain.Shared", "samples\Example.Domain.Shared\Catalog.Domain.Shared.csproj", "{AC3DB0CE-E604-47BD-8CA9-AAF8491AFFF9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Application.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Application.UnitTests\Fluxera.Extensions.Hosting.Modules.Application.UnitTests.csproj", "{ADA3C394-5198-4213-8B11-0AF89A6CF1AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.HttpClient", "samples\Example.HttpClient\Example.HttpClient.csproj", "{515207BB-793A-4390-BA1F-E3A68C7868EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.HttpClient", "samples\Example.HttpClient\Catalog.HttpClient.csproj", "{515207BB-793A-4390-BA1F-E3A68C7868EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Infrastructure", "samples\Example.Infrastructure\Example.Infrastructure.csproj", "{0E3B1621-7644-4CA6-8149-B1D5712FDFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Infrastructure", "samples\Example.Infrastructure\Catalog.Infrastructure.csproj", "{0E3B1621-7644-4CA6-8149-B1D5712FDFFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{96663251-89ED-4C64-9BFC-CE4178F31108}"
 EndProject
@@ -182,13 +182,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{FE71E3E8-B1DE-473A-83C3-56D20EB6E1AC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanArchitecture", "{E4277AC4-1F6B-499F-A2CF-FA689A281344}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{E4277AC4-1F6B-499F-A2CF-FA689A281344}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.MessagingApi", "samples\Example.MessagingApi\Example.MessagingApi.csproj", "{28B145B3-347B-4FBB-9DF5-AA4A81F2BFBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.MessagingApi", "samples\Example.MessagingApi\Catalog.MessagingApi.csproj", "{28B145B3-347B-4FBB-9DF5-AA4A81F2BFBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj", "{626AD6A1-BD3B-463C-9FC8-F56612572343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj", "{626AD6A1-BD3B-463C-9FC8-F56612572343}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleComponent", "samples\ExampleComponent\ExampleComponent.csproj", "{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogComponent", "samples\ExampleComponent\CatalogComponent.csproj", "{083B4402-0F8D-4253-A97A-1FB9E2E1AA21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tiered", "Tiered", "{42385E99-5529-4426-9F56-C0ADC8020360}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layered", "Layered", "{8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{4250F804-A85C-4FF7-84D9-1CECE38BD43D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{6EDAF37A-9EA8-4407-AADA-365CE7EF5A57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -567,14 +575,18 @@ Global
 		{ADA3C394-5198-4213-8B11-0AF89A6CF1AE} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
 		{515207BB-793A-4390-BA1F-E3A68C7868EF} = {FE71E3E8-B1DE-473A-83C3-56D20EB6E1AC}
 		{0E3B1621-7644-4CA6-8149-B1D5712FDFFA} = {B49594D3-167E-4E14-A011-2E8F6256FA66}
-		{96663251-89ED-4C64-9BFC-CE4178F31108} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
-		{616A5E93-3F50-4EAA-9B1F-F9BE211AE445} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
-		{B49594D3-167E-4E14-A011-2E8F6256FA66} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
-		{FE71E3E8-B1DE-473A-83C3-56D20EB6E1AC} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
+		{96663251-89ED-4C64-9BFC-CE4178F31108} = {4250F804-A85C-4FF7-84D9-1CECE38BD43D}
+		{616A5E93-3F50-4EAA-9B1F-F9BE211AE445} = {4250F804-A85C-4FF7-84D9-1CECE38BD43D}
+		{B49594D3-167E-4E14-A011-2E8F6256FA66} = {4250F804-A85C-4FF7-84D9-1CECE38BD43D}
+		{FE71E3E8-B1DE-473A-83C3-56D20EB6E1AC} = {4250F804-A85C-4FF7-84D9-1CECE38BD43D}
 		{E4277AC4-1F6B-499F-A2CF-FA689A281344} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{28B145B3-347B-4FBB-9DF5-AA4A81F2BFBB} = {FE71E3E8-B1DE-473A-83C3-56D20EB6E1AC}
 		{626AD6A1-BD3B-463C-9FC8-F56612572343} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
-		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
+		{083B4402-0F8D-4253-A97A-1FB9E2E1AA21} = {4250F804-A85C-4FF7-84D9-1CECE38BD43D}
+		{42385E99-5529-4426-9F56-C0ADC8020360} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
+		{8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
+		{4250F804-A85C-4FF7-84D9-1CECE38BD43D} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
+		{6EDAF37A-9EA8-4407-AADA-365CE7EF5A57} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

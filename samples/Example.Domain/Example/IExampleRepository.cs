@@ -1,7 +1,7 @@
-﻿namespace Example.Domain.Example
+﻿namespace Catalog.Domain.Example
 {
+	using Catalog.Domain.Shared.Example;
 	using Fluxera.Repository;
-	using global::Example.Domain.Shared.Example;
 	using JetBrains.Annotations;
 
 	/// <summary>

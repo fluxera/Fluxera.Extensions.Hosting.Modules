@@ -1,6 +1,6 @@
-﻿namespace Example.Application.Contracts.Requests
+﻿namespace Catalog.Application.Contracts.Requests
 {
-	using Example.Application.Contracts.Dtos;
+	using Catalog.Application.Contracts.Dtos;
 	using FluentResults;
 	using JetBrains.Annotations;
 	using MediatR;

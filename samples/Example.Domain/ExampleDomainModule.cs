@@ -1,4 +1,4 @@
-﻿namespace Example.Domain
+﻿namespace Catalog.Domain
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;

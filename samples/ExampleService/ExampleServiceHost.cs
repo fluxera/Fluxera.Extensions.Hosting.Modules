@@ -1,4 +1,4 @@
-﻿namespace ExampleService
+﻿namespace CatalogService
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;

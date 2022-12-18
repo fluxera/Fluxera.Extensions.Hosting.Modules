@@ -1,9 +1,9 @@
-﻿namespace Example.Application
+﻿namespace Catalog.Application
 {
-	using Example.Application.Contracts.Services;
-	using Example.Application.Contributors;
-	using Example.Application.Services;
-	using Example.Infrastructure;
+	using Catalog.Application.Contracts.Services;
+	using Catalog.Application.Contributors;
+	using Catalog.Application.Services;
+	using Catalog.Infrastructure;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Application;

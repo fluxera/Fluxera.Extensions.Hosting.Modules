@@ -1,8 +1,8 @@
-﻿namespace Example.MessagingApi.Consumers
+﻿namespace Catalog.MessagingApi.Consumers
 {
 	using System;
 	using System.Threading.Tasks;
-	using Example.Domain.Shared.Example.Events;
+	using Catalog.Domain.Shared.Example.Events;
 	using JetBrains.Annotations;
 	using MassTransit;
 

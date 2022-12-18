@@ -1,7 +1,7 @@
-﻿namespace ExampleService
+﻿namespace CatalogService
 {
 	using System.Net;
-	using ExampleComponent;
+	using CatalogComponent;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;

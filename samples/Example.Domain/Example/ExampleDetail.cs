@@ -1,4 +1,4 @@
-﻿namespace Example.Domain.Example
+﻿namespace Catalog.Domain.Example
 {
 	using Fluxera.ValueObject;
 	using JetBrains.Annotations;

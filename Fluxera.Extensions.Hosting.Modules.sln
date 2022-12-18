@@ -162,9 +162,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj", "{626AD6A1-BD3B-463C-9FC8-F56612572343}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tiered", "Tiered", "{42385E99-5529-4426-9F56-C0ADC8020360}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tiered-Microservices", "Tiered-Microservices", "{42385E99-5529-4426-9F56-C0ADC8020360}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layered", "Layered", "{8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layered-ModularMonolith", "Layered-ModularMonolith", "{8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{6EDAF37A-9EA8-4407-AADA-365CE7EF5A57}"
 EndProject
@@ -227,6 +227,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService", "samples\Applications\CatalogService\CatalogService.csproj", "{BB9E3DD4-F096-41F0-BE47-9F3CCFAE9B05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderingService", "samples\Applications\OrderingService\OrderingService.csproj", "{685DD475-D4B8-4B84-B966-D2BD3A226B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopApplication", "samples\Applications\ShopApplication\ShopApplication.csproj", "{359904F5-CAA5-4A5E-92B8-BA5787B546C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -566,6 +568,10 @@ Global
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -672,6 +678,7 @@ Global
 		{6D5FF9EF-3C70-4B96-8E97-D6F268E58AE0} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{BB9E3DD4-F096-41F0-BE47-9F3CCFAE9B05} = {42385E99-5529-4426-9F56-C0ADC8020360}
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03} = {42385E99-5529-4426-9F56-C0ADC8020360}
+		{359904F5-CAA5-4A5E-92B8-BA5787B546C2} = {8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

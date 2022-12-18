@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
@@ -13,7 +13,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
-		<ProjectReference Include="..\Catalog.Domain.Shared\Catalog.Domain.Shared.csproj" />
+		<ProjectReference Include="..\Ordering.Domain.Shared\Ordering.Domain.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

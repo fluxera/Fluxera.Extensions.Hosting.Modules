@@ -8,13 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Guards" Version="7.0.3" />
 		<PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.HttpClient\Fluxera.Extensions.Hosting.Modules.HttpClient.csproj" />
-	  <ProjectReference Include="..\Catalog.Application.Contracts\Catalog.Application.Contracts.csproj" />
+		<ProjectReference Include="..\Ordering.Application\Ordering.Application.csproj" />
+		<ProjectReference Include="..\Ordering.HttpApi\Ordering.HttpApi.csproj" />
+		<ProjectReference Include="..\Ordering.MessagingApi\Ordering.MessagingApi.csproj" />
 	</ItemGroup>
 
 </Project>

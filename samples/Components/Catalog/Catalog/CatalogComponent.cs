@@ -1,4 +1,4 @@
-﻿namespace CatalogComponent
+﻿namespace Catalog
 {
 	using Catalog.Application;
 	using Catalog.HttpApi;

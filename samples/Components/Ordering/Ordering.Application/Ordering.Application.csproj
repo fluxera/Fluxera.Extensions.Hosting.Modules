@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
@@ -18,9 +18,9 @@
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Application\Fluxera.Extensions.Hosting.Modules.Application.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
-		<ProjectReference Include="..\Catalog.Application.Contracts\Catalog.Application.Contracts.csproj" />
-		<ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
-		<ProjectReference Include="..\Catalog.Infrastructure\Catalog.Infrastructure.csproj" />
+		<ProjectReference Include="..\Ordering.Application.Contracts\Ordering.Application.Contracts.csproj" />
+		<ProjectReference Include="..\Ordering.Domain\Ordering.Domain.csproj" />
+		<ProjectReference Include="..\Ordering.Infrastructure\Ordering.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

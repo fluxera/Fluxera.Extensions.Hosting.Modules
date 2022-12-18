@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

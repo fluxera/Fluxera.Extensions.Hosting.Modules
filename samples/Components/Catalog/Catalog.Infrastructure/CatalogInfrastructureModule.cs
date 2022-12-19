@@ -8,6 +8,7 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
@@ -22,7 +23,7 @@
 	[PublicAPI]
 	[DependsOn<CatalogDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
-	[DependsOn<TransactionalOutboxModule<CatalogDbContext>>]
+	[DependsOn<TransactionalOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class CatalogInfrastructureModule : ConfigureServicesModule
@@ -35,6 +36,9 @@
 
 			// Add the repository context contributor for the 'Default' repository.
 			context.Services.AddRepositoryContextContributor<RepositoryContextContributor>("Default");
+
+			// Add the outbox contributor.
+			context.Services.AddOutboxContributor<OutboxContributor>();
 
 			// Add repositories.
 			context.Log("AddRepositories", services =>

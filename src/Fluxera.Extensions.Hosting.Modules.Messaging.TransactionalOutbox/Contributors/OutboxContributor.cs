@@ -7,8 +7,12 @@
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Logging;
 
-	[UsedImplicitly]
-	internal sealed class OutboxContributor<TContext> : IOutboxContributor
+	/// <summary>
+	///     A base class for EFCore transactional outbox configuration.
+	/// </summary>
+	/// <typeparam name="TContext"></typeparam>
+	[PublicAPI]
+	public abstract class OutboxContributor<TContext> : IOutboxContributor
 		where TContext : DbContext
 	{
 		/// <inheritdoc />

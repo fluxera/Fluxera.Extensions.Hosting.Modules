@@ -76,7 +76,7 @@
 		}
 
 		/// <summary>
-		///     Adds the outbox contributor if no other outbox contributor was already added.
+		///     Adds an outbox contributor to the list of contributors.
 		/// </summary>
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
@@ -84,8 +84,17 @@
 		public static IServiceCollection AddOutboxContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IOutboxContributor, new()
 		{
-			TContributor contributor = new TContributor();
-			services.TryAddObjectAccessor<IOutboxContributor>(contributor);
+			OutboxContributorList contributorList = services.GetObjectOrDefault<OutboxContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger.LogContributorListNotAvailable(typeof(IOutboxContributor));
+			}
 
 			return services;
 		}

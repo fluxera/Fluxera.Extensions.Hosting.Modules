@@ -1,7 +1,9 @@
 ﻿namespace CatalogService
 {
 	using System.Net;
-	using Catalog;
+	using Catalog.Application;
+	using Catalog.HttpApi;
+	using Catalog.MessagingApi;
 	using FluentValidation;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
@@ -14,8 +16,10 @@
 	using Microsoft.Extensions.Hosting;
 
 	[PublicAPI]
-	[DependsOn<CatalogComponent>]
 	[DependsOn<MultiTenancyModule>]
+	[DependsOn<CatalogHttpApiModule>]
+	[DependsOn<CatalogMessagingApiModule>]
+	[DependsOn<CatalogApplicationModule>]
 	public sealed class CatalogServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

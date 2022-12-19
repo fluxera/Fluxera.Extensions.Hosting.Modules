@@ -26,7 +26,7 @@
 
 			// Add as ObjectAccessor that is available during configure services pipeline.
 			context.Log($"AddObjectAccessor({optionsTypeName})",
-				services => services.AddObjectAccessor(options, ObjectAccessorLifetime.ConfigureServices));
+				services => services.TryAddObjectAccessor(options, ObjectAccessorLifetime.ConfigureServices));
 
 			this.AdditionalConfigure(context, options);
 		}

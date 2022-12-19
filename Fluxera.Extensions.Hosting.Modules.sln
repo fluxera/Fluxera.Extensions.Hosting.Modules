@@ -162,9 +162,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj", "{626AD6A1-BD3B-463C-9FC8-F56612572343}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tiered-Microservices", "Tiered-Microservices", "{42385E99-5529-4426-9F56-C0ADC8020360}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layered-ModularMonolith", "Layered-ModularMonolith", "{8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{42385E99-5529-4426-9F56-C0ADC8020360}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{6EDAF37A-9EA8-4407-AADA-365CE7EF5A57}"
 EndProject
@@ -204,21 +202,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Application", "samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog", "samples\Components\Catalog\Catalog\Catalog.csproj", "{3522309A-2A3F-4C71-ACF6-FA5CAAC84C59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering", "samples\Components\Ordering\Ordering\Ordering.csproj", "{DADFF48A-3953-4067-928B-9508F7B44497}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering", "samples\Components\Ordering\Ordering\Ordering.csproj", "{DADFF48A-3953-4067-928B-9508F7B44497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain.Shared", "samples\Components\Ordering\Ordering.Domain.Shared\Ordering.Domain.Shared.csproj", "{AA6924F6-25E8-4726-916F-09406ACE9BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain.Shared", "samples\Components\Ordering\Ordering.Domain.Shared\Ordering.Domain.Shared.csproj", "{AA6924F6-25E8-4726-916F-09406ACE9BF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "samples\Components\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{B250021C-2D00-4001-8A64-99D344A778E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain", "samples\Components\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{B250021C-2D00-4001-8A64-99D344A778E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "samples\Components\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{A0D38A69-1E23-4067-93E1-E2714F97EFC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "samples\Components\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{A0D38A69-1E23-4067-93E1-E2714F97EFC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.HttpApi", "samples\Components\Ordering\Ordering.HttpApi\Ordering.HttpApi.csproj", "{1C95DB33-C35C-47EE-A3AD-FEDD789CC2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.HttpApi", "samples\Components\Ordering\Ordering.HttpApi\Ordering.HttpApi.csproj", "{1C95DB33-C35C-47EE-A3AD-FEDD789CC2A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.MessagingApi", "samples\Components\Ordering\Ordering.MessagingApi\Ordering.MessagingApi.csproj", "{C37BD700-737E-46A2-B152-7DCDB667038B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.MessagingApi", "samples\Components\Ordering\Ordering.MessagingApi\Ordering.MessagingApi.csproj", "{C37BD700-737E-46A2-B152-7DCDB667038B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.HttpClient", "samples\Components\Ordering\Ordering.HttpClient\Ordering.HttpClient.csproj", "{01134682-53B4-4F21-A7DE-F7F407E6FCDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.HttpClient", "samples\Components\Ordering\Ordering.HttpClient\Ordering.HttpClient.csproj", "{01134682-53B4-4F21-A7DE-F7F407E6FCDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application.Contracts", "samples\Components\Ordering\Ordering.Application.Contracts\Ordering.Application.Contracts.csproj", "{4ED670DE-FBF5-492E-BB97-7A94B3DD4CFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application.Contracts", "samples\Components\Ordering\Ordering.Application.Contracts\Ordering.Application.Contracts.csproj", "{4ED670DE-FBF5-492E-BB97-7A94B3DD4CFB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application", "samples\Components\Ordering\Ordering.Application\Ordering.Application.csproj", "{663DA10D-F13F-49EF-B9F0-EF5753EDD7D0}"
 EndProject
@@ -227,8 +225,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService", "samples\Applications\CatalogService\CatalogService.csproj", "{BB9E3DD4-F096-41F0-BE47-9F3CCFAE9B05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderingService", "samples\Applications\OrderingService\OrderingService.csproj", "{685DD475-D4B8-4B84-B966-D2BD3A226B03}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopApplication", "samples\Applications\ShopApplication\ShopApplication.csproj", "{359904F5-CAA5-4A5E-92B8-BA5787B546C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -568,10 +564,6 @@ Global
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{359904F5-CAA5-4A5E-92B8-BA5787B546C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -646,7 +638,6 @@ Global
 		{E4277AC4-1F6B-499F-A2CF-FA689A281344} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{626AD6A1-BD3B-463C-9FC8-F56612572343} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{42385E99-5529-4426-9F56-C0ADC8020360} = {6D5FF9EF-3C70-4B96-8E97-D6F268E58AE0}
-		{8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA} = {6D5FF9EF-3C70-4B96-8E97-D6F268E58AE0}
 		{6EDAF37A-9EA8-4407-AADA-365CE7EF5A57} = {E4277AC4-1F6B-499F-A2CF-FA689A281344}
 		{B74A1B97-CCE3-4E16-99A4-FBA548CE3860} = {6EDAF37A-9EA8-4407-AADA-365CE7EF5A57}
 		{C8F2A879-7A2E-46B0-881F-7874F495F25F} = {6EDAF37A-9EA8-4407-AADA-365CE7EF5A57}
@@ -678,7 +669,6 @@ Global
 		{6D5FF9EF-3C70-4B96-8E97-D6F268E58AE0} = {3BF3EFE7-E11F-42BB-914D-D29A9703AB49}
 		{BB9E3DD4-F096-41F0-BE47-9F3CCFAE9B05} = {42385E99-5529-4426-9F56-C0ADC8020360}
 		{685DD475-D4B8-4B84-B966-D2BD3A226B03} = {42385E99-5529-4426-9F56-C0ADC8020360}
-		{359904F5-CAA5-4A5E-92B8-BA5787B546C2} = {8DB769A7-C6A6-49E0-9ACF-75E62D3FE8DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

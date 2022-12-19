@@ -52,8 +52,6 @@
 			{
 				entity.ToTable("Products");
 
-				entity.OwnsOne(x => x.Detail);
-
 				entity.UseRepositoryDefaults();
 			});
 

@@ -1,6 +1,5 @@
 ﻿namespace Catalog.Domain.Product
 {
-	using Catalog.Domain.Product.Events;
 	using Catalog.Domain.Shared.Product;
 	using Fluxera.Entity;
 	using JetBrains.Annotations;
@@ -13,30 +12,18 @@
 	public sealed class Product : AggregateRoot<Product, ProductId>
 	{
 		/// <summary>
-		///     Gets or sets the name of the example.
+		///     Gets or sets the name.
 		/// </summary>
 		public string Name { get; set; }
 
 		/// <summary>
-		///     Gets or sets the kind of the example.
+		///     Gets or sets the description.
 		/// </summary>
-		public ProductKind Kind { get; set; }
+		public string Description { get; set; }
 
 		/// <summary>
-		///     Gets or sets the example detail.
+		///     Gets or sets the price.
 		/// </summary>
-		public ProductDetail Detail { get; set; }
-
-		public void UpgradeProduct()
-		{
-			this.Kind = this.Kind switch
-			{
-				ProductKind.ConsumerGoods => ProductKind.Groceries,
-				ProductKind.Groceries => ProductKind.LuxuryGoods,
-				_ => this.Kind
-			};
-
-			this.RaiseDomainEvent(new ProductWasUpgraded(this.ID, this.Name));
-		}
+		public decimal Price { get; set; }
 	}
 }

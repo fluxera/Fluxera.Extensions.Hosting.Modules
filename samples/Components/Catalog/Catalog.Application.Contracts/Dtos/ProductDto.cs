@@ -11,23 +11,18 @@
 	public sealed class ProductDto : EntityDto<ProductId>
 	{
 		/// <summary>
-		///     Gets or sets the name of the example.
+		///     Gets or sets the name.
 		/// </summary>
 		public string Name { get; set; }
 
 		/// <summary>
-		///     Gets or sets the kind of the example.
+		///     Gets or sets the description.
 		/// </summary>
-		public ProductKind Kind { get; set; }
+		public string Description { get; set; }
 
 		/// <summary>
-		///     Gets or sets the title of the example detail.
+		///     Gets or sets the price.
 		/// </summary>
-		public string DetailTitle { get; set; }
-
-		/// <summary>
-		///     Gets or sets the text of the example detail.
-		/// </summary>
-		public string DetailText { get; }
+		public decimal Price { get; set; }
 	}
 }

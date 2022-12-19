@@ -16,4 +16,8 @@
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="CustomerAggregate\" />
+	</ItemGroup>
+
 </Project>

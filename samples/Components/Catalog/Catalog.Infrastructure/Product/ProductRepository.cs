@@ -6,7 +6,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     An implementation of a generic repository that handles example instances.
+	///     An implementation of a generic repository that handles product instances.
 	/// </summary>
 	[UsedImplicitly]
 	internal sealed class ProductRepository : Repository<Product, ProductId>, IProductRepository

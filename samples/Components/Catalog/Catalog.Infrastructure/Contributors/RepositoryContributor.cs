@@ -9,16 +9,16 @@
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class RepositoryContributor : IRepositoryContributor
+	internal sealed class RepositoryContributor : RepositoryContributorBase
 	{
 		/// <inheritdoc />
-		public void ConfigureAggregates(IRepositoryAggregatesBuilder builder, IServiceConfigurationContext context)
+		public override void ConfigureAggregates(IRepositoryAggregatesBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.UseFor<Product>();
 		}
 
 		/// <inheritdoc />
-		public void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
+		public override void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
 		{
 			builder
 				.AddDomainEventHandler<ProductAddedHandler>()
@@ -27,21 +27,15 @@
 		}
 
 		/// <inheritdoc />
-		public void ConfigureValidators(IValidatorsBuilder builder, IServiceConfigurationContext context)
+		public override void ConfigureValidators(IValidatorsBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.AddValidator<ProductValidator>();
 		}
 
 		/// <inheritdoc />
-		public void ConfigureInterceptors(IInterceptorsBuilder builder, IServiceConfigurationContext context)
+		public override void ConfigureInterceptors(IInterceptorsBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.AddInterceptor<ProductInterceptor>();
-		}
-
-		/// <inheritdoc />
-		public void ConfigureCaching(ICachingBuilder builder, IServiceConfigurationContext context)
-		{
-			builder.UseNoCaching();
 		}
 	}
 }

@@ -31,6 +31,7 @@
 		/// <inheritdoc />
 		public virtual void ConfigureCaching(ICachingBuilder builder, IServiceConfigurationContext context)
 		{
+			builder.UseNoCaching();
 		}
 	}
 }

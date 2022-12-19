@@ -5,7 +5,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     A contract for a repository that handles example instances.
+	///     A contract for a repository that handles product instances.
 	/// </summary>
 	[PublicAPI]
 	public interface IProductRepository : IRepository<Product, ProductId>

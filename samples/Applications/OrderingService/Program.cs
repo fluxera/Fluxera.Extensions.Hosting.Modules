@@ -1,6 +1,5 @@
 ﻿namespace OrderingService
 {
-	using System;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting;
 

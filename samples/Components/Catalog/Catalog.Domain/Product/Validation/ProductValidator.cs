@@ -13,7 +13,11 @@
 		{
 			this.RuleFor(x => x.Name)
 				.NotEmpty()
-				.MaximumLength(100);
+				.MaximumLength(256);
+
+			this.RuleFor(x => x.Description)
+				.NotEmpty()
+				.MaximumLength(1024);
 		}
 	}
 }

@@ -84,17 +84,8 @@
 		public static IServiceCollection AddOutboxContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IOutboxContributor, new()
 		{
-			OutboxContributorList contributorList = services.GetObjectOrDefault<OutboxContributorList>();
-			if(contributorList != null)
-			{
-				TContributor contributor = new TContributor();
-				contributorList.Add(contributor);
-			}
-			else
-			{
-				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger.LogContributorListNotAvailable(typeof(IOutboxContributor));
-			}
+			TContributor contributor = new TContributor();
+			services.TryAddObjectAccessor<IOutboxContributor>(contributor);
 
 			return services;
 		}

@@ -47,12 +47,6 @@
 			{
 				services.AddObjectAccessor(new SendEndpointsContributorList(), ObjectAccessorLifetime.Configure);
 			});
-
-			// Add the outbox contributor list.
-			context.Log("AddObjectAccessor(OutboxContributorList)", services =>
-			{
-				services.AddObjectAccessor(new OutboxContributorList(), ObjectAccessorLifetime.ConfigureServices);
-			});
 		}
 
 		/// <inheritdoc />
@@ -127,22 +121,20 @@
 			{
 				ConsumersContributorList contributorList = context.Services.GetObject<ConsumersContributorList>();
 
-				// Select a configured transport provider.
+				// Get the configured transport contributor.
 				ITransportContributor transportContributor = context.Services.GetObjectOrDefault<ITransportContributor>();
 				if(transportContributor is null)
 				{
 					throw new InvalidOperationException("No transport contributor was found.");
 				}
 
-				OutboxContributorList outboxContributorList = context.Services.GetObject<OutboxContributorList>();
+				// Get the configured outbox contributor.
+				IOutboxContributor outboxContributor = context.Services.GetObjectOrDefault<IOutboxContributor>();
 
 				services.AddMassTransit(options =>
 				{
-					// Add (optional) outbox implementations.
-					foreach(IOutboxContributor outboxContributor in outboxContributorList)
-					{
-						outboxContributor?.ConfigureOutbox(options, context);
-					}
+					// Add (optional) transactional outbox.
+					outboxContributor?.ConfigureOutbox(options, context);
 
 					// Add consumers.
 					foreach(IConsumersContributor contributor in contributorList)

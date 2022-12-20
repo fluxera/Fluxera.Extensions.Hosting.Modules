@@ -9,7 +9,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
 	using JetBrains.Annotations;
 	using Ordering.Domain;
-	using Ordering.Infrastructure.Contexts;
 	using Ordering.Infrastructure.Contributors;
 
 	/// <summary>
@@ -18,7 +17,7 @@
 	[PublicAPI]
 	[DependsOn<OrderingDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
-	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule<OrderingDbContext>>]
+	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class OrderingInfrastructureModule : ConfigureServicesModule
@@ -27,13 +26,7 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the repository contributor for the 'Default' repository.
-			context.Services.AddRepositoryContributor<RepositoryContributor>("Default");
-
-			// Add the repository context contributor for the 'Default' repository.
-			context.Services.AddRepositoryContextContributor<RepositoryContextContributor>("Default");
-
-			// Add the db context.
-			context.Services.AddDbContext(typeof(OrderingDbContext));
+			context.Services.AddRepositoryContributor<RepositoryContributor>();
 		}
 	}
 }

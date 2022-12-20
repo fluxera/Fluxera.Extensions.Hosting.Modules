@@ -9,7 +9,7 @@
 	///     The repository options.
 	/// </summary>
 	[PublicAPI]
-	public sealed class EntityFrameworkCoreRepositoryOptionsDictionary : Dictionary<string, RepositoryOptions>
+	public sealed class EntityFrameworkCoreRepositoryOptionsDictionary : Dictionary<string, EntityFrameworkCoreRepositoryOptions>
 	{
 		/// <summary>
 		///     The default repository name.
@@ -19,7 +19,7 @@
 		/// <summary>
 		///     Gets the default repository options.
 		/// </summary>
-		public RepositoryOptions Default
+		public EntityFrameworkCoreRepositoryOptions Default
 		{
 			get => this.GetOrDefault(DefaultRepositoryName);
 			set => this[DefaultRepositoryName] = value;
@@ -31,7 +31,7 @@
 		/// <param name="name"></param>
 		/// <returns></returns>
 		/// <exception cref="Exception"></exception>
-		public RepositoryOptions GetOptionsOrDefault(string name)
+		public EntityFrameworkCoreRepositoryOptions GetOptionsOrDefault(string name)
 		{
 			return this.GetOrDefault(name)
 				?? this.Default

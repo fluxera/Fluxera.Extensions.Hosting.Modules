@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox</Title>
+		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB</Title>
 		<Description>A module that enables MongoDB based transactional outbox on MassTransit.</Description>
-		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;efcore;transaction;outbox</PackageTags>
+		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;mongodb;transaction;outbox</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj" />
 	</ItemGroup>
 
 </Project>

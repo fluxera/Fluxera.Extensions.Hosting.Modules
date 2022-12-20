@@ -44,10 +44,6 @@
 			// Initialize the repository contributor list.
 			context.Log("AddObjectAccessor(RepositoryContributorDictionary)",
 				services => services.AddObjectAccessor(new RepositoryContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
-
-			// Initialize the repository context contributor list.
-			context.Log("AddObjectAccessor(RepositoryContextContributorDictionary)",
-				services => services.AddObjectAccessor(new RepositoryContextContributorDictionary(), ObjectAccessorLifetime.ConfigureServices));
 		}
 
 		/// <inheritdoc />
@@ -68,28 +64,19 @@
 			// Get the repository contributors.
 			RepositoryContributorDictionary contributorDictionary = context.Services.GetObject<RepositoryContributorDictionary>();
 
-			// Get the repository context contributors.
-			RepositoryContextContributorDictionary contributorContextDictionary = context.Services.GetObject<RepositoryContextContributorDictionary>();
-
 			// Get the repository provider contributors.
 			RepositoryProviderContributorList contributorList = context.Services.GetObject<RepositoryProviderContributorList>();
 
 			// Get persistence options to use in service configuration.
 			PersistenceOptions persistenceOptions = context.Services.GetOptions<PersistenceOptions>();
-			persistenceOptions.ConnectionStrings = persistenceOptions.ConnectionStrings;
 
 			// Add default services and the repositories.
 			context.Services.AddRepository(builder =>
 			{
 				foreach((string repositoryName, RepositoryOptions repositoryOptions) in persistenceOptions.Repositories)
 				{
-					Type contextType = null;
-					if(contributorContextDictionary.TryGetValue(repositoryName, out IRepositoryContextContributor repositoryContextContributor))
-					{
-						contextType = repositoryContextContributor.ConfigureRepositoryContext();
-					}
-
-					Guard.Against.Null(contextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
+					Type repositoryContextType = Type.GetType(repositoryOptions.RepositoryContextType);
+					Guard.Against.Null(repositoryContextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
 
 					IList<IRepositoryContributor> repositoryContributors = contributorDictionary.GetOrDefault(repositoryName);
 					if(repositoryContributors == null)
@@ -105,14 +92,15 @@
 						}
 
 						// Select a configured repository provider.
-						IRepositoryProviderContributor repositoryProviderContributor = contributorList.FirstOrDefault(x => x.RepositoryProviderName == repositoryOptions.ProviderName);
+						IRepositoryProviderContributor repositoryProviderContributor =
+							contributorList.FirstOrDefault(x => x.RepositoryProviderName == repositoryOptions.ProviderName);
 						if(repositoryProviderContributor == null)
 						{
 							throw new InvalidOperationException($"No repository provider contributor found for provider '{repositoryOptions.ProviderName}'.");
 						}
 
 						// Configure the used provider.
-						repositoryProviderContributor.AddRepository(builder, repositoryName, contextType, repositoryOptionsBuilder =>
+						repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryContextType, repositoryOptionsBuilder =>
 						{
 							// Enable/Disable the UoW feature.
 							if(repositoryOptions.EnableUnitOfWork)

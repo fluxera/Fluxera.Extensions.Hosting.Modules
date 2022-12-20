@@ -220,11 +220,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService", "samples\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderingService", "samples\Applications\OrderingService\OrderingService.csproj", "{685DD475-D4B8-4B84-B966-D2BD3A226B03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopApplication", "samples\Applications\ShopApplication\ShopApplication.csproj", "{8D92E98C-1C0D-43E1-9BD9-95C5CF4F826B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopApplication", "samples\Applications\ShopApplication\ShopApplication.csproj", "{8D92E98C-1C0D-43E1-9BD9-95C5CF4F826B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore.csproj", "{D8F9CE77-369D-443B-A130-EC9D12784D6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB.csproj", "{9AE3633F-4D27-4206-B639-2B6FE3DA6402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB.csproj", "{9AE3633F-4D27-4206-B639-2B6FE3DA6402}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj", "{51A35B11-C178-4EB7-8D94-9D266F5F83C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory", "src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory.csproj", "{30AFAEE8-891B-43DF-94F4-38C17A95FA2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -564,6 +568,14 @@ Global
 		{9AE3633F-4D27-4206-B639-2B6FE3DA6402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AE3633F-4D27-4206-B639-2B6FE3DA6402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AE3633F-4D27-4206-B639-2B6FE3DA6402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A35B11-C178-4EB7-8D94-9D266F5F83C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A35B11-C178-4EB7-8D94-9D266F5F83C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A35B11-C178-4EB7-8D94-9D266F5F83C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A35B11-C178-4EB7-8D94-9D266F5F83C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30AFAEE8-891B-43DF-94F4-38C17A95FA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30AFAEE8-891B-43DF-94F4-38C17A95FA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30AFAEE8-891B-43DF-94F4-38C17A95FA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30AFAEE8-891B-43DF-94F4-38C17A95FA2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -669,6 +681,8 @@ Global
 		{8D92E98C-1C0D-43E1-9BD9-95C5CF4F826B} = {6D5FF9EF-3C70-4B96-8E97-D6F268E58AE0}
 		{D8F9CE77-369D-443B-A130-EC9D12784D6B} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 		{9AE3633F-4D27-4206-B639-2B6FE3DA6402} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{51A35B11-C178-4EB7-8D94-9D266F5F83C1} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
+		{30AFAEE8-891B-43DF-94F4-38C17A95FA2A} = {2E256929-E4B0-4CA8-B52D-AD5193C91F3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

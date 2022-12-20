@@ -1,7 +1,6 @@
 ﻿namespace Catalog.Infrastructure
 {
 	using Catalog.Domain;
-	using Catalog.Infrastructure.Contexts;
 	using Catalog.Infrastructure.Contributors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
@@ -18,7 +17,7 @@
 	[PublicAPI]
 	[DependsOn<CatalogDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
-	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule<CatalogDbContext>>]
+	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class CatalogInfrastructureModule : ConfigureServicesModule
@@ -27,13 +26,7 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the repository contributor for the 'Default' repository.
-			context.Services.AddRepositoryContributor<RepositoryContributor>("Default");
-
-			// Add the repository context contributor for the 'Default' repository.
-			context.Services.AddRepositoryContextContributor<RepositoryContextContributor>("Default");
-
-			// Add the db context.
-			context.Services.AddDbContext(typeof(CatalogDbContext));
+			context.Services.AddRepositoryContributor<RepositoryContributor>();
 		}
 	}
 }

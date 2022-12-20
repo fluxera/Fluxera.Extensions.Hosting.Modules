@@ -1,13 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore</Title>
-		<Description>A module that enables EFCore based transactional outbox on MassTransit.</Description>
-		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;efcore;transaction;outbox</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox</Title>
+		<Description>A module that enables the transactional outbox on MassTransit.</Description>
+		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;transaction;outbox</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -28,12 +28,10 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
-		<PackageReference Include="MassTransit.EntityFrameworkCore" Version="8.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj" />
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
 	</ItemGroup>
 
 </Project>

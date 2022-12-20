@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox
 {
 	using JetBrains.Annotations;
 
@@ -23,15 +23,9 @@
 		public OutboxOptions Outbox { get; set; }
 
 		/// <summary>
-		///     Gets or sets the outbox options.
+		///     Gets or sets the bus outbox options.
 		/// </summary>
 		public BusOutboxOptions BusOutbox { get; set; }
-
-		/// <summary>
-		///     Use the in-memory version of the InboxOutbox, which is intended for
-		///     testing purposes only.
-		/// </summary>
-		public bool UseInMemoryInboxOutbox { get; set; }
 
 		/// <summary>
 		///     Flag, indicating if the cleanup background service is enabled.

@@ -14,14 +14,14 @@
 		/// </summary>
 		public EntityFrameworkCorePersistenceOptions()
 		{
-			this.EntityFrameworkCoreRepositories = new EntityFrameworkCoreRepositoryOptionsDictionary();
+			this.Repositories = new EntityFrameworkCoreRepositoryOptionsDictionary();
 			this.ConnectionStrings = new ConnectionStrings();
 		}
 
 		/// <summary>
 		///     Gets the options of the repositories.
 		/// </summary>
-		public EntityFrameworkCoreRepositoryOptionsDictionary EntityFrameworkCoreRepositories { get; set; }
+		public EntityFrameworkCoreRepositoryOptionsDictionary Repositories { get; set; }
 
 		/// <summary>
 		///     Gets the connection strings.

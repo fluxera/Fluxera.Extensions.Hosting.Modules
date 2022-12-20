@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore
 {
-	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -12,6 +11,6 @@
 		/// <summary>
 		///     Gets or sets the type of the db context.
 		/// </summary>
-		public Type DbContextType { get; set; }
+		public string DbContextType { get; set; }
 	}
 }

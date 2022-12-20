@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence
 {
-	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -40,7 +39,7 @@
 		/// <summary>
 		///     Gets or sets the type of the repository context.
 		/// </summary>
-		public Type RepositoryContextType { get; set; }
+		public string RepositoryContextType { get; set; }
 
 		/// <summary>
 		///     Flag, indicating if the repository uses UoW. The default is <c>true</c>.

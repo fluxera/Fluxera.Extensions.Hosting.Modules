@@ -1,7 +1,7 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox
 {
-	using JetBrains.Annotations;
 	using System;
+	using JetBrains.Annotations;
 
 	/// <summary>
 	///     The options for the bus outbox.

@@ -16,7 +16,7 @@
 			{
 				return (builder, repositoryName, contextType, optionsAction, context) =>
 				{
-					context.Services.AddDbContext(contextType);
+					//context.Services.AddDbContext(contextType);
 
 					context.Log("AddEntityFrameworkRepository",
 						_ => builder.AddEntityFrameworkRepository(repositoryName, contextType, optionsAction));

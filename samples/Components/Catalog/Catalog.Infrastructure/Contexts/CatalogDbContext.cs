@@ -37,7 +37,7 @@
 
 				connectionString ??= "Server=localhost;Integrated Security=True;TrustServerCertificate=True;";
 				connectionString = connectionString.EnsureEndsWith(";");
-				connectionString += $"Database={databaseName ?? "demo-database"}";
+				connectionString += $"Database={databaseName ?? "shop"}";
 
 				optionsBuilder.UseSqlServer(connectionString);
 			}
@@ -50,9 +50,18 @@
 			modelBuilder.AddProductEntity();
 
 			// Add the entities for the transactional inbox/outbox.
-			modelBuilder.AddInboxStateEntity();
-			modelBuilder.AddOutboxMessageEntity();
-			modelBuilder.AddOutboxStateEntity();
+			modelBuilder.AddInboxStateEntity(builder =>
+			{
+				builder.ToTable("InboxStates");
+			});
+			modelBuilder.AddOutboxMessageEntity(builder =>
+			{
+				builder.ToTable("OutboxMessages");
+			});
+			modelBuilder.AddOutboxStateEntity(builder =>
+			{
+				builder.ToTable("OutboxStates");
+			});
 		}
 	}
 }

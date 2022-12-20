@@ -21,6 +21,8 @@
 		{
 			builder.ToTable("OrderItems");
 
+			builder.Property(x => x.UnitPrice).HasColumnType("money");
+
 			builder.UseRepositoryDefaults();
 		}
 	}

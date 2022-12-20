@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Ordering.Infrastructure.Migrations
+namespace ShopApplication.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -26,7 +26,7 @@ namespace Ordering.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InboxState",
+                name: "InboxStates",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -44,8 +44,8 @@ namespace Ordering.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InboxState", x => x.Id);
-                    table.UniqueConstraint("AK_InboxState_MessageId_ConsumerId", x => new { x.MessageId, x.ConsumerId });
+                    table.PrimaryKey("PK_InboxStates", x => x.Id);
+                    table.UniqueConstraint("AK_InboxStates_MessageId_ConsumerId", x => new { x.MessageId, x.ConsumerId });
                 });
 
             migrationBuilder.CreateTable(
@@ -71,7 +71,7 @@ namespace Ordering.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OutboxMessage",
+                name: "OutboxMessages",
                 columns: table => new
                 {
                     SequenceNumber = table.Column<long>(type: "bigint", nullable: false)
@@ -98,11 +98,11 @@ namespace Ordering.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OutboxMessage", x => x.SequenceNumber);
+                    table.PrimaryKey("PK_OutboxMessages", x => x.SequenceNumber);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OutboxState",
+                name: "OutboxStates",
                 columns: table => new
                 {
                     OutboxId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -114,7 +114,21 @@ namespace Ordering.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OutboxState", x => x.OutboxId);
+                    table.PrimaryKey("PK_OutboxStates", x => x.OutboxId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "money", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,7 +138,7 @@ namespace Ordering.Infrastructure.Migrations
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Amount = table.Column<int>(type: "int", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "money", nullable: false),
                     OrderID = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -138,8 +152,8 @@ namespace Ordering.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_InboxState_Delivered",
-                table: "InboxState",
+                name: "IX_InboxStates_Delivered",
+                table: "InboxStates",
                 column: "Delivered");
 
             migrationBuilder.CreateIndex(
@@ -148,32 +162,32 @@ namespace Ordering.Infrastructure.Migrations
                 column: "OrderID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OutboxMessage_EnqueueTime",
-                table: "OutboxMessage",
+                name: "IX_OutboxMessages_EnqueueTime",
+                table: "OutboxMessages",
                 column: "EnqueueTime");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OutboxMessage_ExpirationTime",
-                table: "OutboxMessage",
+                name: "IX_OutboxMessages_ExpirationTime",
+                table: "OutboxMessages",
                 column: "ExpirationTime");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OutboxMessage_InboxMessageId_InboxConsumerId_SequenceNumber",
-                table: "OutboxMessage",
+                name: "IX_OutboxMessages_InboxMessageId_InboxConsumerId_SequenceNumber",
+                table: "OutboxMessages",
                 columns: new[] { "InboxMessageId", "InboxConsumerId", "SequenceNumber" },
                 unique: true,
                 filter: "[InboxMessageId] IS NOT NULL AND [InboxConsumerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OutboxMessage_OutboxId_SequenceNumber",
-                table: "OutboxMessage",
+                name: "IX_OutboxMessages_OutboxId_SequenceNumber",
+                table: "OutboxMessages",
                 columns: new[] { "OutboxId", "SequenceNumber" },
                 unique: true,
                 filter: "[OutboxId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OutboxState_Created",
-                table: "OutboxState",
+                name: "IX_OutboxStates_Created",
+                table: "OutboxStates",
                 column: "Created");
         }
 
@@ -184,16 +198,19 @@ namespace Ordering.Infrastructure.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "InboxState");
+                name: "InboxStates");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
-                name: "OutboxMessage");
+                name: "OutboxMessages");
 
             migrationBuilder.DropTable(
-                name: "OutboxState");
+                name: "OutboxStates");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Orders");

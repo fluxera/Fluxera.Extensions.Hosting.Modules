@@ -20,6 +20,8 @@
 		{
 			builder.ToTable("Products");
 
+			builder.Property(x => x.Price).HasColumnType("money");
+
 			builder.UseRepositoryDefaults();
 
 			this.callback?.Invoke(builder);

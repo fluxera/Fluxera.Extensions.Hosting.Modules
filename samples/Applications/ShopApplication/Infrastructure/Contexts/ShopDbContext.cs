@@ -1,14 +1,12 @@
 ﻿namespace ShopApplication.Infrastructure.Contexts
 {
-	using Catalog.Domain.ProductAggregate;
+	using Catalog.Infrastructure.Contexts;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
-	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Utilities.Extensions;
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;
-	using Ordering.Domain.CustomerAggregate;
-	using Ordering.Domain.OrderAggregate;
+	using Ordering.Infrastructure.Contexts;
 
 	public sealed class ShopDbContext : DbContext
 	{
@@ -50,42 +48,15 @@
 		/// <inheritdoc />
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Product>(entity =>
-			{
-				entity.ToTable("Products");
+			// Add the Catalog component domain entities.
+			modelBuilder.AddProductEntity();
 
-				entity.UseRepositoryDefaults();
-			});
+			// Add the Ordering component domain entities.
+			modelBuilder.AddOrderEntity();
+			modelBuilder.AddOrderItemEntity();
+			modelBuilder.AddCustomerEntity();
 
-			modelBuilder.Entity<Order>(entity =>
-			{
-				entity.ToTable("Orders");
-
-				entity.OwnsOne(x => x.ShippingAddress);
-
-				entity.OwnsOne(x => x.BillingAddress);
-
-				entity.HasMany(x => x.OrderItems);
-
-				entity.UseRepositoryDefaults();
-			});
-
-			modelBuilder.Entity<OrderItem>(entity =>
-			{
-				entity.ToTable("OrderItems");
-
-				entity.UseRepositoryDefaults();
-			});
-
-			modelBuilder.Entity<Customer>(entity =>
-			{
-				entity.ToTable("Customers");
-
-				entity.OwnsOne(x => x.Name);
-
-				entity.UseRepositoryDefaults();
-			});
-
+			// Add the entities for the transactional inbox/outbox.
 			modelBuilder.AddInboxStateEntity();
 			modelBuilder.AddOutboxMessageEntity();
 			modelBuilder.AddOutboxStateEntity();

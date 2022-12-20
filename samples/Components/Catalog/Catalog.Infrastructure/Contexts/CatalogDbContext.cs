@@ -1,9 +1,7 @@
 ﻿namespace Catalog.Infrastructure.Contexts
 {
-	using Catalog.Domain.ProductAggregate;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
-	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Utilities.Extensions;
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;
@@ -48,13 +46,10 @@
 		/// <inheritdoc />
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Product>(entity =>
-			{
-				entity.ToTable("Products");
+			// Add the domain entities.
+			modelBuilder.AddProductEntity();
 
-				entity.UseRepositoryDefaults();
-			});
-
+			// Add the entities for the transactional inbox/outbox.
 			modelBuilder.AddInboxStateEntity();
 			modelBuilder.AddOutboxMessageEntity();
 			modelBuilder.AddOutboxStateEntity();

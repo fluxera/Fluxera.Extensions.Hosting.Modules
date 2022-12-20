@@ -49,35 +49,12 @@
 		/// <inheritdoc />
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Order>(entity =>
-			{
-				entity.ToTable("Orders");
+			// Add the domain entities.
+			modelBuilder.AddOrderEntity();
+			modelBuilder.AddOrderItemEntity();
+			modelBuilder.AddCustomerEntity();
 
-				entity.OwnsOne(x => x.ShippingAddress);
-
-				entity.OwnsOne(x => x.BillingAddress);
-
-				entity.HasMany(x => x.OrderItems);
-
-				entity.UseRepositoryDefaults();
-			});
-
-			modelBuilder.Entity<OrderItem>(entity =>
-			{
-				entity.ToTable("OrderItems");
-
-				entity.UseRepositoryDefaults();
-			});
-
-			modelBuilder.Entity<Customer>(entity =>
-			{
-				entity.ToTable("Customers");
-
-				entity.OwnsOne(x => x.Name);
-
-				entity.UseRepositoryDefaults();
-			});
-
+			// Add the entities for the transactional inbox/outbox.
 			modelBuilder.AddInboxStateEntity();
 			modelBuilder.AddOutboxMessageEntity();
 			modelBuilder.AddOutboxStateEntity();

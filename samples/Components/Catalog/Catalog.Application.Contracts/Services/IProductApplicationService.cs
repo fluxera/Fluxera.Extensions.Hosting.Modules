@@ -1,5 +1,6 @@
 ﻿namespace Catalog.Application.Contracts.Services
 {
+	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Dtos;
 	using Catalog.Domain.Shared.ProductAggregate;
@@ -13,5 +14,7 @@
 		Task<Result<ProductDto>> GetProductAsync(ProductId id);
 
 		Task<Result<ProductDto>> AddProduct(ProductDto dto);
+
+		Task<Result<IReadOnlyCollection<ProductDto>>> GetProductsAsync();
 	}
 }

@@ -13,7 +13,7 @@
 	public sealed class CatalogHttpApiModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
-		public override void ConfigureServices(IServiceConfigurationContext context)
+		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the http client service contributor.
 			context.Services.AddHttpClientServiceContributor<HttpClientServiceContributor>();

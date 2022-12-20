@@ -1,5 +1,10 @@
-﻿namespace ShopApplication
+﻿//#define MONOLITH
+
+namespace ShopApplication
 {
+	using Catalog.Application;
+	using Catalog.HttpClient;
+	using Catalog.MessagingApi;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Serilog;
@@ -8,6 +13,9 @@
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Logging;
 	using OpenTelemetry.Logs;
+	using Ordering.Application;
+	using Ordering.HttpClient;
+	using Ordering.MessagingApi;
 	using Serilog;
 	using Serilog.Extensions.Hosting;
 	using Serilog.Extensions.Logging;
@@ -18,6 +26,22 @@
 		protected override void ConfigureApplicationPlugins(IPluginConfigurationContext context)
 		{
 			context.AddPlugin<SerilogModule>();
+
+#if MONOLITH
+			// Configure the Catalog component.
+			context.AddPlugin<CatalogApplicationModule>();
+			context.AddPlugin<CatalogMessagingApiModule>();
+
+			// Configure the Ordering component.
+			context.AddPlugin<OrderingApplicationModule>();
+			context.AddPlugin<OrderingMessagingApiModule>();
+#else
+			// Configure the Catalog component.
+			context.AddPlugin<CatalogHttpApiModule>();
+
+			// Configure the Ordering component.
+			context.AddPlugin<OrderingHttpApiModule>();
+#endif
 		}
 
 		/// <inheritdoc />

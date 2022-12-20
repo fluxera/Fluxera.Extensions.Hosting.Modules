@@ -1,5 +1,6 @@
 ﻿namespace Catalog.Application.Services
 {
+	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Dtos;
 	using Catalog.Application.Contracts.Requests;
@@ -29,6 +30,12 @@
 		public Task<Result<ProductDto>> AddProduct(ProductDto dto)
 		{
 			return this.sender.Send(new AddProductRequest(dto));
+		}
+
+		/// <inheritdoc />
+		public Task<Result<IReadOnlyCollection<ProductDto>>> GetProductsAsync()
+		{
+			return this.sender.Send(new GetProductsRequest());
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿namespace Catalog.HttpClient.Contributors
 {
+	using Catalog.Application.Contracts.Services;
 	using Catalog.HttpClient.Services;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient;
@@ -11,10 +12,10 @@
 		/// <inheritdoc />
 		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
-			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<ICatalogHttpClient, CatalogHttpClient>(
+			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<IProductApplicationService, ProductApplicationServiceClient>(
 				(ctx, _) =>
 				{
-					CatalogHttpClient client = new CatalogHttpClient(ctx.Name, ctx.HttpClient, ctx.Options);
+					ProductApplicationServiceClient client = new ProductApplicationServiceClient(ctx.Name, ctx.HttpClient, ctx.Options);
 					return client;
 				});
 

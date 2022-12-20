@@ -1,5 +1,6 @@
 ﻿namespace Catalog.HttpApi.Controllers
 {
+	using System.Collections.Generic;
 	using System.Net;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Dtos;
@@ -19,6 +20,24 @@
 		public ProductsController(IProductApplicationService productApplicationService)
 		{
 			this.productApplicationService = productApplicationService;
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Get()
+		{
+			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
+
+			if(result.IsFailed)
+			{
+				return this.StatusCode((int)HttpStatusCode.InternalServerError, result.Errors);
+			}
+
+			if(result.Value is null)
+			{
+				return this.NotFound();
+			}
+
+			return this.Ok(result);
 		}
 
 		[HttpGet("{id:required}")]

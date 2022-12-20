@@ -1,7 +1,10 @@
 ﻿namespace ShopApplication.Pages
 {
+	using System.Collections.Generic;
 	using System.Threading.Tasks;
+	using Catalog.Application.Contracts.Dtos;
 	using Catalog.Application.Contracts.Services;
+	using FluentResults;
 	using Microsoft.AspNetCore.Mvc.RazorPages;
 	using Microsoft.Extensions.Logging;
 
@@ -18,6 +21,8 @@
 
 		public async Task OnGetAsync()
 		{
+			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
+
 		}
 	}
 }

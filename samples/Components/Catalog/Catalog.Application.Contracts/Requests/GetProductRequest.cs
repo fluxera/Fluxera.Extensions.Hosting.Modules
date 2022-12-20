@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Application.Contracts.Requests
 {
 	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Domain.Shared.Product;
+	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using JetBrains.Annotations;
 	using MediatR;

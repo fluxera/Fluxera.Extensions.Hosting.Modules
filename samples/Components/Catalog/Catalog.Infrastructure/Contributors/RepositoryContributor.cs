@@ -1,9 +1,9 @@
 ﻿namespace Catalog.Infrastructure.Contributors
 {
-	using Catalog.Domain.Product;
-	using Catalog.Domain.Product.Validation;
-	using Catalog.Infrastructure.Product.Handlers;
-	using Catalog.Infrastructure.Product.Interceptors;
+	using Catalog.Domain.ProductAggregate;
+	using Catalog.Domain.ProductAggregate.Validation;
+	using Catalog.Infrastructure.ProductAggregate.Handlers;
+	using Catalog.Infrastructure.ProductAggregate.Interceptors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using JetBrains.Annotations;

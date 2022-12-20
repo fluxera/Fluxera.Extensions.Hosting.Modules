@@ -6,7 +6,7 @@
 	///     The options of a repository.
 	/// </summary>
 	[PublicAPI]
-	public sealed class RepositoryOptions
+	public class RepositoryOptions
 	{
 		/// <summary>
 		///     Creates a new instance of the <see cref="RepositoryOptions" /> type.

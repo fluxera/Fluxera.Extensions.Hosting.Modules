@@ -4,12 +4,12 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	public sealed class OrderingRepositoryContext : EntityFrameworkCoreContext
+	internal sealed class OrderingRepositoryContext : EntityFrameworkCoreContext
 	{
 		/// <inheritdoc />
 		protected override void ConfigureOptions(EntityFrameworkCoreContextOptions options)
 		{
-			options.UseDbContext<OrderingDbContext>();
+			options.UseDbContext(typeof(OrderingDbContext));
 		}
 	}
 }

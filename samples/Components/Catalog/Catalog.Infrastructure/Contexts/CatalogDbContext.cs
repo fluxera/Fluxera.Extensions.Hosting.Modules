@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Infrastructure.Contexts
 {
-	using Catalog.Domain.Product;
+	using Catalog.Domain.ProductAggregate;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
 	using Fluxera.Repository.EntityFrameworkCore;
@@ -8,7 +8,7 @@
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;
 
-	public sealed class CatalogDbContext : DbContext
+	internal sealed class CatalogDbContext : DbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
 		private readonly IDatabaseNameProvider databaseNameProvider;

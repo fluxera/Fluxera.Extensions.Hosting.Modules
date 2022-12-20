@@ -3,6 +3,7 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using JetBrains.Annotations;
+	using Ordering.Domain.CustomerAggregate;
 	using Ordering.Domain.OrderAggregate;
 
 	[UsedImplicitly]
@@ -12,6 +13,7 @@
 		public override void ConfigureAggregates(IRepositoryAggregatesBuilder builder, IServiceConfigurationContext context)
 		{
 			builder.UseFor<Order>();
+			builder.UseFor<Customer>();
 		}
 	}
 }

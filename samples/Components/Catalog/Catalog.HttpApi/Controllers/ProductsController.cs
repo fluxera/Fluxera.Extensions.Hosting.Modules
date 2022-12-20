@@ -4,7 +4,7 @@
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Dtos;
 	using Catalog.Application.Contracts.Services;
-	using Catalog.Domain.Shared.Product;
+	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;

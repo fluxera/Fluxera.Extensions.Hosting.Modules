@@ -2,7 +2,7 @@
 {
 	using AutoMapper;
 	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Domain.Product;
+	using Catalog.Domain.ProductAggregate;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]

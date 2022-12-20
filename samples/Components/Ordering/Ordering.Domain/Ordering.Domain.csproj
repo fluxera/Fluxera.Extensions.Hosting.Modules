@@ -19,8 +19,4 @@
 		<ProjectReference Include="..\Ordering.Domain.Shared\Ordering.Domain.Shared.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="CustomerAggregate\" />
-	</ItemGroup>
-
 </Project>

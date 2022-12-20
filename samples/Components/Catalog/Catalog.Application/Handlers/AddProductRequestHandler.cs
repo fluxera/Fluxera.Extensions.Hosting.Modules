@@ -6,8 +6,8 @@
 	using AutoMapper;
 	using Catalog.Application.Contracts.Dtos;
 	using Catalog.Application.Contracts.Requests;
-	using Catalog.Domain.Product;
-	using Catalog.Domain.Shared.Product;
+	using Catalog.Domain.ProductAggregate;
+	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;

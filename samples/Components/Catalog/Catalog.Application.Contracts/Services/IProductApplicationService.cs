@@ -2,7 +2,7 @@
 {
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Domain.Shared.Product;
+	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Services;
 	using JetBrains.Annotations;

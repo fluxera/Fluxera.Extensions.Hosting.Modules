@@ -3,7 +3,7 @@
 	using System.Net.Http;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Domain.Shared.Product;
+	using Catalog.Domain.Shared.ProductAggregate;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 

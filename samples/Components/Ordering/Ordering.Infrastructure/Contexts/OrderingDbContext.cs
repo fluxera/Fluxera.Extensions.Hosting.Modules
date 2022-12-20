@@ -9,7 +9,7 @@
 	using Ordering.Domain.CustomerAggregate;
 	using Ordering.Domain.OrderAggregate;
 
-	public sealed class OrderingDbContext : DbContext
+	internal sealed class OrderingDbContext : DbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
 		private readonly IDatabaseNameProvider databaseNameProvider;

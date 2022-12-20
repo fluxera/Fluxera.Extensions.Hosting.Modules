@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Application.Contracts.Dtos
 {
-	using Catalog.Domain.Shared.Product;
+	using Catalog.Domain.Shared.ProductAggregate;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
 

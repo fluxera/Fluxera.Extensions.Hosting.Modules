@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence
 {
+	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -35,6 +36,11 @@
 		///     Gets the name of the connection string to use.
 		/// </summary>
 		public string ConnectionStringName { get; set; }
+
+		/// <summary>
+		///     Gets or sets the type of the repository context.
+		/// </summary>
+		public Type RepositoryContextType { get; set; }
 
 		/// <summary>
 		///     Flag, indicating if the repository uses UoW. The default is <c>true</c>.

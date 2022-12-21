@@ -10,6 +10,8 @@
 	///     A module that enabled the health checks.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn<HealthChecksModule>]
+	[DependsOn<ConfigurationModule>]
 	public sealed class HealthChecksEndpointsModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -21,7 +23,7 @@
 			// Add the health check route contributor.
 			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
 
-			// Add the default health check contributor.
+			// Add the health checks contributor.
 			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus.Contributors;
 	using JetBrains.Annotations;
 
@@ -8,7 +9,8 @@
 	///     A module that enables Azure ServiceBus messaging.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(MessagingModule))]
+	[DependsOn<HealthChecksModule>]
+	[DependsOn<MessagingModule>]
 	public sealed class AzureServiceBusMessagingModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -19,6 +21,9 @@
 
 			// Add the transport contributor.
 			context.Services.AddTransportContributor<TransportContributor>();
+
+			// Add the health checks contributor.
+			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 	}
 }

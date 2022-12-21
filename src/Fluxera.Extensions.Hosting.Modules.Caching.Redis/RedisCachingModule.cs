@@ -5,6 +5,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Caching.Redis.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.DataManagement;
+	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -13,9 +14,10 @@
 	///     A module that enables Redis caching.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(CachingModule))]
-	[DependsOn(typeof(DataManagementModule))]
-	[DependsOn(typeof(OpenTelemetryModule))]
+	[DependsOn<HealthChecksModule>]
+	[DependsOn<CachingModule>]
+	[DependsOn<DataManagementModule>]
+	[DependsOn<OpenTelemetryModule>]
 	public sealed class RedisCachingModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -26,6 +28,9 @@
 
 			// Add the tracer provider contributor.
 			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
+
+			// Add the health checks contributor.
+			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 
 		/// <inheritdoc />

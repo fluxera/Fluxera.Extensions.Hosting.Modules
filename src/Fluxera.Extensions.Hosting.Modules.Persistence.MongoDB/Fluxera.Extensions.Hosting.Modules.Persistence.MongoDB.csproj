@@ -22,6 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="6.0.2" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.5" />
 		<PackageReference Include="Fluxera.Repository.MongoDB" Version="7.0.8" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
@@ -33,6 +34,7 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.HealthChecks\Fluxera.Extensions.Hosting.Modules.HealthChecks.csproj" />
     <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
   </ItemGroup>
 

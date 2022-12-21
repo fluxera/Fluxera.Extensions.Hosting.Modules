@@ -6,20 +6,20 @@
 	using Microsoft.Extensions.DependencyInjection;
 	using Ordering.Application.Contracts.Services;
 	using Ordering.HttpClient.Services;
+	using System.Collections.Generic;
 
 	internal sealed class HttpClientServiceContributor : IHttpClientServiceContributor
 	{
 		/// <inheritdoc />
-		public IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context)
+		public IEnumerable<IHttpClientBuilder> AddNamedHttpClientServices(IServiceConfigurationContext context)
 		{
-			IHttpClientBuilder httpClientBuilder = context.Services.AddHttpClientService<IOrderApplicationService, OrderApplicationServiceClient>(
+			yield return context.Services.AddHttpClientService<IOrderApplicationService, OrderApplicationServiceClient>(
+				"Ordering",
 				(ctx, _) =>
 				{
 					OrderApplicationServiceClient client = new OrderApplicationServiceClient(ctx.Name, ctx.HttpClient, ctx.Options);
 					return client;
 				});
-
-			return httpClientBuilder;
 		}
 	}
 }

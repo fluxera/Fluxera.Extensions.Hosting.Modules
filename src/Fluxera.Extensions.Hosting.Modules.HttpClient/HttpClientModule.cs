@@ -6,6 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules.HttpClient.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Http;
+	using Fluxera.Utilities.Extensions;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;
@@ -32,9 +33,6 @@
 
 			// Add the contributor list.
 			context.Services.TryAddObjectAccessor(new HttpClientServiceRegistrationContributorList(), ObjectAccessorLifetime.ConfigureServices);
-
-			// Add the contributor list list.
-			context.Services.TryAddObjectAccessor(new HttpClientBuilderContributorList(), ObjectAccessorLifetime.ConfigureServices);
 		}
 
 		/// <inheritdoc />
@@ -45,25 +43,16 @@
 
 			// Add named http client services.
 			HttpClientServiceRegistrationContributorList contributorList = context.Services.GetObject<HttpClientServiceRegistrationContributorList>();
-			HttpClientBuilderContributorList httpClientBuilderContributorList = context.Services.GetObject<HttpClientBuilderContributorList>();
 
+			HttpClientOptions httpClientOptions = context.Services.GetOptions<HttpClientOptions>();
+			
 			foreach(IHttpClientServiceContributor contributor in contributorList)
 			{
-				IHttpClientBuilder builder = contributor.AddNamedHttpClientServices(context);
-				builder
-					.AddAuthenticateRequestHandler()
-					.AddIdempotentPostRequestHandler()
-					.AddContentHashRequestHandler()
-					.AddContentHashResponseHandler();
-
-				foreach(IHttpClientBuilderContributor httpClientBuilderContributor in httpClientBuilderContributorList)
+				foreach(IHttpClientBuilder builder in contributor.AddNamedHttpClientServices(context))
 				{
-					httpClientBuilderContributor.Configure(builder, context);
+					RemoteService remoteService = httpClientOptions.RemoteServices.GetOrDefault(builder.Name);
+					AddMessageHandlers(builder, remoteService);
 				}
-
-				// TODO: Polly, settings per service configurable.
-				// https://www.hanselman.com/blog/AddingResilienceAndTransientFaultHandlingToYourNETCoreHttpClientWithPolly.aspx
-				//.AddTransientHttpErrorPolicy(policyBuilder => policyBuilder.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 			}
 
 			// Add a named HttpClient for the default name.
@@ -71,16 +60,7 @@
 			context.Log("AddHttpClient", services =>
 			{
 				IHttpClientBuilder builder = AddDefaultHttpClient(services);
-				builder
-					.AddAuthenticateRequestHandler()
-					.AddIdempotentPostRequestHandler()
-					.AddContentHashRequestHandler()
-					.AddContentHashResponseHandler();
-
-				foreach(IHttpClientBuilderContributor httpClientBuilderContributor in httpClientBuilderContributorList)
-				{
-					httpClientBuilderContributor.Configure(builder, context);
-				}
+				AddMessageHandlers(builder);
 			});
 		}
 
@@ -97,6 +77,19 @@
 			});
 
 			return builder;
+		}
+
+		private static void AddMessageHandlers(IHttpClientBuilder builder, RemoteService remoteService = default)
+		{
+			builder
+				.AddAuthenticateRequestHandler()
+				.AddIdempotentPostRequestHandler()
+				.AddContentHashRequestHandler()
+				.AddContentHashResponseHandler();
+
+			// TODO: Polly, settings per service configurable.
+			// https://www.hanselman.com/blog/AddingResilienceAndTransientFaultHandlingToYourNETCoreHttpClientWithPolly.aspx
+			//.AddTransientHttpErrorPolicy(policyBuilder => policyBuilder.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 		}
 	}
 }

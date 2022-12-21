@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.HealthChecks
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks.Contributors;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,7 @@
 	///     A module that enables health checks.
 	/// </summary>
 	[PublicAPI]
+	[DependsOn<ConfigurationModule>]
 	public sealed class HealthChecksModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -33,7 +35,7 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			// Add the default health check contributor.
+			// Add the health checks contributor.
 			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 

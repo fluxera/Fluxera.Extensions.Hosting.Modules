@@ -22,6 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.Redis" Version="6.0.4" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.5" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
@@ -35,6 +36,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Caching\Fluxera.Extensions.Hosting.Modules.Caching.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.DataManagement\Fluxera.Extensions.Hosting.Modules.DataManagement.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.HealthChecks\Fluxera.Extensions.Hosting.Modules.HealthChecks.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.OpenTelemetry\Fluxera.Extensions.Hosting.Modules.OpenTelemetry.csproj" />
 	</ItemGroup>
 

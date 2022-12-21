@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB
 {
+	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.Sequence;
@@ -10,7 +11,8 @@
 	///     A module that enabled MongoDB persistence.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(PersistenceModule))]
+	[DependsOn<HealthChecksModule>]
+	[DependsOn<PersistenceModule>]
 	public sealed class MongoPersistenceModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -18,6 +20,9 @@
 		{
 			// Add the tracer provider contributor.
 			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
+
+			// Add the health checks contributor.
+			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 
 			// Add the repository provider contributor.
 			context.Log("AddRepositoryProviderContributor(MongoDB)",

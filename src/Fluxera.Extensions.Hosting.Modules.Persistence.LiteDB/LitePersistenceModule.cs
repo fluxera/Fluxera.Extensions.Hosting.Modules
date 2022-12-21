@@ -7,7 +7,7 @@
 	///     A module that enables LiteDB persistence.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(PersistenceModule))]
+	[DependsOn<PersistenceModule>]
 	public sealed class LitePersistenceModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

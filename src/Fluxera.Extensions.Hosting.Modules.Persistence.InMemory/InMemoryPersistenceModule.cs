@@ -7,7 +7,7 @@
 	///     A module that enables in-memory persistence.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(PersistenceModule))]
+	[DependsOn<PersistenceModule>]
 	public sealed class InMemoryPersistenceModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

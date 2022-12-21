@@ -11,8 +11,6 @@ namespace Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			context.Services.AddRepositoryContributor<RepositoryContributor>("Test");
-
-			context.Services.AddRepositoryContextContributor<RepositoryContextContributor>("Test");
 		}
 	}
 }

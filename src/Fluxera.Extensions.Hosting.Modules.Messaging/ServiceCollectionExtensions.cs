@@ -76,7 +76,7 @@
 		}
 
 		/// <summary>
-		///     Adds the outbox contributor if no other outbox contributor was already added.
+		///     Adds an outbox contributor to the list of contributors.
 		/// </summary>
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>

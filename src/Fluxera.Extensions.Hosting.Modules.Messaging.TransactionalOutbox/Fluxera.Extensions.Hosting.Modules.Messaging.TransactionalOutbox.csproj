@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
@@ -6,8 +6,8 @@
 
 	<PropertyGroup>
 		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox</Title>
-		<Description>A module that enables EF Core based transactional outbox on MassTransit.</Description>
-		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;efcore;transaction;outbox</PackageTags>
+		<Description>A module that enables the transactional outbox on MassTransit.</Description>
+		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;transaction;outbox</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -28,7 +28,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
-		<PackageReference Include="MassTransit.EntityFrameworkCore" Version="8.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>

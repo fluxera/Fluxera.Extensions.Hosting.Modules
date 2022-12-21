@@ -7,7 +7,7 @@
 	<PropertyGroup>
 		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks</Title>
 		<Description>A module that enables health checks for ASP.NET Core.</Description>
-		<PackageTags>library;extensions;hosting;modular;principal;aspnet;healthchecks</PackageTags>
+		<PackageTags>library;extensions;hosting;modular;aspnet;healthchecks</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,6 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.ApplicationStatus" Version="6.0.0" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.5" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>
@@ -36,6 +37,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore\Fluxera.Extensions.Hosting.Modules.AspNetCore.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.HealthChecks\Fluxera.Extensions.Hosting.Modules.HealthChecks.csproj" />
 	</ItemGroup>
 
 </Project>

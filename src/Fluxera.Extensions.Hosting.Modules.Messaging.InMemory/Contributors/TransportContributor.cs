@@ -17,7 +17,11 @@
 		{
 			configurator.UsingInMemory((ctx, cfg) =>
 			{
-				//cfg.UseInMemoryOutbox();
+				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
+				if(!isTransactionalOutboxModuleLoaded)
+				{
+					cfg.UseInMemoryOutbox();
+				}
 
 				cfg.ConfigureJsonSerializerOptions(serializerOptions =>
 				{

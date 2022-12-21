@@ -26,6 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FluentResults.Extensions.AspNetCore" Version="0.1.0" />
 		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="7.0.6" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.5" />
 		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="7.0.5" />

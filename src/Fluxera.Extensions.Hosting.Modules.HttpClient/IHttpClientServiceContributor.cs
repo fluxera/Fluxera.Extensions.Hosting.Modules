@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.HttpClient
 {
+	using System.Collections.Generic;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,6 @@
 		///     Add named http client services.
 		/// </summary>
 		/// <returns></returns>
-		IHttpClientBuilder AddNamedHttpClientServices(IServiceConfigurationContext context);
+		IEnumerable<IHttpClientBuilder> AddNamedHttpClientServices(IServiceConfigurationContext context);
 	}
 }

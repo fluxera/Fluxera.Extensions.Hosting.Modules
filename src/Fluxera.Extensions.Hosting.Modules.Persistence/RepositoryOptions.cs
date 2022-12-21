@@ -6,7 +6,7 @@
 	///     The options of a repository.
 	/// </summary>
 	[PublicAPI]
-	public sealed class RepositoryOptions
+	public class RepositoryOptions
 	{
 		/// <summary>
 		///     Creates a new instance of the <see cref="RepositoryOptions" /> type.
@@ -35,6 +35,11 @@
 		///     Gets the name of the connection string to use.
 		/// </summary>
 		public string ConnectionStringName { get; set; }
+
+		/// <summary>
+		///     Gets or sets the type of the repository context.
+		/// </summary>
+		public string RepositoryContextType { get; set; }
 
 		/// <summary>
 		///     Flag, indicating if the repository uses UoW. The default is <c>true</c>.

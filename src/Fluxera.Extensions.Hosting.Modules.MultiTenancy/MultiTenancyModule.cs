@@ -21,6 +21,8 @@
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
+			context.Items.Add("IsMultiTenancyModuleLoaded", true);
+
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
 		}

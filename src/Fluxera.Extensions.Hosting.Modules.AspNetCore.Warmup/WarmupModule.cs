@@ -4,6 +4,7 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -12,7 +13,7 @@
 	///     A module that enabled service warmup.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(HealthChecksModule))]
+	[DependsOn(typeof(HealthChecksEndpointsModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WarmupModule : ConfigureServicesModule
 	{
@@ -36,7 +37,7 @@
 			context.Services.AddWarmupContributor<WarmupContributor>();
 
 			// Add the readiness health check contributor.
-			context.Services.AddHealthCheckContributor<HealthCheckContributor>();
+			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 
 		/// <inheritdoc />

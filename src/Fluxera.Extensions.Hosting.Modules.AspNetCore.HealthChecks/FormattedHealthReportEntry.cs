@@ -6,16 +6,16 @@
 
 	internal sealed class FormattedHealthReportEntry
 	{
-		public string Key { get; set; }
-
 		public string Description { get; set; }
 
 		public HealthStatus Status { get; set; }
 
 		public TimeSpan Duration { get; set; }
 
-		public string Error { get; set; }
+		public string Exception { get; set; }
 
 		public IReadOnlyDictionary<string, object> Data { get; set; }
+
+		public IReadOnlyCollection<string> Tags { get; set; }
 	}
 }

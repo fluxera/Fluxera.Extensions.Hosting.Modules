@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.Contributors
 {
-	using System.Linq;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -16,7 +15,7 @@
 			{
 				routeBuilder.MapHealthChecks("/healthz", new HealthCheckOptions
 				{
-					Predicate = x => x.Tags.Any(tag => tag == HealthCheckCategory.Healthy.ToString("G")),
+					Predicate = x => x.Tags.Contains("health"),
 					AllowCachingResponses = false,
 					ResponseWriter = HealthCheckResponseWriter.WriteHealthCheckResponse
 				});
@@ -26,7 +25,17 @@
 			{
 				routeBuilder.MapHealthChecks("/readyz", new HealthCheckOptions
 				{
-					Predicate = x => x.Tags.Any(tag => tag == HealthCheckCategory.Ready.ToString("G")),
+					Predicate = x => x.Tags.Contains("ready"),
+					AllowCachingResponses = false,
+					ResponseWriter = HealthCheckResponseWriter.WriteHealthCheckResponse
+				});
+			});
+
+			context.Log("MapHealthChecks(/startupz)", _ =>
+			{
+				routeBuilder.MapHealthChecks("/startupz", new HealthCheckOptions
+				{
+					Predicate = x => x.Tags.Contains("startup") || x.Tags.Contains("ready"),
 					AllowCachingResponses = false,
 					ResponseWriter = HealthCheckResponseWriter.WriteHealthCheckResponse
 				});

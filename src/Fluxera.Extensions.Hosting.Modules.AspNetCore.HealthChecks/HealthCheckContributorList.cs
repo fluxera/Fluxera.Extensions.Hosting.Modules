@@ -2,7 +2,7 @@
 {
 	using System.Collections.Generic;
 
-	internal sealed class HealthCheckContributorList : List<IHealthCheckContributor>
+	internal sealed class HealthCheckContributorList : List<IHealthChecksContributor>
 	{
 	}
 }

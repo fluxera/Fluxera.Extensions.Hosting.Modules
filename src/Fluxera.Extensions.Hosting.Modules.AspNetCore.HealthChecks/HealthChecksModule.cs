@@ -1,9 +1,12 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks
 {
+	using System;
+	using System.Collections.Generic;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.Contributors;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 	/// <summary>
 	///     A module that enabled the health checks.
@@ -38,7 +41,7 @@
 			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
 
 			// Add the default health check contributor.
-			context.Services.AddHealthCheckContributor<HealthCheckContributor>();
+			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 
 		/// <inheritdoc />
@@ -49,14 +52,9 @@
 				HealthChecksBuilderContainer container = services.GetObject<HealthChecksBuilderContainer>();
 				HealthCheckContributorList healthCheckContributorList = context.Services.GetObject<HealthCheckContributorList>();
 
-				foreach(IHealthCheckContributor contributor in healthCheckContributorList)
+				foreach(IHealthChecksContributor contributor in healthCheckContributorList)
 				{
-					HealthCheckDescriptor descriptor = contributor.CreateHealthCheck(context);
-
-					container.Builder.AddCheck(descriptor.Name, descriptor.Type, tags: new string[]
-					{
-						descriptor.Category.ToString("G")
-					});
+					contributor.ConfigureHealthChecks(container.Builder, context);
 				}
 			});
 		}

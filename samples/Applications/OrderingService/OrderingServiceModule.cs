@@ -5,6 +5,7 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
 	using Fluxera.Extensions.Hosting.Modules.MultiTenancy;
 	using JetBrains.Annotations;
@@ -16,7 +17,8 @@
 	using Ordering.MessagingApi;
 
 	[PublicAPI]
-	[DependsOn<MultiTenancyModule>]
+	[DependsOn<HealthChecksModule>]
+	//[DependsOn<MultiTenancyModule>]
 	[DependsOn<OrderingHttpApiModule>]
 	[DependsOn<OrderingMessagingApiModule>]
 	[DependsOn<OrderingApplicationModule>]

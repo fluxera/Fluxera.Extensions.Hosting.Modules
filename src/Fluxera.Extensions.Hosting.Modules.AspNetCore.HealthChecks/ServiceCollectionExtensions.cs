@@ -19,7 +19,7 @@
 		/// <param name="services"></param>
 		/// <returns></returns>
 		public static IServiceCollection AddHealthCheckContributor<TContributor>(this IServiceCollection services)
-			where TContributor : class, IHealthCheckContributor, new()
+			where TContributor : class, IHealthChecksContributor, new()
 		{
 			HealthCheckContributorList contributorList = services.GetObjectOrDefault<HealthCheckContributorList>();
 			if(contributorList != null)
@@ -30,7 +30,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger.LogContributorListNotAvailable(typeof(IHealthCheckContributor));
+				logger.LogContributorListNotAvailable(typeof(IHealthChecksContributor));
 			}
 
 			return services;

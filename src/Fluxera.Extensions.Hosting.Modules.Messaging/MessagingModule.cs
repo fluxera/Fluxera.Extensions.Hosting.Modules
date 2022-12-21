@@ -1,6 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging
 {
 	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -14,6 +16,7 @@
 	using MassTransit;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
+	using Microsoft.Extensions.Diagnostics.HealthChecks;
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Logging;
 
@@ -144,6 +147,14 @@
 
 					// Add the transport.
 					transportContributor.ConfigureTransport(options, context);
+				});
+
+				// Rename the health check.
+				context.Services.Configure<HealthCheckServiceOptions>(options =>
+				{
+					HealthCheckRegistration registration = options.Registrations.Single(x => x.Name == "masstransit-bus");
+					registration.Name = "MassTransit";
+					registration.Tags.Add("startup");
 				});
 			});
 		}

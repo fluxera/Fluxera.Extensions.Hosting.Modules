@@ -11,36 +11,38 @@
 	{
 		private const string DefaultContentType = "application/json";
 
-		public static Task WriteHealthCheckResponse(HttpContext httpContext, HealthReport report)
-		{
-			return WriteHealthCheckResponse(httpContext, report, null);
-		}
+		private const string EmptyResponse = "{}";
 
-		private static Task WriteHealthCheckResponse(HttpContext httpContext, HealthReport report, Action<JsonSerializerOptions> configureAction)
+		private static readonly Lazy<JsonSerializerOptions> Options = new Lazy<JsonSerializerOptions>(CreateJsonOptions);
+
+		public static async Task WriteHealthCheckResponse(HttpContext httpContext, HealthReport report)
 		{
-			string response = string.Empty;
+			httpContext.Response.ContentType = DefaultContentType;
 
 			if(report is not null)
 			{
-				JsonSerializerOptions settings = new JsonSerializerOptions
-				{
-					WriteIndented = false,
-					PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-
-				configureAction?.Invoke(settings);
-
-				settings.Converters.Add(new JsonStringEnumConverter());
-
-				httpContext.Response.ContentType = DefaultContentType;
-
 				FormattedHealthReport healthReport = FormattedHealthReport.CreateFrom(report);
 
-				response = JsonSerializer.Serialize(healthReport, settings);
+				await JsonSerializer.SerializeAsync(httpContext.Response.Body, healthReport, Options.Value);
 			}
+			else
+			{
+				await httpContext.Response.WriteAsync(EmptyResponse);
+			}
+		}
 
-			return httpContext.Response.WriteAsync(response);
+		private static JsonSerializerOptions CreateJsonOptions()
+		{
+			JsonSerializerOptions options = new JsonSerializerOptions
+			{
+				WriteIndented = false,
+				PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+			};
+
+			options.Converters.Add(new JsonStringEnumConverter());
+
+			return options;
 		}
 	}
 }

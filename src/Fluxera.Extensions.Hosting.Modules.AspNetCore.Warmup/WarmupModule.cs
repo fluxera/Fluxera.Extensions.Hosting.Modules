@@ -36,7 +36,7 @@
 			context.Services.AddWarmupContributor<WarmupContributor>();
 
 			// Add the readiness health check contributor.
-			context.Services.AddHealthCheckContributor<HealthCheckContributor>();
+			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}
 
 		/// <inheritdoc />

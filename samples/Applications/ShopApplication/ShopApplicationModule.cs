@@ -9,6 +9,7 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages;
 	using Fluxera.Extensions.Hosting.Modules.MultiTenancy;
 	using JetBrains.Annotations;
@@ -19,6 +20,7 @@
 
 	[PublicAPI]
 	[DependsOn<RazorPagesModule>]
+	[DependsOn<HealthChecksModule>]
 	//[DependsOn<MultiTenancyModule>]
 	// Configure the Catalog component.
 	//[DependsOn<CatalogMessagingApiModule>]

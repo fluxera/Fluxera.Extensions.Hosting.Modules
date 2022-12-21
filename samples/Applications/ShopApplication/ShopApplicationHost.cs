@@ -1,4 +1,4 @@
-﻿//#define MONOLITH
+﻿#define MONOLITH
 
 namespace ShopApplication
 {

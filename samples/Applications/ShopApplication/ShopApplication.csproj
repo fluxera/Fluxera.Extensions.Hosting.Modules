@@ -15,6 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.csproj" />
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages\Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages.csproj" />
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj" />
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />

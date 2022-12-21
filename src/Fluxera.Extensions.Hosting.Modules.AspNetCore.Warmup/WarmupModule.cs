@@ -13,7 +13,7 @@
 	///     A module that enabled service warmup.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(AspNetCoreHealthChecksModule))]
+	[DependsOn(typeof(HealthChecksEndpointsModule))]
 	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class WarmupModule : ConfigureServicesModule
 	{

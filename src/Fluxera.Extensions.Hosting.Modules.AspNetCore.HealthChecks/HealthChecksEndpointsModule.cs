@@ -2,6 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using JetBrains.Annotations;
 
@@ -9,11 +10,14 @@
 	///     A module that enabled the health checks.
 	/// </summary>
 	[PublicAPI]
-	public sealed class AspNetCoreHealthChecksModule : ConfigureServicesModule
+	public sealed class HealthChecksEndpointsModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
+			// Add the configure options contributor.
+			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+
 			// Add the health check route contributor.
 			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
 

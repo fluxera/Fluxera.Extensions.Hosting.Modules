@@ -25,7 +25,7 @@ namespace ShopApplication
 		protected override void ConfigureApplicationPlugins(IPluginConfigurationContext context)
 		{
 			context.AddPlugin<SerilogModule>();
-			context.AddPlugin<AspNetCoreHealthChecksModule>();
+			context.AddPlugin<HealthChecksEndpointsModule>();
 
 #if MONOLITH
 			// Configure the Catalog component.

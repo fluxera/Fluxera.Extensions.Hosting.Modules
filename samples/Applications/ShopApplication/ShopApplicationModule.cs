@@ -21,7 +21,7 @@
 
 	[PublicAPI]
 	[DependsOn<RazorPagesModule>]
-	[DependsOn<AspNetCoreHealthChecksModule>]
+	[DependsOn<HealthChecksEndpointsModule>]
 	//[DependsOn<MultiTenancyModule>]
 	// Configure the Catalog component.
 	//[DependsOn<CatalogMessagingApiModule>]

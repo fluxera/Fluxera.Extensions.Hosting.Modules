@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks
+﻿namespace Fluxera.Extensions.Hosting.Modules.HealthChecks
 {
 	using System.Collections.Generic;
 

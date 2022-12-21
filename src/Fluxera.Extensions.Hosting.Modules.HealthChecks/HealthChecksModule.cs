@@ -1,18 +1,14 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks
+﻿namespace Fluxera.Extensions.Hosting.Modules.HealthChecks
 {
-	using System;
-	using System.Collections.Generic;
 	using Fluxera.Extensions.DependencyInjection;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.HealthChecks.Contributors;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 	/// <summary>
-	///     A module that enabled the health checks.
+	///     A module that enables health checks.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(AspNetCoreModule))]
 	public sealed class HealthChecksModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -37,9 +33,6 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			// Add the health check route contributor.
-			context.Services.AddEndpointRouteContributor<EndpointRouteContributor>();
-
 			// Add the default health check contributor.
 			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
 		}

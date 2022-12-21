@@ -1,6 +1,5 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.HealthChecks.Contributors
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -9,8 +8,10 @@
 		/// <inheritdoc />
 		public void ConfigureHealthChecks(IHealthChecksBuilder builder, IServiceConfigurationContext context)
 		{
-			string[] tags = { HealthCheckTags.Startup };
-			builder.AddCheck<WarmupHealthCheck>("Warmup", tags: tags);
+			builder.AddCheck<DefaultHealthCheck>("Default", tags: new string[]
+			{
+				HealthCheckTags.Health
+			});
 		}
 	}
 }

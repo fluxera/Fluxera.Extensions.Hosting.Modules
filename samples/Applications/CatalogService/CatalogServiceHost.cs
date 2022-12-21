@@ -1,6 +1,7 @@
 ﻿namespace CatalogService
 {
 	using Fluxera.Extensions.Hosting;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Serilog;
 	using Fluxera.Extensions.Hosting.Plugins;
@@ -18,6 +19,7 @@
 		protected override void ConfigureApplicationPlugins(IPluginConfigurationContext context)
 		{
 			context.AddPlugin<SerilogModule>();
+			context.AddPlugin<AspNetCoreHealthChecksModule>();
 		}
 
 		/// <inheritdoc />

@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks
+﻿namespace Fluxera.Extensions.Hosting.Modules.HealthChecks
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;

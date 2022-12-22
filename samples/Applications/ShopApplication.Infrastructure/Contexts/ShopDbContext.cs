@@ -5,7 +5,6 @@
 	using Catalog.Infrastructure.Contexts;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
-	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Utilities.Extensions;
 	using MassTransit;
 	using Microsoft.EntityFrameworkCore;

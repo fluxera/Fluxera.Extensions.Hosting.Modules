@@ -1,14 +1,14 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB
 {
-	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB.Contributors;
 	using JetBrains.Annotations;
 
 	/// <summary>
 	///     A module that enables the MongoDB transactional outbox.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<TransactionalOutboxModule>]
-	public sealed class MongoTransactionalOutboxModule : ConfigureServicesModule
+	[DependsOn<MessagingOutboxModule>]
+	public sealed class MongoMessagingOutboxModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)

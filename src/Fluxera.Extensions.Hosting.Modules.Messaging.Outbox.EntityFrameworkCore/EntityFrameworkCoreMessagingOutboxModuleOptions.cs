@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore
 {
 	using JetBrains.Annotations;
 
@@ -6,12 +6,12 @@
 	///     The options for the transactional outbox messaging module.
 	/// </summary>
 	[PublicAPI]
-	public sealed class EntityFrameworkCoreTransactionalOutboxModuleOptions
+	public sealed class EntityFrameworkCoreMessagingOutboxModuleOptions
 	{
 		/// <summary>
-		///     Initializes a new instance of the <see cref="EntityFrameworkCoreTransactionalOutboxModuleOptions" /> type.
+		///     Initializes a new instance of the <see cref="EntityFrameworkCoreMessagingOutboxModuleOptions" /> type.
 		/// </summary>
-		public EntityFrameworkCoreTransactionalOutboxModuleOptions()
+		public EntityFrameworkCoreMessagingOutboxModuleOptions()
 		{
 			this.Outbox = new EntityFrameworkCoreOutboxOptions();
 			this.BusOutbox = new BusOutboxOptions();

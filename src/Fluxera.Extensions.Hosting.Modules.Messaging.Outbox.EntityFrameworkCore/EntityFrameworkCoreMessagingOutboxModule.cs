@@ -1,15 +1,15 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.Contributors;
 	using JetBrains.Annotations;
 
 	/// <summary>
 	///     A module that enables the EFCore transactional outbox.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<TransactionalOutboxModule>]
-	public sealed class EntityFrameworkCoreTransactionalOutboxModule : ConfigureServicesModule
+	[DependsOn<MessagingOutboxModule>]
+	public sealed class EntityFrameworkCoreMessagingOutboxModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)

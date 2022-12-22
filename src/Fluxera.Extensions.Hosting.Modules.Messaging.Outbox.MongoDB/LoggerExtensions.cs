@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB
 {
 	using System.Diagnostics;
 	using Microsoft.Extensions.Logging;

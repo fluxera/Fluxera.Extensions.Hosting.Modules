@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using global::MongoDB.Driver;
@@ -15,7 +15,7 @@
 		/// <inheritdoc />
 		public void ConfigureOutbox(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
-			TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
+			MessagingOutboxModuleOptions options = context.Services.GetOptions<MessagingOutboxModuleOptions>();
 
 			configurator.AddMongoDbOutbox(cfg =>
 			{

@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory
 {
 	using System.Diagnostics;
 	using Microsoft.Extensions.Logging;

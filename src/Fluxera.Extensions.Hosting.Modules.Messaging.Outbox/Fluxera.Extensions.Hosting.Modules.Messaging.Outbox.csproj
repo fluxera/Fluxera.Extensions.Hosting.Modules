@@ -1,13 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory</Title>
-		<Description>A module that enables in-memory based transactional outbox on MassTransit.</Description>
-		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;in-memory;transaction;outbox</PackageTags>
+		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.Outbox</Title>
+		<Description>A module that enables the transactional outbox on MassTransit.</Description>
+		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;transaction;outbox</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -31,7 +31,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
 	</ItemGroup>
 
 </Project>

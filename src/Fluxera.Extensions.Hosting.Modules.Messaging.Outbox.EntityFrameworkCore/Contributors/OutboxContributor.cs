@@ -1,6 +1,6 @@
 ﻿// ReSharper disable ReplaceWithSingleCallToSingle
 
-namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore.Contributors
+namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.Contributors
 {
 	using System;
 	using System.Diagnostics;
@@ -24,7 +24,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.Entit
 		{
 			ILogger logger = context.Logger;
 
-			EntityFrameworkCoreTransactionalOutboxModuleOptions options = context.Services.GetOptions<EntityFrameworkCoreTransactionalOutboxModuleOptions>();
+			EntityFrameworkCoreMessagingOutboxModuleOptions options = context.Services.GetOptions<EntityFrameworkCoreMessagingOutboxModuleOptions>();
 
 			EntityFrameworkCorePersistenceOptions persistenceOptions = context.Services.GetOptions<EntityFrameworkCorePersistenceOptions>();
 			EntityFrameworkCoreRepositoryOptions repositoryOptions = persistenceOptions.Repositories.GetOptionsOrDefault(options.RepositoryName);
@@ -50,7 +50,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.Entit
 			logger.LogEntityFrameworkCoreInboxOutboxUsed();
 		}
 
-		private static Action<IEntityFrameworkOutboxConfigurator> GetConfigurationAction(EntityFrameworkCoreTransactionalOutboxModuleOptions options)
+		private static Action<IEntityFrameworkOutboxConfigurator> GetConfigurationAction(EntityFrameworkCoreMessagingOutboxModuleOptions options)
 		{
 			void ConfigurationAction(IEntityFrameworkOutboxConfigurator cfg)
 			{

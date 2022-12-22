@@ -3,8 +3,8 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
 	using JetBrains.Annotations;
@@ -17,7 +17,7 @@
 	[PublicAPI]
 	[DependsOn<OrderingDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
-	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule>]
+	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class OrderingInfrastructureModule : ConfigureServicesModule

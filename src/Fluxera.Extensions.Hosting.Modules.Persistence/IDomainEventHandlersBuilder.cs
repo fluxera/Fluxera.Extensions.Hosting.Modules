@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using System.Reflection;
 	using Fluxera.Entity.DomainEvents;
+	using Fluxera.Repository.DomainEvents;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -46,5 +47,10 @@
 		/// <typeparam name="T"></typeparam>
 		/// <returns></returns>
 		IDomainEventHandlersBuilder AddDomainEventHandler<T>() where T : IDomainEventHandler;
+
+		/// <summary>Adds a domain events reducer.</summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		IDomainEventHandlersBuilder AddDomainEventsReducer<T>() where T : class, IDomainEventsReducer;
 	}
 }

@@ -3,6 +3,7 @@
 namespace ShopApplication
 {
 	using Catalog.Application;
+	using Catalog.HttpClient;
 	using Catalog.MessagingApi;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
@@ -14,6 +15,7 @@ namespace ShopApplication
 	using Microsoft.Extensions.Logging;
 	using OpenTelemetry.Logs;
 	using Ordering.Application;
+	using Ordering.HttpClient;
 	using Ordering.MessagingApi;
 	using Serilog;
 	using Serilog.Extensions.Hosting;
@@ -37,10 +39,10 @@ namespace ShopApplication
 			context.AddPlugin<OrderingMessagingApiModule>();
 #else
 			// Configure the Catalog component.
-			context.AddPlugin<CatalogHttpApiModule>();
+			context.AddPlugin<CatalogHttpClientModule>();
 
 			// Configure the Ordering component.
-			context.AddPlugin<OrderingHttpApiModule>();
+			context.AddPlugin<OrderingHttpClientModule>();
 #endif
 		}
 

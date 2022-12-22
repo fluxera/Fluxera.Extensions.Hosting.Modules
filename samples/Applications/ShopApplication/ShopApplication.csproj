@@ -6,6 +6,7 @@
 		<Nullable>disable</Nullable>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<UserSecretsId>af9e50d7-2299-4281-a3d2-80795f1f93fc</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

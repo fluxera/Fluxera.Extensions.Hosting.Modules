@@ -2,8 +2,8 @@
 
 namespace ShopApplication
 {
+	using System.Reflection;
 	using Catalog.Application;
-	using Catalog.HttpClient;
 	using Catalog.MessagingApi;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
@@ -15,7 +15,6 @@ namespace ShopApplication
 	using Microsoft.Extensions.Logging;
 	using OpenTelemetry.Logs;
 	using Ordering.Application;
-	using Ordering.HttpClient;
 	using Ordering.MessagingApi;
 	using Serilog;
 	using Serilog.Extensions.Hosting;
@@ -49,6 +48,12 @@ namespace ShopApplication
 		/// <inheritdoc />
 		protected override void ConfigureHostBuilder(IHostBuilder builder)
 		{
+			// Add user secrets configuration source.
+			builder.ConfigureAppConfiguration(configurationBuilder =>
+			{
+				configurationBuilder.AddUserSecrets(Assembly.GetExecutingAssembly());
+			});
+
 			// Add OpenTelemetry logging.
 			builder.AddOpenTelemetryLogging(options =>
 			{

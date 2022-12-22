@@ -22,7 +22,9 @@
 		public async Task OnGetAsync()
 		{
 			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
-
+			this.Products = result.ValueOrDefault;
 		}
+
+		public IReadOnlyCollection<ProductDto> Products { get; set; }
 	}
 }

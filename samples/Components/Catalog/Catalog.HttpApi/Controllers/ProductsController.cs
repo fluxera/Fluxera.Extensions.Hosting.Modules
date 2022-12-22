@@ -37,7 +37,7 @@
 				return this.NotFound();
 			}
 
-			return this.Ok(result);
+			return this.Ok(result.Value);
 		}
 
 		[HttpGet("{id:required}")]

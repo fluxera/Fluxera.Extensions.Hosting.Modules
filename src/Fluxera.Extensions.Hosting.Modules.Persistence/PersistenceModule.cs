@@ -14,6 +14,7 @@
 	using Fluxera.Guards;
 	using Fluxera.Repository;
 	using Fluxera.Repository.Caching;
+	using Fluxera.Repository.DomainEvents;
 	using Fluxera.Utilities.Extensions;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
@@ -102,7 +103,7 @@
 						// Configure the used provider.
 						repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryContextType, repositoryOptionsBuilder =>
 						{
-							// Enable/Disable the UoW feature.
+							// Enable the UoW feature.
 							if(repositoryOptions.EnableUnitOfWork)
 							{
 								repositoryOptionsBuilder.EnableUnitOfWork();
@@ -118,6 +119,12 @@
 							// Configure the domain event handlers.
 							repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>
 							{
+								// Enable the automatic CRUD domain events feature.
+								if(repositoryOptions.EnableAutomaticCrudDomainEvents)
+								{
+									domainHandlerOptionsBuilder.EnableAutomaticCrudDomainEvents();
+								}
+
 								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 								{
 									IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);

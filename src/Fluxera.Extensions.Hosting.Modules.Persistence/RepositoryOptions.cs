@@ -45,5 +45,10 @@
 		///     Flag, indicating if the repository uses UoW. The default is <c>true</c>.
 		/// </summary>
 		public bool EnableUnitOfWork { get; set; } = true;
+
+		/// <summary>
+		///     Flag, indicating if the repository publishes automatic CRUD domain events. The default is <c>true</c>.
+		/// </summary>
+		public bool EnableAutomaticCrudDomainEvents { get; set; } = true;
 	}
 }

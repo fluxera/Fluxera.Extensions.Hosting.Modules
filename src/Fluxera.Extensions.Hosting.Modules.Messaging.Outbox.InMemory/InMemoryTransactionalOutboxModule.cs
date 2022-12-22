@@ -1,6 +1,6 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory
 {
-	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory.Contributors;
 	using JetBrains.Annotations;
 
 	/// <summary>

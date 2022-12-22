@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.InMemory.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory.Contributors
 {
 	using JetBrains.Annotations;
 	using MassTransit;

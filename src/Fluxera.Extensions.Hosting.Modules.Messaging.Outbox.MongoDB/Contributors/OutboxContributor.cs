@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using global::MongoDB.Driver;

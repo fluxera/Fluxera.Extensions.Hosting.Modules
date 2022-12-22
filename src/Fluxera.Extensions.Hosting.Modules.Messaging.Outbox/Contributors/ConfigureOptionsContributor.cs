@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 

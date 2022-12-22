@@ -1,7 +1,7 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.Contributors;
 	using JetBrains.Annotations;
 
 	/// <summary>

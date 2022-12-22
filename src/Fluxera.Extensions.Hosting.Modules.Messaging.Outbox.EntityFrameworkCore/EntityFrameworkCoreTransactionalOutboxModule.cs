@@ -1,7 +1,7 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.Contributors;
 	using JetBrains.Annotations;
 
 	/// <summary>

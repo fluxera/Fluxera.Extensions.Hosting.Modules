@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox
 {
 	using System;
 	using JetBrains.Annotations;

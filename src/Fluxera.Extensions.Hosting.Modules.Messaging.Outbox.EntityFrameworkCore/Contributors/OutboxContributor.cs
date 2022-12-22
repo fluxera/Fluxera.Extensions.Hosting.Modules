@@ -1,6 +1,6 @@
 ﻿// ReSharper disable ReplaceWithSingleCallToSingle
 
-namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore.Contributors
+namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.Contributors
 {
 	using System;
 	using System.Diagnostics;

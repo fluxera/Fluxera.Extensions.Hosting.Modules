@@ -20,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ\Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />

@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.MongoDB</Title>
+		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB</Title>
 		<Description>A module that enables MongoDB based transactional outbox on MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;mongodb;transaction;outbox</PackageTags>
 	</PropertyGroup>
@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox\Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.TransactionalOutbox.EntityFrameworkCore
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore
 {
 	using System.Diagnostics;
 	using Microsoft.Extensions.Logging;

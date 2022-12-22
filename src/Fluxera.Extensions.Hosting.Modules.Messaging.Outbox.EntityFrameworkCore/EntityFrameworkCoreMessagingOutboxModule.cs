@@ -8,8 +8,8 @@
 	///     A module that enables the EFCore transactional outbox.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<TransactionalOutboxModule>]
-	public sealed class EntityFrameworkCoreTransactionalOutboxModule : ConfigureServicesModule
+	[DependsOn<MessagingOutboxModule>]
+	public sealed class EntityFrameworkCoreMessagingOutboxModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)

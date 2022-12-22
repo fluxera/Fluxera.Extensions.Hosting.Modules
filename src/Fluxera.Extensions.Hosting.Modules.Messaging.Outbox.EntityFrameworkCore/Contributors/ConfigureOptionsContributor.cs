@@ -2,7 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 
-	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<EntityFrameworkCoreTransactionalOutboxModuleOptions>
+	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<EntityFrameworkCoreMessagingOutboxModuleOptions>
 	{
 		/// <inheritdoc />
 		public override string SectionName => "Messaging";

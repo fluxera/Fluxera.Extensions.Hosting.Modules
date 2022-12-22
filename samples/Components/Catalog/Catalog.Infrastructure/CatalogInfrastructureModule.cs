@@ -17,7 +17,7 @@
 	[PublicAPI]
 	[DependsOn<CatalogDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
-	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule>]
+	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class CatalogInfrastructureModule : ConfigureServicesModule

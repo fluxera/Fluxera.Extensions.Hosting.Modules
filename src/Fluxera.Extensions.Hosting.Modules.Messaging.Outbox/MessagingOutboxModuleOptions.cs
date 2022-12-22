@@ -6,12 +6,12 @@
 	///     The options for the transactional outbox messaging module.
 	/// </summary>
 	[PublicAPI]
-	public sealed class TransactionalOutboxModuleOptions
+	public sealed class MessagingOutboxModuleOptions
 	{
 		/// <summary>
-		///     Initializes a new instance of the <see cref="TransactionalOutboxModuleOptions" /> type.
+		///     Initializes a new instance of the <see cref="MessagingOutboxModuleOptions" /> type.
 		/// </summary>
-		public TransactionalOutboxModuleOptions()
+		public MessagingOutboxModuleOptions()
 		{
 			this.Outbox = new OutboxOptions();
 			this.BusOutbox = new BusOutboxOptions();

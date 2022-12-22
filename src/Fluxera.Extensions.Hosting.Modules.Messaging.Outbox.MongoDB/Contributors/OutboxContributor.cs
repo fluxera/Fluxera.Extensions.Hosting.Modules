@@ -15,7 +15,7 @@
 		/// <inheritdoc />
 		public void ConfigureOutbox(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
-			TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
+			MessagingOutboxModuleOptions options = context.Services.GetOptions<MessagingOutboxModuleOptions>();
 
 			configurator.AddMongoDbOutbox(cfg =>
 			{

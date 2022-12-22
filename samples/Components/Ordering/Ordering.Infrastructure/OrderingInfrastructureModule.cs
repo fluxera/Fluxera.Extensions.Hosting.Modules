@@ -17,7 +17,7 @@
 	[PublicAPI]
 	[DependsOn<OrderingDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
-	[DependsOn<EntityFrameworkCoreTransactionalOutboxModule>]
+	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class OrderingInfrastructureModule : ConfigureServicesModule

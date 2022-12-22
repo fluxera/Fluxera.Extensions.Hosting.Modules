@@ -7,8 +7,8 @@
 	///     A module that enables the MongoDB transactional outbox.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<TransactionalOutboxModule>]
-	public sealed class MongoTransactionalOutboxModule : ConfigureServicesModule
+	[DependsOn<MessagingOutboxModule>]
+	public sealed class MongoMessagingOutboxModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)

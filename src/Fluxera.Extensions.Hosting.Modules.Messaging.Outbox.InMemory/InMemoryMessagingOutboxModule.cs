@@ -7,8 +7,8 @@
 	///     A module that enables the in-memory transactional outbox.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<TransactionalOutboxModule>]
-	public sealed class InMemoryTransactionalOutbox : ConfigureServicesModule
+	[DependsOn<MessagingOutboxModule>]
+	public sealed class InMemoryMessagingOutboxModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)

@@ -9,7 +9,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn(typeof(MessagingModule))]
-	public sealed class TransactionalOutboxModule : ConfigureServicesModule
+	public sealed class MessagingOutboxModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
@@ -27,7 +27,7 @@
 			bool isMultiTenancyModuleLoaded = context.Items.ContainsKey("IsMultiTenancyModuleLoaded");
 			if(isMultiTenancyModuleLoaded)
 			{
-				TransactionalOutboxModuleOptions options = context.Services.GetOptions<TransactionalOutboxModuleOptions>();
+				MessagingOutboxModuleOptions options = context.Services.GetOptions<MessagingOutboxModuleOptions>();
 				options.InboxCleanupServiceEnabled = false;
 				options.DeliveryServiceEnabled = false;
 			}

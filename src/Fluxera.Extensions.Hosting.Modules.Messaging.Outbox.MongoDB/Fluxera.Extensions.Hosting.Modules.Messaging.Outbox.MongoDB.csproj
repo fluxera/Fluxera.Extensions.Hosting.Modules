@@ -33,6 +33,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj" />
 	</ItemGroup>
 
 </Project>

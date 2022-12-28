@@ -26,7 +26,7 @@
 		<PackageReference Include="Fluxera.Entity" Version="7.0.6" />
 		<PackageReference Include="Fluxera.Enumeration" Version="7.0.7" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.0.6" />
-		<PackageReference Include="Fluxera.Repository" Version="7.0.9" />
+		<PackageReference Include="Fluxera.Repository" Version="7.0.11" />
 		<PackageReference Include="Fluxera.ValueObject" Version="7.0.6" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>

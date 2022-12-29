@@ -36,5 +36,10 @@
 		///     Flag, indicating if the delivery background service is enabled.
 		/// </summary>
 		public bool DeliveryServiceEnabled { get; set; } = true;
+
+		/// <summary>
+		///     Gets or sets the name of the repository to use for the outbox.
+		/// </summary>
+		public string RepositoryName { get; set; } = "Default";
 	}
 }

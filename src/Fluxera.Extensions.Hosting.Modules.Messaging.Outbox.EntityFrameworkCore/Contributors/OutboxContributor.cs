@@ -30,9 +30,10 @@ namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCor
 			EntityFrameworkCoreRepositoryOptions repositoryOptions = persistenceOptions.Repositories.GetOptionsOrDefault(options.RepositoryName);
 
 			Type dbContextType = Type.GetType(repositoryOptions.DbContextType);
-			dbContextType = Guard.Against.Null(dbContextType, message: $"The db context must be configured for EFCore repository '{options.RepositoryName}' to be used with the transactional inbox/outbox.");
+			dbContextType = Guard.Against.Null(dbContextType,
+				message: $"The db context must be configured for EFCore repository '{options.RepositoryName}' to be used with the transactional inbox/outbox.");
 
-			MethodInfo methodInfo = typeof(EntityFrameworkOutboxConfigurationExtensions)
+			MethodInfo methodInfo = typeof(OutboxConfigurationExtensions)
 				.GetRuntimeMethods()
 				.Where(x => x.Name == "AddEntityFrameworkOutbox")
 				.Where(x => x.GetParameters().Length == 2)

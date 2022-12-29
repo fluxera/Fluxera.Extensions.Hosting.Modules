@@ -1,10 +1,12 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB.Contributors
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using global::MongoDB.Driver;
+	using Fluxera.Repository;
+	using Fluxera.Repository.MongoDB;
 	using JetBrains.Annotations;
 	using MassTransit;
 	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Options;
 
 	/// <summary>
 	///     A base class for in-memory transactional outbox configuration.
@@ -17,7 +19,7 @@
 		{
 			MessagingOutboxModuleOptions options = context.Services.GetOptions<MessagingOutboxModuleOptions>();
 
-			configurator.AddMongoDbOutbox(cfg =>
+			configurator.AddMongoOutbox(cfg =>
 			{
 				if(options.Outbox.QueryDelay.HasValue)
 				{
@@ -68,13 +70,22 @@
 				}
 
 				// MongoDB specific configuration.
+				cfg.CollectionNameFormatter(_ => new PluralizeCollectionNameFormatter());
 				cfg.ClientFactory(serviceProvider =>
 				{
-					return serviceProvider.GetRequiredService<IMongoClient>();
+					MessagingOutboxModuleOptions outboxOptions = serviceProvider.GetRequiredService<IOptions<MessagingOutboxModuleOptions>>().Value;
+					MongoContextProvider contextProvider = serviceProvider.GetRequiredService<MongoContextProvider>();
+					MongoContext mongoContext = contextProvider.GetContextFor((RepositoryName)outboxOptions.RepositoryName);
+
+					return mongoContext.Client;
 				});
 				cfg.DatabaseFactory(serviceProvider =>
 				{
-					return serviceProvider.GetRequiredService<IMongoDatabase>();
+					MessagingOutboxModuleOptions outboxOptions = serviceProvider.GetRequiredService<IOptions<MessagingOutboxModuleOptions>>().Value;
+					MongoContextProvider contextProvider = serviceProvider.GetRequiredService<MongoContextProvider>();
+					MongoContext mongoContext = contextProvider.GetContextFor((RepositoryName)outboxOptions.RepositoryName);
+
+					return mongoContext.Database;
 				});
 			});
 

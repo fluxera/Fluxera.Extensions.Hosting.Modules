@@ -1,5 +1,6 @@
 ﻿namespace CatalogService
 {
+	using System.Reflection;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
@@ -25,6 +26,12 @@
 		/// <inheritdoc />
 		protected override void ConfigureHostBuilder(IHostBuilder builder)
 		{
+			// Add user secrets configuration source.
+			builder.ConfigureAppConfiguration(configurationBuilder =>
+			{
+				configurationBuilder.AddUserSecrets(Assembly.GetExecutingAssembly());
+			});
+
 			// Add OpenTelemetry logging.
 			builder.AddOpenTelemetryLogging(options =>
 			{

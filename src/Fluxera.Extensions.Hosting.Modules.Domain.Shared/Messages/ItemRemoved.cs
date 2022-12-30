@@ -11,7 +11,7 @@
 	[PublicAPI]
 	[Serializable]
 	[ExcludeFromTopology]
-	public abstract class ItemRemoved : IEvent
+	public abstract class ItemRemoved : IEventMessage
 	{
 		/// <summary>
 		///     Gets or sets the events item removed metadata.

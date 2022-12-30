@@ -2,7 +2,7 @@
 {
 	using AutoMapper;
 	using JetBrains.Annotations;
-	using Ordering.Application.Contracts.Dtos;
+	using Ordering.Application.Contracts.Orders;
 	using Ordering.Domain.OrderAggregate;
 
 	[UsedImplicitly]

@@ -5,7 +5,7 @@
 	using System.Linq;
 	using Fluxera.Entity;
 	using JetBrains.Annotations;
-	using Ordering.Domain.OrderAggregate.Events;
+	using Ordering.Domain.OrderAggregate.DomainEvents;
 	using Ordering.Domain.Shared.OrderAggregate;
 
 	[PublicAPI]

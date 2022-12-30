@@ -6,8 +6,8 @@
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using DomainProductRemoved = Catalog.Domain.ProductAggregate.Events.ProductRemoved;
-	using IntegrationProductRemoved = Catalog.Domain.Shared.ProductAggregate.Events.ProductRemoved;
+	using DomainProductRemoved = Catalog.Domain.ProductAggregate.DomainEvents.ProductRemoved;
+	using IntegrationProductRemoved = Catalog.Domain.Shared.ProductAggregate.Messages.ProductRemoved;
 
 	/// <summary>
 	///     An event handler for bridging the <see cref="DomainProductRemoved" /> domain event

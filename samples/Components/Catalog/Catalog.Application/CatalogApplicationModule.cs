@@ -1,8 +1,8 @@
 ﻿namespace Catalog.Application
 {
-	using Catalog.Application.Contracts.Services;
+	using Catalog.Application.Contracts.Products;
 	using Catalog.Application.Contributors;
-	using Catalog.Application.Services;
+	using Catalog.Application.Products;
 	using Catalog.Infrastructure;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;

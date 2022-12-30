@@ -3,7 +3,7 @@
 	using System.Net.Http;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
-	using Ordering.Application.Contracts.Services;
+	using Ordering.Application.Contracts.Orders;
 
 	[UsedImplicitly]
 	internal sealed class OrderApplicationServiceClient : HttpClientServiceBase, IOrderApplicationService, IHttpClientService

@@ -4,8 +4,8 @@
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using Ordering.Domain.OrderAggregate.Events;
-	using Ordering.Domain.Shared.OrderAggregate.Events;
+	using Ordering.Domain.OrderAggregate.DomainEvents;
+	using Ordering.Domain.Shared.OrderAggregate.Messages;
 
 	[UsedImplicitly]
 	public sealed class OrderShippedDomainEventHandler : DomainEventHandler<OrderShippedDomainEvent>

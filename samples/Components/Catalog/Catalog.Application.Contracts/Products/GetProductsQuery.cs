@@ -6,7 +6,7 @@
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	public sealed class GetProductsRequest : IQuery<Result<IReadOnlyCollection<ProductDto>>>
+	public sealed class GetProductsQuery : IQuery<Result<IReadOnlyCollection<ProductDto>>>
 	{
 	}
 }

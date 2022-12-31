@@ -14,7 +14,7 @@
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsRequest, Result<IReadOnlyCollection<ProductDto>>>
+	internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Result<IReadOnlyCollection<ProductDto>>>
 	{
 		private readonly IMapper mapper;
 		private readonly IRepository<Product, ProductId> repository;
@@ -26,7 +26,7 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<Result<IReadOnlyCollection<ProductDto>>> Handle(GetProductsRequest request, CancellationToken cancellationToken)
+		public async Task<Result<IReadOnlyCollection<ProductDto>>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
 		{
 			Result<IReadOnlyCollection<ProductDto>> result;
 

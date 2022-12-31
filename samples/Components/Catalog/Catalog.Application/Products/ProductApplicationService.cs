@@ -33,7 +33,7 @@
 		/// <inheritdoc />
 		public Task<Result<IReadOnlyCollection<ProductDto>>> GetProductsAsync()
 		{
-			return this.sender.Send(new GetProductsRequest());
+			return this.sender.Send(new GetProductsQuery());
 		}
 	}
 }

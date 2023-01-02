@@ -1,12 +1,12 @@
 ﻿namespace Catalog.HttpClient.Contributors
 {
-	using Catalog.Application.Contracts.Services;
+	using System.Collections.Generic;
+	using Catalog.Application.Contracts.Products;
 	using Catalog.HttpClient.Services;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient;
 	using Fluxera.Extensions.Http;
 	using Microsoft.Extensions.DependencyInjection;
-	using System.Collections.Generic;
 
 	internal sealed class HttpClientServiceContributor : IHttpClientServiceContributor
 	{

@@ -3,8 +3,7 @@
 	using System.Collections.Generic;
 	using System.Net;
 	using System.Threading.Tasks;
-	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Application.Contracts.Services;
+	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Microsoft.AspNetCore.Authorization;

@@ -1,23 +1,12 @@
 ﻿namespace ShopApplication
 {
-	using System.Linq;
-	using Catalog.Application;
-	using Catalog.Application.Contracts.Services;
-	using Catalog.HttpClient;
-	using Catalog.MessagingApi;
-	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages;
-	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
-	using Fluxera.Extensions.Hosting.Modules.MultiTenancy;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Hosting;
-	using Ordering.Application;
-	using Ordering.HttpClient;
-	using Ordering.MessagingApi;
 
 	[PublicAPI]
 	[DependsOn<RazorPagesModule>]

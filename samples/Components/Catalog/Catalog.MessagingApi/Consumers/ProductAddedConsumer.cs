@@ -2,7 +2,7 @@
 {
 	using System;
 	using System.Threading.Tasks;
-	using Catalog.Domain.Shared.ProductAggregate.Events;
+	using Catalog.Domain.Shared.ProductAggregate.Messages;
 	using JetBrains.Annotations;
 	using MassTransit;
 

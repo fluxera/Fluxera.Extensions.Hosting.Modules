@@ -11,7 +11,7 @@
 	[PublicAPI]
 	[Serializable]
 	[ExcludeFromTopology]
-	public abstract class ItemUpdated : IEvent
+	public abstract class ItemUpdated : IEventMessage
 	{
 		/// <summary>
 		///     Gets or sets the events item updated metadata.

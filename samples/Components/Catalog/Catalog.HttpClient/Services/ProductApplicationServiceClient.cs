@@ -6,13 +6,11 @@
 	using System.Text.Json;
 	using System.Text.Json.Serialization;
 	using System.Threading.Tasks;
-	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Application.Contracts.Services;
+	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Fluxera.Extensions.Http;
 	using Fluxera.StronglyTypedId.SystemTextJson;
-	using Fluxera.Utilities.Extensions;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
@@ -50,7 +48,7 @@
 
 			IReadOnlyCollection<ProductDto> result;
 
-			await using (Stream contentStream = await response.Content.ReadAsStreamAsync())
+			await using(Stream contentStream = await response.Content.ReadAsStreamAsync())
 			{
 				JsonSerializerOptions options = new JsonSerializerOptions
 				{

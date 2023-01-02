@@ -2,7 +2,7 @@
 {
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
-	using Ordering.Application.Contracts.Services;
+	using Ordering.Application.Contracts.Orders;
 
 	[ApiController]
 	[AllowAnonymous]

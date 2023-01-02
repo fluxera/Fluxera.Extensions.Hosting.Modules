@@ -7,9 +7,9 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
-	using Ordering.Application.Contracts.Services;
+	using Ordering.Application.Contracts.Orders;
 	using Ordering.Application.Contributors;
-	using Ordering.Application.Services;
+	using Ordering.Application.Orders;
 	using Ordering.Infrastructure;
 
 	[PublicAPI]

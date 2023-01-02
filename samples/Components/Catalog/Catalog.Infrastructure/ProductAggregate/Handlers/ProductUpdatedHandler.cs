@@ -6,8 +6,8 @@
 	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using DomainProductUpdated = Catalog.Domain.ProductAggregate.Events.ProductUpdated;
-	using IntegrationProductUpdated = Catalog.Domain.Shared.ProductAggregate.Events.ProductUpdated;
+	using DomainProductUpdated = Catalog.Domain.ProductAggregate.DomainEvents.ProductUpdated;
+	using IntegrationProductUpdated = Catalog.Domain.Shared.ProductAggregate.Messages.ProductUpdated;
 
 	/// <summary>
 	///     An event handler for bridging the <see cref="DomainProductUpdated" /> domain event

@@ -2,8 +2,7 @@
 {
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
-	using Catalog.Application.Contracts.Dtos;
-	using Catalog.Application.Contracts.Services;
+	using Catalog.Application.Contracts.Products;
 	using FluentResults;
 	using Microsoft.AspNetCore.Mvc.RazorPages;
 	using Microsoft.Extensions.Logging;
@@ -19,12 +18,12 @@
 			this.productApplicationService = productApplicationService;
 		}
 
+		public IReadOnlyCollection<ProductDto> Products { get; set; }
+
 		public async Task OnGetAsync()
 		{
 			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
 			this.Products = result.ValueOrDefault;
 		}
-
-		public IReadOnlyCollection<ProductDto> Products { get; set; }
 	}
 }

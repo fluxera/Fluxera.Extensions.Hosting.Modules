@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Application.Contributors
 {
 	using AutoMapper;
-	using Catalog.Application.Contracts.Dtos;
+	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.ProductAggregate;
 	using JetBrains.Annotations;
 

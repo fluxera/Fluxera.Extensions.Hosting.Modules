@@ -1,12 +1,12 @@
 ﻿namespace Ordering.HttpClient.Contributors
 {
+	using System.Collections.Generic;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.HttpClient;
 	using Fluxera.Extensions.Http;
 	using Microsoft.Extensions.DependencyInjection;
-	using Ordering.Application.Contracts.Services;
+	using Ordering.Application.Contracts.Orders;
 	using Ordering.HttpClient.Services;
-	using System.Collections.Generic;
 
 	internal sealed class HttpClientServiceContributor : IHttpClientServiceContributor
 	{

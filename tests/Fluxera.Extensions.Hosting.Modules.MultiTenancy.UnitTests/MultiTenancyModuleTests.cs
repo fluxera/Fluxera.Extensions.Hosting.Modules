@@ -24,8 +24,8 @@ namespace Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests
 		[Test]
 		public void ShouldAddTenantContextProvider()
 		{
-			ITenantContextProvider stringLocalizerFactory = this.ApplicationLoader.ServiceProvider.GetRequiredService<ITenantContextProvider>();
-			stringLocalizerFactory.Should().NotBeNull();
+			ITenantContextProvider tenantContextProvider = this.ApplicationLoader.ServiceProvider.GetRequiredService<ITenantContextProvider>();
+			tenantContextProvider.Should().NotBeNull();
 		}
 
 		[Test]

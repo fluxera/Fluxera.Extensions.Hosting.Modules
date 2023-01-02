@@ -2,6 +2,7 @@ namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests
 {
 	using FluentAssertions;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
+	using Microsoft.AspNetCore.Http;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Options;
 	using NUnit.Framework;
@@ -19,6 +20,12 @@ namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.UnitTests
 		public void TearDown()
 		{
 			this.StopApplication();
+		}
+
+		/// <inheritdoc />
+		protected override void OnStartApplication(IServiceCollection services)
+		{
+			services.AddTransient<IHttpContextFactory, DefaultHttpContextFactory>();
 		}
 
 		[Test]

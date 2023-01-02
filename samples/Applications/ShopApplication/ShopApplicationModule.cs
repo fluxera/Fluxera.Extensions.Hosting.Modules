@@ -11,16 +11,6 @@
 	[PublicAPI]
 	[DependsOn<RazorPagesModule>]
 	[DependsOn<HealthChecksEndpointsModule>]
-	//[DependsOn<MultiTenancyModule>]
-	// Configure the Catalog component.
-	//[DependsOn<CatalogMessagingApiModule>]
-	//[DependsOn<CatalogApplicationModule>]
-	// Configure the Ordering component.
-	//[DependsOn<OrderingMessagingApiModule>]
-	//[DependsOn<OrderingApplicationModule>]
-	// Configure the HTTP client modules.
-	//[DependsOn<CatalogHttpApiModule>]
-	//[DependsOn<OrderingHttpApiModule>]
 	public sealed class ShopApplicationModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />

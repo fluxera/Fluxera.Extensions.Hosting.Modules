@@ -40,11 +40,21 @@ namespace Fluxera.Extensions.Hosting.Modules.UnitTesting
 				services.AddSingleton<IHostLifetime, TestLifetime>();
 				services.AddSingleton<IHostApplicationLifetime, TestApplicationLifetime>();
 
+				this.OnStartApplication(services);
+
 				services.AddApplicationLoader<TStartupModule>(configuration, environment, CreateBootstrapperLogger());
 			});
 
 			this.ApplicationLoader = serviceProvider.GetRequiredService<IApplicationLoader>();
 			this.ApplicationLoader.Initialize(new ApplicationLoaderInitializationContext(serviceProvider));
+		}
+
+		/// <summary>
+		///     Configure custom services.
+		/// </summary>
+		/// <param name="services"></param>
+		protected virtual void OnStartApplication(IServiceCollection services)
+		{
 		}
 
 		/// <summary>

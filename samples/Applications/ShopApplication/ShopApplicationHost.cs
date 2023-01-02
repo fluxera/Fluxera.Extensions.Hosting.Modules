@@ -43,6 +43,7 @@ namespace ShopApplication
 			// Configure the Ordering component.
 			context.AddPlugin<OrderingHttpClientModule>();
 #endif
+			//context.AddPlugin<MultiTenancyModule>();
 		}
 
 		/// <inheritdoc />

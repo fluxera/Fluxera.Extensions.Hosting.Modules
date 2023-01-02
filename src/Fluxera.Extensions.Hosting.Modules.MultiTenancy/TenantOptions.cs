@@ -14,15 +14,13 @@
 		/// </summary>
 		public TenantOptions()
 		{
-			this.Enabled = true;
-			this.Mode = MultiTenancyMode.DatabasePerTenant;
+			this.Mode = MultiTenancyMode.None;
 		}
 
 		/// <summary>
 		///     Flag, indicating if the multi-tenancy is enabled for the corresponding repository.
 		/// </summary>
-		[ConfigurationKeyName("MultiTenancy:Enabled")]
-		public bool Enabled { get; set; }
+		public bool Enabled => this.Mode != MultiTenancyMode.None;
 
 		/// <summary>
 		///     Gets or sets the multi-tenancy mode for the corresponding repository.

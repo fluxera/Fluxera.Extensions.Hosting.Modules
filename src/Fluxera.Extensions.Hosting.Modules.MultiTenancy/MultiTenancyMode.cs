@@ -9,6 +9,11 @@
 	public enum MultiTenancyMode
 	{
 		/// <summary>
+		///     No multi-tenancy mode used.
+		/// </summary>
+		None,
+
+		/// <summary>
 		///     Use a single database and a discriminator column for the tenant.
 		/// </summary>
 		SingleDatabase,

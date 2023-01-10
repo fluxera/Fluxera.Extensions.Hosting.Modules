@@ -24,7 +24,7 @@
 			configurator.UsingRabbitMq((ctx, cfg) =>
 			{
 				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
-				if(!isTransactionalOutboxModuleLoaded)
+				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
 				{
 					cfg.UseInMemoryOutbox();
 				}

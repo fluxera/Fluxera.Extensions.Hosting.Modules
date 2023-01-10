@@ -14,8 +14,16 @@
 		/// </summary>
 		public AzureServiceBusMessagingOptions()
 		{
-			ConnectionStrings = new ConnectionStrings();
+			this.ConnectionStrings = new ConnectionStrings();
 		}
+
+		/// <summary>
+		///     Gets or sets a value indicating whether the in-memory outbox is enabled.
+		/// </summary>
+		/// <value>
+		///     <c>true</c> if the in-memory outbox is enabled; otherwise, <c>false</c>.
+		/// </value>
+		public bool InMemoryOutboxEnabled { get; set; } = true;
 
 		/// <summary>
 		///     Gets or sets the name of the connection string to use.

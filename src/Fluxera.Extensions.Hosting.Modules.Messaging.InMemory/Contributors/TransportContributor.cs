@@ -2,6 +2,7 @@
 {
 	using System.Text.Json;
 	using Fluxera.Enumeration.SystemTextJson;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
 	using Fluxera.Spatial.SystemTextJson;
 	using Fluxera.StronglyTypedId.SystemTextJson;
@@ -15,10 +16,12 @@
 		/// <inheritdoc />
 		public void ConfigureTransport(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
+			InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
+
 			configurator.UsingInMemory((ctx, cfg) =>
 			{
 				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
-				if(!isTransactionalOutboxModuleLoaded)
+				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
 				{
 					cfg.UseInMemoryOutbox();
 				}

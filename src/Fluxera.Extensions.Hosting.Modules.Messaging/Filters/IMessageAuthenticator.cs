@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
+	using System.Security.Authentication;
 	using System.Threading.Tasks;
 	using MassTransit;
 
@@ -15,6 +16,7 @@
 		/// </summary>
 		/// <typeparam name="T">The message type.</typeparam>
 		/// <param name="context">The context to authenticate.</param>
-		Task AuthenticateMessage<T>(SendContext<T> context) where T : class;
+		/// <exception cref="AuthenticationException"></exception>
+		Task AuthenticateMessageAsync<T>(SendContext<T> context) where T : class;
 	}
 }

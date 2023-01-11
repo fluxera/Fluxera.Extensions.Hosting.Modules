@@ -1,6 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
-	using System;
+	using System.Security.Authentication;
 	using System.Threading.Tasks;
 	using JetBrains.Annotations;
 	using MassTransit;
@@ -37,15 +37,12 @@
 			try
 			{
 				// Executed before the message is send.
-				await this.messageAuthenticator.AuthenticateMessage(context);
+				await this.messageAuthenticator.AuthenticateMessageAsync(context);
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
-
-				// Executed after the message was sent.
-				// ...
 			}
-			catch(Exception ex)
+			catch(AuthenticationException ex)
 			{
 				this.logger.LogMessageAuthenticationFailed(ex);
 

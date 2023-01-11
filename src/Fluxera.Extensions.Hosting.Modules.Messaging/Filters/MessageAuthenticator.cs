@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
+	using System.Security.Authentication;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using Fluxera.Guards;
@@ -17,7 +18,7 @@
 		}
 
 		/// <inheritdoc />
-		public async Task AuthenticateMessage<T>(SendContext<T> context) where T : class
+		public async Task AuthenticateMessageAsync<T>(SendContext<T> context) where T : class
 		{
 			Guard.Against.Null(context);
 
@@ -27,6 +28,11 @@
 			{
 				// Try to get an access token.
 				string accessToken = await this.principalAccessor.GetAccessTokenAsync();
+
+				if(string.IsNullOrWhiteSpace(accessToken))
+				{
+					throw new AuthenticationException("No access token available.");
+				}
 
 				// Set the access token on the context.
 				context.Headers.Set(TransportHeaders.AccessTokenHeaderName, accessToken);

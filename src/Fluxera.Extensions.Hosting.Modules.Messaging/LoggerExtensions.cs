@@ -11,10 +11,6 @@
 		public static partial void LogMessageAuthenticationFailed(this ILogger logger, Exception exception);
 
 		[DebuggerStepThrough]
-		[LoggerMessage(0, LogLevel.Error, "Setting the consume context failed.")]
-		public static partial void LogSettingConsumeContextFailed(this ILogger logger, Exception exception);
-
-		[DebuggerStepThrough]
 		[LoggerMessage(0, LogLevel.Error, "The message validation failed.")]
 		public static partial void LogMessageValidationFailed(this ILogger logger, Exception exception);
 

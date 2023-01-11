@@ -1,10 +1,9 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
-	using System.Security.Authentication;
 	using System.Threading.Tasks;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using Microsoft.Extensions.Logging;
+	using Microsoft.Extensions.Options;
 
 	/// <summary>
 	///     A send filter that utilizes the <see cref="IMessageAuthenticator" /> to add
@@ -15,40 +14,33 @@
 	public sealed class AuthenticatingSendFilter<T> : IFilter<SendContext<T>>
 		where T : class
 	{
-		private readonly ILogger logger;
 		private readonly IMessageAuthenticator messageAuthenticator;
+		private readonly MessagingOptions options;
 
 		/// <summary>
 		///     Creates a new instance of the <see cref="AuthenticatingSendFilter{T}" /> type.
 		/// </summary>
-		/// <param name="loggerFactory"></param>
 		/// <param name="messageAuthenticator"></param>
+		/// <param name="options"></param>
 		public AuthenticatingSendFilter(
-			ILoggerFactory loggerFactory,
-			IMessageAuthenticator messageAuthenticator)
+			IMessageAuthenticator messageAuthenticator,
+			IOptions<MessagingOptions> options)
 		{
-			this.logger = loggerFactory.CreateLogger(this.GetType());
 			this.messageAuthenticator = messageAuthenticator;
+			this.options = options.Value;
 		}
 
 		/// <inheritdoc />
 		public async Task Send(SendContext<T> context, IPipe<SendContext<T>> next)
 		{
-			try
+			if(this.options.AuthenticationEnabled)
 			{
-				// Executed before the message is send.
+				// Executed before the message is published.
 				await this.messageAuthenticator.AuthenticateMessageAsync(context);
-
-				// Here the next filter in the pipe is called.
-				await next.Send(context);
 			}
-			catch(AuthenticationException ex)
-			{
-				this.logger.LogMessageAuthenticationFailed(ex);
 
-				// Propagate the exception up the call stack.
-				throw;
-			}
+			// Here the next filter in the pipe is called.
+			await next.Send(context);
 		}
 
 		/// <inheritdoc />

@@ -5,6 +5,7 @@
 	using JetBrains.Annotations;
 	using MassTransit;
 	using Microsoft.Extensions.Logging;
+	using Microsoft.Extensions.Options;
 
 	/// <summary>
 	///     A public filter that utilizes the <see cref="IMessageAuthenticator" /> to
@@ -17,18 +18,22 @@
 	{
 		private readonly ILogger logger;
 		private readonly IMessageValidator messageValidator;
+		private readonly MessagingOptions options;
 
 		/// <summary>
 		///     Creates a new instance of the <see cref="ValidatingPublishFilter{T}" /> type.
 		/// </summary>
 		/// <param name="loggerFactory"></param>
 		/// <param name="messageValidator"></param>
+		/// <param name="options"></param>
 		public ValidatingPublishFilter(
 			ILoggerFactory loggerFactory,
-			IMessageValidator messageValidator)
+			IMessageValidator messageValidator,
+			IOptions<MessagingOptions> options)
 		{
 			this.logger = loggerFactory.CreateLogger(this.GetType());
 			this.messageValidator = messageValidator;
+			this.options = options.Value;
 		}
 
 		/// <inheritdoc />
@@ -36,14 +41,14 @@
 		{
 			try
 			{
-				// Executed before the message is published.
-				this.messageValidator.ValidateMessage(context.Message);
+				if(this.options.ValidationEnabled)
+				{
+					// Executed before the message is send.
+					this.messageValidator.ValidateMessage(context.Message);
+				}
 
 				// Here the next filter in the pipe is called.
 				await next.Send(context);
-
-				// Executed after the message was published.
-				// ...
 			}
 			catch(ValidationException ex)
 			{

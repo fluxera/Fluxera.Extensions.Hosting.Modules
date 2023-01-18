@@ -25,6 +25,22 @@
 		public bool AuthenticationEnabled { get; set; } = true;
 
 		/// <summary>
+		///     Gets or sets a value indicating whether external scheduling is enabled.
+		/// </summary>
+		/// <value>
+		///     <c>true</c> if external scheduling is enabled; otherwise, <c>false</c>.
+		/// </value>
+		public bool ExternalSchedulerEnabled { get; set; }
+
+		/// <summary>
+		///     Gets or sets a value indicating whether transport scheduling is enabled.
+		/// </summary>
+		/// <value>
+		///     <c>true</c> if external transport is enabled; otherwise, <c>false</c>.
+		/// </value>
+		public bool TransportSchedulerEnabled { get; set; }
+
+		/// <summary>
 		///     Gets or sets the signing key used when creating the principal from a JWT access-token.
 		/// </summary>
 		public string SigningKey { get; set; }

@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ.Contributors
 {
+	using System;
 	using System.Text.Json;
 	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -18,8 +19,9 @@
 		{
 			RabbitMqMessagingOptions options = context.Services.GetOptions<RabbitMqMessagingOptions>();
 			string connectionString = options.ConnectionStrings[options.ConnectionStringName];
-
 			RabbitMqConnectionString rabbitConnectionString = new RabbitMqConnectionString(connectionString);
+
+			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
 
 			configurator.UsingRabbitMq((ctx, cfg) =>
 			{
@@ -27,6 +29,11 @@
 				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
 				{
 					cfg.UseInMemoryOutbox();
+				}
+
+				if(messagingOptions.ExternalSchedulerEnabled)
+				{
+					cfg.UseMessageScheduler(new Uri("queue:scheduler"));
 				}
 
 				cfg.Host(rabbitConnectionString.Host, hostOptions =>

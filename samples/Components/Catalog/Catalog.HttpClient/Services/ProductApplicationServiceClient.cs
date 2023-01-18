@@ -1,16 +1,12 @@
 ﻿namespace Catalog.HttpClient.Services
 {
 	using System.Collections.Generic;
-	using System.IO;
 	using System.Net.Http;
-	using System.Text.Json;
-	using System.Text.Json.Serialization;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Fluxera.Extensions.Http;
-	using Fluxera.StronglyTypedId.SystemTextJson;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
@@ -45,20 +41,7 @@
 		public async Task<Result<IReadOnlyCollection<ProductDto>>> GetProductsAsync()
 		{
 			HttpResponseMessage response = await this.HttpClient.GetAsync("/catalog/products");
-
-			IReadOnlyCollection<ProductDto> result;
-
-			await using(Stream contentStream = await response.Content.ReadAsStreamAsync())
-			{
-				JsonSerializerOptions options = new JsonSerializerOptions
-				{
-					PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-					DictionaryKeyPolicy = JsonNamingPolicy.CamelCase
-				};
-				options.Converters.Add(new JsonStringEnumConverter());
-				options.UseStronglyTypedId();
-				result = (await JsonSerializer.DeserializeAsync<ProductDto[]>(contentStream, options))?.AsReadOnly();
-			}
+			IReadOnlyCollection<ProductDto> result = (await response.Content.ReadAsAsync<ProductDto[]>()).AsReadOnly();
 
 			return Result.Ok(result);
 		}

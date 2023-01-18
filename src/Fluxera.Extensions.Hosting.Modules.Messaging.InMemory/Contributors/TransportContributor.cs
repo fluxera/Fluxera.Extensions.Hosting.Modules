@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.Contributors
 {
+	using System;
 	using System.Text.Json;
 	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -17,6 +18,8 @@
 		public void ConfigureTransport(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
 			InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
+			
+			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
 
 			configurator.UsingInMemory((ctx, cfg) =>
 			{
@@ -24,6 +27,11 @@
 				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
 				{
 					cfg.UseInMemoryOutbox();
+				}
+
+				if(messagingOptions.ExternalSchedulerEnabled)
+				{
+					cfg.UseMessageScheduler(new Uri("queue:scheduler"));
 				}
 
 				cfg.ConfigureJsonSerializerOptions(serializerOptions =>

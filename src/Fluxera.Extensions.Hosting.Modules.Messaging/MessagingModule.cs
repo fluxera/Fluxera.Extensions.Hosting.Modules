@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging
 {
 	using System;
-	using System.Collections.Generic;
 	using System.Linq;
 	using Fluxera.Extensions.Common;
 	using Fluxera.Extensions.DependencyInjection;
@@ -119,6 +118,8 @@
 		/// <inheritdoc />
 		public override void PostConfigureServices(IServiceConfigurationContext context)
 		{
+			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
+
 			// Add the MassTransit message bus.
 			context.Log("AddMassTransit", services =>
 			{
@@ -136,6 +137,11 @@
 
 				services.AddMassTransit(options =>
 				{
+					if(messagingOptions.ExternalSchedulerEnabled)
+					{
+						options.AddMessageScheduler(new Uri("queue:scheduler"));
+					}
+
 					// Add (optional) transactional outbox.
 					outboxContributor?.ConfigureOutbox(options, context);
 

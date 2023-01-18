@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus.Contributors
 {
+	using System;
 	using System.Text.Json;
 	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -19,12 +20,19 @@
 			AzureServiceBusMessagingOptions options = context.Services.GetOptions<AzureServiceBusMessagingOptions>();
 			string connectionString = options.ConnectionStrings[options.ConnectionStringName];
 
+			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
+
 			configurator.UsingAzureServiceBus((ctx, cfg) =>
 			{
 				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
 				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
 				{
 					cfg.UseInMemoryOutbox();
+				}
+
+				if(messagingOptions.ExternalSchedulerEnabled)
+				{
+					cfg.UseMessageScheduler(new Uri("queue:scheduler"));
 				}
 
 				cfg.Host(connectionString);

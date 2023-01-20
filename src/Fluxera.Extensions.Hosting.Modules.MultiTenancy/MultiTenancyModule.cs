@@ -23,8 +23,9 @@
 		{
 			context.Items.Add("IsMultiTenancyModuleLoaded", true);
 
-			// Add the configure options contributor.
-			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+			// Add the configure options contributors.
+			context.Services.AddConfigureOptionsContributor<PersistenceConfigureOptionsContributor>();
+			context.Services.AddConfigureOptionsContributor<MultiTenancyConfigureOptionsContributor>();
 		}
 
 		/// <inheritdoc />

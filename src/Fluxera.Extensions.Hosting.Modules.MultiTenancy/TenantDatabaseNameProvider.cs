@@ -6,31 +6,34 @@
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Options;
 
-	[UsedImplicitly]
-	internal sealed class TenantDatabaseNameProvider : DefaultDatabaseNameProvider
+	/// <summary>
+	///		A database name provider that gets the name from a tenant or the configuration.
+	/// </summary>
+	[PublicAPI]
+	public class TenantDatabaseNameProvider : DefaultDatabaseNameProvider
 	{
-		private readonly MultiTenancyOptions multiTenancyOptions;
+		private readonly MultiTenancyPersistenceOptions multiTenancyPersistenceOptions;
 		private readonly ITenantContextProvider tenantContextProvider;
 
 		/// <inheritdoc />
 		public TenantDatabaseNameProvider(
 			ITenantContextProvider tenantContextProvider,
-			IOptions<MultiTenancyOptions> multiTenancyOptions,
+			IOptions<MultiTenancyPersistenceOptions> multiTenancyOptions,
 			IOptions<PersistenceOptions> repositoryOptions) : base(repositoryOptions)
 		{
 			this.tenantContextProvider = tenantContextProvider;
-			this.multiTenancyOptions = multiTenancyOptions.Value;
+			this.multiTenancyPersistenceOptions = multiTenancyOptions.Value;
 		}
 
 		/// <inheritdoc />
 		public override string GetDatabaseName(RepositoryName repositoryName)
 		{
 			RepositoryOptions repositoryOptions = this.Options.Repositories[repositoryName.Name];
-			TenantOptions tenantOptions = this.multiTenancyOptions.Repositories[repositoryName.Name];
+			TenantPersistenceOptions tenantPersistenceOptions = this.multiTenancyPersistenceOptions.Repositories[repositoryName.Name];
 
 			string databaseName;
 
-			if(tenantOptions.Enabled && tenantOptions.Mode == MultiTenancyMode.DatabasePerTenant)
+			if(tenantPersistenceOptions.Enabled && tenantPersistenceOptions.Mode == MultiTenancyMode.DatabasePerTenant)
 			{
 				// A tenant is used to create the database name.
 				// All other data belonging to the tenant is stored in a separate database for each tenant.

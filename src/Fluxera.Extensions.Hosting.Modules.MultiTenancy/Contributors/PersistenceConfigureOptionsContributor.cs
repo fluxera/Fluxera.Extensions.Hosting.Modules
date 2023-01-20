@@ -2,7 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 
-	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<MultiTenancyOptions>
+	internal sealed class PersistenceConfigureOptionsContributor : ConfigureOptionsContributorBase<MultiTenancyPersistenceOptions>
 	{
 		/// <inheritdoc />
 		public override string SectionName => "Persistence";

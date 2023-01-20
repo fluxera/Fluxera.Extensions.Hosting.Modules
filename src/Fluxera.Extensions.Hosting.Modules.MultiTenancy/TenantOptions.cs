@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.MultiTenancy
 {
+	using Fluxera.Extensions.DataManagement;
 	using JetBrains.Annotations;
-	using Microsoft.Extensions.Configuration;
 
 	/// <summary>
 	///     The tenant options.
@@ -10,22 +10,24 @@
 	public sealed class TenantOptions
 	{
 		/// <summary>
-		///     Creates a new instance of the <see cref="MultiTenancyOptions" /> type.
+		///     Creates a new instance of the <see cref="TenantOptions" /> type.
 		/// </summary>
 		public TenantOptions()
 		{
-			this.Mode = MultiTenancyMode.None;
+			this.ConnectionStrings = new ConnectionStrings();
 		}
 
 		/// <summary>
-		///     Flag, indicating if the multi-tenancy is enabled for the corresponding repository.
+		///     Gets or sets the tenant's name.
 		/// </summary>
-		public bool Enabled => this.Mode != MultiTenancyMode.None;
+		/// <remarks>
+		///     This must match the tenant name set in the user claims.
+		/// </remarks>
+		public string TenantName { get; set; }
 
 		/// <summary>
-		///     Gets or sets the multi-tenancy mode for the corresponding repository.
+		///		Gets or sets the tenant's connection strings.
 		/// </summary>
-		[ConfigurationKeyName("MultiTenancy:Mode")]
-		public MultiTenancyMode Mode { get; set; }
+		public ConnectionStrings ConnectionStrings { get; set; }
 	}
 }

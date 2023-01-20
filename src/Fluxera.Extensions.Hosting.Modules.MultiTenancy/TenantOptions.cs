@@ -18,14 +18,6 @@
 		}
 
 		/// <summary>
-		///     Gets or sets the tenant's name.
-		/// </summary>
-		/// <remarks>
-		///     This must match the tenant name set in the user claims.
-		/// </remarks>
-		public string TenantName { get; set; }
-
-		/// <summary>
 		///		Gets or sets the tenant's connection strings.
 		/// </summary>
 		public ConnectionStrings ConnectionStrings { get; set; }

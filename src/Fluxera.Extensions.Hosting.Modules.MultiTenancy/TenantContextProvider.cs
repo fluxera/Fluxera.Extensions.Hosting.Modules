@@ -47,21 +47,6 @@
 
 			TenantSettings tenantSettings = this.tenantSettingsProvider?.GetTenantSettings(tenantID);
 			
-			//ConnectionStrings tenantConnectionStrings = null;
-			//IList<string> connectionStringKeyValuePairs = claimsPrincipal?.GetClaimValues(TenantClaimTypes.TenantConnectionString).ToList();
-			//if(connectionStringKeyValuePairs != null && connectionStringKeyValuePairs.Any())
-			//{
-			//	tenantConnectionStrings = new ConnectionStrings();
-
-			//	foreach(string connectionStringKeyValuePair in connectionStringKeyValuePairs)
-			//	{
-			//		string key = connectionStringKeyValuePair.Split('|').FirstOrDefault("Default");
-			//		string connectionString = connectionStringKeyValuePair.Split('|').LastOrDefault() ?? connectionStringKeyValuePair;
-
-			//		tenantConnectionStrings.Add(key, connectionString);
-			//	}
-			//}
-
 			tenantContext = new TenantContext(tenantID, tenantName, tenantDisplayName, tenantSettings);
 			return true;
 		}

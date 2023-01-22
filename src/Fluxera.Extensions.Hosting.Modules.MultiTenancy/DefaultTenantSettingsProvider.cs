@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.MultiTenancy
 {
-	using System.Linq.Expressions;
 	using Fluxera.Utilities.Extensions;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Options;

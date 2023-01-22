@@ -12,7 +12,7 @@
 		/// <summary>
 		///     Creates a new instance of the <see cref="TenantSettings" /> type.
 		/// </summary>
-		public TenantSettings() : this(null)
+		public TenantSettings() : this(null, null)
 		{
 		}
 
@@ -20,14 +20,21 @@
 		///     Creates a new instance of the <see cref="TenantSettings" /> type.
 		/// </summary>
 		/// <param name="connectionStrings"></param>
-		public TenantSettings(ConnectionStrings connectionStrings)
+		/// <param name="properties"></param>
+		public TenantSettings(ConnectionStrings connectionStrings, TenantProperties properties)
 		{
 			this.ConnectionStrings = connectionStrings ?? new ConnectionStrings();
+			this.Properties = properties ?? new TenantProperties();
 		}
 
 		/// <summary>
 		///     Gets the connection strings of the tenant.
 		/// </summary>
 		public ConnectionStrings ConnectionStrings { get; }
+
+		/// <summary>
+		///		Gets or sets the tenant's additional properties.
+		/// </summary>
+		public TenantProperties Properties { get; set; }
 	}
 }

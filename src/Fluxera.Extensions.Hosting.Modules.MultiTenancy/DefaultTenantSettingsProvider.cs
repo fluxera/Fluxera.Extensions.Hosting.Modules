@@ -29,7 +29,7 @@
 			TenantOptions tenantOptions = this.options.Tenants.GetOrDefault(tenantID);
 			if(tenantOptions is not null)
 			{
-				tenantSettings = new TenantSettings(tenantOptions.ConnectionStrings);
+				tenantSettings = new TenantSettings(tenantOptions.ConnectionStrings, tenantOptions.Properties);
 			}
 
 			return tenantSettings;

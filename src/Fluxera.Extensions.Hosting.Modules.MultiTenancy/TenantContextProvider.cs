@@ -10,10 +10,14 @@
 	internal sealed class TenantContextProvider : ITenantContextProvider
 	{
 		private readonly IPrincipalAccessor principalAccessor;
+		private readonly ITenantSettingsProvider tenantSettingsProvider;
 
-		public TenantContextProvider(IPrincipalAccessor principalAccessor)
+		public TenantContextProvider(
+			IPrincipalAccessor principalAccessor,
+			ITenantSettingsProvider tenantSettingsProvider = null)
 		{
 			this.principalAccessor = principalAccessor;
+			this.tenantSettingsProvider = tenantSettingsProvider;
 		}
 
 		/// <inheritdoc />
@@ -33,7 +37,7 @@
 			ClaimsPrincipal claimsPrincipal = this.principalAccessor.User;
 			string tenantID = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantID);
 			string tenantName = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantName);
-			string tenantConnectionString = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantConnectionString);
+			string tenantDisplayName = claimsPrincipal?.GetClaimValue(TenantClaimTypes.TenantDisplayName);
 
 			if(string.IsNullOrWhiteSpace(tenantID))
 			{
@@ -41,7 +45,9 @@
 				return false;
 			}
 
-			tenantContext = new TenantContext(tenantID, tenantName, tenantConnectionString);
+			TenantSettings tenantSettings = this.tenantSettingsProvider?.GetTenantSettings(tenantID);
+			
+			tenantContext = new TenantContext(tenantID, tenantName, tenantDisplayName, tenantSettings);
 			return true;
 		}
 	}

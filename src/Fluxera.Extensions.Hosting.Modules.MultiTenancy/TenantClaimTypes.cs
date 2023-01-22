@@ -9,18 +9,27 @@
 	public static class TenantClaimTypes
 	{
 		/// <summary>
+		///     The claim type for the tenant ID.
+		/// </summary>
+		/// <remarks>
 		///     Default: "tenant-id".
-		/// </summary>
-		public static string TenantID { get; set; } = "tenant-id";
+		/// </remarks>
+		public const string TenantID = "tenant-id";
 
 		/// <summary>
+		///     The claim type for the tenant name.
+		/// </summary>
+		/// <remarks>
 		///     Default: "tenant-name".
-		/// </summary>
-		public static string TenantName { get; set; } = "tenant-name";
+		/// </remarks>
+		public const string TenantName = "tenant-name";
 
 		/// <summary>
-		///     Default: "tenant-connection-string".
+		///     The claim type for the tenant display name.
 		/// </summary>
-		public static string TenantConnectionString { get; set; } = "tenant-connection-string";
+		/// <remarks>
+		///     Default: "tenant-display-name".
+		/// </remarks>
+		public const string TenantDisplayName = "tenant-display-name";
 	}
 }

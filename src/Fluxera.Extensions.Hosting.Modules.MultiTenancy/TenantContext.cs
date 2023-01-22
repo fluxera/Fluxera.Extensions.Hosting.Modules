@@ -14,12 +14,14 @@
 		/// </summary>
 		/// <param name="tenantID"></param>
 		/// <param name="tenantName"></param>
-		/// <param name="tenantConnectionString"></param>
-		public TenantContext(string tenantID, string tenantName, string tenantConnectionString)
+		/// <param name="tenantDisplayName"></param>
+		/// <param name="tenantSettings"></param>
+		public TenantContext(string tenantID, string tenantName, string tenantDisplayName, TenantSettings tenantSettings)
 		{
 			this.TenantID = Guard.Against.NullOrWhiteSpace(tenantID);
 			this.TenantName = tenantName;
-			this.TenantConnectionString = tenantConnectionString;
+			this.TenantDisplayName = tenantDisplayName;
+			this.TenantSettings = tenantSettings ?? new TenantSettings();
 		}
 
 		/// <summary>
@@ -33,8 +35,13 @@
 		public string TenantName { get; }
 
 		/// <summary>
-		///     Gets the connection string of the tenant.
+		///     Gets the display name of the tenant.
 		/// </summary>
-		public string TenantConnectionString { get; }
+		public string TenantDisplayName { get; }
+
+		/// <summary>
+		///		Gets the tenant's settings.
+		/// </summary>
+		public TenantSettings TenantSettings { get; }
 	}
 }

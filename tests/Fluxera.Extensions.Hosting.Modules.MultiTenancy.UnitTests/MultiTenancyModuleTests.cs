@@ -31,7 +31,7 @@ namespace Fluxera.Extensions.Hosting.Modules.MultiTenancy.UnitTests
 		[Test]
 		public void ShouldConfigureMultiTenancyOptions()
 		{
-			IOptions<MultiTenancyOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<MultiTenancyOptions>>();
+			IOptions<MultiTenancyPersistenceOptions> options = this.ApplicationLoader.ServiceProvider.GetRequiredService<IOptions<MultiTenancyPersistenceOptions>>();
 			options.Value.Should().NotBeNull();
 
 			options.Value.Repositories.Should().NotBeNullOrEmpty();

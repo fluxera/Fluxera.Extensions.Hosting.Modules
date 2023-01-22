@@ -9,15 +9,15 @@
 	[UsedImplicitly]
 	internal sealed class TenantCacheKeyProvider : DefaultCacheKeyProvider
 	{
-		private readonly MultiTenancyOptions options;
+		private readonly MultiTenancyPersistenceOptions multiTenancyPersistenceOptions;
 		private readonly ITenantContextProvider tenantContextProvider;
 
 		public TenantCacheKeyProvider(
 			ITenantContextProvider tenantContextProvider,
-			IOptions<MultiTenancyOptions> options)
+			IOptions<MultiTenancyPersistenceOptions> options)
 		{
 			this.tenantContextProvider = tenantContextProvider;
-			this.options = options.Value;
+			this.multiTenancyPersistenceOptions = options.Value;
 		}
 
 		/// <summary>
@@ -31,9 +31,9 @@
 			string cachePrefix = base.GetCachePrefix(repositoryName, type);
 
 			string repositoryNameValue = repositoryName.Value ?? string.Empty;
-			TenantOptions tenantOptions = this.options.Repositories[repositoryNameValue];
+			TenantPersistenceOptions tenantPersistenceOptions = this.multiTenancyPersistenceOptions.Repositories[repositoryNameValue];
 
-			if(tenantOptions.Enabled)
+			if(tenantPersistenceOptions.Enabled)
 			{
 				// Repositories/Books/Acme.Books.Domain.Model.Book/{Tenant}
 				TenantContext tenantContext = this.tenantContextProvider.GetTenantContext();

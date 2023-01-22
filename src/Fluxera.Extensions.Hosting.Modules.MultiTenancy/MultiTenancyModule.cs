@@ -23,8 +23,9 @@
 		{
 			context.Items.Add("IsMultiTenancyModuleLoaded", true);
 
-			// Add the configure options contributor.
-			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+			// Add the configure options contributors.
+			context.Services.AddConfigureOptionsContributor<PersistenceConfigureOptionsContributor>();
+			context.Services.AddConfigureOptionsContributor<MultiTenancyConfigureOptionsContributor>();
 		}
 
 		/// <inheritdoc />
@@ -35,17 +36,21 @@
 				services => services.TryAddTransient<ITenantContextProvider, TenantContextProvider>());
 
 			// Add services for multiple, per-tenant databases.
-			context.Log("AddTenantDatabaseNameProvider",
+			context.Log("ReplaceDatabaseNameProvider(Tenant)",
 				services => services.ReplaceTransient<IDatabaseNameProvider, TenantDatabaseNameProvider>());
 
 			// Add services for connection-string-based, multiple, per-tenant databases.
-			context.Log("AddTenantDatabaseNameProvider",
+			context.Log("ReplaceDatabaseNameProvider(Tenant)",
 				services => services.ReplaceTransient<IDatabaseConnectionStringProvider, TenantDatabaseConnectionStringProvider>());
+
+			// Add the tenant settings provider. The registered provider is configuration-based.
+			context.Log("AddTenantSettingsProvider(Default)",
+				services => services.ReplaceTransient<ITenantSettingsProvider, DefaultTenantSettingsProvider>());
 
 			// Add services for single, multi-tenant database.
 			// Note: This must be done using tenant interceptors.
 
-			context.Log("AddTenantCacheKeyProvider",
+			context.Log("ReplaceCacheKeyProvider(Tenant)",
 				services => services.ReplaceTransient<ICacheKeyProvider, TenantCacheKeyProvider>());
 		}
 	}

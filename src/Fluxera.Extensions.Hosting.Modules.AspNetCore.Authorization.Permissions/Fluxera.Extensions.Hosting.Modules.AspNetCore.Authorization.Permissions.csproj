@@ -37,6 +37,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization\Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj" />
 	</ItemGroup>
 
 </Project>

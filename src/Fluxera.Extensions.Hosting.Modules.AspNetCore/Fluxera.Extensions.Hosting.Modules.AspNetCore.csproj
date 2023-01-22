@@ -32,7 +32,7 @@
 		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="7.1.0" />
 		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.1.0" />
 		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="7.1.0" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.1.0" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.1.1" />
 		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="7.1.0" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
 			<PrivateAssets>all</PrivateAssets>

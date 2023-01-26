@@ -17,7 +17,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseDeveloperExceptionPage(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseDeveloperExceptionPage", _ => app.UseDeveloperExceptionPage());
 
 			return context;
@@ -30,7 +30,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseExceptionHandler(this IApplicationInitializationContext context, string errorHandlingPath)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseExceptionHandler", _ => app.UseExceptionHandler(errorHandlingPath));
 
 			return context;
@@ -43,7 +43,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseStatusCodePagesWithReExecute(this IApplicationInitializationContext context, string pathFormat)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseStatusCodePagesWithReExecute", _ => app.UseStatusCodePagesWithReExecute(pathFormat));
 
 			return context;
@@ -54,7 +54,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseStaticFiles(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseStaticFiles", _ => app.UseStaticFiles());
 
 			return context;
@@ -65,7 +65,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseResponseCaching(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseResponseCaching", _ => app.UseResponseCaching());
 
 			return context;

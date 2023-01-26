@@ -15,7 +15,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseODataRouteDebug(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseODataRouteDebug", _ => app.UseODataRouteDebug());
 
 			return context;
@@ -26,7 +26,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseODataBatching(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseODataBatching", _ => app.UseODataBatching());
 
 			return context;

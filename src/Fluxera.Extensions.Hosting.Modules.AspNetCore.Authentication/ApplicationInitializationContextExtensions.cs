@@ -17,7 +17,7 @@
 		/// <returns>A reference to this instance after the operation has completed.</returns>
 		public static IApplicationInitializationContext UseAuthentication(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseAuthentication", _ => app.UseAuthentication());
 
 			return context;

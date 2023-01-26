@@ -19,7 +19,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseHsts(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseHsts", _ => app.UseHsts());
 
 			return context;
@@ -30,7 +30,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseHttpsRedirection(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseHttpsRedirection", _ => app.UseHttpsRedirection());
 
 			return context;
@@ -43,7 +43,7 @@
 		/// <returns></returns>
 		public static IApplicationInitializationContext UseRouting(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseRouting", _ => app.UseRouting());
 
 			return context;
@@ -59,7 +59,7 @@
 		/// </summary>
 		public static IApplicationInitializationContext UseEndpoints(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseEndpoints", _ =>
 			{
 #pragma warning disable ASP0014 // Suggest using top level route registrations

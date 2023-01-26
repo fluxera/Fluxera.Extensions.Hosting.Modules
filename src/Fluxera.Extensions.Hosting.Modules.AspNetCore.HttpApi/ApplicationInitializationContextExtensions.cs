@@ -25,7 +25,7 @@
 
 			if(httpApiOptions.Swagger.Enabled)
 			{
-				WebApplication app = context.GetApplicationBuilder();
+				IApplicationBuilder app = context.GetApplicationBuilder();
 				context.Log("UseSwaggerUI", _ => app.UseSwaggerUI(options =>
 				{
 					if(versionDescriptionProvider != null && versionDescriptionProvider.ApiVersionDescriptions.Any())
@@ -56,7 +56,7 @@
 		/// </exception>
 		public static IApplicationInitializationContext UseProblemDetails(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseProblemDetails", _ => app.UseProblemDetails());
 			return context;
 		}

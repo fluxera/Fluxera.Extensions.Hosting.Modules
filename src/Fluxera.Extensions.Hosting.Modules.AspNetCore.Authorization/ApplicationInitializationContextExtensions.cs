@@ -21,7 +21,7 @@
 		/// <returns>A reference to <paramref name="context" /> after the operation has completed.</returns>
 		public static IApplicationInitializationContext UseAuthorization(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseAuthorization", _ => app.UseAuthorization());
 
 			return context;

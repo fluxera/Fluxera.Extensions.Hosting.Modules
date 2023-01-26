@@ -16,7 +16,7 @@
 		/// <returns></returns>
 		public static IApplicationInitializationContext UseCors(this IApplicationInitializationContext context)
 		{
-			WebApplication app = context.GetApplicationBuilder();
+			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseCors", _ => app.UseCors());
 
 			return context;

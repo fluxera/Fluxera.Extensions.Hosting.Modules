@@ -17,9 +17,11 @@
 		/// <returns></returns>
 		public static IServiceCollection AddMediatR(this IServiceCollection services)
 		{
+			Assembly callingAssembly = Assembly.GetCallingAssembly();
+
 			return services.AddMediatR(config =>
 			{
-				config.RegisterServicesFromAssembly(Assembly.GetCallingAssembly());
+				config.RegisterServicesFromAssemblies(callingAssembly);
 			});
 		}
 	}

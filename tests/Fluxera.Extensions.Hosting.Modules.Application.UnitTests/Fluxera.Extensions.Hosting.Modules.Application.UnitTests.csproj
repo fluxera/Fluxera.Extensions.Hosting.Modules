@@ -23,6 +23,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
 		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.Application\Fluxera.Extensions.Hosting.Modules.Application.csproj" />
+		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -72,7 +72,7 @@
 				return this.StatusCode((int)HttpStatusCode.InternalServerError, result.Errors);
 			}
 
-			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.Value.ID }, result);
+			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.Value.ID }, result.ValueOrDefault);
 		}
 	}
 }

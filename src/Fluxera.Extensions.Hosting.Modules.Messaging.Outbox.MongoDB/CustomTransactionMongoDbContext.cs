@@ -8,6 +8,7 @@
 	using Fluxera.Repository.MongoDB;
 	using global::MongoDB.Driver;
 	using JetBrains.Annotations;
+	using MassTransit;
 	using MassTransit.MongoDbIntegration;
 	using Microsoft.Extensions.Options;
 
@@ -26,27 +27,33 @@
 		public IClientSessionHandle Session { get; private set; }
 
 		/// <inheritdoc />
+		public Guid? TransactionId { get; private set; }
+
+		/// <inheritdoc />
 		public async Task<IClientSessionHandle> StartSession(CancellationToken cancellationToken)
 		{
 			return this.Session ??= await this.mongoContext.StartSessionAsync(cancellationToken);
 		}
 
 		/// <inheritdoc />
-		public Task BeginTransaction(CancellationToken cancellationToken)
+		public async Task BeginTransaction(CancellationToken cancellationToken)
 		{
-			return this.mongoContext.BeginTransactionAsync(cancellationToken);
+			await this.mongoContext.BeginTransactionAsync(cancellationToken);
+			this.TransactionId = NewId.NextGuid();
 		}
 
 		/// <inheritdoc />
-		public Task CommitTransaction(CancellationToken cancellationToken)
+		public async Task CommitTransaction(CancellationToken cancellationToken)
 		{
-			return this.mongoContext.CommitTransactionAsync(cancellationToken);
+			await this.mongoContext.CommitTransactionAsync(cancellationToken);
+			this.TransactionId = null;
 		}
 
 		/// <inheritdoc />
-		public Task AbortTransaction(CancellationToken cancellationToken)
+		public async Task AbortTransaction(CancellationToken cancellationToken)
 		{
-			return this.mongoContext.AbortTransactionAsync(cancellationToken);
+			await this.mongoContext.AbortTransactionAsync(cancellationToken);
+			this.TransactionId = null;
 		}
 
 		/// <inheritdoc />

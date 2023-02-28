@@ -2,7 +2,6 @@
 {
 	using System.Reflection;
 	using JetBrains.Annotations;
-	using MediatR;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
@@ -18,7 +17,10 @@
 		/// <returns></returns>
 		public static IServiceCollection AddMediatR(this IServiceCollection services)
 		{
-			return services.AddMediatR(Assembly.GetExecutingAssembly());
+			return services.AddMediatR(config =>
+			{
+				config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+			});
 		}
 	}
 }

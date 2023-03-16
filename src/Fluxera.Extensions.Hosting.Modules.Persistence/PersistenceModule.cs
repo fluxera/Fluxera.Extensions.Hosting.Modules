@@ -14,7 +14,6 @@
 	using Fluxera.Guards;
 	using Fluxera.Repository;
 	using Fluxera.Repository.Caching;
-	using Fluxera.Repository.DomainEvents;
 	using Fluxera.Utilities.Extensions;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;

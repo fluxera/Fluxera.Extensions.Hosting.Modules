@@ -12,10 +12,10 @@
 			AzureServiceBusMessagingOptions messagingOptions = context.Services.GetOptions<AzureServiceBusMessagingOptions>();
 			string connectionString = messagingOptions.ConnectionStrings[messagingOptions.ConnectionStringName];
 
-			//builder.AddAzureServiceBusQueue(connectionString, "AzureService", tags: new string[]
-			//{
-			//	HealthCheckTags.Ready
-			//});
+			builder.AddAzureServiceBusQueue(connectionString, "AzureService", tags: new string[]
+			{
+				HealthCheckTags.Ready
+			});
 		}
 	}
 }

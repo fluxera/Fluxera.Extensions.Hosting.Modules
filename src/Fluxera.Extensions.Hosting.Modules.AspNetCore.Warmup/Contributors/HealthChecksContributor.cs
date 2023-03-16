@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup.Contributors
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Microsoft.Extensions.DependencyInjection;
 

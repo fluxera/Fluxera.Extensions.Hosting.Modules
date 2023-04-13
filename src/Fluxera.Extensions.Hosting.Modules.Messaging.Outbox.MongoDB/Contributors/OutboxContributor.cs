@@ -1,12 +1,13 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB.Contributors
 {
+	using System;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Repository;
-	using Fluxera.Repository.MongoDB;
+	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
+	using MadEyeMatt.MongoDB.DbContext;
 	using MassTransit;
 	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Options;
 
 	/// <summary>
 	///     A base class for in-memory transactional outbox configuration.
@@ -18,6 +19,13 @@
 		public void ConfigureOutbox(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
 			MessagingOutboxModuleOptions options = context.Services.GetOptions<MessagingOutboxModuleOptions>();
+
+			MongoPersistenceOptions persistenceOptions = context.Services.GetOptions<MongoPersistenceOptions>();
+			MongoRepositoryOptions repositoryOptions = persistenceOptions.Repositories.GetOptionsOrDefault(options.RepositoryName);
+
+			Type dbContextType = Type.GetType(repositoryOptions.DbContextType);
+			dbContextType = Guard.Against.Null(dbContextType,
+				message: $"The db context must be configured for MongoDB repository '{options.RepositoryName}' to be used with the transactional inbox/outbox.");
 
 			configurator.AddMongoOutbox(cfg =>
 			{
@@ -73,19 +81,13 @@
 				cfg.CollectionNameFormatter(_ => new PluralizeCollectionNameFormatter());
 				cfg.ClientFactory(serviceProvider =>
 				{
-					MessagingOutboxModuleOptions outboxOptions = serviceProvider.GetRequiredService<IOptions<MessagingOutboxModuleOptions>>().Value;
-					MongoContextProvider contextProvider = serviceProvider.GetRequiredService<MongoContextProvider>();
-					MongoContext mongoContext = contextProvider.GetContextFor((RepositoryName)outboxOptions.RepositoryName);
-
-					return mongoContext.Client;
+					MongoDbContext dbContext = (MongoDbContext)serviceProvider.GetRequiredService(dbContextType);
+					return dbContext.Client;
 				});
 				cfg.DatabaseFactory(serviceProvider =>
 				{
-					MessagingOutboxModuleOptions outboxOptions = serviceProvider.GetRequiredService<IOptions<MessagingOutboxModuleOptions>>().Value;
-					MongoContextProvider contextProvider = serviceProvider.GetRequiredService<MongoContextProvider>();
-					MongoContext mongoContext = contextProvider.GetContextFor((RepositoryName)outboxOptions.RepositoryName);
-
-					return mongoContext.Database;
+					MongoDbContext dbContext = (MongoDbContext)serviceProvider.GetRequiredService(dbContextType);
+					return dbContext.Database;
 				});
 			});
 

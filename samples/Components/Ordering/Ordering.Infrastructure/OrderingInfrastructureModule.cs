@@ -6,7 +6,6 @@ namespace Ordering.Infrastructure
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
@@ -24,7 +23,7 @@ namespace Ordering.Infrastructure
 	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 #elif MONGO
-	[DependsOn<MongoMessagingOutboxModule>]
+	//[DependsOn<MongoMessagingOutboxModule>]
 	[DependsOn<MongoPersistenceModule>]
 #endif
 	[DependsOn<ConfigurationModule>]

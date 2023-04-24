@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB
 {
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.Contributors;
@@ -18,6 +19,9 @@
 		/// <inheritdoc />
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
+			// Add the configure options contributor.
+			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
+
 			// Add the tracer provider contributor.
 			context.Services.AddTracerProviderContributor<TracerProviderContributor>();
 

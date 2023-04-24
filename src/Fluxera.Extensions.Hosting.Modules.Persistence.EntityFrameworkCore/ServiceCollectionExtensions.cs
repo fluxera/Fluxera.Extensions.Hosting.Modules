@@ -55,7 +55,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore
 					services,
 					optionsAction,
 					contextLifetime,
-					optionsAction
+					optionsLifetime
 				});
 
 			return services;

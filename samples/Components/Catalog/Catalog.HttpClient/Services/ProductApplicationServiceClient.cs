@@ -30,7 +30,7 @@
 		/// <inheritdoc />
 		public async Task<Result<ProductDto>> AddProduct(ProductDto dto)
 		{
-			HttpContent content = await dto.AsJsonContentAsync();
+			HttpContent content = dto.AsJsonContent();
 			HttpResponseMessage response = await this.HttpClient.PostAsync("/catalog/products", content);
 			ProductDto result = await response.Content.ReadAsAsync<ProductDto>();
 

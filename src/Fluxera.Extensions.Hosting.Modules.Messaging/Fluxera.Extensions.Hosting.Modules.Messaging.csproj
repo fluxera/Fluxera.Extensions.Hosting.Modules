@@ -23,11 +23,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="7.1.3" />
-		<PackageReference Include="Fluxera.Extensions.Common" Version="7.1.3" />
-		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="7.1.3" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.1.5" />
-		<PackageReference Include="Fluxera.Extensions.Localization" Version="7.1.3" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.1.3" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="7.2.0" />
+		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="7.2.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.1.6" />
+		<PackageReference Include="Fluxera.Extensions.Localization" Version="7.2.0" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.2.0" />
 		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="7.1.3" />
 		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.1.4" />
 		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="7.1.3" />

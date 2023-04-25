@@ -3,6 +3,7 @@
 	using System;
 	using JetBrains.Annotations;
 	using MassTransit;
+	using MassTransit.Configuration;
 	using Microsoft.EntityFrameworkCore;
 
 	internal static class OutboxConfigurationExtensions
@@ -19,7 +20,7 @@
 			Action<IEntityFrameworkOutboxConfigurator> configure = null)
 			where TContext : DbContext
 		{
-			CustomEntityFrameworkOutboxConfigurator<TContext> outboxConfigurator = new CustomEntityFrameworkOutboxConfigurator<TContext>(configurator);
+			EntityFrameworkOutboxConfigurator<TContext> outboxConfigurator = new EntityFrameworkOutboxConfigurator<TContext>(configurator);
 
 			outboxConfigurator.Configure(configure);
 		}

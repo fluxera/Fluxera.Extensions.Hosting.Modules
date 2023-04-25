@@ -2,11 +2,12 @@
 {
 	using System;
 	using MassTransit;
+	using MassTransit.Configuration;
 
 	internal static class OutboxConfigurationExtensions
 	{
 		/// <summary>
-		///     Configures the Entity Framework Outbox on the bus, which can subsequently be used to configure
+		///     Configures the MongoDB Outbox on the bus, which can subsequently be used to configure
 		///     the transactional outbox on a receive endpoint.
 		/// </summary>
 		/// <param name="configurator"></param>
@@ -14,7 +15,7 @@
 		/// <returns></returns>
 		public static void AddMongoOutbox(this IBusRegistrationConfigurator configurator, Action<IMongoDbOutboxConfigurator> configure = null)
 		{
-			CustomMongoDbOutboxConfigurator outboxConfigurator = new CustomMongoDbOutboxConfigurator(configurator);
+			MongoDbOutboxConfigurator outboxConfigurator = new MongoDbOutboxConfigurator(configurator);
 
 			outboxConfigurator.Configure(configure);
 		}

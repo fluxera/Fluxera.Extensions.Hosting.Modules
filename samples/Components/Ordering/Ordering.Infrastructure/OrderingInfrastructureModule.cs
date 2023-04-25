@@ -1,13 +1,16 @@
-﻿#undef EFCORE
-#define MONGO
+﻿#define EFCORE
+#undef MONGO
 
 namespace Ordering.Infrastructure
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
+	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
 	using JetBrains.Annotations;
 	using Ordering.Domain;
@@ -23,7 +26,7 @@ namespace Ordering.Infrastructure
 	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 #elif MONGO
-	//[DependsOn<MongoMessagingOutboxModule>]
+	[DependsOn<MongoMessagingOutboxModule>]
 	[DependsOn<MongoPersistenceModule>]
 #endif
 	[DependsOn<ConfigurationModule>]

@@ -1,5 +1,5 @@
-﻿#undef EFCORE
-#define MONGO
+﻿#define EFCORE
+#undef MONGO
 
 namespace Catalog.Infrastructure
 {
@@ -8,8 +8,11 @@ namespace Catalog.Infrastructure
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
+	using Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
 	using JetBrains.Annotations;
 
@@ -20,10 +23,10 @@ namespace Catalog.Infrastructure
 	[DependsOn<CatalogDomainModule>]
 	[DependsOn<RabbitMqMessagingModule>]
 #if EFCORE
-	//[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
+	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 #elif MONGO
-	//[DependsOn<MongoMessagingOutboxModule>]
+	[DependsOn<MongoMessagingOutboxModule>]
 	[DependsOn<MongoPersistenceModule>]
 #endif
 	[DependsOn<ConfigurationModule>]

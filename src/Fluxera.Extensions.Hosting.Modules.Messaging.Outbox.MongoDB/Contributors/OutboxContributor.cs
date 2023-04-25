@@ -81,13 +81,19 @@
 				cfg.CollectionNameFormatter(_ => new PluralizeCollectionNameFormatter());
 				cfg.ClientFactory(serviceProvider =>
 				{
-					MongoDbContext dbContext = (MongoDbContext)serviceProvider.GetRequiredService(dbContextType);
-					return dbContext.Client;
+					using(IServiceScope scope = serviceProvider.CreateScope())
+					{
+						MongoDbContext dbContext = (MongoDbContext)scope.ServiceProvider.GetRequiredService(dbContextType);
+						return dbContext.Client;
+					}
 				});
 				cfg.DatabaseFactory(serviceProvider =>
 				{
-					MongoDbContext dbContext = (MongoDbContext)serviceProvider.GetRequiredService(dbContextType);
-					return dbContext.Database;
+					using(IServiceScope scope = serviceProvider.CreateScope())
+					{
+						MongoDbContext dbContext = (MongoDbContext)scope.ServiceProvider.GetRequiredService(dbContextType);
+						return dbContext.Database;
+					}
 				});
 			});
 

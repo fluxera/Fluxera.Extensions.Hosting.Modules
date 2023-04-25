@@ -1,8 +1,9 @@
-﻿#undef EFCORE
-#define MONGO
+﻿#define EFCORE
+#undef MONGO
 
 namespace ShopApplication.Infrastructure.Contexts
 {
+	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Repository.MongoDB;
 	using JetBrains.Annotations;
 

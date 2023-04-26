@@ -21,7 +21,7 @@
 		public static IServiceCollection AddHttpClientServiceContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, IHttpClientServiceContributor, new()
 		{
-			HttpClientServiceRegistrationContributorList contributorList = services.GetObject<HttpClientServiceRegistrationContributorList>();
+			HttpClientServiceContributorList contributorList = services.GetObject<HttpClientServiceContributorList>();
 			if(contributorList != null)
 			{
 				TContributor contributor = new TContributor();
@@ -31,6 +31,30 @@
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
 				logger.LogContributorListNotAvailable(typeof(IHttpClientServiceContributor));
+			}
+
+			return services;
+		}
+
+		/// <summary>
+		///     Adds the given http client builder contributor to the list of contributors.
+		/// </summary>
+		/// <typeparam name="TContributor"></typeparam>
+		/// <param name="services"></param>
+		/// <returns></returns>
+		public static IServiceCollection AddHttpClientBuilderContributor<TContributor>(this IServiceCollection services)
+			where TContributor : class, IHttpClientBuilderContributor, new()
+		{
+			HttpClientBuilderContributorList contributorList = services.GetObject<HttpClientBuilderContributorList>();
+			if(contributorList != null)
+			{
+				TContributor contributor = new TContributor();
+				contributorList.Add(contributor);
+			}
+			else
+			{
+				ILogger logger = services.GetObjectOrDefault<ILogger>();
+				logger.LogContributorListNotAvailable(typeof(IHttpClientBuilderContributor));
 			}
 
 			return services;

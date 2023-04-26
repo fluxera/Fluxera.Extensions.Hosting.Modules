@@ -31,8 +31,11 @@
 			// Add the meter provider contributor.
 			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
 
-			// Add the contributor list.
-			context.Services.TryAddObjectAccessor(new HttpClientServiceRegistrationContributorList(), ObjectAccessorLifetime.ConfigureServices);
+			// Add the http client service contributor list.
+			context.Services.TryAddObjectAccessor(new HttpClientServiceContributorList(), ObjectAccessorLifetime.ConfigureServices);
+
+			// Add the http client builder contributor list.
+			context.Services.TryAddObjectAccessor(new HttpClientBuilderContributorList(), ObjectAccessorLifetime.ConfigureServices);
 		}
 
 		/// <inheritdoc />
@@ -42,16 +45,20 @@
 			context.Log("AddHashCalculator", services => services.AddHashCalculator());
 
 			// Add named http client services.
-			HttpClientServiceRegistrationContributorList contributorList = context.Services.GetObject<HttpClientServiceRegistrationContributorList>();
+			HttpClientServiceContributorList serviceContributorList = context.Services.GetObject<HttpClientServiceContributorList>();
+			HttpClientBuilderContributorList builderContributorList = context.Services.GetObject<HttpClientBuilderContributorList>();
 
 			HttpClientOptions httpClientOptions = context.Services.GetOptions<HttpClientOptions>();
 			
-			foreach(IHttpClientServiceContributor contributor in contributorList)
+			foreach(IHttpClientServiceContributor serviceContributor in serviceContributorList)
 			{
-				foreach(IHttpClientBuilder builder in contributor.AddNamedHttpClientServices(context))
+				foreach(IHttpClientBuilder builder in serviceContributor.AddNamedHttpClientServices(context))
 				{
 					RemoteService remoteService = httpClientOptions.RemoteServices.GetOrDefault(builder.Name);
-					AddMessageHandlers(builder, remoteService);
+					foreach(IHttpClientBuilderContributor builderContributor in builderContributorList)
+					{
+						builderContributor.ConfigureHttpClientBuilder(builder, remoteService, context);
+					}
 				}
 			}
 
@@ -60,7 +67,10 @@
 			context.Log("AddHttpClient", services =>
 			{
 				IHttpClientBuilder builder = AddDefaultHttpClient(services);
-				AddMessageHandlers(builder);
+				foreach(IHttpClientBuilderContributor builderContributor in builderContributorList)
+				{
+					builderContributor.ConfigureHttpClientBuilder(builder, null, context);
+				}
 			});
 		}
 
@@ -79,17 +89,17 @@
 			return builder;
 		}
 
-		private static void AddMessageHandlers(IHttpClientBuilder builder, RemoteService remoteService = default)
-		{
-			builder
-				.AddAuthenticateRequestHandler()
-				.AddIdempotentPostRequestHandler()
-				.AddContentHashRequestHandler()
-				.AddContentHashResponseHandler();
+		//private static void AddMessageHandlers(IHttpClientBuilder builder, RemoteService remoteService = default)
+		//{
+		//	builder
+		//		.AddAuthenticateRequestHandler()
+		//		.AddIdempotentPostRequestHandler()
+		//		.AddContentHashRequestHandler()
+		//		.AddContentHashResponseHandler();
 
-			// TODO: Polly, settings per service configurable.
-			// https://www.hanselman.com/blog/AddingResilienceAndTransientFaultHandlingToYourNETCoreHttpClientWithPolly.aspx
-			//.AddTransientHttpErrorPolicy(policyBuilder => policyBuilder.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
-		}
+		//	// TODO: Polly, settings per service configurable.
+		//	// https://www.hanselman.com/blog/AddingResilienceAndTransientFaultHandlingToYourNETCoreHttpClientWithPolly.aspx
+		//	//.AddTransientHttpErrorPolicy(policyBuilder => policyBuilder.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
+		//}
 	}
 }

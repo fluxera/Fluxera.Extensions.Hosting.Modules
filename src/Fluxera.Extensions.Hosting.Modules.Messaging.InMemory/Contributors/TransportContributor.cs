@@ -18,16 +18,16 @@
 		public void ConfigureTransport(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
 			InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
-			
+
 			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
 
 			configurator.UsingInMemory((ctx, cfg) =>
 			{
-				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
-				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
-				{
-					cfg.UseInMemoryOutbox();
-				}
+				//bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
+				//if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
+				//{
+				//	cfg.UseInMemoryOutbox();
+				//}
 
 				if(messagingOptions.ExternalSchedulerEnabled)
 				{

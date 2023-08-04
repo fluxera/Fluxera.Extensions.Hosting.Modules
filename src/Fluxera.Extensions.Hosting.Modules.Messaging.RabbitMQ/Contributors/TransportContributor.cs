@@ -25,11 +25,11 @@
 
 			configurator.UsingRabbitMq((ctx, cfg) =>
 			{
-				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
-				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
-				{
-					cfg.UseInMemoryOutbox();
-				}
+				//bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
+				//if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
+				//{
+				//	cfg.UseInMemoryOutbox();
+				//}
 
 				if(messagingOptions.ExternalSchedulerEnabled)
 				{

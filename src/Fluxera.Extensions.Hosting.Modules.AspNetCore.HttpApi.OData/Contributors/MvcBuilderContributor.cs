@@ -58,32 +58,28 @@
 
 				//options.SetMaxTop(oDataOptions.QueryOperator.MaxTop);
 
-				// Don't register any routes when versioning is enabled.
-				if(!httpApiOptions.Versioning.Enabled)
+				foreach(IEdmModelContributor edmModelContributor in contributorList)
 				{
-					foreach(IEdmModelContributor edmModelContributor in contributorList)
-					{
-						edmModelContributor.Apply(modelBuilder, ApiVersion.Neutral, string.Empty);
+					edmModelContributor.Apply(modelBuilder, ApiVersion.Neutral, string.Empty);
 
-						if(oDataOptions.Batching.Enabled)
+					if(oDataOptions.Batching.Enabled)
+					{
+						DefaultODataBatchHandler batchHandler = new DefaultODataBatchHandler
 						{
-							DefaultODataBatchHandler batchHandler = new DefaultODataBatchHandler
+							PrefixName = string.Empty,
+							MessageQuotas =
 							{
-								PrefixName = string.Empty,
-								MessageQuotas =
-								{
-									MaxNestingDepth = oDataOptions.Batching.MessageQuotas.MaxNestingDepth,
-									MaxOperationsPerChangeset = oDataOptions.Batching.MessageQuotas.MaxOperationsPerChangeset,
-									MaxPartsPerBatch = oDataOptions.Batching.MessageQuotas.MaxPartsPerBatch,
-									MaxReceivedMessageSize = oDataOptions.Batching.MessageQuotas.MaxReceivedMessageSize
-								}
-							};
-							options.AddRouteComponents(string.Empty, modelBuilder.GetEdmModel(), batchHandler);
-						}
-						else
-						{
-							options.AddRouteComponents(string.Empty, modelBuilder.GetEdmModel());
-						}
+								MaxNestingDepth = oDataOptions.Batching.MessageQuotas.MaxNestingDepth,
+								MaxOperationsPerChangeset = oDataOptions.Batching.MessageQuotas.MaxOperationsPerChangeset,
+								MaxPartsPerBatch = oDataOptions.Batching.MessageQuotas.MaxPartsPerBatch,
+								MaxReceivedMessageSize = oDataOptions.Batching.MessageQuotas.MaxReceivedMessageSize
+							}
+						};
+						options.AddRouteComponents(string.Empty, modelBuilder.GetEdmModel(), batchHandler);
+					}
+					else
+					{
+						options.AddRouteComponents(string.Empty, modelBuilder.GetEdmModel());
 					}
 				}
 			});

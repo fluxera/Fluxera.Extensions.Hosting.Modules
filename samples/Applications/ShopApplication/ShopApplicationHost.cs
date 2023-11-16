@@ -13,9 +13,9 @@ namespace ShopApplication
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Logging;
-	using OpenTelemetry.Logs;
 	using Ordering.Application;
 	using Ordering.MessagingApi;
+	using Polly;
 	using Serilog;
 	using Serilog.Extensions.Hosting;
 	using Serilog.Extensions.Logging;
@@ -55,18 +55,10 @@ namespace ShopApplication
 				configurationBuilder.AddUserSecrets(Assembly.GetExecutingAssembly());
 			});
 
-			// Add OpenTelemetry logging.
-			builder.AddOpenTelemetryLogging(options =>
-			{
-				options.AddConsoleExporter();
-			});
-
-			// Add Serilog logging
-			builder.AddSerilogLogging((context, options) =>
+			// Add Serilog logging.
+			builder.AddSerilogLogging((_, options) =>
 			{
 				options
-					.ReadFrom.Configuration(context.Configuration)
-					.Enrich.FromLogContext()
 					.WriteTo.Console();
 			});
 		}
@@ -74,9 +66,12 @@ namespace ShopApplication
 		/// <inheritdoc />
 		protected override ILoggerFactory CreateBootstrapperLoggerFactory(IConfiguration configuration)
 		{
+			OpenTelemetryOptions telemetryOptions = configuration.Get<OpenTelemetryOptions>();
+
 			ReloadableLogger bootstrapLogger = new LoggerConfiguration()
 				.ReadFrom.Configuration(configuration)
 				.Enrich.FromLogContext()
+				.WriteTo.OpenTelemetry(telemetryOptions.OpenTelemetryProtocolEndpoint)
 				.WriteTo.Console()
 				.CreateBootstrapLogger();
 

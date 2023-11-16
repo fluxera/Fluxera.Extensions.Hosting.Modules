@@ -11,6 +11,8 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
 	using JetBrains.Annotations;
 	using MadEyeMatt.AspNetCore.ProblemDetails;
+	using Microsoft.AspNetCore.Builder;
+	using Microsoft.AspNetCore.HttpOverrides;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 
@@ -28,6 +30,12 @@
 			{
 				options.MapStatusCode<ValidationException>(HttpStatusCode.BadRequest);
 			});
+
+			// Configure the forwarded headers middleware.
+			context.Services.Configure<ForwardedHeadersOptions>(options =>
+			{
+				options.ForwardedHeaders = ForwardedHeaders.All;
+			});
 		}
 
 		/// <inheritdoc />
@@ -38,6 +46,8 @@
 			{
 				context.UseSwaggerUI();
 			}
+
+			context.UseForwardedHeaders();
 
 			context.UseHsts();
 

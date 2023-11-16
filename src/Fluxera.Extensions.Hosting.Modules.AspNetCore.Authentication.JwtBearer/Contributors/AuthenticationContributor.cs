@@ -50,6 +50,7 @@
 							ValidateIssuerSigningKey = true,
 							NameClaimType = JwtClaimTypes.Name,
 							RoleClaimType = JwtClaimTypes.Role,
+							ClockSkew = TimeSpan.FromSeconds(5),
 							IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(schemeOptions.SigningKey))
 						};
 					});

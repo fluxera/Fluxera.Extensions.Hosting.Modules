@@ -14,8 +14,7 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the permission-based authorization policy.
-			context.Log("AddPermissionsAuthorization",
-				services => services.AddPermissionsAuthorization());
+			context.Log("AddPermissionsAuthorization", services => services.AddPermissionsAuthorization());
 		}
 	}
 }

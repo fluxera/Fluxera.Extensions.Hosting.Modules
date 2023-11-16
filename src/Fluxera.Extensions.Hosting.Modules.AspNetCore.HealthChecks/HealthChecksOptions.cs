@@ -9,6 +9,11 @@
 	public sealed class HealthChecksOptions
 	{
 		/// <summary>
+		///		Gets or sets the endpoint URL prefix for the health check endpoints.
+		/// </summary>
+		public string EndpointUrlPrefix { get; set; } = "diag";
+
+		/// <summary>
 		///		Gets or sets the endpoint URL of the liveness probe.
 		/// </summary>
 		public string LivenessEndpointUrl { get; set; } = "healthz";

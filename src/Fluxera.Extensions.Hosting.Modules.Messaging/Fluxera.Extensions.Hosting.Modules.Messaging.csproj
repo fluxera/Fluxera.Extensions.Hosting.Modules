@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -22,23 +22,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="7.1.6" />
-		<PackageReference Include="Fluxera.Extensions.Common" Version="7.2.4" />
-		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="7.2.4" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="7.1.9" />
-		<PackageReference Include="Fluxera.Extensions.Localization" Version="7.2.4" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="7.2.4" />
-		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="7.1.6" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="7.1.7" />
-		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="7.1.6" />
+		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Extensions.DataManagement.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Extensions.Localization" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="8.0.0" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="8.0.0" />
+		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="8.0.0" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="IdentityModel" Version="6.1.0" />
-		<PackageReference Include="JetBrains.Annotations" Version="2023.2.0" />
-		<PackageReference Include="MassTransit" Version="8.0.16" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
+		<PackageReference Include="IdentityModel" Version="6.2.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+		<PackageReference Include="MassTransit" Version="8.1.2" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

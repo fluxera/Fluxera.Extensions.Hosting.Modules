@@ -19,7 +19,7 @@
 		/// <param name="services"></param>
 		/// <returns></returns>
 		public static IServiceCollection AddAuthorizeContributor<TContributor>(this IServiceCollection services)
-			where TContributor : class, IAuthorizeContributor, new()
+			where TContributor : class, IControllerAuthorizeContributor, new()
 		{
 			AuthorizeContributorList contributorList = services.GetObjectOrDefault<AuthorizeContributorList>();
 			if(contributorList != null)
@@ -30,7 +30,7 @@
 			else
 			{
 				ILogger logger = services.GetObjectOrDefault<ILogger>();
-				logger.LogContributorListNotAvailable(typeof(IAuthorizeContributor));
+				logger.LogContributorListNotAvailable(typeof(IControllerAuthorizeContributor));
 			}
 
 			return services;

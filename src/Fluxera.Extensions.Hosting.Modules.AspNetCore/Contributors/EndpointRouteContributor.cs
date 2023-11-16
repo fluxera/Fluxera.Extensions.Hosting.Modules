@@ -10,9 +10,9 @@
 		public int Position => 1000;
 
 		/// <inheritdoc />
-		public void MapRoute(IEndpointRouteBuilder routeBuilder, IApplicationInitializationContext context)
+		public void MapRoute(IEndpointRouteBuilder endpoints, IApplicationInitializationContext context)
 		{
-			context.Log("MapControllers", _ => routeBuilder.MapControllers());
+			context.Log("MapControllers", _ => endpoints.MapControllers());
 		}
 	}
 }

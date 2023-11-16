@@ -1,8 +1,10 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Serilog
 {
 	using System;
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using global::Serilog;
 	using JetBrains.Annotations;
+	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.Hosting;
 
 	/// <summary>
@@ -21,6 +23,8 @@
 		{
 			return builder.UseSerilog((context, services, options) =>
 			{
+				OpenTelemetryOptions telemetryOptions = context.Configuration.Get<OpenTelemetryOptions>();
+
 				options
 					.Enrich.FromLogContext()
 					.Enrich.WithEnvironmentName()
@@ -34,7 +38,8 @@
 					.Enrich.WithAssemblyVersion()
 					.Enrich.WithAssemblyInformationalVersion()
 					.ReadFrom.Configuration(context.Configuration)
-					.ReadFrom.Services(services);
+					.ReadFrom.Services(services)
+					.WriteTo.OpenTelemetry(telemetryOptions.OpenTelemetryProtocolEndpoint);
 
 				configureAction?.Invoke(context, options);
 			});

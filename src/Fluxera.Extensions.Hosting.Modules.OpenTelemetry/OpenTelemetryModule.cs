@@ -6,6 +6,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry.Contributors;
 	using global::OpenTelemetry.Metrics;
+	using global::OpenTelemetry.ResourceDetectors.Container;
 	using global::OpenTelemetry.Resources;
 	using global::OpenTelemetry.Trace;
 	using JetBrains.Annotations;
@@ -53,10 +54,12 @@
 				.AddOpenTelemetry()
 				.ConfigureResource(builder =>
 				{
-					builder.AddService(
-						serviceName: context.Environment.ApplicationName,
-						serviceVersion: Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "unknown",
-						serviceInstanceId: Environment.MachineName);
+					builder
+						.AddDetector(new ContainerResourceDetector())
+						.AddService(
+							serviceName: context.Environment.ApplicationName,
+							serviceVersion: Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "unknown",
+							serviceInstanceId: Environment.MachineName);
 				})
 				.WithMetrics(builder =>
 				{
@@ -66,7 +69,7 @@
 					}
 
 					builder.AddMeter($"{context.Environment.ApplicationName}");
-					builder.AddOtlpExporter(options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
+					builder.AddOtlpExporter("Metrics", options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
 				})
 				.WithTracing(builder =>
 				{
@@ -76,7 +79,7 @@
 					}
 
 					builder.AddSource($"{context.Environment.ApplicationName}");
-					builder.AddOtlpExporter(options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
+					builder.AddOtlpExporter("Tracing", options => options.Endpoint = new Uri(telemetryOptions.OpenTelemetryProtocolEndpoint));
 				});
 		}
 	}

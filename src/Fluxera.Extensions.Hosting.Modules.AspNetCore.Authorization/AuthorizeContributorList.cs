@@ -2,7 +2,7 @@
 {
 	using System.Collections.Generic;
 
-	internal sealed class AuthorizeContributorList : List<IAuthorizeContributor>
+	internal sealed class AuthorizeContributorList : List<IControllerAuthorizeContributor>
 	{
 	}
 }

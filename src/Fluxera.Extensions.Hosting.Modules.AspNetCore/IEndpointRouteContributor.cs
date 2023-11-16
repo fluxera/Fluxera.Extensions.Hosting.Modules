@@ -17,8 +17,8 @@
 		/// <summary>
 		///     Maps the route in the route builder.
 		/// </summary>
-		/// <param name="routeBuilder"></param>
+		/// <param name="endpoints"></param>
 		/// <param name="context"></param>
-		void MapRoute(IEndpointRouteBuilder routeBuilder, IApplicationInitializationContext context);
+		void MapRoute(IEndpointRouteBuilder endpoints, IApplicationInitializationContext context);
 	}
 }

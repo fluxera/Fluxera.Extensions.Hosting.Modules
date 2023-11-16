@@ -12,6 +12,7 @@
 	using Microsoft.AspNetCore.OData.Batch;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
+	using Swashbuckle.AspNetCore.SwaggerGen;
 
 	/// <summary>
 	///     A module that enables OData REST APIs.
@@ -27,7 +28,7 @@
 		public override void PreConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the authorize contributor.
-			context.Services.AddAuthorizeContributor<AuthorizeContributor>();
+			context.Services.AddAuthorizeContributor<ControllerAuthorizeContributor>();
 
 			// Add the mvc builder contributor.
 			context.Services.AddMvcBuilderContributor<MvcBuilderContributor>();
@@ -47,73 +48,64 @@
 			ODataOptions oDataOptions = context.Services.GetOptions<ODataOptions>();
 
 			// Add OData API versioning.
-			if(httpApiOptions.Versioning.Enabled)
+			context.Log("AddApiVersioning", services =>
 			{
-				context.Log("AddApiVersioning", services =>
+				services.TryAddTransient(sp =>
 				{
-					services.TryAddTransient(sp =>
+					VersionedODataModelBuilder modelBuilder = new VersionedODataModelBuilder(
+						sp.GetRequiredService<IODataApiVersionCollectionProvider>(),
+						sp.GetRequiredService<IEnumerable<IModelConfiguration>>())
 					{
-						VersionedODataModelBuilder modelBuilder = new VersionedODataModelBuilder(
-							sp.GetRequiredService<IODataApiVersionCollectionProvider>(),
-							sp.GetRequiredService<IEnumerable<IModelConfiguration>>())
+						ModelBuilderFactory = () => new CustomODataModelBuilder()
+					};
+
+					return modelBuilder;
+				});
+
+				// https://github.com/dotnet/aspnet-api-versioning/wiki
+				IApiVersioningBuilder versioningBuilder = services.AddApiVersioning(options =>
+				{
+					options.DefaultApiVersion = new ApiVersion(httpApiOptions.DefaultVersion.Major, httpApiOptions.DefaultVersion.Major);
+					options.AssumeDefaultVersionWhenUnspecified = true;
+					options.ReportApiVersions = true;
+				});
+
+				versioningBuilder.AddOData(options =>
+				{
+					if(oDataOptions.Batching.Enabled)
+					{
+						DefaultODataBatchHandler batchHandler = new DefaultODataBatchHandler
 						{
-							ModelBuilderFactory = () => new CustomODataModelBuilder()
+							PrefixName = "v{version:apiVersion}",
+							MessageQuotas =
+							{
+								MaxNestingDepth = oDataOptions.Batching.MessageQuotas.MaxNestingDepth,
+								MaxOperationsPerChangeset = oDataOptions.Batching.MessageQuotas.MaxOperationsPerChangeset,
+								MaxPartsPerBatch = oDataOptions.Batching.MessageQuotas.MaxPartsPerBatch,
+								MaxReceivedMessageSize = oDataOptions.Batching.MessageQuotas.MaxReceivedMessageSize
+							}
 						};
 
-						return modelBuilder;
-					});
-
-					// https://github.com/dotnet/aspnet-api-versioning/wiki
-					IApiVersioningBuilder versioningBuilder = services.AddApiVersioning(options =>
+						options.AddRouteComponents("v{version:apiVersion}", batchHandler);
+					}
+					else
 					{
-						options.DefaultApiVersion = new ApiVersion(httpApiOptions.DefaultVersion.Major, httpApiOptions.DefaultVersion.Major);
-						options.AssumeDefaultVersionWhenUnspecified = true;
-						options.ReportApiVersions = true;
-					});
-
-					versioningBuilder.AddOData(options =>
-					{
-						if(oDataOptions.Batching.Enabled)
-						{
-							DefaultODataBatchHandler batchHandler = new DefaultODataBatchHandler
-							{
-								PrefixName = "v{version:apiVersion}",
-								MessageQuotas =
-								{
-									MaxNestingDepth = oDataOptions.Batching.MessageQuotas.MaxNestingDepth,
-									MaxOperationsPerChangeset = oDataOptions.Batching.MessageQuotas.MaxOperationsPerChangeset,
-									MaxPartsPerBatch = oDataOptions.Batching.MessageQuotas.MaxPartsPerBatch,
-									MaxReceivedMessageSize = oDataOptions.Batching.MessageQuotas.MaxReceivedMessageSize
-								}
-							};
-
-							options.AddRouteComponents("v{version:apiVersion}", batchHandler);
-						}
-						else
-						{
-							options.AddRouteComponents("v{version:apiVersion}");
-						}
-					});
-
-					if(httpApiOptions.Swagger.Enabled)
-					{
-						versioningBuilder.AddODataApiExplorer(options =>
-						{
-							options.GroupNameFormat = "'v'VVV";
-							options.SubstituteApiVersionInUrl = true;
-						});
+						options.AddRouteComponents("v{version:apiVersion}");
 					}
 				});
-			}
+
+				versioningBuilder.AddODataApiExplorer(options =>
+				{
+					options.GroupNameFormat = "'v'VVV";
+					options.SubstituteApiVersionInUrl = true;
+				});
+			});
 
 			//// Configure swagger filters.
-			//if(httpApiOptions.Swagger.Enabled)
+			//context.Services.Configure<SwaggerGenOptions>(options =>
 			//{
-			//	context.Services.Configure<SwaggerGenOptions>(options =>
-			//	{
-			//		options.DocumentFilter<ODataMetadataControllerDocumentFilter>();
-			//	});
-			//}
+			//	options.DocumentFilter<ODataMetadataControllerDocumentFilter>();
+			//});
 
 			//context.Services.AddODataQueryFilter();
 

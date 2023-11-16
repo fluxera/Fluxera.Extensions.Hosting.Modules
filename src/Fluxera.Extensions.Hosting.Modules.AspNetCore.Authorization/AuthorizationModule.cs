@@ -31,8 +31,13 @@
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
 			// Add the authorization services.
-			context.Log("AddAuthorization",
-				services => services.AddAuthorization());
+			context.Log("AddAuthorization", services => services.AddAuthorization(options =>
+			{
+				// Require at least an authenticated used.
+				options.FallbackPolicy = new AuthorizationPolicyBuilder()
+					.RequireAuthenticatedUser()
+					.Build();
+			}));
 		}
 
 		/// <inheritdoc />

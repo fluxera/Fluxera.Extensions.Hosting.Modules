@@ -3,12 +3,14 @@
 	using System.Collections.Generic;
 	using System.Net;
 	using System.Threading.Tasks;
+	using Asp.Versioning;
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
+	[ApiVersion(1.0)]
 	[ApiController]
 	[AllowAnonymous]
 	[Route("catalog/products")]

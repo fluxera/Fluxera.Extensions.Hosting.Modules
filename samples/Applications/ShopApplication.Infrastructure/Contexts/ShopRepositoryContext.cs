@@ -1,5 +1,5 @@
-﻿#define EFCORE
-#undef MONGO
+﻿#define MONGO
+#undef EFCORE
 
 namespace ShopApplication.Infrastructure.Contexts
 {

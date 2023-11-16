@@ -15,8 +15,6 @@
 		public HttpApiOptions()
 		{
 			this.Descriptions = new HttpApiDescriptions();
-			this.Versioning = new VersioningOptions();
-			this.Swagger = new SwaggerOptions();
 		}
 
 		/// <summary>
@@ -33,15 +31,5 @@
 		///     Gets or sets the HTTP API descriptions.
 		/// </summary>
 		public HttpApiDescriptions Descriptions { get; set; }
-
-		/// <summary>
-		///     Gets or sets the versioning options.
-		/// </summary>
-		public VersioningOptions Versioning { get; set; }
-
-		/// <summary>
-		///     Gets or sets the Swagger options.
-		/// </summary>
-		public SwaggerOptions Swagger { get; set; }
 	}
 }

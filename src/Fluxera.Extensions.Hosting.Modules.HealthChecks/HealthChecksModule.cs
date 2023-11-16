@@ -3,6 +3,7 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn<ConfigurationModule>]
+	[DependsOn<OpenTelemetryModule>]
 	public sealed class HealthChecksModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -37,6 +39,9 @@
 		{
 			// Add the health checks contributor.
 			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
+
+			// Add the meter provider contributor.
+			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
 		}
 
 		/// <inheritdoc />

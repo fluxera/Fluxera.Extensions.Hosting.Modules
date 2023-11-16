@@ -17,7 +17,7 @@
 		/// <returns></returns>
 		public static string CalculateSchemeName(this string key, string authenticationSchemeDefault)
 		{
-			Guard.Against.NullOrWhiteSpace(key, nameof(key));
+			Guard.Against.NullOrWhiteSpace(key);
 
 			string schemeName = $"{authenticationSchemeDefault}-{key}";
 			if((key == AuthenticationSchemes.DefaultSchemeName) || (key == authenticationSchemeDefault))

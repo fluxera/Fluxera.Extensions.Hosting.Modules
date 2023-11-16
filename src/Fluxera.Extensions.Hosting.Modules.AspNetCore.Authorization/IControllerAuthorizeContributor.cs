@@ -4,10 +4,10 @@
 	using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 	/// <summary>
-	///     A contract for a authorize contributor.
+	///     A contract for a controller authorize contributor.
 	/// </summary>
 	[PublicAPI]
-	public interface IAuthorizeContributor
+	public interface IControllerAuthorizeContributor
 	{
 		/// <summary>
 		///     Allow anonymous access for the given controller.

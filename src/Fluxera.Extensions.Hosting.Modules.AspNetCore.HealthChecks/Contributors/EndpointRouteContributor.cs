@@ -12,7 +12,7 @@
 	internal sealed class EndpointRouteContributor : IEndpointRouteContributor
 	{
 		/// <inheritdoc />
-		public void MapRoute(IEndpointRouteBuilder routeBuilder, IApplicationInitializationContext context)
+		public void MapRoute(IEndpointRouteBuilder endpoints, IApplicationInitializationContext context)
 		{
 			HealthChecksOptions options = context.ServiceProvider.GetRequiredService<IOptions<HealthChecksOptions>>().Value;
 
@@ -20,34 +20,39 @@
 			string readinessEndpointUrl = options.ReadinessEndpointUrl.EnsureStartsWith("/");
 			string startupEndpointUrl = options.StartupEndpointUrl.EnsureStartsWith("/");
 
+			if(!string.IsNullOrWhiteSpace(options.EndpointUrlPrefix))
+			{
+				endpoints = endpoints.MapGroup(options.EndpointUrlPrefix);
+			}
+
 			context.Log($"MapHealthChecks({livenessEndpointUrl})", _ =>
 			{
-				routeBuilder.MapHealthChecks(livenessEndpointUrl, new HealthCheckOptions
+				endpoints.MapHealthChecks(livenessEndpointUrl, new HealthCheckOptions
 				{
 					Predicate = x => x.Tags.Contains("health"),
 					AllowCachingResponses = false,
 					ResponseWriter = HealthCheckResponseWriter.WriteHealthCheckResponse
-				});
+				}).AllowAnonymous();
 			});
 
 			context.Log($"MapHealthChecks({readinessEndpointUrl})", _ =>
 			{
-				routeBuilder.MapHealthChecks(readinessEndpointUrl, new HealthCheckOptions
+				endpoints.MapHealthChecks(readinessEndpointUrl, new HealthCheckOptions
 				{
 					Predicate = x => x.Tags.Contains("ready"),
 					AllowCachingResponses = false,
 					ResponseWriter = HealthCheckResponseWriter.WriteHealthCheckResponse
-				});
+				}).AllowAnonymous();
 			});
 
 			context.Log($"MapHealthChecks({startupEndpointUrl})", _ =>
 			{
-				routeBuilder.MapHealthChecks(startupEndpointUrl, new HealthCheckOptions
+				endpoints.MapHealthChecks(startupEndpointUrl, new HealthCheckOptions
 				{
 					Predicate = x => x.Tags.Contains("startup") || x.Tags.Contains("ready"),
 					AllowCachingResponses = false,
 					ResponseWriter = HealthCheckResponseWriter.WriteHealthCheckResponse
-				});
+				}).AllowAnonymous();
 			});
 		}
 	}

@@ -9,7 +9,7 @@
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
-	///     A module that enabled HTTP APIs.
+	///     A module that enables HTTP APIs.
 	/// </summary>
 	/// <remarks>
 	///     https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters
@@ -43,59 +43,42 @@
 			HttpApiOptions httpApiOptions = context.Services.GetOptions<HttpApiOptions>();
 
 			// Add API versioning.
-			if(httpApiOptions.Versioning.Enabled)
+			context.Log("AddApiVersioning", services =>
 			{
-				context.Log("AddApiVersioning", services =>
+				// https://github.com/dotnet/aspnet-api-versioning/wiki
+				IApiVersioningBuilder versioningBuilder = services.AddApiVersioning(options =>
 				{
-					// https://github.com/dotnet/aspnet-api-versioning/wiki
-					IApiVersioningBuilder versioningBuilder = services.AddApiVersioning(options =>
-					{
-						options.DefaultApiVersion = new ApiVersion(httpApiOptions.DefaultVersion.Major, httpApiOptions.DefaultVersion.Major);
-						options.AssumeDefaultVersionWhenUnspecified = true;
-						options.ReportApiVersions = true;
-					});
-
-					versioningBuilder.AddMvc();
-
-					if(httpApiOptions.Swagger.Enabled)
-					{
-						versioningBuilder.AddApiExplorer(options =>
-						{
-							options.GroupNameFormat = "'v'VVV";
-							options.SubstituteApiVersionInUrl = true;
-						});
-					}
+					options.DefaultApiVersion = new ApiVersion(httpApiOptions.DefaultVersion.Major, httpApiOptions.DefaultVersion.Major);
+					options.AssumeDefaultVersionWhenUnspecified = true;
+					options.ReportApiVersions = true;
 				});
-			}
 
-			// Configure swagger filters.
-			if(httpApiOptions.Swagger.Enabled)
+				versioningBuilder.AddMvc();
+
+				versioningBuilder.AddApiExplorer(options =>
+				{
+					options.GroupNameFormat = "'v'VVV";
+					options.SubstituteApiVersionInUrl = true;
+				});
+			});
+
+			// Configure swagger.
+			context.Log("AddSwagger", services =>
 			{
-				context.Log("AddSwagger", services =>
+				services.AddEndpointsApiExplorer();
+				services.AddSwaggerGen(options =>
 				{
-					services.AddSwaggerGen(options =>
-					{
-						options.OperationFilter<SwaggerDefaultValuesFilter>();
-						options.OperationFilter<DefaultValuesFilter>();
-						options.OperationFilter<DeprecatedOperationFilter>();
+					options.OperationFilter<SwaggerDefaultValuesFilter>();
+					options.OperationFilter<DefaultValuesFilter>();
+					options.OperationFilter<DeprecatedOperationFilter>();
 
-						options.EnableAnnotations();
-						options.UseInlineDefinitionsForEnums();
-						options.IncludeXmlComments();
-
-						if(!httpApiOptions.Versioning.Enabled)
-						{
-							httpApiOptions.Descriptions.TryGetValue("v1", out HttpApiDescription apiDescription);
-							options.SwaggerDoc("v1", apiDescription.CreateApiInfo());
-						}
-					});
-
-					if(httpApiOptions.Versioning.Enabled)
-					{
-						services.ConfigureOptions<ConfigureSwaggerOptions>();
-					}
+					options.EnableAnnotations();
+					options.UseInlineDefinitionsForEnums();
+					options.IncludeXmlComments();
 				});
-			}
+
+				services.ConfigureOptions<ConfigureSwaggerOptions>();
+			});
 		}
 
 		/// <inheritdoc />

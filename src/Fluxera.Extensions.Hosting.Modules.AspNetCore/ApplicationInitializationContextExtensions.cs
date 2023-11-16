@@ -6,6 +6,7 @@
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Http;
+	using Microsoft.AspNetCore.HttpOverrides;
 	using Microsoft.AspNetCore.Routing;
 
 	/// <summary>
@@ -14,6 +15,52 @@
 	[PublicAPI]
 	public static class ApplicationInitializationContextExtensions
 	{
+		// https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer?view=aspnetcore-7.0
+
+		/// <summary>
+		///		Applies forwarded headers to their matching fields on the current request.
+		/// <para>
+		///		By convention, HTTP proxies forward information from the client in well-known HTTP headers.
+		///		The <see cref="ForwardedHeadersMiddleware"/> reads these headers and fills in the associated
+		///		fields on HttpContext.
+		/// </para>
+		/// </summary>
+		/// <remarks>>
+		///		Forwarded Headers Middleware can run after diagnostics and error handling, but it must be run
+		///		before calling UseHsts.
+		/// </remarks>
+		public static IApplicationInitializationContext UseForwardedHeaders(this IApplicationInitializationContext context)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseForwardedHeaders", _ => app.UseForwardedHeaders());
+
+			return context;
+		}
+
+		/// <summary>
+		///		Adds a middleware that can log HTTP requests and responses.
+		/// </summary>
+		/// <param name="context"></param>
+		/// <returns></returns>
+		public static IApplicationInitializationContext UseHttpLogging(this IApplicationInitializationContext context)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseHttpLogging", _ => app.UseHttpLogging());
+
+			return context;
+		}
+
+		/// <summary>
+		///		Enables rate limiting for the application.
+		/// </summary>
+		public static IApplicationInitializationContext UseRateLimiter(this IApplicationInitializationContext context)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseRateLimiter", _ => app.UseRateLimiter());
+
+			return context;
+		}
+
 		/// <summary>
 		///     Adds middleware for using HSTS, which adds the Strict-Transport-Security header.
 		/// </summary>
@@ -62,7 +109,6 @@
 			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseEndpoints", _ =>
 			{
-#pragma warning disable ASP0014 // Suggest using top level route registrations
 				app.UseEndpoints(builder =>
 				{
 					RouteEndpointContributorList contributorList = context.ServiceProvider.GetObjectOrDefault<RouteEndpointContributorList>();
@@ -78,7 +124,6 @@
 						}
 					}
 				});
-#pragma warning restore ASP0014 // Suggest using top level route registrations
 			});
 
 			return context;

@@ -33,7 +33,7 @@
 
 			// Add the meter provider contributor.
 			context.Services.AddMeterProviderContributor<MeterProviderContributor>();
-
+				
 			// Add the http context accessor.
 			context.Log("AddHttpContextAccessor", services => services.AddHttpContextAccessor());
 
@@ -52,6 +52,7 @@
 			// Configure the JSON serializer defaults.
 			context.Log("AddJsonOptions", _ => builder.AddJsonOptions(options =>
 			{
+				options.AllowInputFormatterExceptionMessages = !context.Environment.IsProduction();
 				options.JsonSerializerOptions.UseSpatial();
 				options.JsonSerializerOptions.UseEnumeration();
 				options.JsonSerializerOptions.UsePrimitiveValueObject();

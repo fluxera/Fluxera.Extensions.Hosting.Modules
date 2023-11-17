@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Contributors
 {
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.Endpoints;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Routing;
 
@@ -13,6 +14,8 @@
 		public void MapRoute(IEndpointRouteBuilder endpoints, IApplicationInitializationContext context)
 		{
 			context.Log("MapControllers", _ => endpoints.MapControllers());
+
+			context.Log("MapEndpoints", _ => endpoints.MapEndpoints());
 		}
 	}
 }

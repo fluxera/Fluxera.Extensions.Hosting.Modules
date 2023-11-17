@@ -5,7 +5,9 @@
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using JetBrains.Annotations;
+	using MadEyeMatt.AspNetCore.Endpoints;
 	using MadEyeMatt.AspNetCore.ProblemDetails;
+	using Microsoft.AspNetCore.Builder;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
@@ -78,6 +80,18 @@
 				});
 
 				services.ConfigureOptions<ConfigureSwaggerOptions>();
+			});
+
+			// Configure swagger for endpoint groups.
+			context.Log("ConfigureEndpointsOptions", services =>
+			{
+				services.Configure<EndpointsOptions>(options =>
+				{
+					options.MapGroup = groupBuilder =>
+					{
+						groupBuilder.WithOpenApi();
+					};
+				});
 			});
 		}
 

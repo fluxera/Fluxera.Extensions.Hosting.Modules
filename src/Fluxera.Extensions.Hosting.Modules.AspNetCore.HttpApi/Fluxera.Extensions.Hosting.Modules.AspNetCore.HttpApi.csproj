@@ -35,6 +35,7 @@
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
 		<PackageReference Include="MadEyeMatt.AspNetCore.ProblemDetails" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
 		<PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Endpoints" Version="1.3.1" />
 		<PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.3.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />

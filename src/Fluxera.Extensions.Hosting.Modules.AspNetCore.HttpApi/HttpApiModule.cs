@@ -89,7 +89,9 @@
 				{
 					options.MapGroup = groupBuilder =>
 					{
-						groupBuilder.WithOpenApi();
+						groupBuilder
+							.AddValidation()
+							.WithOpenApi();
 					};
 				});
 			});

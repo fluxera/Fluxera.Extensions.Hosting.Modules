@@ -19,7 +19,7 @@
 		public static string GetDefaultLogFilePath(this IHostEnvironment environment)
 		{
 			string baseDirectory = AppContext.BaseDirectory;
-			string logFilePath = Path.Combine(baseDirectory, "logs", environment.ApplicationName + "_.log");
+			string logFilePath = Path.Combine(baseDirectory, "logs", $"{environment.ApplicationName}_.log");
 			return logFilePath;
 		}
 	}

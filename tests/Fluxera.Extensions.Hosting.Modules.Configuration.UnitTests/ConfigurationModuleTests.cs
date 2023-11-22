@@ -17,5 +17,11 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 		{
 			this.StopApplication();
 		}
+
+		[Test]
+		public void Should()
+		{
+			Assert.IsTrue(true);
+		}
 	}
 }

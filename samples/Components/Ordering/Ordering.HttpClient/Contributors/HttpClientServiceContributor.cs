@@ -6,7 +6,7 @@
 	using Fluxera.Extensions.Http;
 	using Microsoft.Extensions.DependencyInjection;
 	using Ordering.Application.Contracts.Orders;
-	using Ordering.HttpClient.Services;
+	using Ordering.HttpClient.Clients;
 
 	internal sealed class HttpClientServiceContributor : IHttpClientServiceContributor
 	{

@@ -1,4 +1,4 @@
-﻿namespace Catalog.HttpClient.Services
+﻿namespace Catalog.HttpClient.Clients
 {
 	using System.Collections.Generic;
 	using System.Net.Http;

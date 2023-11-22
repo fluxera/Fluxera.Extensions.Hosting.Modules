@@ -1,4 +1,4 @@
-﻿namespace Ordering.HttpClient.Services
+﻿namespace Ordering.HttpClient.Clients
 {
 	using System.Net.Http;
 	using Fluxera.Extensions.Http;

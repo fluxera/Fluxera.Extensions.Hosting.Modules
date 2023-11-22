@@ -3,6 +3,7 @@
 	using System;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using global::Serilog;
+	using global::Serilog.Settings.Configuration;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.Hosting;
@@ -37,7 +38,10 @@
 					.Enrich.WithAssemblyName()
 					.Enrich.WithAssemblyVersion()
 					.Enrich.WithAssemblyInformationalVersion()
-					.ReadFrom.Configuration(context.Configuration)
+					.ReadFrom.Configuration(context.Configuration, new ConfigurationReaderOptions
+					{
+						SectionName = "Logging"
+					})
 					.ReadFrom.Services(services)
 					.WriteTo.OpenTelemetry(telemetryOptions.OpenTelemetryProtocolEndpoint);
 

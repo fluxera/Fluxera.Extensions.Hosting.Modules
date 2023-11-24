@@ -50,6 +50,7 @@
 			return context;
 		}
 
+#if NET7_0_OR_GREATER
 		/// <summary>
 		///		Enables rate limiting for the application.
 		/// </summary>
@@ -60,6 +61,7 @@
 
 			return context;
 		}
+#endif
 
 		/// <summary>
 		///     Adds middleware for using HSTS, which adds the Strict-Transport-Security header.

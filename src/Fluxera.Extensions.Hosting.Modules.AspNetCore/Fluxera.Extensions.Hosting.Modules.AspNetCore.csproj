@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -26,19 +26,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="8.0.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="8.0.0" />
-		<PackageReference Include="Fluxera.Extensions.Validation" Version="8.0.0" />
-		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="8.0.0" />
-		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="8.0.0" />
-		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="8.0.0" />
+		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="8.0.1" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.1" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.AspNetCore" Version="8.0.1" />
+		<PackageReference Include="Fluxera.Extensions.Validation" Version="8.0.1" />
+		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="8.0.1" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="8.0.1" />
+		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="8.0.1" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
-		<PackageReference Include="MadEyeMatt.AspNetCore.Endpoints" Version="8.0.1" />
+		<PackageReference Include="MadEyeMatt.AspNetCore.Endpoints" Version="8.0.3" Condition="'$(TargetFramework)' != 'net6.0'" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.6.0-beta.2" />
 	</ItemGroup>
 

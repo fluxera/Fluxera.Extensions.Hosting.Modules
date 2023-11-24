@@ -3,7 +3,9 @@
 	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.Extensions.DependencyInjection;
 	using Controllers = SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions.ServiceCollectionExtensions;
+#if NET7_0_OR_GREATER
 	using Endpoints = SharpGrip.FluentValidation.AutoValidation.Endpoints.Extensions.ServiceCollectionExtensions;
+#endif
 
 	internal sealed class MvcBuilderContributor : IMvcBuilderContributor
 	{
@@ -16,7 +18,9 @@
 			{
 				// https://github.com/SharpGrip/FluentValidation.AutoValidation
 				Controllers.AddFluentValidationAutoValidation(services);
+#if NET7_0_OR_GREATER
 				Endpoints.AddFluentValidationAutoValidation(services);
+#endif
 			});
 		}
 	}

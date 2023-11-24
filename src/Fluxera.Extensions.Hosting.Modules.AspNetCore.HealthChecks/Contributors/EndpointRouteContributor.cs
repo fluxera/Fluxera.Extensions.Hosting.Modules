@@ -20,11 +20,15 @@
 			string readinessEndpointUrl = options.ReadinessEndpointUrl.EnsureStartsWith("/");
 			string startupEndpointUrl = options.StartupEndpointUrl.EnsureStartsWith("/");
 
+#if NET7_0 || NET8_0
 			if(!string.IsNullOrWhiteSpace(options.EndpointUrlPrefix))
 			{
 				endpoints = endpoints.MapGroup(options.EndpointUrlPrefix);
 			}
-
+#endif
+#if NET6_0
+			livenessEndpointUrl = $"/{options.EndpointUrlPrefix}{livenessEndpointUrl}";
+#endif
 			context.Log($"MapHealthChecks({livenessEndpointUrl})", _ =>
 			{
 				endpoints.MapHealthChecks(livenessEndpointUrl, new HealthCheckOptions

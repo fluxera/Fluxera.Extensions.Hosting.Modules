@@ -121,7 +121,11 @@ namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCor
 						cfg.UsePostgres();
 						break;
 					default:
+#if NET7_0 || NET8_0
 						throw new UnreachableException($"Undefined lock statement provider: '{(int)options.Outbox.LockStatementProvider}'.");
+#else
+						throw new NotSupportedException($"Undefined lock statement provider: '{(int)options.Outbox.LockStatementProvider}'.");
+#endif
 				}
 			}
 

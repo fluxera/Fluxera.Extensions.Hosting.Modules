@@ -1,5 +1,6 @@
 namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 {
+	using FluentAssertions;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using NUnit.Framework;
 
@@ -21,7 +22,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Configuration.UnitTests
 		[Test]
 		public void Should()
 		{
-			Assert.IsTrue(true);
+			true.Should().BeTrue();
 		}
 	}
 }

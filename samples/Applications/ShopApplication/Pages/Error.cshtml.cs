@@ -22,6 +22,8 @@ namespace ShopApplication.Pages
 
 		public void OnGet()
 		{
+			this.logger.LogDebug("Get error page.");
+
 			this.RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier;
 		}
 	}

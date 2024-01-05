@@ -15,7 +15,6 @@ namespace ShopApplication
 	using Microsoft.Extensions.Logging;
 	using Ordering.Application;
 	using Ordering.MessagingApi;
-	using Polly;
 	using Serilog;
 	using Serilog.Extensions.Hosting;
 	using Serilog.Extensions.Logging;

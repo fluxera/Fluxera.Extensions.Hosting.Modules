@@ -12,7 +12,6 @@
 	using Microsoft.AspNetCore.OData.Batch;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
-	using Swashbuckle.AspNetCore.SwaggerGen;
 
 	/// <summary>
 	///     A module that enables OData REST APIs.

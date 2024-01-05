@@ -39,9 +39,9 @@
 		{
 			propertyName = Guard.Against.NullOrWhiteSpace(propertyName);
 
-			if(this.ChangedProperties.ContainsKey(propertyName))
+			if(this.ChangedProperties.TryGetValue(propertyName, out object propertyValue))
 			{
-				return (TValue)this.ChangedProperties[propertyName];
+				return (TValue)propertyValue;
 			}
 
 			return default;
@@ -58,14 +58,7 @@
 				return;
 			}
 
-			if(!this.ChangedProperties.ContainsKey(propertyName))
-			{
-				this.ChangedProperties.Add(propertyName, newValue);
-			}
-			else
-			{
-				this.ChangedProperties[propertyName] = newValue;
-			}
+			this.ChangedProperties[propertyName] = newValue;
 		}
 
 		/// <inheritdoc />

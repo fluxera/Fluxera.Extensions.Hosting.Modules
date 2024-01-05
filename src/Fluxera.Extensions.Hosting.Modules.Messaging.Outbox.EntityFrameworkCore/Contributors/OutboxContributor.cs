@@ -3,7 +3,9 @@
 namespace Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.Contributors
 {
 	using System;
+#if NET7_0 || NET8_0
 	using System.Diagnostics;
+#endif
 	using System.Linq;
 	using System.Reflection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;

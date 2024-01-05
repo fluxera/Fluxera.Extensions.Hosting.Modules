@@ -24,6 +24,8 @@
 			builder.Property(x => x.UnitPrice).HasColumnType("money");
 
 			builder.UseRepositoryDefaults();
+
+			this.callback?.Invoke(builder);
 		}
 	}
 }

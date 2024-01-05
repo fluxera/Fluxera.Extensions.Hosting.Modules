@@ -3,7 +3,6 @@
 
 namespace Ordering.Infrastructure.Contexts
 {
-	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Repository.MongoDB;
 	using JetBrains.Annotations;
 

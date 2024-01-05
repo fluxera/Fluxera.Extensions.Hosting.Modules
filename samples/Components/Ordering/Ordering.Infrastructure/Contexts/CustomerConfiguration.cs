@@ -24,6 +24,8 @@
 			builder.OwnsOne(x => x.Name);
 
 			builder.UseRepositoryDefaults();
+
+			this.callback?.Invoke(builder);
 		}
 	}
 }

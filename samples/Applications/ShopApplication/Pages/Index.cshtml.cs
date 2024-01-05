@@ -22,6 +22,8 @@
 
 		public async Task OnGetAsync()
 		{
+			this.logger.LogDebug("Get index page.");
+
 			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
 			this.Products = result.ValueOrDefault;
 		}

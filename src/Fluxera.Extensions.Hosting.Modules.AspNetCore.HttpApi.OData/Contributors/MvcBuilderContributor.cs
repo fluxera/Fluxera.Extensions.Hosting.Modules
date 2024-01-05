@@ -7,14 +7,15 @@
 	using Microsoft.AspNetCore.OData.Batch;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.OData.ModelBuilder;
+	using ODataOptions = OData.ODataOptions;
 
 	internal sealed class MvcBuilderContributor : IMvcBuilderContributor
 	{
 		/// <inheritdoc />
 		public void Configure(IMvcBuilder builder, IServiceConfigurationContext context)
 		{
-			HttpApiOptions httpApiOptions = context.Services.GetOptions<HttpApiOptions>();
-			OData.ODataOptions oDataOptions = context.Services.GetOptions<OData.ODataOptions>();
+			//HttpApiOptions httpApiOptions = context.Services.GetOptions<HttpApiOptions>();
+			ODataOptions oDataOptions = context.Services.GetOptions<ODataOptions>();
 			EdmModelContributorList contributorList = context.Services.GetObject<EdmModelContributorList>();
 			ODataModelBuilder modelBuilder = new CustomODataModelBuilder();
 

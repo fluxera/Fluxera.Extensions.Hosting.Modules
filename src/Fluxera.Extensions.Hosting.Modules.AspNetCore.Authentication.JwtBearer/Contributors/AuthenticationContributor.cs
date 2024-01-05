@@ -19,7 +19,11 @@
 		{
 			JwtBearerAuthenticationOptions authenticationOptions = context.Services.GetOptions<JwtBearerAuthenticationOptions>();
 
+			// By default, Microsoft has some legacy claim mapping that converts
+			// standard JWT claims into proprietary ones. This disables the mappings.
+			JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+			JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
 
 			// Add all configures JwtBearer schemes.
 			foreach((string key, JwtBearerAuthenticationSchemeOptions schemeOptions) in authenticationOptions.Schemes)

@@ -17,7 +17,7 @@
 		/// <inheritdoc />
 		public void ConfigureTransport(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
-			InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
+			//InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
 
 			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
 

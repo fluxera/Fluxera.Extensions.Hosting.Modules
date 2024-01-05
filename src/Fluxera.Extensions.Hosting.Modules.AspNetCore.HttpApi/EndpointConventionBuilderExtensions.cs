@@ -4,6 +4,7 @@
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Http;
 	using Microsoft.AspNetCore.Routing;
+	using SharpGrip.FluentValidation.AutoValidation.Endpoints.Filters;
 
 	/// <summary>
 	///		Extensions methods for the <see cref="IEndpointConventionBuilder"/> type.
@@ -20,7 +21,7 @@
 		{
 			builder.AddEndpointFilter<DataAnnotationsValidationEndpointFilter>();
 
-			builder.AddEndpointFilter<CustomFluentValidationAutoValidationEndpointFilter>();
+			builder.AddEndpointFilter<FluentValidationAutoValidationEndpointFilter>();
 
 			return builder;
 		}
@@ -34,7 +35,7 @@
 		{
 			builder.AddEndpointFilter<DataAnnotationsValidationEndpointFilter>();
 
-			builder.AddEndpointFilter<CustomFluentValidationAutoValidationEndpointFilter>();
+			builder.AddEndpointFilter<FluentValidationAutoValidationEndpointFilter>();
 
 			return builder;
 		}

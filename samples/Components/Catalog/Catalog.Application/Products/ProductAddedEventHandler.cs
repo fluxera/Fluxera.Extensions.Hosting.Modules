@@ -4,7 +4,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application;
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]

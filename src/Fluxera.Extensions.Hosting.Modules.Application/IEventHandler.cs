@@ -1,5 +1,6 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application
 {
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using JetBrains.Annotations;
 	using MediatR;
 
@@ -9,7 +10,7 @@
 	/// <typeparam name="TEvent">The type of event being handled.</typeparam>
 	[PublicAPI]
 	public interface IEventHandler<in TEvent> : INotificationHandler<TEvent>
-		where TEvent : IEvent
+		where TEvent : class, IEvent
 	{
 	}
 }

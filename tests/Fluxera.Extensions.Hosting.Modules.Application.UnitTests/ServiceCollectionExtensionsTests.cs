@@ -57,7 +57,7 @@
 	{
 	}
 
-	public class TestQuery : IQuery<int>
+	public class TestQuery : IQuery<Result<int>>
 	{
 	}
 
@@ -74,12 +74,12 @@
 		}
 	}
 
-	public class TestQueryHandler : IQueryHandler<TestQuery, int>
+	public class TestQueryHandler : IQueryHandler<TestQuery, Result<int>>
 	{
 		/// <inheritdoc />
-		public Task<int> Handle(TestQuery request, CancellationToken cancellationToken)
+		public Task<Result<int>> Handle(TestQuery request, CancellationToken cancellationToken)
 		{
-			return Task.FromResult(1);
+			return Task.FromResult(Result.Ok(1));
 		}
 	}
 

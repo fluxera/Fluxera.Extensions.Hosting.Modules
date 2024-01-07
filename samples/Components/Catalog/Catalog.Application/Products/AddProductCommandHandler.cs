@@ -14,7 +14,7 @@
 	using MediatR;
 
 	[UsedImplicitly]
-	internal sealed class AddProductCommandHandler : ICommandHandler<AddProductCommand, ProductDto>
+	internal sealed class AddProductCommandHandler : ICommandHandler<AddProductCommand, Result<ProductDto>>
 	{
 		private readonly IPublisher publisher;
 		private readonly IRepository<Product, ProductId> repository;

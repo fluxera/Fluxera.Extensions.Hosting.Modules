@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application
 {
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using JetBrains.Annotations;
 	using MediatR;
 

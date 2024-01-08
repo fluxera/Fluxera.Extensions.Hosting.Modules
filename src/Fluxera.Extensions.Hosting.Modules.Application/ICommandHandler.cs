@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application
 {
 	using FluentResults;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using JetBrains.Annotations;
 	using MediatR;
 

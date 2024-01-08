@@ -3,7 +3,6 @@
 	using System;
 	using System.Threading;
 	using System.Threading.Tasks;
-	using Catalog.Application.Contracts.Products;
 	using Fluxera.Extensions.Hosting.Modules.Application;
 	using JetBrains.Annotations;
 

@@ -5,7 +5,6 @@
 	using System.Threading.Tasks;
 	using FluentAssertions;
 	using FluentResults;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using MediatR;
 	using Microsoft.Extensions.DependencyInjection;

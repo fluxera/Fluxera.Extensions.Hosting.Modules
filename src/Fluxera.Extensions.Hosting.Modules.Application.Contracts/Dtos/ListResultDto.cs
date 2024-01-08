@@ -19,6 +19,7 @@
 		/// </summary>
 		public ListResultDto()
 		{
+			// Note: Needed for serialization.
 		}
 
 		/// <summary>

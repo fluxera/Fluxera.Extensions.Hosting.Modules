@@ -1,10 +1,10 @@
 ﻿namespace Catalog.Application.Products
 {
-	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
 	using FluentResults;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
 	using MediatR;
 
@@ -19,21 +19,24 @@
 		}
 
 		/// <inheritdoc />
-		public Task<Result<ProductDto>> GetProductAsync(ProductId id)
+		public async Task<ResultDto<ProductDto>> GetProductAsync(ProductId id)
 		{
-			return this.sender.Send(new GetProductQuery(id));
+			Result<ProductDto> result = await this.sender.Send(new GetProductQuery(id));
+			return result.ToResultDto();
 		}
 
 		/// <inheritdoc />
-		public Task<Result<ProductDto>> AddProduct(ProductDto dto)
+		public async Task<ResultDto<ProductDto>> AddProduct(ProductDto dto)
 		{
-			return this.sender.Send(new AddProductCommand(dto));
+			Result<ProductDto> result = await this.sender.Send(new AddProductCommand(dto));
+			return result.ToResultDto();
 		}
 
 		/// <inheritdoc />
-		public Task<Result<IReadOnlyCollection<ProductDto>>> GetProductsAsync()
+		public async Task<ResultDto<ProductDto[]>> GetProductsAsync()
 		{
-			return this.sender.Send(new GetProductsQuery());
+			Result<ProductDto[]> result = await this.sender.Send(new GetProductsQuery());
+			return result.ToResultDto();
 		}
 	}
 }

@@ -3,6 +3,7 @@
 	using System.Collections.Generic;
 	using System.Dynamic;
 	using System.Runtime.CompilerServices;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using Fluxera.Guards;
 	using JetBrains.Annotations;

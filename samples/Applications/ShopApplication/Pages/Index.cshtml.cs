@@ -3,7 +3,7 @@
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Products;
-	using FluentResults;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using Microsoft.AspNetCore.Mvc.RazorPages;
 	using Microsoft.Extensions.Logging;
 
@@ -24,8 +24,8 @@
 		{
 			this.logger.LogDebug("Get index page.");
 
-			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
-			this.Products = result.ValueOrDefault;
+			ResultDto<ProductDto[]> result = await this.productApplicationService.GetProductsAsync();
+			this.Products = result.Value;
 		}
 	}
 }

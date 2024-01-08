@@ -1,7 +1,7 @@
-﻿namespace Catalog.Application.Contracts.Products
+﻿namespace Catalog.Application.Products
 {
 	using Catalog.Domain.Shared.ProductAggregate;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application;
 	using JetBrains.Annotations;
 
 	[PublicAPI]

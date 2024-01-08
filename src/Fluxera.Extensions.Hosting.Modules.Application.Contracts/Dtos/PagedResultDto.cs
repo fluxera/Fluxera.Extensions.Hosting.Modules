@@ -17,6 +17,7 @@
 		/// </summary>
 		public PagedResultDto()
 		{
+			// Note: Needed for serialization.
 		}
 
 		/// <summary>

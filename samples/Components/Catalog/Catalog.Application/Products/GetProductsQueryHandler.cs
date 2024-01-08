@@ -14,7 +14,7 @@
 	using JetBrains.Annotations;
 
 	[UsedImplicitly]
-	internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Result<IReadOnlyCollection<ProductDto>>>
+	internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Result<ProductDto[]>>
 	{
 		private readonly IMapper mapper;
 		private readonly IRepository<Product, ProductId> repository;
@@ -26,20 +26,20 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<Result<IReadOnlyCollection<ProductDto>>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
+		public async Task<Result<ProductDto[]>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
 		{
-			Result<IReadOnlyCollection<ProductDto>> result;
+			Result<ProductDto[]> result;
 
 			try
 			{
 				IReadOnlyCollection<Product> entities = await this.repository.FindManyAsync(x => true, cancellationToken: cancellationToken);
-				IReadOnlyCollection<ProductDto> dtos = this.mapper.Map<IReadOnlyCollection<ProductDto>>(entities);
+				ProductDto[] dtos = this.mapper.Map<ProductDto[]>(entities);
 
 				result = Result.Ok(dtos);
 			}
 			catch(Exception ex)
 			{
-				result = Result.Fail<IReadOnlyCollection<ProductDto>>(ex.Message);
+				result = Result.Fail<ProductDto[]>(ex.Message);
 			}
 
 			return result;

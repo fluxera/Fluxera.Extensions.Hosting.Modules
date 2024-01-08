@@ -1,12 +1,11 @@
 ﻿namespace Catalog.HttpApi.Controllers
 {
-	using System.Collections.Generic;
 	using System.Net;
 	using System.Threading.Tasks;
 	using Asp.Versioning;
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
-	using FluentResults;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +25,7 @@
 		[HttpGet]
 		public async Task<IActionResult> Get()
 		{
-			Result<IReadOnlyCollection<ProductDto>> result = await this.productApplicationService.GetProductsAsync();
+			ResultDto<ProductDto[]> result = await this.productApplicationService.GetProductsAsync();
 
 			if(result.IsFailed)
 			{
@@ -38,13 +37,13 @@
 				return this.NotFound();
 			}
 
-			return this.Ok(result.Value);
+			return this.Ok(result);
 		}
 
 		[HttpGet("{id:required}")]
 		public async Task<IActionResult> GetByID(ProductId id)
 		{
-			Result<ProductDto> result = await this.productApplicationService.GetProductAsync(id);
+			ResultDto<ProductDto> result = await this.productApplicationService.GetProductAsync(id);
 
 			if(result.IsFailed)
 			{
@@ -67,14 +66,14 @@
 				return this.BadRequest(this.ModelState);
 			}
 
-			Result<ProductDto> result = await this.productApplicationService.AddProduct(dto);
+			ResultDto<ProductDto> result = await this.productApplicationService.AddProduct(dto);
 
 			if(result.IsFailed)
 			{
 				return this.StatusCode((int)HttpStatusCode.InternalServerError, result.Errors);
 			}
 
-			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.Value.ID }, result.ValueOrDefault);
+			return this.CreatedAtAction(nameof(this.GetByID), new { id = result.Value.ID }, result);
 		}
 	}
 }

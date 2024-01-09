@@ -106,8 +106,39 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public class ResultDto<TValue> : ResultDto
+	public class ResultDto<TValue>
 	{
+		/// <summary>
+		///     Initializes a new instance of the <see cref="ResultDto" /> type.
+		/// </summary>
+		public ResultDto()
+		{
+			// Note: Needed for serialization.
+
+			this.Errors = new List<ErrorDto>();
+			this.Successes = new List<SuccessDto>();
+		}
+
+		/// <summary>
+		///     Flag, indicating if the result was successful.
+		/// </summary>
+		public bool IsSuccess { get; set; }
+
+		/// <summary>
+		///     Flag, indicating if the result was failed.
+		/// </summary>
+		public bool IsFailed => !this.IsSuccess;
+
+		/// <summary>
+		///     Gets the potential errors.
+		/// </summary>
+		public IList<ErrorDto> Errors { get; set; }
+
+		/// <summary>
+		///     Gets the potential successes.
+		/// </summary>
+		public IList<SuccessDto> Successes { get; set; }
+
 		/// <summary>
 		///     Gets or sets the value of the result.
 		/// </summary>
@@ -118,7 +149,7 @@
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public static ResultDto<TValue> Ok(TValue value)
+		public static ResultDto<TValue> Ok(TValue value = default)
 		{
 			return new ResultDto<TValue>
 			{
@@ -132,7 +163,7 @@
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public static TResultDto Ok<TResultDto>(TValue value) where TResultDto : ResultDto<TValue>, new()
+		public static TResultDto Ok<TResultDto>(TValue value = default) where TResultDto : ResultDto<TValue>, new()
 		{
 			return new TResultDto
 			{
@@ -144,10 +175,10 @@
 		/// <summary>
 		///     Creates a failed result.
 		/// </summary>
-		/// <param name="value"></param>
 		/// <param name="errorMessage"></param>
+		/// <param name="value"></param>
 		/// <returns></returns>
-		public static ResultDto<TValue> Fail(TValue value, string errorMessage)
+		public static ResultDto<TValue> Fail(string errorMessage, TValue value = default)
 		{
 			return new ResultDto<TValue>
 			{
@@ -163,10 +194,10 @@
 		/// <summary>
 		///     Creates a failed result.
 		/// </summary>
-		/// <param name="value"></param>
 		/// <param name="errorMessage"></param>
+		/// <param name="value"></param>
 		/// <returns></returns>
-		public static TResultDto Fail<TResultDto>(TValue value, string errorMessage) where TResultDto : ResultDto<TValue>, new()
+		public static TResultDto Fail<TResultDto>(string errorMessage, TValue value = default) where TResultDto : ResultDto<TValue>, new()
 		{
 			return new TResultDto
 			{

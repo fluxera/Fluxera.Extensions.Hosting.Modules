@@ -7,10 +7,10 @@
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.ProductAggregate;
 	using Catalog.Domain.Shared.ProductAggregate;
-	using FluentResults;
 	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;
+	using MadEyeMatt.Results;
 
 	[UsedImplicitly]
 	internal sealed class GetProductQueryHandler : IQueryHandler<GetProductQuery, Result<ProductDto>>
@@ -35,11 +35,11 @@
 				Product entity = await this.repository.FindOneAsync(x => x.ID == id, cancellationToken: cancellationToken);
 				ProductDto dto = this.mapper.Map<ProductDto>(entity);
 
-				result = Result.Ok(dto);
+				result = Result<ProductDto>.Ok(dto);
 			}
 			catch(Exception ex)
 			{
-				result = Result.Fail<ProductDto>(ex.Message);
+				result = Result<ProductDto>.Fail(ex.Message);
 			}
 
 			return result;

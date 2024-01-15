@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application
 {
-	using FluentResults;
 	using JetBrains.Annotations;
+	using MadEyeMatt.Results;
 	using MediatR;
 
 	/// <summary>
@@ -22,7 +22,7 @@
 	[PublicAPI]
 	public interface ICommandHandler<in TCommand, TResult> : IRequestHandler<TCommand, TResult>
 		where TCommand : class, ICommand<TResult> 
-		where TResult : class, IResultBase
+		where TResult : class
 	{
 	}
 }

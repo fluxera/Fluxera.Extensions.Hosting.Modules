@@ -4,7 +4,6 @@
 	using System.Collections.Generic;
 	using JetBrains.Annotations;
 
-
 	/// <summary>
 	///		A DTO for success messages of a <see cref="ResultDto"/>.
 	/// </summary>

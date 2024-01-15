@@ -4,31 +4,15 @@
 	using JetBrains.Annotations;
 
 	///  <summary>
-	/// 		A result value container that holds a correlation token and the value of a result that belongs to a batch.
+	/// 		An abstract base class for result value containers that hold a correlation token
+	///			and the value of a result that belongs to a batch.
 	///  </summary>
 	///  <typeparam name="TCorrelationToken">The type of the correlation token.</typeparam>
 	///  <typeparam name="TValue">The type of the value.</typeparam>
 	[PublicAPI]
 	[Serializable]
-	public sealed class BatchResultValueDto<TCorrelationToken, TValue>
+	public abstract class BatchResultValueDto<TCorrelationToken, TValue>
 	{
-		/// <summary>
-		///		Initializes a new instance of the <see cref="BatchResultValueDto{TCorrelationToken, TValue}"/> type.
-		/// </summary>
-		public BatchResultValueDto()
-		{
-			// Note: Needed for serialization.
-		}
-
-		/// <summary>
-		///		Initializes a new instance of the <see cref="BatchResultValueDto{TCorrelationToken, TValue}"/> type.
-		/// </summary>
-		public BatchResultValueDto(TCorrelationToken correlationToken, TValue value)
-		{
-			this.CorrelationToken = correlationToken;
-			this.Value = value;
-		}
-
 		/// <summary>
 		///		Gets or sets the correlation token.
 		/// </summary>
@@ -38,5 +22,16 @@
 		///		Gets or sets the value.
 		/// </summary>
 		public TValue Value { get; set; }
+
+		/// <summary>
+		///		Deconstruct the value.
+		/// </summary>
+		/// <param name="correlationToken"></param>
+		/// <param name="value"></param>
+		public void Deconstruct(out TCorrelationToken correlationToken, out TValue value)
+		{
+			correlationToken = this.CorrelationToken;
+			value = this.Value;
+		}
 	}
 }

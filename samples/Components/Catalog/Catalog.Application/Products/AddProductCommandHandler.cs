@@ -7,10 +7,10 @@
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.ProductAggregate;
 	using Catalog.Domain.Shared.ProductAggregate;
-	using FluentResults;
 	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;
+	using MadEyeMatt.Results;
 	using MediatR;
 
 	[UsedImplicitly]
@@ -47,11 +47,11 @@
 
 				await this.publisher.Publish(new ProductAddedEvent(product.ID), cancellationToken);
 
-				result = Result.Ok(dto);
+				result = Result<ProductDto>.Ok(dto);
 			}
 			catch(Exception ex)
 			{
-				result = Result.Fail<ProductDto>(ex.Message);
+				result = Result<ProductDto>.Fail(ex.Message);
 			}
 
 			return result;

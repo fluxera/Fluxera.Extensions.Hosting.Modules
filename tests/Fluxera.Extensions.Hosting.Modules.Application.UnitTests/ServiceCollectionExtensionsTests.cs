@@ -4,8 +4,8 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using FluentAssertions;
-	using FluentResults;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
+	using MadEyeMatt.Results;
 	using MediatR;
 	using Microsoft.Extensions.DependencyInjection;
 	using NUnit.Framework;
@@ -78,7 +78,7 @@
 		/// <inheritdoc />
 		public Task<Result<int>> Handle(TestQuery request, CancellationToken cancellationToken)
 		{
-			return Task.FromResult(Result.Ok(1));
+			return Task.FromResult(Result<int>.Ok(1));
 		}
 	}
 

@@ -26,12 +26,12 @@
 		/// </summary>
 		/// <param name="result"></param>
 		/// <returns></returns>
-		public static TResultDto ToResultDto<TResultDto>(this IVoidResult result) 
+		public static TResultDto ToResultDto<TResultDto>(this IResult result) 
 			where TResultDto : ResultBaseDto<TResultDto>, new()
 		{
 			TResultDto resultDto = new TResultDto
 			{
-				IsSuccess = result.IsSuccessful,
+				IsSuccessful = result.IsSuccessful,
 				Errors = result.Errors.Select(x => x.ToErrorDto()).ToList(),
 				Successes = result.Successes.Select(x => x.ToSuccessDto()).ToList()
 			};
@@ -45,7 +45,7 @@
 		/// <typeparam name="TValue"></typeparam>
 		/// <param name="result"></param>
 		/// <returns></returns>
-		public static ResultDto<TValue> ToResultDto<TValue>(this IValueResult<TValue> result)
+		public static ResultDto<TValue> ToResultDto<TValue>(this IResult<TValue> result)
 		{
 			return result.ToResultDto<ResultDto<TValue>, TValue>();
 		}
@@ -57,12 +57,12 @@
 		/// <typeparam name="TValue"></typeparam>
 		/// <param name="result"></param>
 		/// <returns></returns>
-		public static TResultDto ToResultDto<TResultDto, TValue>(this IValueResult<TValue> result) 
+		public static TResultDto ToResultDto<TResultDto, TValue>(this IResult<TValue> result) 
 			where TResultDto : ResultBaseDto<TResultDto, TValue>, new()
 		{
 			TResultDto resultDto = new TResultDto
 			{
-				IsSuccess = result.IsSuccessful,
+				IsSuccessful = result.IsSuccessful,
 				Errors = result.Errors.Select(x => x.ToErrorDto()).ToList(),
 				Successes = result.Successes.Select(x => x.ToSuccessDto()).ToList(),
 				Value = result.GetValueOrDefault()
@@ -80,7 +80,7 @@
 		/// <returns></returns>
 		public static BatchResultDto<TResultDto> ToResultDto<TResultDto, TResult>(this BatchResult<TResult> batchResult)
 			where TResultDto : ResultBaseDto<TResultDto>, new()
-			where TResult : class, IVoidResult
+			where TResult : ResultBase<TResult>
 		{
 			BatchResultDto<TResultDto> batchResultDto = new BatchResultDto<TResultDto>();
 
@@ -88,7 +88,7 @@
 			{
 				TResultDto resultDto = new TResultDto
 				{
-					IsSuccess = result.IsSuccessful,
+					IsSuccessful = result.IsSuccessful,
 					Errors = result.Errors.Select(x => x.ToErrorDto()).ToList(),
 					Successes = result.Successes.Select(x => x.ToSuccessDto()).ToList(),
 				};
@@ -107,17 +107,17 @@
 		///  <typeparam name="TValue"></typeparam>
 		///  <param name="batchResult"></param>
 		///  <returns></returns>
-		public static BatchResultDto<TResultDto, TValue> ToResultDto<TResultDto, TResult, TValue>(this BatchResult<TResult> batchResult)
+		public static BatchResultDto<TResultDto> ToResultDto<TResultDto, TResult, TValue>(this BatchResult<TResult, TValue> batchResult)
 			where TResultDto : ResultBaseDto<TResultDto, TValue>, new()
-			where TResult : class, IValueResult<TValue>
+			where TResult : ResultBase<TResult, TValue>
 		{
-			BatchResultDto<TResultDto, TValue> batchResultDto = new BatchResultDto<TResultDto, TValue>();
+			BatchResultDto<TResultDto> batchResultDto = new BatchResultDto<TResultDto>();
 
 			foreach(TResult result in batchResult.Results)
 			{
 				TResultDto resultDto = new TResultDto
 				{
-					IsSuccess = result.IsSuccessful,
+					IsSuccessful = result.IsSuccessful,
 					Errors = result.Errors.Select(x => x.ToErrorDto()).ToList(),
 					Successes = result.Successes.Select(x => x.ToSuccessDto()).ToList(),
 					Value = result.GetValueOrDefault()

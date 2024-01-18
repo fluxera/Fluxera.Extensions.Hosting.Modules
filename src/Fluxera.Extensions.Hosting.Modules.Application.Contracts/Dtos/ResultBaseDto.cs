@@ -9,7 +9,7 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public abstract class ResultBaseDto<TResult> 
+	public abstract class ResultBaseDto<TResult> : IResultDto
 		where TResult : ResultBaseDto<TResult>
 	{
 		/// <summary>
@@ -23,24 +23,16 @@
 			this.Successes = new List<SuccessDto>();
 		}
 
-		/// <summary>
-		///     Flag, indicating if the result was successful.
-		/// </summary>
-		public bool IsSuccess { get; set; }
+		/// <inheritdoc />
+		public bool IsFailed { get; set; }
 
-		/// <summary>
-		///     Flag, indicating if the result was failed.
-		/// </summary>
-		public bool IsFailed => !this.IsSuccess;
+		/// <inheritdoc />
+		public bool IsSuccessful { get; set; }
 
-		/// <summary>
-		///     Gets the potential errors.
-		/// </summary>
+		/// <inheritdoc />
 		public IList<ErrorDto> Errors { get; set; }
 
-		/// <summary>
-		///     Gets the potential successes.
-		/// </summary>
+		/// <inheritdoc />
 		public IList<SuccessDto> Successes { get; set; }
 	}
 
@@ -49,7 +41,7 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public abstract class ResultBaseDto<TResult, TValue> 
+	public abstract class ResultBaseDto<TResult, TValue> : IResultDto
 		where TResult : ResultBaseDto<TResult, TValue>
 	{
 		/// <summary>
@@ -63,24 +55,16 @@
 			this.Successes = new List<SuccessDto>();
 		}
 
-		/// <summary>
-		///     Flag, indicating if the result was successful.
-		/// </summary>
-		public bool IsSuccess { get; set; }
+		/// <inheritdoc />
+		public bool IsFailed { get; set; }
 
-		/// <summary>
-		///     Flag, indicating if the result was failed.
-		/// </summary>
-		public bool IsFailed => !this.IsSuccess;
+		/// <inheritdoc />
+		public bool IsSuccessful { get; set; }
 
-		/// <summary>
-		///     Gets the potential errors.
-		/// </summary>
+		/// <inheritdoc />
 		public IList<ErrorDto> Errors { get; set; }
 
-		/// <summary>
-		///     Gets the potential successes.
-		/// </summary>
+		/// <inheritdoc />
 		public IList<SuccessDto> Successes { get; set; }
 
 		/// <summary>

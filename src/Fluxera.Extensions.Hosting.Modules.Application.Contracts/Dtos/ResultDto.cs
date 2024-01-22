@@ -18,7 +18,7 @@
 		{
 			return new ResultDto
 			{
-				IsSuccess = true
+				IsSuccessful = true
 			};
 		}
 
@@ -31,7 +31,7 @@
 		{
 			return new TResultDto
 			{
-				IsSuccess = true
+				IsSuccessful = true
 			};
 		}
 
@@ -44,7 +44,7 @@
 		{
 			return new ResultDto
 			{
-				IsSuccess = false,
+				IsSuccessful = false,
 				Errors =
 				{
 					ErrorDto.Create(errorMessage, null)
@@ -62,7 +62,7 @@
 		{
 			return new TResultDto
 			{
-				IsSuccess = false,
+				IsSuccessful = false,
 				Errors =
 				{
 					ErrorDto.Create(errorMessage, null)
@@ -87,7 +87,7 @@
 		{
 			return new ResultDto<TValue>
 			{
-				IsSuccess = true,
+				IsSuccessful = true,
 				Value = value
 			};
 		}
@@ -102,7 +102,7 @@
 		{
 			return new TResultDto
 			{
-				IsSuccess = true,
+				IsSuccessful = true,
 				Value = value
 			};
 		}
@@ -111,14 +111,12 @@
 		///     Creates a failed result.
 		/// </summary>
 		/// <param name="errorMessage"></param>
-		/// <param name="value"></param>
 		/// <returns></returns>
-		public static ResultDto<TValue> Fail(string errorMessage, TValue value = default)
+		public static ResultDto<TValue> Fail(string errorMessage)
 		{
 			return new ResultDto<TValue>
 			{
-				IsSuccess = false,
-				Value = value,
+				IsSuccessful = false,
 				Errors =
 				{
 					ErrorDto.Create(errorMessage, null)
@@ -130,15 +128,13 @@
 		///     Creates a failed result.
 		/// </summary>
 		/// <param name="errorMessage"></param>
-		/// <param name="value"></param>
 		/// <returns></returns>
-		public static TResultDto Fail<TResultDto>(string errorMessage, TValue value = default)
+		public static TResultDto Fail<TResultDto>(string errorMessage)
 			where TResultDto : ResultBaseDto<ResultDto<TValue>, TValue>, new()
 		{
 			return new TResultDto
 			{
-				IsSuccess = false,
-				Value = value,
+				IsSuccessful = false,
 				Errors =
 				{
 					ErrorDto.Create(errorMessage, null)

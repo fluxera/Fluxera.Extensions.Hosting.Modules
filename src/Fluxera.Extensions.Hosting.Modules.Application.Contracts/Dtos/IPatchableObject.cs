@@ -6,7 +6,7 @@
 	///     A contract for an object that can be used in a patch operation.
 	/// </summary>
 	[PublicAPI]
-	public interface IPatchableEntityDto
+	public interface IPatchableObject
 	{
 		/// <summary>
 		///     Gets the change tracker.

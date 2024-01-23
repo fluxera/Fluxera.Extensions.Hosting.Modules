@@ -15,16 +15,21 @@
 	using JetBrains.Annotations;
 	using Simple.OData.Client;
 
+	/// <summary>
+	///     A helper class with default implementations for accessing an OData feed.
+	/// </summary>
+	/// <typeparam name="TDto"></typeparam>
+	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
 	public sealed class ODataHelper<TDto, TKey>
-		where TDto : class, IEntityDto<TKey> 
+		where TDto : class, IEntityDto<TKey>
 		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
 		private readonly IODataClient oDataClient;
 		private readonly string collectionName;
 
 		/// <summary>
-		///		Initializes a new instance of the <see cref="ODataHelper{TDto, TKey}"/> type.
+		///     Initializes a new instance of the <see cref="ODataHelper{TDto, TKey}" /> type.
 		/// </summary>
 		/// <param name="oDataClient"></param>
 		/// <param name="collectionName"></param>
@@ -34,6 +39,12 @@
 			this.collectionName = collectionName;
 		}
 
+		/// <summary>
+		///     Adds the given item.
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task AddAsync(TDto dto, CancellationToken cancellationToken)
 		{
 			dto = Guard.Against.Null(dto);
@@ -53,6 +64,12 @@
 			this.TransferAuditValues(result, dto);
 		}
 
+		/// <summary>
+		///     Adds the given items.
+		/// </summary>
+		/// <param name="dtos"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task AddRangeAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default)
 		{
 			dtos = Guard.Against.Null(dtos).ToList();
@@ -85,6 +102,12 @@
 			await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Updates the given item.
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task UpdateAsync(TDto dto, CancellationToken cancellationToken)
 		{
 			dto = Guard.Against.Null(dto);
@@ -110,6 +133,12 @@
 			this.TransferAuditValues(result, dto);
 		}
 
+		/// <summary>
+		///     Updates the given items.
+		/// </summary>
+		/// <param name="dtos"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task UpdateRangeAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default)
 		{
 			dtos = Guard.Against.Null(dtos).ToList();
@@ -145,6 +174,12 @@
 			await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Deletes the given item.
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task DeleteAsync(TDto dto, CancellationToken cancellationToken = default)
 		{
 			dto = Guard.Against.Null(dto);
@@ -161,6 +196,12 @@
 				.ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Deletes an item by ID.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task DeleteAsync(string id, CancellationToken cancellationToken)
 		{
 			id = Guard.Against.NullOrWhiteSpace(id);
@@ -172,6 +213,12 @@
 				.ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Deletes the given items.
+		/// </summary>
+		/// <param name="dtos"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task DeleteRangeAsync(IEnumerable<TDto> dtos, CancellationToken cancellationToken = default)
 		{
 			dtos = Guard.Against.Null(dtos).ToList();
@@ -195,6 +242,12 @@
 			await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Deletes the items that satisfy the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task DeleteRangeAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken = default)
 		{
 			predicate = Guard.Against.Null(predicate);
@@ -206,6 +259,12 @@
 				.ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Gets an item by ID.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TDto> GetAsync(string id, CancellationToken cancellationToken)
 		{
 			try
@@ -222,12 +281,21 @@
 			}
 		}
 
+		/// <summary>
+		///     Gets an item by ID and returns the values selected by the selector.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="id"></param>
+		/// <param name="selector"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TResult> GetAsync<TResult>(string id, Expression<Func<TDto, TResult>> selector, CancellationToken cancellationToken = default)
 		{
 			try
 			{
 				TDto item = await this.oDataClient
 					.For<TDto>(this.collectionName)
+					.Key(id)
 					.Select(selector.ConvertSelector())
 					.FindEntryAsync(cancellationToken)
 					.ConfigureAwait(false);
@@ -242,18 +310,35 @@
 			}
 		}
 
+		/// <summary>
+		///     Checks if the item with the given ID exists.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<bool> ExistsAsync(string id, CancellationToken cancellationToken)
 		{
 			TDto result = await this.GetAsync(id, cancellationToken).ConfigureAwait(false);
 			return result != null;
 		}
 
+		/// <summary>
+		///     Checks if items satisfying by the given predicate exist.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<bool> ExistsAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken = default)
 		{
 			long count = await this.CountAsync(predicate, cancellationToken).ConfigureAwait(false);
 			return count > 0;
 		}
 
+		/// <summary>
+		///     Gets the total count of items.
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<long> CountAsync(CancellationToken cancellationToken = default)
 		{
 			return await this.oDataClient
@@ -263,6 +348,12 @@
 				.ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///     Gets the count of items that satisfy the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<long> CountAsync(Expression<Func<TDto, bool>> predicate, CancellationToken cancellationToken)
 		{
 			return await this.oDataClient
@@ -274,8 +365,8 @@
 		}
 
 		public async Task<TDto> FindOneAsync(
-			Expression<Func<TDto, bool>> predicate, 
-			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null, 
+			Expression<Func<TDto, bool>> predicate,
+			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null,
 			CancellationToken cancellationToken = default)
 		{
 			try
@@ -321,7 +412,7 @@
 
 		public async Task<IReadOnlyCollection<TDto>> FindManyAsync(
 			Expression<Func<TDto, bool>> predicate,
-			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null, 
+			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null,
 			CancellationToken cancellationToken = default)
 		{
 			try
@@ -343,7 +434,7 @@
 
 		public async Task<IReadOnlyCollection<TResult>> FindManyAsync<TResult>(
 			Expression<Func<TDto, bool>> predicate,
-			Expression<Func<TDto, TResult>> selector, 
+			Expression<Func<TDto, TResult>> selector,
 			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null,
 			CancellationToken cancellationToken = default)
 		{
@@ -369,8 +460,9 @@
 
 		// TODO: Aggregate methods
 
-		public async Task<TResult> ExecuteFunctionScalarAsync<TResult>(string functionName, object parameters = null, CancellationToken cancellationToken = default)
-			where TResult : struct, IConvertible//, INumber<TResult>
+		public async Task<TResult> ExecuteFunctionScalarAsync<TResult>(string functionName, object parameters = null,
+			CancellationToken cancellationToken = default)
+			where TResult : struct, IConvertible //, INumber<TResult>
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
 				.For<TDto>(this.collectionName)
@@ -398,7 +490,8 @@
 			return await boundClient.ExecuteAsSingleAsync(cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<IReadOnlyCollection<TDto>> ExecuteFunctionEnumerableAsync(string functionName, object parameters = null, CancellationToken cancellationToken = default)
+		public async Task<IReadOnlyCollection<TDto>> ExecuteFunctionEnumerableAsync(string functionName, object parameters = null,
+			CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
 				.For<TDto>(this.collectionName)
@@ -476,7 +569,8 @@
 			return await boundClient.ExecuteAsSingleAsync(cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<IReadOnlyCollection<TDto>> ExecuteActionEnumerableAsync(string actionName, object parameters = null, CancellationToken cancellationToken = default)
+		public async Task<IReadOnlyCollection<TDto>> ExecuteActionEnumerableAsync(string actionName, object parameters = null,
+			CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
 				.For<TDto>(this.collectionName)

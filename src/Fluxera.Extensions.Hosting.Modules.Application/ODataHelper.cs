@@ -127,7 +127,6 @@
 			IList<TAggregateRoot> items = this.mapper.Map<IList<TAggregateRoot>>(dtos);
 			await this.repository.RemoveRangeAsync(items, cancellationToken).ConfigureAwait(false);
 			this.mapper.Map(items, dtos);
-			this.mapper.Map(items, dtos);
 		}
 
 		/// <summary>

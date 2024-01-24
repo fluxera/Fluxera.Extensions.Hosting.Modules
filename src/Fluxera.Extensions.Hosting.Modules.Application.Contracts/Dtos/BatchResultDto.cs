@@ -16,7 +16,7 @@
 		/// <summary>
 		///		Initializes a new instance of the <see cref="BatchResultDto{TResult}"/> type.
 		/// </summary>
-		public BatchResultDto()
+		public BatchResultDto() : this(Enumerable.Empty<TResult>())
 		{
 			// Note: Needed for serialization.
 		}
@@ -54,7 +54,7 @@
 		/// </summary>
 		/// <param name="results"></param>
 		/// <returns></returns>
-		public BatchResultDto<TResult> Create(IEnumerable<TResult> results)
+		public static BatchResultDto<TResult> Create(IEnumerable<TResult> results)
 		{
 			return new BatchResultDto<TResult>(results);
 		}

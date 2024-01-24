@@ -364,6 +364,13 @@
 				.ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Find an item that matches the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TDto> FindOneAsync(
 			Expression<Func<TDto, bool>> predicate,
 			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null,
@@ -384,6 +391,15 @@
 			}
 		}
 
+		/// <summary>
+		///		Find an item that matches the given predicate and return the selected value.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="predicate"></param>
+		/// <param name="selector"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TResult> FindOneAsync<TResult>(
 			Expression<Func<TDto, bool>> predicate,
 			Expression<Func<TDto, TResult>> selector,
@@ -410,6 +426,13 @@
 			}
 		}
 
+		/// <summary>
+		///		Find items that match the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<IReadOnlyCollection<TDto>> FindManyAsync(
 			Expression<Func<TDto, bool>> predicate,
 			Func<IBoundClient<TDto>, IBoundClient<TDto>> queryOptions = null,
@@ -432,6 +455,15 @@
 			}
 		}
 
+		/// <summary>
+		///		Find items that match the given predicate and return the selected value.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="predicate"></param>
+		/// <param name="selector"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<IReadOnlyCollection<TResult>> FindManyAsync<TResult>(
 			Expression<Func<TDto, bool>> predicate,
 			Expression<Func<TDto, TResult>> selector,
@@ -460,6 +492,14 @@
 
 		// TODO: Aggregate methods
 
+		/// <summary>
+		///		Executes a scalar result function.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="functionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TResult> ExecuteFunctionScalarAsync<TResult>(string functionName, object parameters = null,
 			CancellationToken cancellationToken = default)
 			where TResult : struct, IConvertible //, INumber<TResult>
@@ -476,6 +516,13 @@
 			return await boundClient.ExecuteAsScalarAsync<TResult>(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes a single item result function.
+		/// </summary>
+		/// <param name="functionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TDto> ExecuteFunctionSingleAsync(string functionName, object parameters = null, CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
@@ -490,6 +537,13 @@
 			return await boundClient.ExecuteAsSingleAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes a multiple item result function.
+		/// </summary>
+		/// <param name="functionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<IReadOnlyCollection<TDto>> ExecuteFunctionEnumerableAsync(string functionName, object parameters = null,
 			CancellationToken cancellationToken = default)
 		{
@@ -506,6 +560,13 @@
 			return results.AsReadOnly();
 		}
 
+		/// <summary>
+		///		Executes an action.
+		/// </summary>
+		/// <param name="actionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task ExecuteActionAsync(string actionName, object parameters = null, CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
@@ -520,6 +581,13 @@
 			await boundClient.ExecuteAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes an action for an item.
+		/// </summary>
+		/// <param name="actionName"></param>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task ExecuteActionAsync(string actionName, TDto dto, CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
@@ -530,6 +598,13 @@
 			await boundClient.ExecuteAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes a single item result action.
+		/// </summary>
+		/// <param name="actionName"></param>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TDto> ExecuteActionSingleAsync(string actionName, TDto dto, CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
@@ -540,6 +615,14 @@
 			return await boundClient.ExecuteAsSingleAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes a scalar result action.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="actionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TResult> ExecuteActionScalar<TResult>(string actionName, object parameters = null, CancellationToken cancellationToken = default)
 			where TResult : struct, IConvertible
 		{
@@ -555,6 +638,13 @@
 			return await boundClient.ExecuteAsScalarAsync<TResult>(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes a single item result action.
+		/// </summary>
+		/// <param name="actionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TDto> ExecuteActionSingleAsync(string actionName, object parameters = null, CancellationToken cancellationToken = default)
 		{
 			IBoundClient<TDto> boundClient = this.oDataClient
@@ -569,6 +659,13 @@
 			return await boundClient.ExecuteAsSingleAsync(cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Executes a multiple item result action.
+		/// </summary>
+		/// <param name="actionName"></param>
+		/// <param name="parameters"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<IReadOnlyCollection<TDto>> ExecuteActionEnumerableAsync(string actionName, object parameters = null,
 			CancellationToken cancellationToken = default)
 		{

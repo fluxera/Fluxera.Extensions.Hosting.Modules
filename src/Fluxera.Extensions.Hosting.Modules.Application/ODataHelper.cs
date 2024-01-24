@@ -213,6 +213,13 @@
 			return await this.repository.CountAsync(mappedPredicate, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Find an item that matches the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TDto> FindOneAsync(
 			Expression<Func<TDto, bool>> predicate,
 			IQueryOptions<TDto> queryOptions = null,
@@ -225,6 +232,15 @@
 			return this.mapper.Map<TDto>(item);
 		}
 
+		/// <summary>
+		///		Find items that match the given predicate and return the selected value.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="predicate"></param>
+		/// <param name="selector"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<TResult> FindOneAsync<TResult>(
 			Expression<Func<TDto, bool>> predicate,
 			Expression<Func<TDto, TResult>> selector,
@@ -238,6 +254,13 @@
 			return await this.repository.FindOneAsync(mappedPredicate, mappedSelector, mappedQueryOptions, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		///		Find items that match the given predicate.
+		/// </summary>
+		/// <param name="predicate"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<IReadOnlyCollection<TDto>> FindManyAsync(
 			Expression<Func<TDto, bool>> predicate,
 			IQueryOptions<TDto> queryOptions = null,
@@ -251,6 +274,15 @@
 			return this.mapper.Map<IList<TDto>>(items).AsReadOnly();
 		}
 
+		/// <summary>
+		///		Find items that match the given predicate and return the selected value.
+		/// </summary>
+		/// <typeparam name="TResult"></typeparam>
+		/// <param name="predicate"></param>
+		/// <param name="selector"></param>
+		/// <param name="queryOptions"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<IReadOnlyCollection<TResult>> FindManyAsync<TResult>(
 			Expression<Func<TDto, bool>> predicate,
 			Expression<Func<TDto, TResult>> selector,

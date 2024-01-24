@@ -91,11 +91,8 @@
 						.InsertEntryAsync(cancellationToken)
 						.ConfigureAwait(false);
 
-					if(result != null)
-					{
-						dto.ID = result.ID;
-						this.TransferAuditValues(result, dto);
-					}
+					dto.ID = result.ID;
+					this.TransferAuditValues(result, dto);
 				};
 			}
 
@@ -118,6 +115,7 @@
 			}
 
 			object data = dto;
+			// ReSharper disable once SuspiciousTypeConversion.Global
 			if(dto is IPatchableObject patchableObject)
 			{
 				data = patchableObject.ChangeTracker.GetChangesObject();
@@ -153,6 +151,7 @@
 			foreach(TDto dto in dtos)
 			{
 				object data = dto;
+				// ReSharper disable once SuspiciousTypeConversion.Global
 				if(dto is IPatchableObject patchableObject)
 				{
 					data = patchableObject.ChangeTracker.GetChangesObject();

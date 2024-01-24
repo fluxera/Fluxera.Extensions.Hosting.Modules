@@ -14,7 +14,7 @@ namespace Fluxera.Extensions.Hosting.Modules.ODataClient.UnitTests
 				"People",
 				(ctx, _) =>
 				{
-					TestService testService = new TestService(ctx.Name, ctx.CollectionName, ctx.ODataClient, ctx.Options);
+					TestService testService = new TestService(ctx.Name, ctx.CollectionName, ctx.HttpClient, ctx.ODataClient, ctx.Options);
 					return testService;
 				});
 		}

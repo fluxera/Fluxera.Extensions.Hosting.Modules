@@ -14,7 +14,7 @@
 	/// <typeparam name="TDto"></typeparam>
 	[PublicAPI]
 	public sealed class ChangeTracker<TDto> : IChangeTracker
-		where TDto : class, IPatchableEntityDto
+		where TDto : class, IPatchableObject
 	{
 		/// <summary>
 		///     Initializes a new instance of the <see cref="ChangeTracker{TDto}" /> class.

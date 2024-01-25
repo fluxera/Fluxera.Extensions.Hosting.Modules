@@ -24,7 +24,7 @@
 		}
 
 		/// <inheritdoc />
-		public bool IsFailed { get; set; }
+		public bool IsFailed => !this.IsSuccessful;
 
 		/// <inheritdoc />
 		public bool IsSuccessful { get; set; }
@@ -56,7 +56,7 @@
 		}
 
 		/// <inheritdoc />
-		public bool IsFailed { get; set; }
+		public bool IsFailed => !this.IsSuccessful;
 
 		/// <inheritdoc />
 		public bool IsSuccessful { get; set; }

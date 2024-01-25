@@ -1,6 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos
 {
 	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -55,6 +57,26 @@
 		/// <summary>
 		///     Creates a failed result.
 		/// </summary>
+		/// <param name="errorMessages"></param>
+		/// <returns></returns>
+		public static ResultDto Fail(IEnumerable<string> errorMessages)
+		{
+			ResultDto resultDto = new ResultDto
+			{
+				IsSuccessful = false
+			};
+
+			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
+			{
+				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
+			}
+
+			return resultDto;
+		}
+
+		/// <summary>
+		///     Creates a failed result.
+		/// </summary>
 		/// <param name="errorMessage"></param>
 		/// <returns></returns>
 		public static TResultDto Fail<TResultDto>(string errorMessage)
@@ -68,6 +90,27 @@
 					ErrorDto.Create(errorMessage, null)
 				}
 			};
+		}
+
+		/// <summary>
+		///     Creates a failed result.
+		/// </summary>
+		/// <param name="errorMessages"></param>
+		/// <returns></returns>
+		public static TResultDto Fail<TResultDto>(IEnumerable<string> errorMessages)
+			where TResultDto : ResultBaseDto<ResultDto>, new()
+		{
+			TResultDto resultDto = new TResultDto
+			{
+				IsSuccessful = false
+			};
+
+			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
+			{
+				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
+			}
+
+			return resultDto;
 		}
 	}
 
@@ -127,6 +170,26 @@
 		/// <summary>
 		///     Creates a failed result.
 		/// </summary>
+		/// <param name="errorMessages"></param>
+		/// <returns></returns>
+		public static ResultDto<TValue> Fail(IEnumerable<string> errorMessages)
+		{
+			ResultDto<TValue> resultDto = new ResultDto<TValue>
+			{
+				IsSuccessful = false
+			};
+
+			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
+			{
+				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
+			}
+
+			return resultDto;
+		}
+
+		/// <summary>
+		///     Creates a failed result.
+		/// </summary>
 		/// <param name="errorMessage"></param>
 		/// <returns></returns>
 		public static TResultDto Fail<TResultDto>(string errorMessage)
@@ -140,6 +203,27 @@
 					ErrorDto.Create(errorMessage, null)
 				}
 			};
+		}
+
+		/// <summary>
+		///     Creates a failed result.
+		/// </summary>
+		/// <param name="errorMessages"></param>
+		/// <returns></returns>
+		public static TResultDto Fail<TResultDto>(IEnumerable<string> errorMessages)
+			where TResultDto : ResultBaseDto<ResultDto<TValue>, TValue>, new()
+		{
+			TResultDto resultDto = new TResultDto
+			{
+				IsSuccessful = false
+			};
+
+			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
+			{
+				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
+			}
+
+			return resultDto;
 		}
 	}
 }

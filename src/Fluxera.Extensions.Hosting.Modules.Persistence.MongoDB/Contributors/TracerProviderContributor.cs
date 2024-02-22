@@ -8,8 +8,8 @@
 		/// <inheritdoc />
 		public void Configure(TracerProviderBuilder builder, IServiceConfigurationContext context)
 		{
-			//// https://github.com/jbogard/MongoDB.Driver.Core.Extensions.OpenTelemetry
-			//builder.AddMongoDBInstrumentation();
+			// https://github.com/jbogard/MongoDB.Driver.Core.Extensions.OpenTelemetry
+			builder.AddMongoDBInstrumentation();
 		}
 	}
 }

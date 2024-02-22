@@ -23,14 +23,13 @@
 
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="8.0.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.2" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.3" />
 		<PackageReference Include="Fluxera.Repository.MongoDB" Version="8.0.4" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
-		<PackageReference Include="MongoDB.Driver.Core.Extensions.OpenTelemetry" Version="1.0.0" />
 	</ItemGroup>
 
   <ItemGroup>

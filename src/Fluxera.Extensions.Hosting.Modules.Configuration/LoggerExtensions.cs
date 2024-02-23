@@ -18,14 +18,7 @@
 		/// <param name="logger"></param>
 		/// <param name="contributor"></param>
 		[DebuggerStepThrough]
-		public static void LogContributorListNotAvailable(this ILogger logger, Type contributor)
-		{
-			logger?.LogContributorListNotAvailableWarning(contributor);
-		}
-
-		[DebuggerStepThrough]
-		[StackTraceHidden]
 		[LoggerMessage(0, LogLevel.Warning, "The contributor list for {Contributor} was not available.")]
-		private static partial void LogContributorListNotAvailableWarning(this ILogger logger, Type contributor);
+		public static partial void LogContributorListNotAvailable(this ILogger logger, Type contributor);
 	}
 }

@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,6 +19,10 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal\Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.csproj" />
 		<ProjectReference Include="..\..\src\Fluxera.Extensions.Hosting.Modules.UnitTesting\Fluxera.Extensions.Hosting.Modules.UnitTesting.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="NUnit.Framework" />
 	</ItemGroup>
 
 	<ItemGroup>

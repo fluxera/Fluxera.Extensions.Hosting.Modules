@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using Fluxera.Extensions.DependencyInjection;
@@ -86,6 +87,52 @@
 		}
 
 		/// <summary>
+		///		Enables static file serving for the current request path.
+		/// </summary>
+		public static IApplicationInitializationContext UseStaticFiles(this IApplicationInitializationContext context)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseStaticFiles", _ => app.UseStaticFiles());
+
+			return context;
+		}
+
+		/// <summary>
+		///		Enables static file serving for the given request path.
+		/// </summary>
+		public static IApplicationInitializationContext UseStaticFiles(this IApplicationInitializationContext context, string requestPath)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseStaticFiles", _ => app.UseStaticFiles(requestPath));
+
+			return context;
+		}
+
+		/// <summary>
+		///		Enables static file serving with the given options.
+		/// </summary>
+		public static IApplicationInitializationContext UseStaticFiles(this IApplicationInitializationContext context, StaticFileOptions options)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseStaticFiles", _ => app.UseStaticFiles(options));
+
+			return context;
+		}
+
+#if NET8_0_OR_GREATER
+		/// <summary>
+		///		Adds the anti-forgery middleware to the pipeline.
+		/// </summary>
+		public static IApplicationInitializationContext UseAntiforgery(this IApplicationInitializationContext context)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseAntiforgery", _ => app.UseAntiforgery());
+
+			return context;
+		}
+#endif
+
+		/// <summary>
 		///     Adds a <see cref="EndpointRoutingMiddleware" /> middleware to the specified <see cref="IApplicationBuilder" />.
 		/// </summary>
 		/// <param name="context"></param>
@@ -127,6 +174,68 @@
 					}
 				});
 			});
+
+			return context;
+		}
+
+		/// <summary>
+		///		Adds a middleware to the pipeline that will catch exceptions, log them, and re-execute the request in an alternate pipeline.
+		///		The request will not be re-executed if the response has already started.
+		/// </summary>
+		public static IApplicationInitializationContext UseExceptionHandler(this IApplicationInitializationContext context)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseExceptionHandler", _ => app.UseExceptionHandler());
+
+			return context;
+		}
+
+		/// <summary>
+		///		Adds a middleware to the pipeline that will catch exceptions, log them, reset the request path, and re-execute the request.
+		///		The request will not be re-executed if the response has already started.
+		/// </summary>
+		public static IApplicationInitializationContext UseExceptionHandler(this IApplicationInitializationContext context, string errorHandlingPath)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseExceptionHandler", _ => app.UseExceptionHandler(errorHandlingPath));
+
+			return context;
+		}
+
+#if NET8_0_OR_GREATER
+		/// <summary>
+		///		Adds a middleware to the pipeline that will catch exceptions, log them, reset the request path, and re-execute the request.
+		///		The request will not be re-executed if the response has already started.
+		/// </summary>
+		public static IApplicationInitializationContext UseExceptionHandler(this IApplicationInitializationContext context, string errorHandlingPath, bool createScopeForErrors)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseExceptionHandler", _ => app.UseExceptionHandler(errorHandlingPath, createScopeForErrors));
+
+			return context;
+		}
+#endif
+
+		/// <summary>
+		///		Adds a middleware to the pipeline that will catch exceptions, log them, and re-execute the request in an alternate pipeline.
+		///		The request will not be re-executed if the response has already started.
+		/// </summary>
+		public static IApplicationInitializationContext UseExceptionHandler(this IApplicationInitializationContext context, Action<IApplicationBuilder> configure)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseExceptionHandler", _ => app.UseExceptionHandler(configure));
+
+			return context;
+		}
+
+		/// <summary>
+		///		Adds a middleware to the pipeline that will catch exceptions, log them, and re-execute the request in an alternate pipeline.
+		///		The request will not be re-executed if the response has already started.
+		/// </summary>
+		public static IApplicationInitializationContext UseExceptionHandler(this IApplicationInitializationContext context, ExceptionHandlerOptions options)
+		{
+			IApplicationBuilder app = context.GetApplicationBuilder();
+			context.Log("UseExceptionHandler", _ => app.UseExceptionHandler(options));
 
 			return context;
 		}

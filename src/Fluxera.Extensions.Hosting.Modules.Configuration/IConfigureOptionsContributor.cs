@@ -4,7 +4,7 @@
 	using Microsoft.Extensions.Configuration;
 
 	/// <summary>
-	///     A contract for a configure contributor
+	///     A contract for a configure options contributor.
 	/// </summary>
 	[PublicAPI]
 	public interface IConfigureOptionsContributor

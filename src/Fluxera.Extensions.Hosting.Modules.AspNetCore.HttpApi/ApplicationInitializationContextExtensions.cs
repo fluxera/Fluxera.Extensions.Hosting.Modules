@@ -55,6 +55,7 @@
 		{
 			IApplicationBuilder app = context.GetApplicationBuilder();
 			context.Log("UseProblemDetails", _ => app.UseProblemDetails());
+
 			return context;
 		}
 	}

@@ -8,7 +8,7 @@
 	///     A module that enables Razor Pages for ASP.NET Core.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(AspNetCoreModule))]
+	[DependsOn<AspNetCoreModule>]
 	public sealed class RazorPagesModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

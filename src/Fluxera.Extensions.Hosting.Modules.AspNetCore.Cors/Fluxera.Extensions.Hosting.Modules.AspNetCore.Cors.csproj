@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Cors</Title>
 		<Description>A module that enables CORS for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal;aspnet;cors</PackageTags>
 	</PropertyGroup>

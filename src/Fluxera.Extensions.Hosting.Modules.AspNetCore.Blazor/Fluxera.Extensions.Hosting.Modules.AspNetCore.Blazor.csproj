@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Blazor</Title>
 		<Description>A module that enables Blazor for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;aspnet;blazor</PackageTags>
 	</PropertyGroup>

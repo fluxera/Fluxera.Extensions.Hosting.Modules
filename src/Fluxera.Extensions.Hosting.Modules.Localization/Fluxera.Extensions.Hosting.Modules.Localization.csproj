@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Localization</Title>
 		<Description>A module that enables localization.</Description>
 		<PackageTags>library;extensions;hosting;modular;localization</PackageTags>
 	</PropertyGroup>

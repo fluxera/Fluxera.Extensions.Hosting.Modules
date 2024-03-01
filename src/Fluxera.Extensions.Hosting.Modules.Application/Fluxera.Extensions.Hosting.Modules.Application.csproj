@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Application</Title>
 		<Description>A module that enables the application.</Description>
 		<PackageTags>library;extensions;hosting;modular;application</PackageTags>
 	</PropertyGroup>

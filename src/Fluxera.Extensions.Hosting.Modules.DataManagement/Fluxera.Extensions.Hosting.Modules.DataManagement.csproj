@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.DataManagement</Title>
 		<Description>A module that enables data management.</Description>
 		<PackageTags>library;extensions;hosting;modular;data</PackageTags>
 	</PropertyGroup>

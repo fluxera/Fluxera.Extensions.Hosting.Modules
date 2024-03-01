@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.RazorPages</Title>
 		<Description>A module that enables Razor Pages for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;aspnet;razor;pages</PackageTags>
 	</PropertyGroup>

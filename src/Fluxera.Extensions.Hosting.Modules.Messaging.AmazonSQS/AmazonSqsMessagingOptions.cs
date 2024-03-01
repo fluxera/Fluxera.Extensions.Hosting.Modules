@@ -4,7 +4,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     The options for the RabbitMQ messaging module.
+	///     The options for the AmazonSQS messaging module.
 	/// </summary>
 	[PublicAPI]
 	public sealed class AmazonSqsMessagingOptions

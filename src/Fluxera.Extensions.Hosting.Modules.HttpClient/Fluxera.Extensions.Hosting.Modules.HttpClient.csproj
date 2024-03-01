@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.HttpClient</Title>
 		<Description>A module that enables HTTP client services.</Description>
 		<PackageTags>library;extensions;hosting;modular;http;client</PackageTags>
 	</PropertyGroup>

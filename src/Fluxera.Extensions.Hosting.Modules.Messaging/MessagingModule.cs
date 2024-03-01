@@ -123,6 +123,7 @@
 			// Add the MassTransit message bus.
 			context.Log("AddMassTransit", services =>
 			{
+				// Get the configured consumers contributors.
 				ConsumersContributorList contributorList = context.Services.GetObject<ConsumersContributorList>();
 
 				// Get the configured transport contributor.
@@ -135,24 +136,24 @@
 				// Get the configured outbox contributor.
 				IOutboxContributor outboxContributor = context.Services.GetObjectOrDefault<IOutboxContributor>();
 
-				services.AddMassTransit(options =>
+				services.AddMassTransit(configurator =>
 				{
 					if(messagingOptions.SchedulerEnabled)
 					{
-						options.AddMessageScheduler(new Uri("queue:scheduler"));
+						configurator.AddMessageScheduler(new Uri("queue:scheduler"));
 					}
 
 					// Add (optional) transactional outbox.
-					outboxContributor?.ConfigureOutbox(options, context);
+					outboxContributor?.ConfigureOutbox(configurator, context);
 
 					// Add consumers.
 					foreach(IConsumersContributor contributor in contributorList)
 					{
-						contributor.ConfigureConsumers(options, context);
+						contributor.ConfigureConsumers(configurator, context);
 					}
 
 					// Add the transport.
-					transportContributor.ConfigureTransport(options, context);
+					transportContributor.ConfigureTransport(configurator, context);
 				});
 
 				// Rename the health check.

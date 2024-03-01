@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Configuration</Title>
 		<Description>A module that enables configuration.</Description>
 		<PackageTags>library;extensions;hosting;modular;configuration</PackageTags>
 	</PropertyGroup>

@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Localization</Title>
 		<Description>A module that enables multi-tenancy.</Description>
 		<PackageTags>library;extensions;hosting;modular;multi-tenancy;tenant</PackageTags>
 	</PropertyGroup>

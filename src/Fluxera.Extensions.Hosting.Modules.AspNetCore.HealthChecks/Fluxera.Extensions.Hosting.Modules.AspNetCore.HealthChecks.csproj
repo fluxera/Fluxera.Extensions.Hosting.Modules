@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks</Title>
 		<Description>A module that enables health checks for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;aspnet;healthchecks</PackageTags>
 	</PropertyGroup>

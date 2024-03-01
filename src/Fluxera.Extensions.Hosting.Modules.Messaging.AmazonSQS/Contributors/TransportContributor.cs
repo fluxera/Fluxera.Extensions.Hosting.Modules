@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Text.Json;
-	using Amazon.Runtime;
 	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;

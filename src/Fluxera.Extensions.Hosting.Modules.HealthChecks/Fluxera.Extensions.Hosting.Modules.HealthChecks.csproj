@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.HealthChecks</Title>
 		<Description>A module that enables health checks.</Description>
 		<PackageTags>library;extensions;hosting;modular;healthchecks</PackageTags>
 	</PropertyGroup>

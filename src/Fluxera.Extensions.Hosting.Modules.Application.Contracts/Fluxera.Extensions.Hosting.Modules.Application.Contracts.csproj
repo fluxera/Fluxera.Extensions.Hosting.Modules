@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Domain.Application.Contracts</Title>
 		<Description>A module that enables the domain.</Description>
 		<PackageTags>library;extensions;hosting;modular;application;contracts</PackageTags>
 	</PropertyGroup>

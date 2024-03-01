@@ -18,6 +18,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks\Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks.csproj" />
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.MultiTenancy\Fluxera.Extensions.Hosting.Modules.MultiTenancy.csproj" />
+		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Scheduler.InMemory\Fluxera.Extensions.Hosting.Modules.Scheduler.InMemory.csproj" />
+		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Scheduler\Fluxera.Extensions.Hosting.Modules.Scheduler.csproj" />
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
 		<ProjectReference Include="..\..\Components\Catalog\Catalog.Application\Catalog.Application.csproj" />
 		<ProjectReference Include="..\..\Components\Catalog\Catalog.HttpApi\Catalog.HttpApi.csproj" />

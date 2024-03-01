@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization.Permissions</Title>
 		<Description>A module that enables permission-based authorization for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authorization;auth;permissions</PackageTags>
 	</PropertyGroup>

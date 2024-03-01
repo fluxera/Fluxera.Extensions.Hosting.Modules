@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Domain.Shared</Title>
 		<Description>A module that enables the domain.</Description>
 		<PackageTags>library;extensions;hosting;modular;domain;shared</PackageTags>
 	</PropertyGroup>

@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Principal</Title>
 		<Description>A module that enables a principal accessor.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal</PackageTags>
 	</PropertyGroup>

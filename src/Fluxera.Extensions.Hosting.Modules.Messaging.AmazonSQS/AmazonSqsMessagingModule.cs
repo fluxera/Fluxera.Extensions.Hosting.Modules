@@ -6,7 +6,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     A module that enables RabbitMQ messaging.
+	///     A module that enables AmazonSQS messaging.
 	/// </summary>
 	[PublicAPI]
 	[DependsOn<HealthChecksModule>]

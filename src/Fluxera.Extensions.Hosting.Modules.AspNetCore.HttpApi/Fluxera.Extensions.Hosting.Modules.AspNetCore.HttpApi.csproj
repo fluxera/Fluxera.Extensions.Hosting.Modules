@@ -6,7 +6,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi</Title>
 		<Description>A module that enables HTTP APIs for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal;aspnet;http;api</PackageTags>
 	</PropertyGroup>

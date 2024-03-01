@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication.ApiKey</Title>
 		<Description>A module that enables ApiKey authentication for ASP.NET Core.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal;aspnet;authentication;auth;apikey</PackageTags>
 	</PropertyGroup>

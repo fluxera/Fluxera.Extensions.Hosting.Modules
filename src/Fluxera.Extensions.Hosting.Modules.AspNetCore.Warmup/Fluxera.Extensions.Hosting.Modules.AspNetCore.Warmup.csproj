@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AspNetCore.Warmup</Title>
 		<Description>A module that enables service warmup for ASP.NET Core services.</Description>
 		<PackageTags>library;extensions;hosting;modular;principal;aspnet;warmup</PackageTags>
 	</PropertyGroup>

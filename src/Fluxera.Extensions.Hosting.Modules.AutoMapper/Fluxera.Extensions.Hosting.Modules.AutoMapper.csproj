@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.AutoMapper</Title>
 		<Description>A module that enables object mapping using AutoMapper.</Description>
 		<PackageTags>library;extensions;hosting;modular;mapping;automapper</PackageTags>
 	</PropertyGroup>

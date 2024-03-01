@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Caching.Redis</Title>
 		<Description>A module that enables caching.</Description>
 		<PackageTags>library;extensions;hosting;modular;caching;redis</PackageTags>
 	</PropertyGroup>

@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore</Title>
 		<Description>A module that enables EFCore based transactional outbox on MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;efcore;transaction;outbox</PackageTags>
 	</PropertyGroup>

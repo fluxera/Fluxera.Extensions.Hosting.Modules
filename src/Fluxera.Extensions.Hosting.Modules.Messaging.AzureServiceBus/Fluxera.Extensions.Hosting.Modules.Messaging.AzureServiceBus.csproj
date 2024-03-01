@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.AzureServiceBus</Title>
 		<Description>A module that enables Azure ServiceBus messaging for MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;azure;servicebus</PackageTags>
 	</PropertyGroup>

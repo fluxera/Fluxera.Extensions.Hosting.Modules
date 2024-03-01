@@ -137,7 +137,7 @@
 
 				services.AddMassTransit(options =>
 				{
-					if(messagingOptions.ExternalSchedulerEnabled)
+					if(messagingOptions.SchedulerEnabled)
 					{
 						options.AddMessageScheduler(new Uri("queue:scheduler"));
 					}

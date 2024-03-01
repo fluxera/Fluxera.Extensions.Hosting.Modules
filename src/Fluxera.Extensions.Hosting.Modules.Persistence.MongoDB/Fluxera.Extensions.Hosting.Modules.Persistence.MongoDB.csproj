@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB</Title>
 		<Description>A module that enables MongoDB persistence.</Description>
 		<PackageTags>library;extensions;hosting;modular;persistence;mongodb</PackageTags>
 	</PropertyGroup>

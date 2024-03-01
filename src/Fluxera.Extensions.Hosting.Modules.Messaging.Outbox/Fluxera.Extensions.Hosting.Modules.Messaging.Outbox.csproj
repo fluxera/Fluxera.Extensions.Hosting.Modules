@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.Outbox</Title>
 		<Description>A module that enables the transactional outbox on MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;transaction;outbox</PackageTags>
 	</PropertyGroup>

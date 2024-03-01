@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory</Title>
 		<Description>A module that enables in-memory based transactional outbox on MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;in-memory;transaction;outbox</PackageTags>
 	</PropertyGroup>

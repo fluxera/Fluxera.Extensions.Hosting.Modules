@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging</Title>
 		<Description>A module that enables messaging based on MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit</PackageTags>
 	</PropertyGroup>

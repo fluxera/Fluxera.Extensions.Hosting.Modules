@@ -29,7 +29,7 @@
 				//	cfg.UseInMemoryOutbox();
 				//}
 
-				if(messagingOptions.ExternalSchedulerEnabled)
+				if(messagingOptions.SchedulerEnabled)
 				{
 					cfg.UseMessageScheduler(new Uri("queue:scheduler"));
 				}

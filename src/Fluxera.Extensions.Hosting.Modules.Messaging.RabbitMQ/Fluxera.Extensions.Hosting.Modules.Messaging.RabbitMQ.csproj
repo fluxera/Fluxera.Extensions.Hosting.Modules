@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ</Title>
 		<Description>A module that enables RabbitMQ messaging for MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;rabbitmq</PackageTags>
 	</PropertyGroup>

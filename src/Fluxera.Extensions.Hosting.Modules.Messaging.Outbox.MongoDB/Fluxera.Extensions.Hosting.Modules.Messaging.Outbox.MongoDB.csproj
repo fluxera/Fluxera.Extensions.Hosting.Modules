@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB</Title>
 		<Description>A module that enables MongoDB based transactional outbox on MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;mongodb;transaction;outbox</PackageTags>
 	</PropertyGroup>

@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Persistence</Title>
 		<Description>A module that enables persistence.</Description>
 		<PackageTags>library;extensions;hosting;modular;persistence</PackageTags>
 	</PropertyGroup>

@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Persistence.InMemory</Title>
 		<Description>A module that enables In-Memory persistence.</Description>
 		<PackageTags>library;extensions;hosting;modular;persistence;in-memory</PackageTags>
 	</PropertyGroup>

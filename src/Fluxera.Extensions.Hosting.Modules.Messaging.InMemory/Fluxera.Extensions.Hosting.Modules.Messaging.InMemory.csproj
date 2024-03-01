@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Messaging.InMemory</Title>
 		<Description>A module that enables in-memory messaging for MassTransit.</Description>
 		<PackageTags>library;extensions;hosting;modular;messaging;messagebus;masstransit;in-memory</PackageTags>
 	</PropertyGroup>

@@ -1,7 +1,8 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.AmazonSQS.Contributors
 {
 	using System;
 	using System.Text.Json;
+	using Amazon.Runtime;
 	using Fluxera.Enumeration.SystemTextJson;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
@@ -17,13 +18,13 @@
 		/// <inheritdoc />
 		public void ConfigureTransport(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
-			RabbitMqMessagingOptions options = context.Services.GetOptions<RabbitMqMessagingOptions>();
+			AmazonSqsMessagingOptions options = context.Services.GetOptions<AmazonSqsMessagingOptions>();
 			string connectionString = options.ConnectionStrings[options.ConnectionStringName];
-			RabbitMqConnectionString rabbitConnectionString = new RabbitMqConnectionString(connectionString);
+			AmazonSqsConnectionString amazonSqsConnectionString = new AmazonSqsConnectionString(connectionString);
 
 			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
 
-			configurator.UsingRabbitMq((ctx, cfg) =>
+			configurator.UsingAmazonSqs((ctx, cfg) =>
 			{
 				//bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
 				//if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
@@ -36,10 +37,17 @@
 					cfg.UseMessageScheduler(new Uri("queue:scheduler"));
 				}
 
-				cfg.Host(rabbitConnectionString.Host, hostOptions =>
+				cfg.Host(amazonSqsConnectionString.Host, hostOptions =>
 				{
-					hostOptions.Username(rabbitConnectionString.Username);
-					hostOptions.Password(rabbitConnectionString.Password);
+					// optional - set the AWS Access key and Secret here if it's not configured in the environment.
+					hostOptions.AccessKey(amazonSqsConnectionString.AccessKey);
+					hostOptions.SecretKey(amazonSqsConnectionString.SecretKey);
+
+					// optional - specify a scope for all queues.
+					// h.Scope("dev");
+
+					// optional - scope topics as well.
+					// h.EnableScopedTopics();
 				});
 
 				cfg.ConfigureJsonSerializerOptions(serializerOptions =>

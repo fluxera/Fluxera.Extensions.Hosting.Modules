@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Title>Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore</Title>
 		<Description>A module that enables EntityFrameworkCore persistence.</Description>
 		<PackageTags>library;extensions;hosting;modular;persistence;efcore</PackageTags>
 	</PropertyGroup>

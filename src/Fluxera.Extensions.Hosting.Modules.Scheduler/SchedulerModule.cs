@@ -13,6 +13,9 @@
 	using Microsoft.Extensions.Hosting;
 	using Quartz;
 
+	// TODO: When Quartz 4.0 get out:
+	//  - Use System.Text.Json serializer (Quartz.Serialization.SystemTextJson)
+
 	/// <summary>
 	///     A module that enables Quartz scheduler support.
 	/// </summary>
@@ -62,29 +65,8 @@
 
 					// Add the store.
 					storeContributor.ConfigureStore(configurator, context);
-
-					// TODO: When Quartz 4.0 get out:
-					//  - Use System.Text.Json serializer (Quartz.Serialization.SystemTextJson)
-
-					//configurator.UsePersistentStore(options =>
-					//{
-					//	options.UseProperties = true;
-					//	options.RetryInterval = TimeSpan.FromSeconds(15);
-
-					//	options.UseSqlServer("connectionString");
-
-					//	// TODO: Replace with STJ when 4.0 is Quartz released.
-					//	options.UseNewtonsoftJsonSerializer();
-
-					//	options.UseClustering(c =>
-					//	{
-					//		c.CheckinMisfireThreshold = TimeSpan.FromSeconds(20);
-					//		c.CheckinInterval = TimeSpan.FromSeconds(10);
-					//	});
-					//});
 				});
 			});
-
 
 			context.Log("AddQuartzHostedService", 
 				services => services.AddQuartzHostedService());

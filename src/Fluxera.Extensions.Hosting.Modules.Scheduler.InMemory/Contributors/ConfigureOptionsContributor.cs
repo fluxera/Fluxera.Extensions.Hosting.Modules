@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<InMemorySchedulerOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "Scheduler";
+		public override string SectionName => "Scheduler:Store";
 	}
 }

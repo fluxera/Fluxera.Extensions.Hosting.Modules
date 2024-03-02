@@ -5,8 +5,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Description>A module that provides the in-memory store for the scheduler.</Description>
-		<PackageTags>library;extensions;hosting;modular;scheduler;quartz;store;in-memory</PackageTags>
+		<Description>A module that provides the persistent store for the scheduler.</Description>
+		<PackageTags>library;extensions;hosting;modular;scheduler;quartz;store;persistent</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,10 +35,12 @@
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Scheduler\Fluxera.Extensions.Hosting.Modules.Scheduler.csproj" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net7.0'">
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+	</ItemGroup>
+
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-	  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql">
-	    <Version>8.0.1</Version>
-	  </PackageReference>
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.1" />
 	</ItemGroup>
 
 </Project>

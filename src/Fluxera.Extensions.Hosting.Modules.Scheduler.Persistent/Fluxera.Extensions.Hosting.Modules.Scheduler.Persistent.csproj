@@ -2,12 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Description>A module that provides the EFCore store for the scheduler.</Description>
-		<PackageTags>library;extensions;hosting;modular;scheduler;quartz;store;ef-core</PackageTags>
+		<Description>A module that provides the in-memory store for the scheduler.</Description>
+		<PackageTags>library;extensions;hosting;modular;scheduler;quartz;store;in-memory</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,20 +21,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AppAny.Quartz.EntityFrameworkCore.Migrations" Version="0.5.0" />
-		<PackageReference Include="AppAny.Quartz.EntityFrameworkCore.Migrations.MySql" Version="0.5.0" />
-		<PackageReference Include="AppAny.Quartz.EntityFrameworkCore.Migrations.SQLite" Version="0.5.0" />
-		<PackageReference Include="AppAny.Quartz.EntityFrameworkCore.Migrations.SqlServer" Version="0.5.0" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.3" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Scheduler\Fluxera.Extensions.Hosting.Modules.Scheduler.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+	  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql">
+	    <Version>8.0.1</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

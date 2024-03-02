@@ -272,9 +272,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Store", "Store", "{171B2D9F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.InMemory", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.InMemory\Fluxera.Extensions.Hosting.Modules.Scheduler.InMemory.csproj", "{C4A829D1-C471-47EA-945B-1A8F8608D72F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.EntityFrameworkCore", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Scheduler.EntityFrameworkCore.csproj", "{02267656-419E-47EE-90BB-AB35D5D3CA97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.EntityFrameworkCore", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Scheduler.EntityFrameworkCore.csproj", "{02267656-419E-47EE-90BB-AB35D5D3CA97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.MongoDB\Fluxera.Extensions.Hosting.Modules.Scheduler.MongoDB.csproj", "{5C20A511-3E88-4AFF-8FE7-D386419DEA58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.MongoDB", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.MongoDB\Fluxera.Extensions.Hosting.Modules.Scheduler.MongoDB.csproj", "{5C20A511-3E88-4AFF-8FE7-D386419DEA58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent\Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent.csproj", "{EC768D8F-B805-495D-8BD4-2EF7A87A8030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -678,6 +680,10 @@ Global
 		{5C20A511-3E88-4AFF-8FE7-D386419DEA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C20A511-3E88-4AFF-8FE7-D386419DEA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C20A511-3E88-4AFF-8FE7-D386419DEA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -808,6 +814,7 @@ Global
 		{C4A829D1-C471-47EA-945B-1A8F8608D72F} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
 		{02267656-419E-47EE-90BB-AB35D5D3CA97} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
 		{5C20A511-3E88-4AFF-8FE7-D386419DEA58} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
+		{EC768D8F-B805-495D-8BD4-2EF7A87A8030} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

@@ -36,6 +36,12 @@
 
 			// Add the health checks contributor.
 			context.Services.AddHealthCheckContributor<HealthChecksContributor>();
+
+			// Add the scheduler contributor list.
+			context.Log("AddObjectAccessor(SchedulerContributorList)", services =>
+			{
+				services.AddObjectAccessor(new SchedulerContributorList(), ObjectAccessorLifetime.Configure);
+			});
 		}
 
 		/// <inheritdoc />
@@ -51,6 +57,9 @@
 					throw new InvalidOperationException("No store contributor was found.");
 				}
 
+				// Get the configured scheduler contributors.
+				SchedulerContributorList contributorList = context.Services.GetObject<SchedulerContributorList>();
+
 				services.AddQuartz(configurator =>
 				{
 					configurator.SchedulerName = "Scheduler";
@@ -63,8 +72,14 @@
 
 					configurator.UseTimeZoneConverter();
 
-					// Add the store.
-					storeContributor.ConfigureStore(configurator, context);
+					// Configure the store to use.
+					storeContributor.ConfigureStore(new SchedulerStoreConfigurator(configurator), context);
+
+					// Configure job and triggers.
+					foreach(ISchedulerContributor contributor in contributorList)
+					{
+						contributor.ConfigureScheduler(new SchedulerConfigurator(configurator, services), context);
+					}
 				});
 			});
 

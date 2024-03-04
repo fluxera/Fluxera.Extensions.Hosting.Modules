@@ -3,16 +3,16 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     A contract for storage specific configurations.
+	///     A contract for scheduler configurations.
 	/// </summary>
 	[PublicAPI]
-	public interface IStoreContributor
+	public interface ISchedulerContributor
 	{
 		/// <summary>
 		///		Configures the store the Quartz scheduler uses.
 		/// </summary>
 		/// <param name="configurator"></param>
 		/// <param name="context"></param>
-		void ConfigureStore(ISchedulerStoreConfigurator configurator, IServiceConfigurationContext context);
+		void ConfigureScheduler(ISchedulerConfigurator configurator, IServiceConfigurationContext context);
 	}
 }

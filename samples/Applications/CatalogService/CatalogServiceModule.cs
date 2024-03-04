@@ -9,7 +9,7 @@
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HttpApi;
-	using Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent;
+	using Fluxera.Extensions.Hosting.Modules.Scheduler.InMemory;
 	using JetBrains.Annotations;
 	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.AspNetCore.Builder;
@@ -18,7 +18,7 @@
 	using Microsoft.Extensions.Hosting;
 
 	[PublicAPI]
-	//[DependsOn<PersistentSchedulerModule>]
+	[DependsOn<InMemorySchedulerModule>]
 	[DependsOn<CatalogHttpApiModule>]
 	[DependsOn<CatalogMessagingApiModule>]
 	[DependsOn<CatalogApplicationModule>]

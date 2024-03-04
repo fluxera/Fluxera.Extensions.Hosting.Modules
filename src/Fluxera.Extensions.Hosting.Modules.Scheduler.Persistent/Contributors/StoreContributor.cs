@@ -10,7 +10,7 @@
 	internal sealed class StoreContributor : IStoreContributor
 	{
 		/// <inheritdoc />
-		public void ConfigureStore(IServiceCollectionQuartzConfigurator configurator, IServiceConfigurationContext context)
+		public void ConfigureStore(ISchedulerStoreConfigurator configurator, IServiceConfigurationContext context)
 		{
 			PersistentSchedulerOptions schedulerOptions = new PersistentSchedulerOptions();
 

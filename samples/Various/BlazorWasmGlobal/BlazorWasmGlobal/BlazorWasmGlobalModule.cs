@@ -1,14 +1,11 @@
 namespace BlazorWasmGlobal
 {
-	using System;
 	using BlazorWasmGlobal.Components;
 	using BlazorWasmGlobal.Contributors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Blazor;
-	using Microsoft.AspNetCore.Components;
-	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 
 	[DependsOn<BlazorModule>]

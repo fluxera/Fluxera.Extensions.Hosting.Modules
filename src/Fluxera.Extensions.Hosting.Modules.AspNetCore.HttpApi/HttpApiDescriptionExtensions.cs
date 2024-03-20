@@ -10,8 +10,8 @@
 		{
 			OpenApiInfo info = new OpenApiInfo
 			{
-				Title = apiDescription?.Title ?? "The API title.",
 				Version = versionDescription?.ApiVersion.ToString() ?? ApiVersion.Default.ToString(),
+				Title = apiDescription?.Title ?? "The API title.",
 				Description = apiDescription?.Description ?? "The API description."
 			};
 

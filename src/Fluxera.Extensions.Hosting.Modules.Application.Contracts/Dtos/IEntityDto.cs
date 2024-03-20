@@ -14,6 +14,9 @@
 		///     Gets or sets the ID.
 		/// </summary>
 		new TKey ID { get; set; }
+
+		//// OData needs this
+		//string EntityId { set; }
 	}
 
 	/// <summary>
@@ -26,5 +29,8 @@
 		///     Gets the ID.
 		/// </summary>
 		object ID { get; }
+
+		//// OData needs this
+		//string EntityId { get; }
 	}
 }

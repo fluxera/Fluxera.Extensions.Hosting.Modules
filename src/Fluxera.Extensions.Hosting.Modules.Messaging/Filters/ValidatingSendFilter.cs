@@ -43,7 +43,7 @@
 			{
 				if(this.options.ValidationEnabled)
 				{
-					// Executed before the message is send.
+					// Executed before the message is sent.
 					this.messageValidator.ValidateMessage(context.Message);
 				}
 

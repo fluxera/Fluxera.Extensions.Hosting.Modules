@@ -88,6 +88,13 @@
 				services.AddTransient<IMessageAuthenticator, MessageAuthenticator>();
 			});
 
+			// Add services for adding the application context to the message headers.
+			context.Log("AddApplicationContextEnrichment", services =>
+			{
+				services.AddScoped(typeof(ApplicationContextEnrichingPublishFilter<>));
+				services.AddScoped(typeof(ApplicationContextEnrichingSendFilter<>));
+			});
+
 			// Register a singleton factory for the custom endpoint name formatter.
 			context.Log("AddEndpointNameFormatter", services =>
 			{

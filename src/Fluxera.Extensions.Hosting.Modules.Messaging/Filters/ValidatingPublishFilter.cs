@@ -8,7 +8,7 @@
 	using Microsoft.Extensions.Options;
 
 	/// <summary>
-	///     A public filter that utilizes the <see cref="IMessageAuthenticator" /> to
+	///     A publish-filter that utilizes the <see cref="IMessageAuthenticator" /> to
 	///     validate outgoing messages.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
@@ -43,7 +43,7 @@
 			{
 				if(this.options.ValidationEnabled)
 				{
-					// Executed before the message is send.
+					// Executed before the message is published.
 					this.messageValidator.ValidateMessage(context.Message);
 				}
 

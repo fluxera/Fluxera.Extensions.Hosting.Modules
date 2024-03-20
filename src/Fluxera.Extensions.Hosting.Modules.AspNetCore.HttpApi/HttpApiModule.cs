@@ -50,7 +50,7 @@
 				// https://github.com/dotnet/aspnet-api-versioning/wiki
 				IApiVersioningBuilder versioningBuilder = services.AddApiVersioning(options =>
 				{
-					options.DefaultApiVersion = new ApiVersion(httpApiOptions.DefaultVersion.Major, httpApiOptions.DefaultVersion.Major);
+					options.DefaultApiVersion = new ApiVersion(httpApiOptions.DefaultVersion.Major, httpApiOptions.DefaultVersion.Minor);
 					options.AssumeDefaultVersionWhenUnspecified = true;
 					options.ReportApiVersions = true;
 				});
@@ -70,13 +70,13 @@
 				services.AddEndpointsApiExplorer();
 				services.AddSwaggerGen(options =>
 				{
-					options.OperationFilter<SwaggerDefaultValuesFilter>();
-					options.OperationFilter<DefaultValuesFilter>();
-					options.OperationFilter<DeprecatedOperationFilter>();
-
 					options.EnableAnnotations();
 					options.UseInlineDefinitionsForEnums();
 					options.IncludeXmlComments();
+
+					options.OperationFilter<SwaggerDefaultValuesFilter>();
+					options.OperationFilter<DefaultValuesFilter>();
+					options.OperationFilter<DeprecatedOperationFilter>();
 				});
 
 				services.ConfigureOptions<ConfigureSwaggerOptions>();

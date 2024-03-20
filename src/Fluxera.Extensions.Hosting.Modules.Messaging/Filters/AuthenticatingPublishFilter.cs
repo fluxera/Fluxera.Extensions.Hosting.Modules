@@ -6,7 +6,7 @@
 	using Microsoft.Extensions.Options;
 
 	/// <summary>
-	///     A publish filter that utilizes the <see cref="IMessageAuthenticator" /> to add
+	///     A publish-filter that utilizes the <see cref="IMessageAuthenticator" /> to add
 	///     an access token to the consume context headers.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>

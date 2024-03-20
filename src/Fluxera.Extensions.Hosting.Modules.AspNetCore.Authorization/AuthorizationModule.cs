@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Authorization
 {
 	using Fluxera.Extensions.DependencyInjection;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Authentication;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Authorization;
@@ -11,8 +12,9 @@
 	///     A module that enables authorization.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(AspNetCorePrincipalModule))]
-	[DependsOn(typeof(AspNetCoreModule))]
+	[DependsOn<AuthenticationModule>]
+	[DependsOn<AspNetCorePrincipalModule>]
+	[DependsOn<AspNetCoreModule>]
 	public sealed class AuthorizationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

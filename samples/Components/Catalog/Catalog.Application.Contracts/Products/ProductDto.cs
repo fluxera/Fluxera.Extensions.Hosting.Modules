@@ -24,5 +24,11 @@
 		///     Gets or sets the price.
 		/// </summary>
 		public decimal Price { get; set; }
+
+		///// <inheritdoc />
+		//protected override ProductId CreateKey(string entityId)
+		//{
+		//	return new ProductId(entityId);
+		//}
 	}
 }

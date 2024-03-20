@@ -39,6 +39,9 @@
 					// Add a single swagger endpoint.
 					options.SwaggerEndpoint("/docs/v1/openapi.json", "V1");
 				}
+
+				// https://stackoverflow.com/a/43645625
+				options.RoutePrefix = "docs";
 			}));
 
 			return context;

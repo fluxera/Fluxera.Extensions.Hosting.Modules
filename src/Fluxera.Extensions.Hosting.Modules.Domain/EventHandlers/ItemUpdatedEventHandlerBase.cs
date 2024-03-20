@@ -90,7 +90,7 @@
 		}
 
 		/// <summary>
-		///     Initialize the the event message from the underlying item.
+		///     Initialize the event message from the underlying item.
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="item"></param>

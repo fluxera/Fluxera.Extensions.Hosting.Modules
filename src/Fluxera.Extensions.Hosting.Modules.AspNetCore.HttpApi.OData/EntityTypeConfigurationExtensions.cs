@@ -17,15 +17,12 @@
 		///     Configures the property to be an optional key.
 		/// </summary>
 		/// <typeparam name="TDto"></typeparam>
-		/// <typeparam name="TKey"></typeparam>
 		/// <param name="entityType"></param>
 		/// <param name="keyDefinitionExpression"></param>
 		/// <returns></returns>
-		public static EntityTypeConfiguration<TDto> HasID<TDto, TKey>(
-			this EntityTypeConfiguration<TDto> entityType,
-			Expression<Func<TDto, TKey>> keyDefinitionExpression)
-			where TDto : class, IEntityDto<TKey>
-			where TKey : struct, IComparable<TKey>, IEquatable<TKey>
+		public static EntityTypeConfiguration<TDto> HasID<TDto>(this EntityTypeConfiguration<TDto> entityType,
+			Expression<Func<TDto, string>> keyDefinitionExpression)
+			where TDto : class, IEntityDto 
 		{
 			entityType
 				.HasKey(keyDefinitionExpression)

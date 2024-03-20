@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluxera.Extensions.Hosting.Blazor" Version="8.0.3" />
-    <PackageReference Include="MadEyeMatt.AspNetCore.Blazor" Version="8.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.2" />
+    <PackageReference Include="Fluxera.Extensions.Hosting.Blazor" Version="8.0.4" />
+    <PackageReference Include="MadEyeMatt.AspNetCore.Blazor" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.3" />
   </ItemGroup>
 
 </Project>

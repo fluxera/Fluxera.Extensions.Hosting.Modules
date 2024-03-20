@@ -2,14 +2,12 @@
 {
 	using System.Net;
 	using System.Threading.Tasks;
-	using Asp.Versioning;
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.ProductAggregate;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
-	[ApiVersion(1.0)]
 	[ApiController]
 	[AllowAnonymous]
 	[Route("catalog/products")]

@@ -65,5 +65,25 @@
 
 			return isAuthenticated;
 		}
+
+		/// <summary>
+		///		Gets the name of the origin (sender/publisher) application of the message.
+		/// </summary>
+		/// <param name="context"></param>
+		/// <returns></returns>
+		public static string GetOriginApplication(this ConsumeContext context)
+		{
+			string originApplication = null;
+
+			if(context != null)
+			{
+				if(context.Headers.TryGetHeader(TransportHeaders.OriginApplicationHeaderName, out object result))
+				{
+					originApplication = result as string;
+				}
+			}
+
+			return originApplication;
+		}
 	}
 }

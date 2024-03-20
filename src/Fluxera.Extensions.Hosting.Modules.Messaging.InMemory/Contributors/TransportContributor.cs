@@ -17,17 +17,18 @@
 		/// <inheritdoc />
 		public void ConfigureTransport(IBusRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
-			//InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
+			InMemoryMessagingOptions options = context.Services.GetOptions<InMemoryMessagingOptions>();
 
 			MessagingOptions messagingOptions = context.Services.GetOptions<MessagingOptions>();
 
 			configurator.UsingInMemory((ctx, cfg) =>
 			{
-				//bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
-				//if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
-				//{
-				//	cfg.UseInMemoryOutbox();
-				//}
+				bool isTransactionalOutboxModuleLoaded = context.Items.ContainsKey("IsTransactionalOutboxModuleLoaded");
+				if(!isTransactionalOutboxModuleLoaded && options.InMemoryOutboxEnabled)
+				{
+					cfg.UseMessageScope(ctx);
+					cfg.UseInMemoryOutbox(ctx);
+				}
 
 				if(messagingOptions.SchedulerEnabled)
 				{
@@ -53,6 +54,10 @@
 				// Configure publish and send filters for message authentication.
 				cfg.UsePublishFilter(typeof(AuthenticatingPublishFilter<>), ctx);
 				cfg.UseSendFilter(typeof(AuthenticatingSendFilter<>), ctx);
+
+				// Configure publish and send filters for application context enrichment.
+				cfg.UsePublishFilter(typeof(ApplicationContextEnrichingPublishFilter<>), ctx);
+				cfg.UseSendFilter(typeof(ApplicationContextEnrichingSendFilter<>), ctx);
 
 				// Configure consume filter that sets the context on a context provider.
 				cfg.UseConsumeFilter(typeof(ConsumeContextConsumeFilter<>), ctx);

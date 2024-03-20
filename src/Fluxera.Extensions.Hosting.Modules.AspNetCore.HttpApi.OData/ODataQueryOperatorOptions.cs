@@ -34,7 +34,7 @@
 		public bool EnableFilter { get; set; } = true;
 
 		/// <summary>
-		///     Gets or sets a value indicating whether the service will use skiptoken or not.
+		///     Gets or sets a value indicating whether the service will use $skiptoken or not.
 		/// </summary>
 		public bool EnableSkipToken { get; set; }
 

@@ -7,7 +7,7 @@
 	internal static partial class LoggerExtensions
 	{
 		[DebuggerStepThrough]
-		[LoggerMessage(0, LogLevel.Error, "The message validation failed.")]
+		[LoggerMessage(0, LogLevel.Critical, "The message validation failed.")]
 		public static partial void LogMessageValidationFailed(this ILogger logger, Exception exception);
 
 		[DebuggerStepThrough]

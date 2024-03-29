@@ -39,6 +39,11 @@
 
 				cfg.Host(rabbitConnectionString.Host, hostOptions =>
 				{
+					if(rabbitConnectionString.UseSsl)
+					{
+						throw new NotSupportedException("Using SSL is currently not supported.");
+					}
+
 					hostOptions.Username(rabbitConnectionString.Username);
 					hostOptions.Password(rabbitConnectionString.Password);
 				});

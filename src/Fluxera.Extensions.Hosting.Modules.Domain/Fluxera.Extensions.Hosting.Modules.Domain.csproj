@@ -38,6 +38,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain.Messages\Fluxera.Extensions.Hosting.Modules.Domain.Messages.csproj" />
 	</ItemGroup>
 
 </Project>

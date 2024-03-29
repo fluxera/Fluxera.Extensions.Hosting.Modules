@@ -51,19 +51,20 @@
 			modelBuilder.AddOrderItemEntity();
 			modelBuilder.AddCustomerEntity();
 
+			// TODO: Include when transactional Outbox is fixed.
 			// Add the entities for the transactional inbox/outbox.
-			modelBuilder.AddInboxStateEntity(builder =>
-			{
-				builder.ToTable("InboxStates");
-			});
-			modelBuilder.AddOutboxMessageEntity(builder =>
-			{
-				builder.ToTable("OutboxMessages");
-			});
-			modelBuilder.AddOutboxStateEntity(builder =>
-			{
-				builder.ToTable("OutboxStates");
-			});
+			//modelBuilder.AddInboxStateEntity(builder =>
+			//{
+			//	builder.ToTable("InboxStates");
+			//});
+			//modelBuilder.AddOutboxMessageEntity(builder =>
+			//{
+			//	builder.ToTable("OutboxMessages");
+			//});
+			//modelBuilder.AddOutboxStateEntity(builder =>
+			//{
+			//	builder.ToTable("OutboxStates");
+			//});
 		}
 	}
 }

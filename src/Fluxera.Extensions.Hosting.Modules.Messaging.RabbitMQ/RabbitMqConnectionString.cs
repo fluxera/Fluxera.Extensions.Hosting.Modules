@@ -10,26 +10,33 @@
 		{
 			Guard.Against.NullOrWhiteSpace(connectionString);
 
-			// Host=localhost;Username=guest;Password=guest
+			// Host=localhost;Username=guest;Password=guest;UseSsl=true
 			string[] connectionStringParts = connectionString.Split(";", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
 			foreach(string connectionStringPart in connectionStringParts)
 			{
-				if(connectionStringPart.StartsWith("Host"))
+				if(connectionStringPart.StartsWith("Host", StringComparison.InvariantCultureIgnoreCase))
 				{
 					this.Host = connectionStringPart.Split("=").LastOrDefault() ?? "localhost";
 					continue;
 				}
 
-				if(connectionStringPart.StartsWith("Username"))
+				if(connectionStringPart.StartsWith("Username", StringComparison.InvariantCultureIgnoreCase))
 				{
 					this.Username = connectionStringPart.Split("=").LastOrDefault() ?? "guest";
 					continue;
 				}
 
-				if(connectionStringPart.StartsWith("Password"))
+				if(connectionStringPart.StartsWith("Password", StringComparison.InvariantCultureIgnoreCase))
 				{
 					this.Password = connectionStringPart.Split("=").LastOrDefault() ?? "guest";
+					continue;
+				}
+
+				if(connectionStringPart.StartsWith("UseSsl", StringComparison.InvariantCultureIgnoreCase))
+				{
+					this.UseSsl = bool.Parse(connectionStringPart.Split("=").LastOrDefault() ?? "false");
+					continue;
 				}
 			}
 		}
@@ -40,6 +47,8 @@
 
 		public string Password { get; } = "guest";
 
+		public bool UseSsl { get; }
+
 		public static implicit operator string(RabbitMqConnectionString connectionString)
 		{
 			return connectionString?.ToString();
@@ -48,7 +57,11 @@
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return $"amqps://{this.Username}:{this.Password}@{this.Host}";
+			string connectionString = this.UseSsl 
+				? $"amqps://{this.Username}:{this.Password}@{this.Host}" 
+				: $"amqp://{this.Username}:{this.Password}@{this.Host}";
+
+			return connectionString;
 		}
 	}
 }

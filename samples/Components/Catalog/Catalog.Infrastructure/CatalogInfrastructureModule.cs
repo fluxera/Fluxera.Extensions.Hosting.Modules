@@ -8,8 +8,7 @@ namespace Catalog.Infrastructure
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
+	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
 	using JetBrains.Annotations;
@@ -19,12 +18,10 @@ namespace Catalog.Infrastructure
 	/// </summary>
 	[PublicAPI]
 	[DependsOn<CatalogDomainModule>]
-	[DependsOn<RabbitMqMessagingModule>]
+	[DependsOn<MessagingModule>]
 #if EFCORE
-	[DependsOn<EntityFrameworkCoreMessagingOutboxModule>]
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 #elif MONGO
-	[DependsOn<MongoMessagingOutboxModule>]
 	[DependsOn<MongoPersistenceModule>]
 #endif
 	[DependsOn<ConfigurationModule>]

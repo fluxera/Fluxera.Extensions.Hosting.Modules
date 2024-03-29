@@ -5,8 +5,8 @@
 	using System.Threading.Tasks;
 	using Fluxera.Entity;
 	using Fluxera.Extensions.Common;
-	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Messages;
-	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
+	using Fluxera.Extensions.Hosting.Modules.Domain.Messages;
+	using Fluxera.Extensions.Hosting.Modules.Domain.Shared;
 	using Fluxera.Repository.DomainEvents;
 	using JetBrains.Annotations;
 	using MassTransit;

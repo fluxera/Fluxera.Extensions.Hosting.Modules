@@ -3,7 +3,7 @@
 	using System;
 	using System.Linq.Expressions;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
-	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
+	using Fluxera.Extensions.Hosting.Modules.Domain.Shared;
 	using JetBrains.Annotations;
 	using Microsoft.OData.ModelBuilder;
 

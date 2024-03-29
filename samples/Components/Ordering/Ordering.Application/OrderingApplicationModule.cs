@@ -5,6 +5,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Extensions.Hosting.Modules.AutoMapper;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Ordering.Application.Contracts.Orders;
@@ -24,6 +25,9 @@
 		{
 			// Add the mapping profile contributor.
 			context.Services.AddMappingProfileContributor<MappingProfileContributor>();
+
+			// Add the consumers contributor.
+			context.Services.AddConsumersContributor<ConsumersContributor>();
 		}
 
 		/// <inheritdoc />

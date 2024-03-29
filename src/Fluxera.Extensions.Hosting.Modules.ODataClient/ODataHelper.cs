@@ -8,7 +8,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
-	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
+	using Fluxera.Extensions.Hosting.Modules.Domain.Shared;
 	using Fluxera.Extensions.OData;
 	using Fluxera.Guards;
 	using Fluxera.Utilities.Extensions;

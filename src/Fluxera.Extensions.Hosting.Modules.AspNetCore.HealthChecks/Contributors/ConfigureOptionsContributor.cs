@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<HealthChecksOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "AspNetCore:HealthChecks";
+		public override string SectionName => "HealthChecks";
 	}
 }

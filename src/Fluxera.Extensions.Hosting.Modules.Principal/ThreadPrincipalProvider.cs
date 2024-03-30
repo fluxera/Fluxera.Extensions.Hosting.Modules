@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Principal.Extensions
+﻿namespace Fluxera.Extensions.Hosting.Modules.Principal
 {
 	using System.Security.Claims;
 	using System.Threading;

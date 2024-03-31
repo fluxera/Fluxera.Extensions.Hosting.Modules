@@ -3,7 +3,6 @@
 	using System.Net;
 	using Catalog.Application;
 	using Catalog.HttpApi;
-	using Catalog.MessagingApi;
 	using FluentValidation;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
@@ -18,7 +17,6 @@
 
 	[PublicAPI]
 	[DependsOn<CatalogHttpApiModule>]
-	[DependsOn<CatalogMessagingApiModule>]
 	[DependsOn<CatalogApplicationModule>]
 	public sealed class CatalogServiceModule : ConfigureApplicationModule
 	{

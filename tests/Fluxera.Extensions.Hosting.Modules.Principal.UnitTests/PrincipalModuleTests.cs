@@ -6,7 +6,7 @@
 	using System.Security.Principal;
 	using System.Threading;
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.Principal.Extensions;
+	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.Extensions.DependencyInjection;
 	using NUnit.Framework;

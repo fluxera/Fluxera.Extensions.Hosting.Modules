@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<CorsOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "AspNetCore:Cors";
+		public override string SectionName => "Cors";
 	}
 }

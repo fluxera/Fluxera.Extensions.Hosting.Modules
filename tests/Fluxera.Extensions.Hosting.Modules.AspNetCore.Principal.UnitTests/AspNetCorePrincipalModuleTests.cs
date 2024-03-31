@@ -5,7 +5,7 @@
 	using System.Security.Claims;
 	using System.Security.Principal;
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.Extensions;
+	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using Microsoft.Extensions.DependencyInjection;

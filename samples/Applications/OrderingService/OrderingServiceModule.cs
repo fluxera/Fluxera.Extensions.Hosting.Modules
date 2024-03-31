@@ -14,11 +14,9 @@
 	using Microsoft.Extensions.Hosting;
 	using Ordering.Application;
 	using Ordering.HttpApi;
-	using Ordering.MessagingApi;
 
 	[PublicAPI]
 	[DependsOn<OrderingHttpApiModule>]
-	[DependsOn<OrderingMessagingApiModule>]
 	[DependsOn<OrderingApplicationModule>]
 	public sealed class OrderingServiceModule : ConfigureApplicationModule
 	{

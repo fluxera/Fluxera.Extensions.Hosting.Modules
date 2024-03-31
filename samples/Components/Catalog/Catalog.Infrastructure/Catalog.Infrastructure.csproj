@@ -11,8 +11,8 @@
 		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.0.4" />
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
@@ -20,14 +20,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.InMemory.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.EntityFrameworkCore.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.InMemory.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB\Fluxera.Extensions.Hosting.Modules.Messaging.Outbox.MongoDB.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ\Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj" />
-	  <ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj" />
+		<ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

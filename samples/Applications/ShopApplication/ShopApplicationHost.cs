@@ -4,7 +4,6 @@ namespace ShopApplication
 {
 	using System.Reflection;
 	using Catalog.Application;
-	using Catalog.MessagingApi;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
@@ -14,7 +13,6 @@ namespace ShopApplication
 	using Microsoft.Extensions.Hosting;
 	using Microsoft.Extensions.Logging;
 	using Ordering.Application;
-	using Ordering.MessagingApi;
 	using Serilog;
 	using Serilog.Extensions.Hosting;
 	using Serilog.Extensions.Logging;
@@ -30,11 +28,9 @@ namespace ShopApplication
 #if MONOLITH
 			// Configure the Catalog component.
 			context.AddPlugin<CatalogApplicationModule>();
-			context.AddPlugin<CatalogMessagingApiModule>();
 
 			// Configure the Ordering component.
 			context.AddPlugin<OrderingApplicationModule>();
-			context.AddPlugin<OrderingMessagingApiModule>();
 #else
 			// Configure the Catalog component.
 			context.AddPlugin<CatalogHttpClientModule>();

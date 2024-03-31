@@ -22,10 +22,8 @@
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
 		<ProjectReference Include="..\..\Components\Catalog\Catalog.Application\Catalog.Application.csproj" />
 		<ProjectReference Include="..\..\Components\Catalog\Catalog.HttpClient\Catalog.HttpClient.csproj" />
-		<ProjectReference Include="..\..\Components\Catalog\Catalog.MessagingApi\Catalog.MessagingApi.csproj" />
 		<ProjectReference Include="..\..\Components\Ordering\Ordering.Application\Ordering.Application.csproj" />
 		<ProjectReference Include="..\..\Components\Ordering\Ordering.HttpClient\Ordering.HttpClient.csproj" />
-		<ProjectReference Include="..\..\Components\Ordering\Ordering.MessagingApi\Ordering.MessagingApi.csproj" />
 		<ProjectReference Include="..\ShopApplication.Infrastructure\ShopApplication.Infrastructure.csproj" />
 	</ItemGroup>
 

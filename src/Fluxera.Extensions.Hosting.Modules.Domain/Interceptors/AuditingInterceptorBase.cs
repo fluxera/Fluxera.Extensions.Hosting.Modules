@@ -5,7 +5,7 @@
 	using System.Security.Claims;
 	using System.Threading.Tasks;
 	using Fluxera.Entity;
-	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
+	using Fluxera.Extensions.Hosting.Modules.Domain.Shared;
 	using Fluxera.Repository.Interception;
 	using Fluxera.Repository.Specifications;
 	using Fluxera.Utilities.Extensions;
@@ -76,7 +76,7 @@
 
 			// Modification date is only set on update, because some entities have 
 			// a 'in between' state in terms of validation, i.e. the merchant may
-			// be valid with less values directly after the account registration
+			// be valid with fewer values directly after the account registration
 			// but not valid with the existing values on the next update.
 			item.LastModifiedAt = null;
 		}

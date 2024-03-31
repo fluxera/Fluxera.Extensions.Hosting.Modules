@@ -5,6 +5,6 @@
 	internal sealed class ConfigureOptionsContributor : ConfigureOptionsContributorBase<AspNetCoreOptions>
 	{
 		/// <inheritdoc />
-		public override string SectionName => "AspNetCore";
+		public override string SectionName => "App";
 	}
 }

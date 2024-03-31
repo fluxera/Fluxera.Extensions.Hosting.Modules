@@ -7,7 +7,7 @@
 	using JetBrains.Annotations;
 	using MassTransit;
 	using DomainProductRemoved = Catalog.Domain.ProductAggregate.DomainEvents.ProductRemoved;
-	using IntegrationProductRemoved = Catalog.Domain.Shared.ProductAggregate.Messages.ProductRemoved;
+	using IntegrationProductRemoved = Catalog.Domain.Messages.ProductRemoved;
 
 	/// <summary>
 	///     An event handler for bridging the <see cref="DomainProductRemoved" /> domain event

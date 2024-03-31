@@ -1,7 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Principal
 {
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
-	using Fluxera.Extensions.Hosting.Modules.Principal.Extensions;
 	using JetBrains.Annotations;
 
 	/// <summary>

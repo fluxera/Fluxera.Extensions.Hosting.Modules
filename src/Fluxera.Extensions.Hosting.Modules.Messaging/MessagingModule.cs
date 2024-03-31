@@ -7,7 +7,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.DataManagement;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Contributors;
-	using Fluxera.Extensions.Hosting.Modules.Messaging.Extensions;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
@@ -164,7 +163,7 @@
 				});
 
 				// Rename the health check.
-				context.Services.Configure<HealthCheckServiceOptions>(options =>
+				services.Configure<HealthCheckServiceOptions>(options =>
 				{
 					HealthCheckRegistration registration = options.Registrations.Single(x => x.Name == "masstransit-bus");
 					registration.Name = "MassTransit";
@@ -176,15 +175,15 @@
 		/// <inheritdoc />
 		public override void PostConfigure(IApplicationInitializationContext context)
 		{
-			SendEndpointsContributorList sendEndpointsContributorList = context.ServiceProvider.GetObject<SendEndpointsContributorList>();
+			SendEndpointsContributorList contributorList = context.ServiceProvider.GetObject<SendEndpointsContributorList>();
 
 			// Register send endpoint configuration mappings.
 			context.Log("MapSendEndpoints", serviceProvider =>
 			{
-				foreach(ISendEndpointsContributor sendEndpointMappingContributor in sendEndpointsContributorList)
+				foreach(ISendEndpointsContributor contributor in contributorList)
 				{
 					ISendEndpointMappingConfigurator configurator = new SendEndpointMappingConfigurator(serviceProvider);
-					sendEndpointMappingContributor.Configure(configurator, context);
+					contributor.Configure(configurator, context);
 				}
 			});
 		}

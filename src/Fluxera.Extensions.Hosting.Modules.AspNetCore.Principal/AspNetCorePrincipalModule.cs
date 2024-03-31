@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal
 {
-	using Fluxera.Extensions.Hosting.Modules.AspNetCore.Principal.Extensions;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
 	using JetBrains.Annotations;
 

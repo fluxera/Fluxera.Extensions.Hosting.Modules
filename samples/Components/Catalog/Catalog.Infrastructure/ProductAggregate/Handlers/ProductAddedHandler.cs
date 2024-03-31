@@ -7,7 +7,7 @@
 	using JetBrains.Annotations;
 	using MassTransit;
 	using DomainProductAdded = Catalog.Domain.ProductAggregate.DomainEvents.ProductAdded;
-	using IntegrationProductAdded = Catalog.Domain.Shared.ProductAggregate.Messages.ProductAdded;
+	using IntegrationProductAdded = Catalog.Domain.Messages.ProductAdded;
 
 	/// <summary>
 	///     An event handler for bridging the <see cref="DomainProductAdded" /> domain event

@@ -4,7 +4,7 @@
 	using System.Linq.Expressions;
 	using System.Threading.Tasks;
 	using Fluxera.Entity;
-	using Fluxera.Extensions.Hosting.Modules.Domain.Shared.Model;
+	using Fluxera.Extensions.Hosting.Modules.Domain.Shared;
 	using Fluxera.Linq.Expressions;
 	using Fluxera.Repository.Interception;
 	using Fluxera.Repository.Query;

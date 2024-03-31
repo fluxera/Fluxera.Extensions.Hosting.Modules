@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Domain.Messages\Fluxera.Extensions.Hosting.Modules.Domain.Messages.csproj" />
+		<ProjectReference Include="..\Catalog.Domain.Shared\Catalog.Domain.Shared.csproj" />
+	</ItemGroup>
+
+</Project>

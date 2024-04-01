@@ -14,7 +14,7 @@
 		public const string AccessTokenHeaderName = "X-Access-Token";
 
 		/// <summary>
-		///     The name of the header containing the application context.
+		///     The name of the header containing the name of the origin application.
 		/// </summary>
 		public const string OriginApplicationHeaderName = "X-Origin-Application";
 	}

@@ -6,6 +6,7 @@ namespace ShopApplication
 	using Catalog.Application;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.AspNetCore.HealthChecks;
+	using Fluxera.Extensions.Hosting.Modules.Messaging.RabbitMQ;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Serilog;
 	using Fluxera.Extensions.Hosting.Plugins;
@@ -24,6 +25,7 @@ namespace ShopApplication
 		{
 			context.AddPlugin<SerilogModule>();
 			context.AddPlugin<HealthChecksEndpointsModule>();
+			context.AddPlugin<RabbitMqMessagingModule>();
 
 #if MONOLITH
 			// Configure the Catalog component.

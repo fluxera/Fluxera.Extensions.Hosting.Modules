@@ -3,6 +3,7 @@
 	using System.Net;
 	using Catalog.Application;
 	using Catalog.HttpApi;
+	using Catalog.Infrastructure;
 	using FluentValidation;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
@@ -14,10 +15,12 @@
 	using Microsoft.AspNetCore.HttpOverrides;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using Serilog;
 
 	[PublicAPI]
 	[DependsOn<CatalogHttpApiModule>]
 	[DependsOn<CatalogApplicationModule>]
+	[DependsOn<CatalogInfrastructureModule>]
 	public sealed class CatalogServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
@@ -54,6 +57,12 @@
 			context.UseRouting();
 
 			context.UseEndpoints();
+		}
+
+		/// <inheritdoc />
+		public override void OnApplicationShutdown(IApplicationShutdownContext context)
+		{
+			Log.CloseAndFlush();
 		}
 	}
 }

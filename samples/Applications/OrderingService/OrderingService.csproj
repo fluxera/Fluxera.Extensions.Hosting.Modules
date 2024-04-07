@@ -22,6 +22,7 @@
 		<ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Serilog\Fluxera.Extensions.Hosting.Modules.Serilog.csproj" />
 		<ProjectReference Include="..\..\Components\Ordering\Ordering.Application\Ordering.Application.csproj" />
 		<ProjectReference Include="..\..\Components\Ordering\Ordering.HttpApi\Ordering.HttpApi.csproj" />
+		<ProjectReference Include="..\..\Components\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

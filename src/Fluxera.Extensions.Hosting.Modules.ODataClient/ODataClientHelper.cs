@@ -21,7 +21,7 @@
 	/// <typeparam name="TDto"></typeparam>
 	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
-	public sealed class ODataHelper<TDto, TKey>
+	public sealed class ODataClientHelper<TDto, TKey>
 		where TDto : class, IEntityDto<TKey>
 		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
@@ -29,11 +29,11 @@
 		private readonly string collectionName;
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="ODataHelper{TDto, TKey}" /> type.
+		///     Initializes a new instance of the <see cref="ODataClientHelper{TDto,TKey}" /> type.
 		/// </summary>
 		/// <param name="oDataClient"></param>
 		/// <param name="collectionName"></param>
-		public ODataHelper(IODataClient oDataClient, string collectionName)
+		public ODataClientHelper(IODataClient oDataClient, string collectionName)
 		{
 			this.oDataClient = oDataClient;
 			this.collectionName = collectionName;

@@ -10,7 +10,7 @@
 		/// <inheritdoc />
 		public void Apply(ODataModelBuilder builder, ApiVersion apiVersion, string routePrefix)
 		{
-			builder.EntitySet<OrderDto>("Orders").EntityType.HasID(x => x.ID);
+			builder.EntitySet<OrderDto>("Orders").EntityType.HasID(x => x.EntityId);
 		}
 	}
 }

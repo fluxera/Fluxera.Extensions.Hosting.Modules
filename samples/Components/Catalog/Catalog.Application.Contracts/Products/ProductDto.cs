@@ -25,10 +25,10 @@
 		/// </summary>
 		public decimal Price { get; set; }
 
-		///// <inheritdoc />
-		//protected override ProductId CreateKey(string entityId)
-		//{
-		//	return new ProductId(entityId);
-		//}
+		/// <inheritdoc />
+		protected override ProductId CreateKey(string entityId)
+		{
+			return new ProductId(entityId);
+		}
 	}
 }

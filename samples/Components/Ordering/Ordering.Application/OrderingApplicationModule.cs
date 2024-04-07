@@ -11,10 +11,9 @@
 	using Ordering.Application.Contracts.Orders;
 	using Ordering.Application.Contributors;
 	using Ordering.Application.Orders;
-	using Ordering.Infrastructure;
 
 	[PublicAPI]
-	[DependsOn<OrderingInfrastructureModule>]
+	[DependsOn<MessagingModule>]
 	[DependsOn<AutoMapperModule>]
 	[DependsOn<ApplicationModule>]
 	[DependsOn<ConfigurationModule>]

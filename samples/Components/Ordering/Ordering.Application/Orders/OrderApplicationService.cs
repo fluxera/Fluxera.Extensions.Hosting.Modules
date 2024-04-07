@@ -1,5 +1,7 @@
 ﻿namespace Ordering.Application.Orders
 {
+	using System;
+	using System.Linq.Expressions;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
@@ -41,7 +43,7 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
+		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync(Expression<Func<OrderDto, bool>> predicate)
 		{
 			return ResultDto<OrderDto[]>.Ok([]);
 		}

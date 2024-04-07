@@ -14,10 +14,13 @@
 	using Microsoft.Extensions.Hosting;
 	using Ordering.Application;
 	using Ordering.HttpApi;
+	using Ordering.Infrastructure;
+	using Serilog;
 
 	[PublicAPI]
 	[DependsOn<OrderingHttpApiModule>]
 	[DependsOn<OrderingApplicationModule>]
+	[DependsOn<OrderingInfrastructureModule>]
 	public sealed class OrderingServiceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
@@ -54,6 +57,12 @@
 			context.UseRouting();
 
 			context.UseEndpoints();
+		}
+
+		/// <inheritdoc />
+		public override void OnApplicationShutdown(IApplicationShutdownContext context)
+		{
+			Log.CloseAndFlush();
 		}
 	}
 }

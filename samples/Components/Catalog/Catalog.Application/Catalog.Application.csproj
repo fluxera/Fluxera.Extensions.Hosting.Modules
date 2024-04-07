@@ -17,9 +17,10 @@
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Application\Fluxera.Extensions.Hosting.Modules.Application.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
 		<ProjectReference Include="..\Catalog.Application.Contracts\Catalog.Application.Contracts.csproj" />
+		<ProjectReference Include="..\Catalog.Domain.Messages\Catalog.Domain.Messages.csproj" />
 		<ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
-		<ProjectReference Include="..\Catalog.Infrastructure\Catalog.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

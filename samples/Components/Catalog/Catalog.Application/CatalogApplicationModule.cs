@@ -3,7 +3,6 @@
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Application.Contributors;
 	using Catalog.Application.Products;
-	using Catalog.Infrastructure;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Application;
@@ -14,7 +13,7 @@
 	using Microsoft.Extensions.DependencyInjection;
 
 	[PublicAPI]
-	[DependsOn<CatalogInfrastructureModule>]
+	[DependsOn<MessagingModule>]
 	[DependsOn<AutoMapperModule>]
 	[DependsOn<ApplicationModule>]
 	[DependsOn<ConfigurationModule>]

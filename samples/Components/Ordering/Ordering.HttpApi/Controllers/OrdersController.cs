@@ -27,22 +27,22 @@
 		{
 			new OrderDto
 			{
-				ID = "38835805a29042499132b635618c37dd",
+				EntityId = "38835805a29042499132b635618c37dd",
 				OrderNumber = "A123456790"
 			},
 			new OrderDto
 			{
-				ID = "a48aa043ef8d485491f27e4accdbbb15",
+				EntityId = "a48aa043ef8d485491f27e4accdbbb15",
 				OrderNumber = "A123456789"
 			},
 			new OrderDto
 			{
-				ID = "f802e598a1fb47a2975b546a2bd935f1",
+				EntityId = "f802e598a1fb47a2975b546a2bd935f1",
 				OrderNumber = "A123456788"
 			},
 			new OrderDto
 			{
-				ID = "86f059a6f20c46a9a36dcfa687d8a1c1",
+				EntityId = "86f059a6f20c46a9a36dcfa687d8a1c1",
 				OrderNumber = "A123456787"
 			}
 		};
@@ -57,11 +57,11 @@
 		[EnableQuery]
 		public async Task<IActionResult> Get(ODataQueryOptions<OrderDto> queryOptions)
 		{
-			IQueryCollection queryCollection = this.HttpContext.Request.Query;
-			IDictionary<string, string> queryParameters = queryCollection.ToDictionary(x => x.Key, x => x.Value.ToString());
+			//IQueryCollection queryCollection = this.HttpContext.Request.Query;
+			//IDictionary<string, string> queryParameters = queryCollection.ToDictionary(x => x.Key, x => x.Value.ToString());
 
-			IServiceProvider serviceProvider = this.options.Value.GetRouteServices("odata");
-			List<IEdmModel> edmModels = serviceProvider.GetServices<IEdmModel>().ToList();
+			//IServiceProvider serviceProvider = this.options.Value.GetRouteServices("odata");
+			//List<IEdmModel> edmModels = serviceProvider.GetServices<IEdmModel>().ToList();
 
 			//Dictionary<string, string> options = new Dictionary<string, string>
 			//{
@@ -74,7 +74,7 @@
 			//	//{"$search"  , "tom"                         },
 			//};
 
-			IEdmType edmType = edmModels[1].FindDeclaredType("Default.Order");
+			//IEdmType edmType = edmModels[1].FindDeclaredType("Default.Order");
 			//IEdmType edmType2 = edmModel.FindType("Default.Order");
 
 			//IEdmNavigationSource edmNavigationSource = edmModel.FindDeclaredEntitySet("Orders");

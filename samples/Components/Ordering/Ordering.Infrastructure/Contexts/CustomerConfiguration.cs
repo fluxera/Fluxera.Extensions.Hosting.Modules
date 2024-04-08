@@ -4,7 +4,7 @@
 	using Fluxera.Repository.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
-	using Ordering.Domain.CustomerAggregate;
+	using Ordering.Domain.Customers;
 
 	public sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 	{

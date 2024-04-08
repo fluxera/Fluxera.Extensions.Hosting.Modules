@@ -6,8 +6,8 @@
 	using System.Threading.Tasks;
 	using AutoMapper;
 	using Catalog.Application.Contracts.Products;
-	using Catalog.Domain.ProductAggregate;
-	using Catalog.Domain.Shared.ProductAggregate;
+	using Catalog.Domain.Products;
+	using Catalog.Domain.Shared.Products;
 	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;

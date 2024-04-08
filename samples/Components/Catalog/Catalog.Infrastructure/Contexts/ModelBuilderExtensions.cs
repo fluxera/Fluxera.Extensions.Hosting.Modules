@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Infrastructure.Contexts
 {
 	using System;
-	using Catalog.Domain.ProductAggregate;
+	using Catalog.Domain.Products;
 	using JetBrains.Annotations;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;

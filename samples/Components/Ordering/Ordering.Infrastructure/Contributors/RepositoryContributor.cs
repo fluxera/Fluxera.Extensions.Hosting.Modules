@@ -3,8 +3,8 @@
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using JetBrains.Annotations;
-	using Ordering.Domain.CustomerAggregate;
-	using Ordering.Domain.OrderAggregate;
+	using Ordering.Domain.Customers;
+	using Ordering.Domain.Orders;
 
 	[UsedImplicitly]
 	internal sealed class RepositoryContributor : RepositoryContributorBase

@@ -22,12 +22,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.AzureServiceBus" Version="8.0.1" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.5" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.6" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
 		<PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.2.1" />
 	</ItemGroup>
 

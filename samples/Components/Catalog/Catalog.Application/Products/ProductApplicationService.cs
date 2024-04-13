@@ -12,31 +12,31 @@
 	[UsedImplicitly]
 	internal sealed class ProductApplicationService : IProductApplicationService
 	{
-		private readonly ISender sender;
+		private readonly IMediator mediator;
 
-		public ProductApplicationService(ISender sender)
+		public ProductApplicationService(IMediator mediator)
 		{
-			this.sender = sender;
+			this.mediator = mediator;
 		}
 
 		/// <inheritdoc />
 		public async Task<ResultDto<ProductDto>> GetProductAsync(ProductId id)
 		{
-			Result<ProductDto> result = await this.sender.Send(new GetProductRequest(id));
+			Result<ProductDto> result = await this.mediator.Send(new GetProductRequest(id));
 			return result.ToResultDto();
 		}
 
 		/// <inheritdoc />
 		public async Task<ResultDto<ProductDto>> AddProduct(ProductDto dto)
 		{
-			Result<ProductDto> result = await this.sender.Send(new AddProductRequest(dto));
+			Result<ProductDto> result = await this.mediator.Send(new AddProductRequest(dto));
 			return result.ToResultDto();
 		}
 
 		/// <inheritdoc />
 		public async Task<ResultDto<ProductDto[]>> GetProductsAsync()
 		{
-			Result<ProductDto[]> result = await this.sender.Send(new GetProductsRequest());
+			Result<ProductDto[]> result = await this.mediator.Send(new GetProductsRequest());
 			return result.ToResultDto();
 		}
 	}

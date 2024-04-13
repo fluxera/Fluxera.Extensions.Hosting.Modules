@@ -1,35 +1,51 @@
 ﻿namespace Ordering.HttpClient.Clients
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Linq.Expressions;
 	using System.Net.Http;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
-	using Fluxera.Extensions.Hosting.Modules.ODataClient;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 	using Ordering.Application.Contracts.Orders;
-	using Ordering.Domain.Shared.Orders;
 
 	[UsedImplicitly]
 	internal sealed class OrderApplicationServiceClient : HttpClientServiceBase, IOrderApplicationService, IHttpClientService
 	{
-		private readonly ODataClientHelper<OrderDto, OrderId> clientHelper;
+		private readonly IList<OrderDto> orders = new List<OrderDto>
+		{
+			new OrderDto
+			{
+				EntityId = "38835805a29042499132b635618c37dd",
+				OrderNumber = "A123456790"
+			},
+			new OrderDto
+			{
+				EntityId = "a48aa043ef8d485491f27e4accdbbb15",
+				OrderNumber = "A123456789"
+			},
+			new OrderDto
+			{
+				EntityId = "f802e598a1fb47a2975b546a2bd935f1",
+				OrderNumber = "A123456788"
+			},
+			new OrderDto
+			{
+				EntityId = "86f059a6f20c46a9a36dcfa687d8a1c1",
+				OrderNumber = "A123456787"
+			}
+		};
 
 		/// <inheritdoc />
 		public OrderApplicationServiceClient(string name, HttpClient httpClient, RemoteService options)
 			: base(name, httpClient, options)
 		{
-			this.clientHelper = new ODataClientHelper<OrderDto, OrderId>(null, null);
 		}
 
 		/// <inheritdoc />
-		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync(Expression<Func<OrderDto, bool>> predicate)
+		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
 		{
-			IReadOnlyCollection<OrderDto> orderDtos = await this.clientHelper.FindManyAsync(predicate);
-			return ResultDto<OrderDto[]>.Ok(orderDtos.ToArray());
+			return ResultDto<OrderDto[]>.Ok(orders.ToArray());
 		}
 	}
 }

@@ -8,25 +8,25 @@
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Products;
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
+	using MediatR;
 
 	[UsedImplicitly]
-	internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Result<ProductDto[]>>
+	internal sealed class GetProductsRequestHandler : IRequestHandler<GetProductsRequest, Result<ProductDto[]>>
 	{
 		private readonly IMapper mapper;
 		private readonly IRepository<Product, ProductId> repository;
 
-		public GetProductsQueryHandler(IProductRepository repository, IMapper mapper)
+		public GetProductsRequestHandler(IProductRepository repository, IMapper mapper)
 		{
 			this.repository = repository;
 			this.mapper = mapper;
 		}
 
 		/// <inheritdoc />
-		public async Task<Result<ProductDto[]>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
+		public async Task<Result<ProductDto[]>> Handle(GetProductsRequest request, CancellationToken cancellationToken)
 		{
 			Result<ProductDto[]> result;
 

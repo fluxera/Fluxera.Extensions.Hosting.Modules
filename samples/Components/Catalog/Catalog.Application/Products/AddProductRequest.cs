@@ -1,14 +1,14 @@
 ﻿namespace Catalog.Application.Products
 {
 	using Catalog.Application.Contracts.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
+	using MediatR;
 
 	[PublicAPI]
-	public sealed class AddProductCommand : ICommand<Result<ProductDto>>
+	public sealed class AddProductRequest : IRequest<Result<ProductDto>>
 	{
-		public AddProductCommand(ProductDto productDto)
+		public AddProductRequest(ProductDto productDto)
 		{
 			this.ProductDto = productDto;
 		}

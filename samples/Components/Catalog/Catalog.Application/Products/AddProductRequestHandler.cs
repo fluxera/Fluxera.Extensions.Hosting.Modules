@@ -7,19 +7,19 @@
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Products;
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Repository;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
+	using MediatR;
 
 	[UsedImplicitly]
-	internal sealed class AddProductCommandHandler : ICommandHandler<AddProductCommand, Result<ProductDto>>
+	internal sealed class AddProductRequestHandler : IRequestHandler<AddProductRequest, Result<ProductDto>>
 	{
 		private readonly IRepository<Product, ProductId> repository;
 		private readonly IUnitOfWork unitOfWork;
 		private readonly IMapper mapper;
 
-		public AddProductCommandHandler(
+		public AddProductRequestHandler(
 			IProductRepository repository,
 			IUnitOfWorkFactory unitOfWorkFactory,
 			IMapper mapper)
@@ -30,7 +30,7 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<Result<ProductDto>> Handle(AddProductCommand request, CancellationToken cancellationToken)
+		public async Task<Result<ProductDto>> Handle(AddProductRequest request, CancellationToken cancellationToken)
 		{
 			Result<ProductDto> result;
 

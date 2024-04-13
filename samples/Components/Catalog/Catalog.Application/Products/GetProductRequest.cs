@@ -2,14 +2,14 @@
 {
 	using Catalog.Application.Contracts.Products;
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
+	using MediatR;
 
 	[PublicAPI]
-	public sealed class GetProductQuery : IQuery<Result<ProductDto>>
+	public sealed class GetProductRequest : IRequest<Result<ProductDto>>
 	{
-		public GetProductQuery(ProductId productId)
+		public GetProductRequest(ProductId productId)
 		{
 			this.ProductId = productId;
 		}

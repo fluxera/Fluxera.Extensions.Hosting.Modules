@@ -11,7 +11,7 @@
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 	using Ordering.Application.Contracts.Orders;
-	using Ordering.Domain.Shared.OrderAggregate;
+	using Ordering.Domain.Shared.Orders;
 
 	[UsedImplicitly]
 	internal sealed class OrderApplicationServiceClient : HttpClientServiceBase, IOrderApplicationService, IHttpClientService

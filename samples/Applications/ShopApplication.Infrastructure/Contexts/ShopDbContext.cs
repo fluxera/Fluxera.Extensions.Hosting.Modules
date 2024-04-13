@@ -1,7 +1,7 @@
 ﻿namespace ShopApplication.Infrastructure.Contexts
 {
-	using Catalog.Domain.ProductAggregate;
-	using Catalog.Domain.Shared.ProductAggregate;
+	using Catalog.Domain.Products;
+	using Catalog.Domain.Shared.Products;
 	using Catalog.Infrastructure.Contexts;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;

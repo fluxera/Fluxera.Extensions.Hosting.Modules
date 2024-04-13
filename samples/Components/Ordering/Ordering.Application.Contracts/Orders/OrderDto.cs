@@ -2,7 +2,7 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
-	using Ordering.Domain.Shared.OrderAggregate;
+	using Ordering.Domain.Shared.Orders;
 
 	/// <summary>
 	///     A dto that provides the data of an order.

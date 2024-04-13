@@ -4,7 +4,7 @@
 	using Fluxera.Repository.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
-	using Ordering.Domain.OrderAggregate;
+	using Ordering.Domain.Orders;
 
 	public sealed class OrderConfiguration : IEntityTypeConfiguration<Order>
 	{

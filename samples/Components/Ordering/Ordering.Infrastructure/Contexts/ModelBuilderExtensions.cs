@@ -4,8 +4,8 @@
 	using JetBrains.Annotations;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
-	using Ordering.Domain.CustomerAggregate;
-	using Ordering.Domain.OrderAggregate;
+	using Ordering.Domain.Customers;
+	using Ordering.Domain.Orders;
 
 	/// <summary>
 	///		Extension methods for the <see cref="ModelBuilder"/> type.

@@ -2,7 +2,7 @@
 {
 	using System;
 	using System.Threading.Tasks;
-	using Catalog.Domain.Messages;
+	using Catalog.Domain.Messages.Products;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using JetBrains.Annotations;
 	using MassTransit;

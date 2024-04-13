@@ -29,16 +29,7 @@
 		{
 			ISender sender = this.serviceProvider.GetService<ISender>();
 
-			Func<Task> func = async () => await sender.Send(new TestCommand());
-			await func.Should().NotThrowAsync();
-		}
-
-		[Test]
-		public async Task ShouldFindQueryHandler()
-		{
-			ISender sender = this.serviceProvider.GetService<ISender>();
-
-			Func<Task> func = async () => await sender.Send(new TestQuery());
+			Func<Task> func = async () => await sender.Send(new TestRequest());
 			await func.Should().NotThrowAsync();
 		}
 
@@ -47,45 +38,32 @@
 		{
 			IPublisher publisher = this.serviceProvider.GetService<IPublisher>();
 
-			Func<Task> func = async () => await publisher.Publish(new TestEvent());
+			Func<Task> func = async () => await publisher.Publish(new TestNotification());
 			await func.Should().NotThrowAsync();
 		}
 	}
 
-	public class TestCommand : ICommand
+	public class TestRequest : IRequest<Result>
 	{
 	}
 
-	public class TestQuery : IQuery<Result<int>>
+	public class TestNotification : INotification
 	{
 	}
 
-	public class TestEvent : IEvent
-	{
-	}
-
-	public class TestCommandHandler : ICommandHandler<TestCommand>
+	public class TestRequestHandler : IRequestHandler<TestRequest, Result>
 	{
 		/// <inheritdoc />
-		public Task<Result> Handle(TestCommand request, CancellationToken cancellationToken)
+		public Task<Result> Handle(TestRequest request, CancellationToken cancellationToken)
 		{
 			return Task.FromResult(Result.Ok());
 		}
 	}
 
-	public class TestQueryHandler : IQueryHandler<TestQuery, Result<int>>
+	public class TestNotificationHandler : INotificationHandler<TestNotification>
 	{
 		/// <inheritdoc />
-		public Task<Result<int>> Handle(TestQuery request, CancellationToken cancellationToken)
-		{
-			return Task.FromResult(Result<int>.Ok(1));
-		}
-	}
-
-	public class TestEventHandler : IEventHandler<TestEvent>
-	{
-		/// <inheritdoc />
-		public Task Handle(TestEvent notification, CancellationToken cancellationToken)
+		public Task Handle(TestNotification notification, CancellationToken cancellationToken)
 		{
 			return Task.CompletedTask;
 		}

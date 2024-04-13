@@ -3,7 +3,7 @@
 	using AutoMapper;
 	using JetBrains.Annotations;
 	using Ordering.Application.Contracts.Orders;
-	using Ordering.Domain.OrderAggregate;
+	using Ordering.Domain.Orders;
 
 	[UsedImplicitly]
 	internal sealed class MappingProfile : Profile

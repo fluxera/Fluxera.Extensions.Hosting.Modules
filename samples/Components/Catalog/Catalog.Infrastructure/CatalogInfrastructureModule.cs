@@ -4,7 +4,9 @@
 namespace Catalog.Infrastructure
 {
 	using Catalog.Domain;
+	using Catalog.Domain.Products;
 	using Catalog.Infrastructure.Contributors;
+	using Catalog.Infrastructure.Products;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
@@ -12,6 +14,7 @@ namespace Catalog.Infrastructure
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
 	using JetBrains.Annotations;
+	using Microsoft.Extensions.DependencyInjection.Extensions;
 
 	/// <summary>
 	///     The infrastructure module of the component.
@@ -32,6 +35,10 @@ namespace Catalog.Infrastructure
 		{
 			// Add the repository contributor for the 'Default' repository.
 			context.Services.AddRepositoryContributor<RepositoryContributor>();
+
+			// Add repositories.
+			context.Log("AddRepositories", services =>
+				services.TryAddTransient<IProductRepository, ProductRepository>());
 		}
 	}
 }

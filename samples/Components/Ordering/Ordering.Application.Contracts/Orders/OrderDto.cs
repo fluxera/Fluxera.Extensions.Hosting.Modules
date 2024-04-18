@@ -11,11 +11,5 @@
 	public sealed class OrderDto : EntityDto<OrderId>
 	{
 		public string OrderNumber { get; set; }
-
-		/// <inheritdoc />
-		protected override OrderId CreateKey(string entityId)
-		{
-			return new OrderId(entityId);
-		}
 	}
 }

@@ -5,7 +5,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Scheduler.Contributors;
 	using JetBrains.Annotations;
-	using Quartz;
 
 	/// <summary>
 	///     A module that enables scheduler support.
@@ -27,11 +26,11 @@
 		/// <inheritdoc />
 		public override void PostConfigureServices(IServiceConfigurationContext context)
 		{
-			bool isRegistered = context.Services.IsRegistered<ISchedulerFactory>();
-			if(!isRegistered)
-			{
-				throw new InvalidOperationException("The scheduler was not configured.");
-			}
+			//bool isRegistered = context.Services.IsRegistered<ISchedulerFactory>();
+			//if(!isRegistered)
+			//{
+			//	throw new InvalidOperationException("The scheduler was not configured.");
+			//}
 		}
 	}
 }

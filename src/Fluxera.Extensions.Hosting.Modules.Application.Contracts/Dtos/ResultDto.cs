@@ -10,8 +10,31 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public sealed class ResultDto : ResultBaseDto<ResultDto>
+	public class ResultDto : IResultDto
 	{
+		/// <summary>
+		///     Initializes a new instance of the <see cref="ResultDto" /> type.
+		/// </summary>
+		public ResultDto()
+		{
+			// Note: Needed for serialization.
+
+			this.Errors = new List<ErrorDto>();
+			this.Successes = new List<SuccessDto>();
+		}
+
+		/// <inheritdoc />
+		public bool IsFailed => !this.IsSuccessful;
+
+		/// <inheritdoc />
+		public bool IsSuccessful { get; set; }
+
+		/// <inheritdoc />
+		public IList<ErrorDto> Errors { get; set; }
+
+		/// <inheritdoc />
+		public IList<SuccessDto> Successes { get; set; }
+
 		/// <summary>
 		///     Creates a successful result.
 		/// </summary>
@@ -19,19 +42,6 @@
 		public static ResultDto Ok()
 		{
 			return new ResultDto
-			{
-				IsSuccessful = true
-			};
-		}
-
-		/// <summary>
-		///     Creates a successful result.
-		/// </summary>
-		/// <returns></returns>
-		public static TResultDto Ok<TResultDto>()
-			where TResultDto : ResultBaseDto<ResultDto>, new()
-		{
-			return new TResultDto
 			{
 				IsSuccessful = true
 			};
@@ -75,14 +85,27 @@
 		}
 
 		/// <summary>
+		///     Creates a successful result.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public static ResultDto<TValue> Ok<TValue>(TValue value = default)
+		{
+			return new ResultDto<TValue>
+			{
+				IsSuccessful = true,
+				Value = value
+			};
+		}
+
+		/// <summary>
 		///     Creates a failed result.
 		/// </summary>
 		/// <param name="errorMessage"></param>
 		/// <returns></returns>
-		public static TResultDto Fail<TResultDto>(string errorMessage)
-			where TResultDto : ResultBaseDto<ResultDto>, new()
+		public static ResultDto<TValue> Fail<TValue>(string errorMessage)
 		{
-			return new TResultDto
+			return new ResultDto<TValue>
 			{
 				IsSuccessful = false,
 				Errors =
@@ -97,10 +120,9 @@
 		/// </summary>
 		/// <param name="errorMessages"></param>
 		/// <returns></returns>
-		public static TResultDto Fail<TResultDto>(IEnumerable<string> errorMessages)
-			where TResultDto : ResultBaseDto<ResultDto>, new()
+		public static ResultDto<TValue> Fail<TValue>(IEnumerable<string> errorMessages)
 		{
-			TResultDto resultDto = new TResultDto
+			ResultDto<TValue> resultDto = new ResultDto<TValue>
 			{
 				IsSuccessful = false
 			};
@@ -119,111 +141,34 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public sealed class ResultDto<TValue> : ResultBaseDto<ResultDto<TValue>, TValue>
+	public class ResultDto<TValue> : IResultDto<TValue>
 	{
 		/// <summary>
-		///     Creates a successful result.
+		///     Initializes a new instance of the <see cref="ResultDto{TValue}" /> type.
 		/// </summary>
-		/// <param name="value"></param>
-		/// <returns></returns>
-		public static ResultDto<TValue> Ok(TValue value = default)
+		public ResultDto()
 		{
-			return new ResultDto<TValue>
-			{
-				IsSuccessful = true,
-				Value = value
-			};
+			// Note: Needed for serialization.
+
+			this.Errors = new List<ErrorDto>();
+			this.Successes = new List<SuccessDto>();
 		}
+
+		/// <inheritdoc />
+		public bool IsFailed => !this.IsSuccessful;
+
+		/// <inheritdoc />
+		public bool IsSuccessful { get; set; }
+
+		/// <inheritdoc />
+		public IList<ErrorDto> Errors { get; set; }
+
+		/// <inheritdoc />
+		public IList<SuccessDto> Successes { get; set; }
 
 		/// <summary>
-		///     Creates a successful result.
+		///     Gets or sets the value of the result.
 		/// </summary>
-		/// <param name="value"></param>
-		/// <returns></returns>
-		public static TResultDto Ok<TResultDto>(TValue value = default)
-			where TResultDto : ResultBaseDto<ResultDto<TValue>, TValue>, new()
-		{
-			return new TResultDto
-			{
-				IsSuccessful = true,
-				Value = value
-			};
-		}
-
-		/// <summary>
-		///     Creates a failed result.
-		/// </summary>
-		/// <param name="errorMessage"></param>
-		/// <returns></returns>
-		public static ResultDto<TValue> Fail(string errorMessage)
-		{
-			return new ResultDto<TValue>
-			{
-				IsSuccessful = false,
-				Errors =
-				{
-					ErrorDto.Create(errorMessage, null)
-				}
-			};
-		}
-
-		/// <summary>
-		///     Creates a failed result.
-		/// </summary>
-		/// <param name="errorMessages"></param>
-		/// <returns></returns>
-		public static ResultDto<TValue> Fail(IEnumerable<string> errorMessages)
-		{
-			ResultDto<TValue> resultDto = new ResultDto<TValue>
-			{
-				IsSuccessful = false
-			};
-
-			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
-			{
-				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
-			}
-
-			return resultDto;
-		}
-
-		/// <summary>
-		///     Creates a failed result.
-		/// </summary>
-		/// <param name="errorMessage"></param>
-		/// <returns></returns>
-		public static TResultDto Fail<TResultDto>(string errorMessage)
-			where TResultDto : ResultBaseDto<ResultDto<TValue>, TValue>, new()
-		{
-			return new TResultDto
-			{
-				IsSuccessful = false,
-				Errors =
-				{
-					ErrorDto.Create(errorMessage, null)
-				}
-			};
-		}
-
-		/// <summary>
-		///     Creates a failed result.
-		/// </summary>
-		/// <param name="errorMessages"></param>
-		/// <returns></returns>
-		public static TResultDto Fail<TResultDto>(IEnumerable<string> errorMessages)
-			where TResultDto : ResultBaseDto<ResultDto<TValue>, TValue>, new()
-		{
-			TResultDto resultDto = new TResultDto
-			{
-				IsSuccessful = false
-			};
-
-			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
-			{
-				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
-			}
-
-			return resultDto;
-		}
+		public TValue Value { get; set; }
 	}
 }

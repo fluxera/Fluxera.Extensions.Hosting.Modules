@@ -1,5 +1,6 @@
 ﻿namespace Ordering.Application.Orders
 {
+	using System;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
@@ -19,7 +20,7 @@
 		/// <inheritdoc />
 		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
 		{
-			return ResultDto<OrderDto[]>.Ok([]);
+			return ResultDto.Ok(Array.Empty<OrderDto>());
 		}
 	}
 }

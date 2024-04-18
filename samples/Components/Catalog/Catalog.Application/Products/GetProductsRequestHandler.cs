@@ -35,11 +35,11 @@
 				IReadOnlyCollection<Product> entities = await this.repository.FindManyAsync(x => true, cancellationToken: cancellationToken);
 				ProductDto[] dtos = this.mapper.Map<ProductDto[]>(entities);
 
-				result = Result<ProductDto[]>.Ok(dtos);
+				result = Result.Ok(dtos);
 			}
 			catch(Exception ex)
 			{
-				result = Result<ProductDto[]>.Fail(ex.Message);
+				result = Result.Fail<ProductDto[]>(ex.Message);
 			}
 
 			return result;

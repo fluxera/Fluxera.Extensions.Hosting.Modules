@@ -8,6 +8,7 @@
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 	using Ordering.Application.Contracts.Orders;
+	using Ordering.Domain.Shared.Orders;
 
 	[UsedImplicitly]
 	internal sealed class OrderApplicationServiceClient : HttpClientServiceBase, IOrderApplicationService, IHttpClientService
@@ -16,22 +17,22 @@
 		{
 			new OrderDto
 			{
-				EntityId = "38835805a29042499132b635618c37dd",
+				ID = new OrderId("38835805a29042499132b635618c37dd"),
 				OrderNumber = "A123456790"
 			},
 			new OrderDto
 			{
-				EntityId = "a48aa043ef8d485491f27e4accdbbb15",
+				ID = new OrderId("a48aa043ef8d485491f27e4accdbbb15"),
 				OrderNumber = "A123456789"
 			},
 			new OrderDto
 			{
-				EntityId = "f802e598a1fb47a2975b546a2bd935f1",
+				ID = new OrderId("f802e598a1fb47a2975b546a2bd935f1"),
 				OrderNumber = "A123456788"
 			},
 			new OrderDto
 			{
-				EntityId = "86f059a6f20c46a9a36dcfa687d8a1c1",
+				ID = new OrderId("86f059a6f20c46a9a36dcfa687d8a1c1"),
 				OrderNumber = "A123456787"
 			}
 		};
@@ -45,7 +46,7 @@
 		/// <inheritdoc />
 		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
 		{
-			return ResultDto<OrderDto[]>.Ok(orders.ToArray());
+			return ResultDto.Ok(orders.ToArray());
 		}
 	}
 }

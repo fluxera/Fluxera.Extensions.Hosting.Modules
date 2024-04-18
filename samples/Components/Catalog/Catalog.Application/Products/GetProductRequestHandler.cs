@@ -35,11 +35,11 @@
 				Product entity = await this.repository.FindOneAsync(x => x.ID == id, cancellationToken: cancellationToken);
 				ProductDto dto = this.mapper.Map<ProductDto>(entity);
 
-				result = Result<ProductDto>.Ok(dto);
+				result = Result.Ok(dto);
 			}
 			catch(Exception ex)
 			{
-				result = Result<ProductDto>.Fail(ex.Message);
+				result = Result.Fail<ProductDto>(ex.Message);
 			}
 
 			return result;

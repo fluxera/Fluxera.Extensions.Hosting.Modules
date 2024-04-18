@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Domain.Interceptors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Infrastructure.Interceptors
 {
 	using System;
 	using System.Linq.Expressions;

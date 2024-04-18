@@ -14,6 +14,9 @@
 		{
 			context.Log("AddDateTimeOffsetProvider",
 				services => services.AddDateTimeOffsetProvider());
+
+			context.Log("AddDateTimeProvider",
+				services => services.AddDateTimeProvider());
 		}
 	}
 }

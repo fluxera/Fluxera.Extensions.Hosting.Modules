@@ -10,9 +10,9 @@
 	///     The application module.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(DomainModule))]
-	[DependsOn(typeof(AutoMapperModule))]
-	[DependsOn(typeof(LocalizationModule))]
+	[DependsOn<DomainModule>]
+	[DependsOn<AutoMapperModule>]
+	[DependsOn<LocalizationModule>]
 	public sealed class ApplicationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

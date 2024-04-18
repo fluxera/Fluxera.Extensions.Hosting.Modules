@@ -9,7 +9,7 @@
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public sealed class ErrorDto
+	public sealed class ErrorDto : IErrorDto
 	{
 		/// <summary>
 		///		Initializes a new instance of the <see cref="ErrorDto"/> type.

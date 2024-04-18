@@ -4,12 +4,14 @@
 	using System.Collections.Generic;
 	using JetBrains.Annotations;
 
+
+
 	/// <summary>
 	///		A DTO for success messages of a <see cref="ResultDto"/>.
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public sealed class SuccessDto
+	public sealed class SuccessDto : ISuccessDto
 	{
 		/// <summary>
 		///		Initializes a new instance of the <see cref="SuccessDto"/> type.

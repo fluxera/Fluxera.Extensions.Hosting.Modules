@@ -9,7 +9,6 @@
 		/// <inheritdoc />
 		public void ConfigureStore(ISchedulerStoreConfigurator configurator, IServiceConfigurationContext context)
 		{
-			configurator.UseInMemoryStore();
 		}
 	}
 }

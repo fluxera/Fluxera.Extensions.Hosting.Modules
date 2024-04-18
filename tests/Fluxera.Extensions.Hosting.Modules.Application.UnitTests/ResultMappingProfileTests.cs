@@ -33,7 +33,7 @@
 		[Test]
 		public void ShouldMapSuccessfulResult_SimpleValue()
 		{
-			Result<string> result = Result<string>.Ok("Hallo!");
+			Result<string> result = Result.Ok("Hallo!");
 			ResultDto<string> resultDto = this.mapper.Map<ResultDto<string>>(result);
 
 			resultDto.Should().NotBeNull();
@@ -47,7 +47,7 @@
 		[Test]
 		public void ShouldMapFailedResult_SimpleValue()
 		{
-			Result<string> result = Result<string>.Fail("An error occurred.");
+			Result<string> result = Result.Fail<string>("An error occurred.");
 			ResultDto<string> resultDto = this.mapper.Map<ResultDto<string>>(result);
 
 			resultDto.Should().NotBeNull();
@@ -62,7 +62,7 @@
 		[Test]
 		public void ShouldMapSuccessfulResult_ComplexValue()
 		{
-			Result<ComplexType> result = Result<ComplexType>.Ok(new ComplexType { Message = "Hallo!", Amount = 42 });
+			Result<ComplexType> result = Result.Ok(new ComplexType { Message = "Hallo!", Amount = 42 });
 			ResultDto<ComplexType> resultDto = this.mapper.Map<ResultDto<ComplexType>>(result);
 
 			resultDto.Should().NotBeNull();
@@ -78,7 +78,7 @@
 		[Test]
 		public void ShouldMapFailedResult_ComplexValue()
 		{
-			Result<ComplexType> result = Result<ComplexType>.Fail("An error occurred.");
+			Result<ComplexType> result = Result.Fail<ComplexType>("An error occurred.");
 			ResultDto<ComplexType> resultDto = this.mapper.Map<ResultDto<ComplexType>>(result);
 
 			resultDto.Should().NotBeNull();

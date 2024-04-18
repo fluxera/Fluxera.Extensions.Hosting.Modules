@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -21,19 +22,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.6" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.7" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
-		<PackageReference Include="Quartz" Version="3.8.1" />
-		<PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.8.1" />
-		<PackageReference Include="Quartz.Extensions.Hosting" Version="3.8.1" />
-		<PackageReference Include="Quartz.OpenTelemetry.Instrumentation" Version="3.8.1" />
-		<PackageReference Include="Quartz.Plugins" Version="3.8.1" />
-		<PackageReference Include="Quartz.Plugins.TimeZoneConverter" Version="3.8.1" />
-		<PackageReference Include="Quartz.Serialization.Json" Version="3.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>

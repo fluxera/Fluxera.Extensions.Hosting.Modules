@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="11.9.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.0.6" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.0.7" />
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
 	</ItemGroup>
 

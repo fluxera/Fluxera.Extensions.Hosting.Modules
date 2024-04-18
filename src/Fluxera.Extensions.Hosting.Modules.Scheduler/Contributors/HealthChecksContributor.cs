@@ -8,7 +8,7 @@
 		/// <inheritdoc />
 		public void ConfigureHealthChecks(IHealthChecksBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddCheck<QuartzHealthCheck>(name: "Quartz", tags: new string[] { HealthCheckTags.Ready });
+			//builder.AddCheck<QuartzHealthCheck>(name: "Quartz", tags: new string[] { HealthCheckTags.Ready });
 		}
 	}
 }

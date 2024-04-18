@@ -4,7 +4,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A contract for result types.
+	///		A contract for result types without value.
 	/// </summary>
 	[PublicAPI]
 	public interface IResultDto
@@ -28,5 +28,17 @@
 		///		Gets the potential successes.
 		/// </summary>
 		IList<SuccessDto> Successes { get; }
+	}
+
+	/// <summary>
+	///		A contract for result types with value.
+	/// </summary>
+	[PublicAPI]
+	public interface IResultDto<TValue> : IResultDto
+	{
+		/// <summary>
+		///     Gets or sets the value of the result.
+		/// </summary>
+		TValue Value { get; set; }
 	}
 }

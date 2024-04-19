@@ -15,7 +15,7 @@
 		/// <inheritdoc />
 		public Task Consume(ConsumeContext<ProductUpdated> context)
 		{
-			Console.WriteLine("CONSUMED PRODUCT UPDATED");
+			Console.WriteLine(@"CONSUMED PRODUCT UPDATED");
 
 			return Task.CompletedTask;
 		}

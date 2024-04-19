@@ -44,9 +44,9 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
+		public Task<ResultDto<OrderDto[]>> GetOrdersAsync()
 		{
-			return ResultDto.Ok(orders.ToArray());
+			return Task.FromResult(ResultDto.Ok(this.orders.ToArray()));
 		}
 	}
 }

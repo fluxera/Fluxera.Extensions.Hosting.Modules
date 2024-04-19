@@ -13,6 +13,6 @@
 		where TKey : notnull, IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <inheritdoc />
-		public string TenantID { get; set; }
+		public TenantId TenantID { get; set; }
 	}
 }

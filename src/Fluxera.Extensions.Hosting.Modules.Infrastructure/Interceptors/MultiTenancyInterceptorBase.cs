@@ -24,14 +24,14 @@
 		/// <summary>
 		///     Gets the ID of the current tenant.
 		/// </summary>
-		protected abstract string TenantID { get; }
+		protected abstract TenantId TenantID { get; }
 
 		/// <inheritdoc />
 		public override Task BeforeAddAsync(TAggregateRoot item, InterceptionEvent e)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the item to add was empty.");
 			}
@@ -44,14 +44,14 @@
 		/// <inheritdoc />
 		public override Task BeforeUpdateAsync(TAggregateRoot item, InterceptionEvent e)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the item to update was empty.");
 			}
 
-			if(string.IsNullOrWhiteSpace(item.TenantID))
+			if(item.TenantID is null)
 			{
 				throw new InvalidOperationException("The item to update has no tenant set.");
 			}
@@ -67,14 +67,14 @@
 		/// <inheritdoc />
 		public override Task BeforeRemoveAsync(TAggregateRoot item, InterceptionEvent e)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the item to remove was empty.");
 			}
 
-			if(string.IsNullOrWhiteSpace(item.TenantID))
+			if(item.TenantID is null)
 			{
 				throw new InvalidOperationException("The item to remove has no tenant set.");
 			}
@@ -90,9 +90,9 @@
 		/// <inheritdoc />
 		public override Task<Expression<Func<TAggregateRoot, bool>>> BeforeRemoveRangeAsync(Expression<Func<TAggregateRoot, bool>> predicate, InterceptionEvent e)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the items to remove was empty.");
 			}
@@ -105,9 +105,9 @@
 		/// <inheritdoc />
 		public override Task<ISpecification<TAggregateRoot>> BeforeRemoveRangeAsync(ISpecification<TAggregateRoot> specification, InterceptionEvent e)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the items to remove was empty.");
 			}
@@ -120,9 +120,9 @@
 		/// <inheritdoc />
 		public override Task<ISpecification<TAggregateRoot>> BeforeFindAsync(ISpecification<TAggregateRoot> specification, IQueryOptions<TAggregateRoot> queryOptions)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the find predicate was empty.");
 			}
@@ -135,9 +135,9 @@
 		/// <inheritdoc />
 		public override Task<Expression<Func<TAggregateRoot, bool>>> BeforeFindAsync(Expression<Func<TAggregateRoot, bool>> predicate, IQueryOptions<TAggregateRoot> queryOptions)
 		{
-			string tenantID = this.TenantID;
+			TenantId tenantID = this.TenantID;
 
-			if(string.IsNullOrWhiteSpace(tenantID))
+			if(tenantID is null)
 			{
 				throw new InvalidOperationException("The tenant for the find predicate was empty.");
 			}

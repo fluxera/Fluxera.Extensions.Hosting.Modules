@@ -1,4 +1,6 @@
-﻿namespace Ordering.Application.Orders
+﻿// ReSharper disable NotAccessedField.Local
+
+namespace Ordering.Application.Orders
 {
 	using System;
 	using System.Threading.Tasks;
@@ -18,9 +20,9 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
+		public Task<ResultDto<OrderDto[]>> GetOrdersAsync()
 		{
-			return ResultDto.Ok(Array.Empty<OrderDto>());
+			return Task.FromResult(ResultDto.Ok(Array.Empty<OrderDto>()));
 		}
 	}
 }

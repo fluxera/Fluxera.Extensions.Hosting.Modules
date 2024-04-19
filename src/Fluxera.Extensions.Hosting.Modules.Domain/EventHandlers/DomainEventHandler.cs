@@ -4,7 +4,7 @@
 	using Fluxera.Entity.DomainEvents;
 
 	/// <summary>
-	///     A base class for the added, updated and removed domain events.
+	///     A base class handling domain events.
 	/// </summary>
 	/// <typeparam name="TDomainEvent"></typeparam>
 	public abstract class DomainEventHandler<TDomainEvent> : IDomainEventHandler<TDomainEvent>

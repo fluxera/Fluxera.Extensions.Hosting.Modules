@@ -1,16 +1,11 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Scheduler
 {
-	using System;
-	using System.Security.Cryptography;
-	using System.Text;
 	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Scheduler.Contributors;
-	using Fluxera.Guards;
 	using JetBrains.Annotations;
-	using Microsoft.Extensions.Hosting;
 
 	/// <summary>
 	///     A module that enables Quartz scheduler support.

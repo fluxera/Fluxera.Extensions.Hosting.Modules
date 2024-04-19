@@ -19,7 +19,7 @@
 			string applicationContext = context.Headers.Get(TransportHeaders.OriginApplicationHeaderName, string.Empty);
 			Console.WriteLine(applicationContext);
 
-			Console.WriteLine("CONSUMED PRODUCT ADDED");
+			Console.WriteLine(@"CONSUMED PRODUCT ADDED");
 
 			return Task.CompletedTask;
 		}

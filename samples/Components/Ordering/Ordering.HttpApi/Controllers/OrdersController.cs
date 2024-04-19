@@ -1,4 +1,6 @@
-﻿namespace Ordering.HttpApi.Controllers
+﻿// ReSharper disable NotAccessedField.Local
+
+namespace Ordering.HttpApi.Controllers
 {
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;

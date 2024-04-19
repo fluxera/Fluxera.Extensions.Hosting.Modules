@@ -3,12 +3,11 @@
 
 namespace Catalog.Infrastructure.Contexts
 {
-	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Repository.MongoDB;
 	using JetBrains.Annotations;
 
 #if EFCORE
-	[PublicAPI]
+	[UsedImplicitly]
 	internal sealed class CatalogRepositoryContext : EntityFrameworkCoreContext
 	{
 		/// <inheritdoc />
@@ -18,8 +17,8 @@ namespace Catalog.Infrastructure.Contexts
 		}
 	}
 #elif MONGO
-	[PublicAPI]
-	public sealed class CatalogRepositoryContext : MongoContext
+	[UsedImplicitly]
+	internal sealed class CatalogRepositoryContext : MongoContext
 	{
 		/// <inheritdoc />
 		protected override void ConfigureOptions(MongoContextOptions options)

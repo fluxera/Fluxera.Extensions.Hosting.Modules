@@ -3,12 +3,11 @@
 
 namespace Ordering.Infrastructure.Contexts
 {
-	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Repository.MongoDB;
 	using JetBrains.Annotations;
 
 #if EFCORE
-	[PublicAPI]
+	[UsedImplicitly]
 	internal sealed class OrderingRepositoryContext : EntityFrameworkCoreContext
 	{
 		/// <inheritdoc />
@@ -18,13 +17,13 @@ namespace Ordering.Infrastructure.Contexts
 		}
 	}
 #elif MONGO
-	[PublicAPI]
-	public sealed class OrderingRepositoryContext : MongoContext
+	[UsedImplicitly]
+	internal sealed class OrderingRepositoryContext : MongoContext
 	{
 		/// <inheritdoc />
 		protected override void ConfigureOptions(MongoContextOptions options)
 		{
-			options.UseDbContext<OrderingMongoDbContext>();
+			options.UseDbContext<OrderingContext>();
 		}
 	}
 #endif

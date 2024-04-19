@@ -5,13 +5,11 @@ namespace Ordering.Infrastructure.Contexts
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
-	using Fluxera.Utilities.Extensions;
-	using Microsoft.EntityFrameworkCore;
-	using Fluxera.Extensions.Hosting.Modules.Persistence;
-	using Fluxera.Repository;
+	using JetBrains.Annotations;
 	using MadEyeMatt.MongoDB.DbContext;
 
 #if EFCORE
+	[UsedImplicitly]
 	internal sealed class OrderingContext : DbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
@@ -74,12 +72,13 @@ namespace Ordering.Infrastructure.Contexts
 		}
 	}
 #elif MONGO
-	internal sealed class OrderingMongoDbContext : MongoDbContext
+	[UsedImplicitly]
+	internal sealed class OrderingContext : MongoDbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
 		private readonly IDatabaseNameProvider databaseNameProvider;
 
-		public OrderingMongoDbContext(
+		public OrderingContext(
 			IDatabaseNameProvider databaseNameProvider = null,
 			IDatabaseConnectionStringProvider databaseConnectionStringProvider = null)
 		{

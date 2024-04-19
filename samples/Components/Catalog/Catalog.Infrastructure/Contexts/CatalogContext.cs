@@ -5,11 +5,11 @@ namespace Catalog.Infrastructure.Contexts
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
-	using Fluxera.Utilities.Extensions;
+	using JetBrains.Annotations;
 	using MadEyeMatt.MongoDB.DbContext;
-	using Microsoft.EntityFrameworkCore;
 
 #if EFCORE
+	[UsedImplicitly]
 	internal sealed class CatalogContext : DbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
@@ -70,6 +70,7 @@ namespace Catalog.Infrastructure.Contexts
 		}
 	}
 #elif MONGO
+	[UsedImplicitly]
 	internal sealed class CatalogContext : MongoDbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;

@@ -20,3 +20,7 @@ There are several ready-made module one can use in their application.
 ...
 
 
+## Configuration
+
+...
+

@@ -1,6 +1,5 @@
-﻿namespace Catalog.Application.Products
+﻿namespace Catalog.Application.Contracts.Products
 {
-	using Catalog.Application.Contracts.Products;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
 	using MediatR;

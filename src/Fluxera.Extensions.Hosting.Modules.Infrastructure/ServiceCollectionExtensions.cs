@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application
+﻿namespace Fluxera.Extensions.Hosting.Modules.Infrastructure
 {
 	using System.Reflection;
 	using JetBrains.Annotations;
@@ -11,7 +11,7 @@
 	public static class ServiceCollectionExtensions
 	{
 		/// <summary>
-		///     Registers handlers and mediator types from the calling assembly.
+		///     Registers handlers and mediator types from the executing assembly.
 		/// </summary>
 		/// <param name="services"></param>
 		/// <returns></returns>

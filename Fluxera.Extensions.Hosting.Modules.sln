@@ -278,6 +278,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanArchitecture", "{E538DB0C-491B-4953-87CF-724A0EAF058E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Infrastructure.UnitTests", "tests\Fluxera.Extensions.Hosting.Modules.Infrastructure.UnitTests\Fluxera.Extensions.Hosting.Modules.Infrastructure.UnitTests.csproj", "{2EF14ED5-E7A7-45CA-97BE-90645F0D3491}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -680,6 +682,10 @@ Global
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF14ED5-E7A7-45CA-97BE-90645F0D3491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF14ED5-E7A7-45CA-97BE-90645F0D3491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF14ED5-E7A7-45CA-97BE-90645F0D3491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF14ED5-E7A7-45CA-97BE-90645F0D3491}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -811,6 +817,7 @@ Global
 		{36B5A175-4EE1-4584-B89A-D9907A32FBA9} = {C8F2A879-7A2E-46B0-881F-7874F495F25F}
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD} = {E538DB0C-491B-4953-87CF-724A0EAF058E}
 		{E538DB0C-491B-4953-87CF-724A0EAF058E} = {DF28D730-99B3-4811-AAC7-725A73B3F668}
+		{2EF14ED5-E7A7-45CA-97BE-90645F0D3491} = {391FD6FE-EAC7-48E1-8B8E-DE3930E48CD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

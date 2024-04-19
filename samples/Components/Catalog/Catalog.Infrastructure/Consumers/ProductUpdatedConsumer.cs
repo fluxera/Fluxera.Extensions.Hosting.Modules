@@ -1,6 +1,5 @@
 ﻿namespace Catalog.Infrastructure.Consumers
 {
-	using System;
 	using System.Threading.Tasks;
 	using Catalog.Domain.Messages.Products;
 	using JetBrains.Annotations;
@@ -15,7 +14,7 @@
 		/// <inheritdoc />
 		public Task Consume(ConsumeContext<ProductUpdated> context)
 		{
-			Console.WriteLine(@"CONSUMED PRODUCT UPDATED");
+			// NOTE: Whatever needs to be done when this message is consumed goes into the application.
 
 			return Task.CompletedTask;
 		}

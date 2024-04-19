@@ -1,9 +1,7 @@
 ﻿namespace Catalog.Infrastructure.Consumers
 {
-	using System;
 	using System.Threading.Tasks;
 	using Catalog.Domain.Messages.Products;
-	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using JetBrains.Annotations;
 	using MassTransit;
 
@@ -16,10 +14,7 @@
 		/// <inheritdoc />
 		public Task Consume(ConsumeContext<ProductAdded> context)
 		{
-			string applicationContext = context.Headers.Get(TransportHeaders.OriginApplicationHeaderName, string.Empty);
-			Console.WriteLine(applicationContext);
-
-			Console.WriteLine(@"CONSUMED PRODUCT ADDED");
+			// NOTE: Whatever needs to be done when this message is consumed goes into the application.
 
 			return Task.CompletedTask;
 		}

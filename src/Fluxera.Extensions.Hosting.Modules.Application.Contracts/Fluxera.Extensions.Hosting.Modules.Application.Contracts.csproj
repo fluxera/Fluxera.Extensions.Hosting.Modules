@@ -27,6 +27,7 @@
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
 		<PackageReference Include="MediatR.Contracts" Version="2.0.1" />
+		<PackageReference Include="MadEyeMatt.Results" Version="2.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

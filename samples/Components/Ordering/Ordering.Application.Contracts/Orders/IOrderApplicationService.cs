@@ -2,7 +2,6 @@
 {
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
 	using JetBrains.Annotations;
 
 	[PublicAPI]

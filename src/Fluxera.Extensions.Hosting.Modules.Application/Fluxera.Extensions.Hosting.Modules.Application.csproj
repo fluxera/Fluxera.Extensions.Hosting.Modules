@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
@@ -31,7 +31,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
-		<PackageReference Include="MadEyeMatt.Results" Version="2.0.1" />
 		<PackageReference Include="MediatR" Version="12.2.0" />
 	</ItemGroup>
 
@@ -39,7 +38,6 @@
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Localization\Fluxera.Extensions.Hosting.Modules.Localization.csproj" />
 	</ItemGroup>
 
 </Project>

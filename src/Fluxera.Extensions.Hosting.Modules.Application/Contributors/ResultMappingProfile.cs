@@ -1,7 +1,9 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contributors
 {
+	using System;
+	using System.Linq;
 	using System.Reflection;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using global::AutoMapper;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
@@ -13,16 +15,22 @@
 		{
 			this.CreateMap<IError, ErrorDto>();
 			this.CreateMap<ISuccess, SuccessDto>();
+			this.CreateMap<Result, ResultDto>();
 			this.CreateMap(typeof(Result<>), typeof(ResultDto<>))
-				.ForMember("Value", options =>
+				.ConstructUsing((src, _) =>
 				{
-					options.PreCondition(src =>
-					{
-						PropertyInfo property = src.GetType().GetProperty(nameof(Result.IsSuccessful));
-						bool isSuccessful = (bool) (property?.GetValue(src) ?? false);
-						return isSuccessful;
-					});
-				});
+					Type valueType = src.GetType().GetGenericArguments().Single();
+					Type resultDtoType = typeof(ResultDto<>).MakeGenericType(valueType);
+
+					return Activator.CreateInstance(resultDtoType);
+				})
+				.ForMember("Value", o => o.PreCondition(src =>
+				{
+					MethodInfo method = src.GetType().GetMethod("GetValueOrDefault");
+					object value = method?.Invoke(src, [default]);
+
+					return value != null;
+				}));
 		}
 	}
 }

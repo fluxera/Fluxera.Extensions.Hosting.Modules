@@ -2,7 +2,6 @@
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Domain;
 	using JetBrains.Annotations;
 
@@ -11,7 +10,6 @@
 	/// </summary>
 	[PublicAPI]
 	[DependsOn<DomainModule>]
-	[DependsOn<ConfigurationModule>]
 	public sealed class CatalogDomainModule : ConfigureServicesModule
 	{
 	}

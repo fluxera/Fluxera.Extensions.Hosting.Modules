@@ -1,6 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Scheduler
 {
-	using System;
 	using JetBrains.Annotations;
 
 	/// <summary>

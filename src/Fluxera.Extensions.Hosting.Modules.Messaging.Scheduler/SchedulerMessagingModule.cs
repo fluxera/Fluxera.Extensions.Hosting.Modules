@@ -1,7 +1,5 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Scheduler
 {
-	using System;
-	using Fluxera.Extensions.DependencyInjection;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Scheduler.Contributors;
 	using JetBrains.Annotations;
@@ -19,7 +17,7 @@
 			// Add the configure options contributor.
 			context.Services.AddConfigureOptionsContributor<ConfigureOptionsContributor>();
 
-			// Add the consumers contributor.
+			// Add the consumer contributor.
 			context.Services.AddConsumersContributor<ConsumersContributor>();
 		}
 

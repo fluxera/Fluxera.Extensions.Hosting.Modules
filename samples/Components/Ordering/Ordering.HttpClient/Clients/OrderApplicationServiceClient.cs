@@ -4,7 +4,7 @@
 	using System.Linq;
 	using System.Net.Http;
 	using System.Threading.Tasks;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 	using Ordering.Application.Contracts.Orders;
@@ -44,9 +44,11 @@
 		}
 
 		/// <inheritdoc />
-		public async Task<ResultDto<OrderDto[]>> GetOrdersAsync()
+		public Task<ResultDto<OrderDto[]>> GetOrdersAsync()
 		{
-			return ResultDto.Ok(orders.ToArray());
+			ResultDto<OrderDto[]> resultDto = new ResultDto<OrderDto[]>(this.orders.ToArray());
+
+			return Task.FromResult(resultDto);
 		}
 	}
 }

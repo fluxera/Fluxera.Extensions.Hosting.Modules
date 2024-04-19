@@ -5,7 +5,7 @@ namespace Ordering.Infrastructure
 {
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Infrastructure;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
@@ -22,14 +22,13 @@ namespace Ordering.Infrastructure
 	///     The infrastructure module of the component.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<OrderingDomainModule>]
-	[DependsOn<MessagingModule>]
 #if EFCORE
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 #elif MONGO
 	[DependsOn<MongoPersistenceModule>]
 #endif
-	[DependsOn<ConfigurationModule>]
+	[DependsOn<OrderingDomainModule>]
+	[DependsOn<InfrastructureModule>]
 	public sealed class OrderingInfrastructureModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -37,6 +36,12 @@ namespace Ordering.Infrastructure
 		{
 			// Add the repository contributor for the 'Default' repository.
 			context.Services.AddRepositoryContributor<RepositoryContributor>();
+
+			// Add the consumer contributor.
+			context.Services.AddConsumersContributor<ConsumersContributor>();
+
+			// Add the MediatR services.
+			context.Services.AddMediatR();
 
 			// Add repositories.
 			context.Log("AddRepositories", services =>

@@ -1,4 +1,6 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
+﻿// ReSharper disable NotAccessedField.Local
+
+namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;

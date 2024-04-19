@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Description>A module that enables the infrastructure.</Description>
+		<PackageTags>library;extensions;hosting;modular;infrastructure</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" Link="Properties\README.md">
+			<Pack>true</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\icon.png" Link="Properties\icon.png">
+			<Pack>true</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.7" />
+		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
+		<PackageReference Include="MediatR" Version="12.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain.Messages\Fluxera.Extensions.Hosting.Modules.Domain.Messages.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>

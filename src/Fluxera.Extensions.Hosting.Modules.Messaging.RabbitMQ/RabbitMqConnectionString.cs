@@ -36,7 +36,6 @@
 				if(connectionStringPart.StartsWith("UseSsl", StringComparison.InvariantCultureIgnoreCase))
 				{
 					this.UseSsl = bool.Parse(connectionStringPart.Split("=").LastOrDefault() ?? "false");
-					continue;
 				}
 			}
 		}

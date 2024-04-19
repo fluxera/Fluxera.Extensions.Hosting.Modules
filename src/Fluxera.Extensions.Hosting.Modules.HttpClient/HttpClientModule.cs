@@ -15,8 +15,8 @@
 	///     A module that enables the http client.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(ConfigurationModule))]
 	[DependsOn(typeof(OpenTelemetryModule))]
+	[DependsOn(typeof(ConfigurationModule))]
 	public sealed class HttpClientModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

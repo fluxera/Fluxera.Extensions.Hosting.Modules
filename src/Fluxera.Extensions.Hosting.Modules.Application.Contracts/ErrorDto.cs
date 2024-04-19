@@ -2,21 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-
-	/* Unmerged change from project 'Fluxera.Extensions.Hosting.Modules.Application.Contracts (net6.0)'
-	Before:
-		using JetBrains.Annotations;
-	After:
-		using Fluxera;
-		using Fluxera.Extensions;
-		using Fluxera.Extensions.Hosting;
-		using Fluxera.Extensions.Hosting.Modules;
-		using Fluxera.Extensions.Hosting.Modules.Application;
-		using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
-		using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
-		using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
-		using JetBrains.Annotations;
-	*/
 	using JetBrains.Annotations;
 
 	/// <summary>

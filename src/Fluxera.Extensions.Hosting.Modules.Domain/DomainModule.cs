@@ -5,7 +5,7 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     A module that enables the domain.
+	///		A module that enables the domain.
 	/// </summary>
 	[PublicAPI]
 	[DependsOn<ConfigurationModule>]

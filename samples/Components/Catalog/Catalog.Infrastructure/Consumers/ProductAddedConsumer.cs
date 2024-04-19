@@ -1,4 +1,4 @@
-﻿namespace Catalog.Application.Consumers
+﻿namespace Catalog.Infrastructure.Consumers
 {
 	using System;
 	using System.Threading.Tasks;

@@ -2,8 +2,8 @@
 {
 	using Fluxera.Extensions.Hosting.Modules.Application.Contributors;
 	using Fluxera.Extensions.Hosting.Modules.AutoMapper;
+	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Domain;
-	using Fluxera.Extensions.Hosting.Modules.Localization;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -12,7 +12,7 @@
 	[PublicAPI]
 	[DependsOn<DomainModule>]
 	[DependsOn<AutoMapperModule>]
-	[DependsOn<LocalizationModule>]
+	[DependsOn<ConfigurationModule>]
 	public sealed class ApplicationModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

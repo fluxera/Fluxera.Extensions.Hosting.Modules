@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
@@ -39,7 +39,6 @@
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
-	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Localization\Fluxera.Extensions.Hosting.Modules.Localization.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -20,10 +20,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Infrastructure\Fluxera.Extensions.Hosting.Modules.Infrastructure.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj" />
-		<ProjectReference Include="..\Ordering.Application\Ordering.Application.csproj" />
 		<ProjectReference Include="..\Ordering.Domain.Messages\Ordering.Domain.Messages.csproj" />
 		<ProjectReference Include="..\Ordering.Domain\Ordering.Domain.csproj" />
 	</ItemGroup>

@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests
 {
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contributors;
 	using global::AutoMapper;
 	using MadEyeMatt.Results;
@@ -28,6 +28,33 @@
 		public void ShouldHaveValidMappingConfiguration()
 		{
 			this.config.AssertConfigurationIsValid();
+		}
+
+		[Test]
+		public void ShouldMapSuccessfulResult_NoValue()
+		{
+			Result result = Result.Ok();
+			ResultDto resultDto = this.mapper.Map<ResultDto>(result);
+
+			resultDto.Should().NotBeNull();
+			resultDto.IsSuccessful.Should().BeTrue();
+			resultDto.IsFailed.Should().BeFalse();
+			resultDto.Successes.Should().BeNullOrEmpty();
+			resultDto.Errors.Should().BeNullOrEmpty();
+		}
+
+		[Test]
+		public void ShouldMapFailedResult_NoValue()
+		{
+			Result result = Result.Fail("An error occurred.");
+			ResultDto resultDto = this.mapper.Map<ResultDto>(result);
+
+			resultDto.Should().NotBeNull();
+			resultDto.IsSuccessful.Should().BeFalse();
+			resultDto.IsFailed.Should().BeTrue();
+			resultDto.Successes.Should().BeNullOrEmpty();
+			resultDto.Errors.Should().NotBeNullOrEmpty().And.HaveCount(1);
+			resultDto.Errors[0].Message.Should().Be("An error occurred.");
 		}
 
 		[Test]

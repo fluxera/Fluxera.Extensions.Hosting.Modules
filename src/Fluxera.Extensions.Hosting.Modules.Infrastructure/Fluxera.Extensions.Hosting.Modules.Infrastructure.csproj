@@ -32,6 +32,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain.Messages\Fluxera.Extensions.Hosting.Modules.Domain.Messages.csproj" />
+		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Messaging\Fluxera.Extensions.Hosting.Modules.Messaging.csproj" />
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Persistence\Fluxera.Extensions.Hosting.Modules.Persistence.csproj" />
 	</ItemGroup>

@@ -1,6 +1,7 @@
 namespace BlazorWasmPerPageComponent.Client
 {
 	using Fluxera.Extensions.Hosting;
+	using System.Threading.Tasks;
 
 	internal static class Program
 	{

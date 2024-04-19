@@ -1,6 +1,5 @@
-﻿namespace Catalog.Application.Contributors
+﻿namespace Catalog.Infrastructure.Consumers
 {
-	using Catalog.Application.Consumers;
 	using JetBrains.Annotations;
 	using MassTransit;
 

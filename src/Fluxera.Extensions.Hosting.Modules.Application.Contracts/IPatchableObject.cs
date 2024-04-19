@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts
 {
 	using JetBrains.Annotations;
 

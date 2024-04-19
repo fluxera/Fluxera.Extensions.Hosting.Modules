@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contributors
 {
 	using System.Reflection;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using global::AutoMapper;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
@@ -13,6 +13,7 @@
 		{
 			this.CreateMap<IError, ErrorDto>();
 			this.CreateMap<ISuccess, SuccessDto>();
+			this.CreateMap<Result, ResultDto>();
 			this.CreateMap(typeof(Result<>), typeof(ResultDto<>))
 				.ForMember("Value", options =>
 				{

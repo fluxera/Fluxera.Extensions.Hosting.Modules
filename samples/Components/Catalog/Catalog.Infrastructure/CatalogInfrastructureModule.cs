@@ -9,7 +9,7 @@ namespace Catalog.Infrastructure
 	using Catalog.Infrastructure.Products;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.Infrastructure;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
@@ -20,14 +20,13 @@ namespace Catalog.Infrastructure
 	///     The infrastructure module of the component.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<CatalogDomainModule>]
-	[DependsOn<MessagingModule>]
 #if EFCORE
 	[DependsOn<EntityFrameworkCorePersistenceModule>]
 #elif MONGO
 	[DependsOn<MongoPersistenceModule>]
 #endif
-	[DependsOn<ConfigurationModule>]
+	[DependsOn<CatalogDomainModule>]
+	[DependsOn<InfrastructureModule>]
 	public sealed class CatalogInfrastructureModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />
@@ -35,6 +34,9 @@ namespace Catalog.Infrastructure
 		{
 			// Add the repository contributor for the 'Default' repository.
 			context.Services.AddRepositoryContributor<RepositoryContributor>();
+
+			// Add the consumer contributor.
+			context.Services.AddConsumersContributor<ConsumersContributor>();
 
 			// Add repositories.
 			context.Log("AddRepositories", services =>

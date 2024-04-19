@@ -1,25 +1,25 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts
 {
 	using System;
 	using System.Collections.Generic;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A DTO for error messages of a <see cref="ResultDto"/>.
+	///		A DTO for success messages of a <see cref="ResultDto"/>.
 	/// </summary>
 	[PublicAPI]
 	[Serializable]
-	public sealed class ErrorDto : IErrorDto
+	public class SuccessDto : ISuccessDto
 	{
 		/// <summary>
-		///		Initializes a new instance of the <see cref="ErrorDto"/> type.
+		///		Initializes a new instance of the <see cref="SuccessDto"/> type.
 		/// </summary>
-		public ErrorDto()
+		public SuccessDto()
 		{
 			// Note: Needed for serialization.
 		}
 
-		private ErrorDto(string message, IDictionary<string, object> metadata)
+		private SuccessDto(string message, IDictionary<string, object> metadata)
 		{
 			metadata ??= new Dictionary<string, object>();
 
@@ -38,14 +38,14 @@
 		public IDictionary<string, object> Metadata { get; set; }
 
 		/// <summary>
-		///		Creates a new instance of the error.
+		///		Creates a new instance of the success.
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="metadata"></param>
 		/// <returns></returns>
-		public static ErrorDto Create(string message, IDictionary<string, object> metadata)
+		public static SuccessDto Create(string message, IDictionary<string, object> metadata)
 		{
-			return new ErrorDto(message, metadata);
+			return new SuccessDto(message, metadata);
 		}
 	}
 }

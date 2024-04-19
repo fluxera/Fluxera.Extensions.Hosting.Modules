@@ -1,13 +1,13 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts
 {
 	using System.Collections.Generic;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A contract for an error dto.
+	///		A contract for a success dto.
 	/// </summary>
 	[PublicAPI]
-	public interface IErrorDto
+	public interface ISuccessDto
 	{
 		/// <summary>
 		///		Gets or sets the message.

@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Application.Contracts.Orders
 {
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
 	using JetBrains.Annotations;
 	using Ordering.Domain.Shared.Orders;
 

@@ -1,5 +1,6 @@
-﻿namespace Ordering.Application.Contributors
+﻿namespace Catalog.Infrastructure.Contributors
 {
+	using Catalog.Infrastructure.Consumers;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
 	using JetBrains.Annotations;
@@ -11,6 +12,8 @@
 		/// <inheritdoc />
 		public void ConfigureConsumers(IRegistrationConfigurator configurator, IServiceConfigurationContext context)
 		{
+			configurator.AddConsumer<ProductAddedConsumer, ProductAddedConsumerDefinition>();
+			configurator.AddConsumer<ProductUpdatedConsumer>();
 		}
 	}
 }

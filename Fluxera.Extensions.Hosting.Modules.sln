@@ -274,7 +274,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain.Messages", "samples\Components\Ordering\Ordering.Domain.Messages\Ordering.Domain.Messages.csproj", "{36B5A175-4EE1-4584-B89A-D9907A32FBA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.Infrastructure", "src\Fluxera.Extensions.Hosting.Modules.Infrastructure\Fluxera.Extensions.Hosting.Modules.Infrastructure.csproj", "{740473F6-19A6-4A90-85E7-E09A7598C4BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Infrastructure", "src\Fluxera.Extensions.Hosting.Modules.Infrastructure\Fluxera.Extensions.Hosting.Modules.Infrastructure.csproj", "{740473F6-19A6-4A90-85E7-E09A7598C4BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanArchitecture", "{E538DB0C-491B-4953-87CF-724A0EAF058E}"
 EndProject

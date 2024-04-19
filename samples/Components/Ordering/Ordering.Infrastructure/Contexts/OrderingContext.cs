@@ -1,21 +1,28 @@
-﻿namespace Catalog.Infrastructure.Contexts
+﻿#undef EFCORE
+#define MONGO
+
+namespace Ordering.Infrastructure.Contexts
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
 	using Fluxera.Utilities.Extensions;
 	using Microsoft.EntityFrameworkCore;
+	using Fluxera.Extensions.Hosting.Modules.Persistence;
+	using Fluxera.Repository;
+	using MadEyeMatt.MongoDB.DbContext;
 
-	internal sealed class CatalogDbContext : DbContext
+#if EFCORE
+	internal sealed class OrderingContext : DbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
 		private readonly IDatabaseNameProvider databaseNameProvider;
 
-		public CatalogDbContext()
+		public OrderingContext()
 		{
 		}
 
-		public CatalogDbContext(
-			DbContextOptions<CatalogDbContext> options,
+		public OrderingContext(
+			DbContextOptions<OrderingContext> options,
 			IDatabaseNameProvider databaseNameProvider = null,
 			IDatabaseConnectionStringProvider databaseConnectionStringProvider = null)
 			: base(options)
@@ -46,7 +53,9 @@
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			// Add the domain entities.
-			modelBuilder.AddProductEntity();
+			modelBuilder.AddOrderEntity();
+			modelBuilder.AddOrderItemEntity();
+			modelBuilder.AddCustomerEntity();
 
 			// TODO: Include when transactional Outbox is fixed.
 			// Add the entities for the transactional inbox/outbox.
@@ -64,4 +73,30 @@
 			//});
 		}
 	}
+#elif MONGO
+	internal sealed class OrderingMongoDbContext : MongoDbContext
+	{
+		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
+		private readonly IDatabaseNameProvider databaseNameProvider;
+
+		public OrderingMongoDbContext(
+			IDatabaseNameProvider databaseNameProvider = null,
+			IDatabaseConnectionStringProvider databaseConnectionStringProvider = null)
+		{
+			this.databaseNameProvider = databaseNameProvider;
+			this.databaseConnectionStringProvider = databaseConnectionStringProvider;
+		}
+
+		/// <inheritdoc />
+		protected override void OnConfiguring(MongoDbContextOptionsBuilder builder)
+		{
+			RepositoryName repositoryName = new RepositoryName("Default");
+
+			string databaseName = this.databaseNameProvider?.GetDatabaseName(repositoryName);
+			string connectionString = this.databaseConnectionStringProvider?.GetConnectionString(repositoryName);
+
+			builder.UseDatabase(connectionString, databaseName);
+		}
+	}
+#endif
 }

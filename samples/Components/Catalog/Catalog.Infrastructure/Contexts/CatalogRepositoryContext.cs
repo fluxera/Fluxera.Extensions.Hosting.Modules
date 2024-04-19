@@ -3,6 +3,7 @@
 
 namespace Catalog.Infrastructure.Contexts
 {
+	using Fluxera.Repository.EntityFrameworkCore;
 	using Fluxera.Repository.MongoDB;
 	using JetBrains.Annotations;
 
@@ -23,7 +24,7 @@ namespace Catalog.Infrastructure.Contexts
 		/// <inheritdoc />
 		protected override void ConfigureOptions(MongoContextOptions options)
 		{
-			options.UseDbContext<CatalogMongoDbContext>();
+			options.UseDbContext<CatalogContext>();
 		}
 	}
 #endif

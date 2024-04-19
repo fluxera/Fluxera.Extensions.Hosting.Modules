@@ -4,11 +4,11 @@
 	using MassTransit;
 
 	/// <summary>
-	///     A marker interface for an integration event message.
+	///     A marker interface for an integration command.
 	/// </summary>
 	[PublicAPI]
 	[ExcludeFromTopology]
-	public interface IEventMessage
+	public interface IIntegrationCommand
 	{
 	}
 }

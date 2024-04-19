@@ -1,4 +1,8 @@
-﻿using System;
+﻿#undef EFCORE
+#define MONGO
+
+#if EFCORE
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -200,3 +204,4 @@ namespace Ordering.Infrastructure.Migrations
         }
     }
 }
+#endif

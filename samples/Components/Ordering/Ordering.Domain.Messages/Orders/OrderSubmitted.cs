@@ -5,7 +5,7 @@
 	using Ordering.Domain.Shared.Orders;
 
 	[PublicAPI]
-	public sealed class OrderSubmitted : IEventMessage
+	public sealed class OrderSubmitted : IIntegrationEvent
 	{
 		public OrderSubmitted(OrderId orderID, decimal total)
 		{

@@ -1,21 +1,26 @@
-﻿namespace Ordering.Infrastructure.Contexts
+﻿#undef EFCORE
+#define MONGO
+
+namespace Catalog.Infrastructure.Contexts
 {
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Repository;
 	using Fluxera.Utilities.Extensions;
+	using MadEyeMatt.MongoDB.DbContext;
 	using Microsoft.EntityFrameworkCore;
 
-	internal sealed class OrderingDbContext : DbContext
+#if EFCORE
+	internal sealed class CatalogContext : DbContext
 	{
 		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
 		private readonly IDatabaseNameProvider databaseNameProvider;
 
-		public OrderingDbContext()
+		public CatalogContext()
 		{
 		}
 
-		public OrderingDbContext(
-			DbContextOptions<OrderingDbContext> options,
+		public CatalogContext(
+			DbContextOptions<CatalogContext> options,
 			IDatabaseNameProvider databaseNameProvider = null,
 			IDatabaseConnectionStringProvider databaseConnectionStringProvider = null)
 			: base(options)
@@ -46,9 +51,7 @@
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			// Add the domain entities.
-			modelBuilder.AddOrderEntity();
-			modelBuilder.AddOrderItemEntity();
-			modelBuilder.AddCustomerEntity();
+			modelBuilder.AddProductEntity();
 
 			// TODO: Include when transactional Outbox is fixed.
 			// Add the entities for the transactional inbox/outbox.
@@ -66,4 +69,30 @@
 			//});
 		}
 	}
+#elif MONGO
+	internal sealed class CatalogContext : MongoDbContext
+	{
+		private readonly IDatabaseConnectionStringProvider databaseConnectionStringProvider;
+		private readonly IDatabaseNameProvider databaseNameProvider;
+
+		public CatalogContext(
+			IDatabaseNameProvider databaseNameProvider = null,
+			IDatabaseConnectionStringProvider databaseConnectionStringProvider = null)
+		{
+			this.databaseNameProvider = databaseNameProvider;
+			this.databaseConnectionStringProvider = databaseConnectionStringProvider;
+		}
+
+		/// <inheritdoc />
+		protected override void OnConfiguring(MongoDbContextOptionsBuilder builder)
+		{
+			RepositoryName repositoryName = new RepositoryName("Default");
+
+			string databaseName = this.databaseNameProvider?.GetDatabaseName(repositoryName);
+			string connectionString = this.databaseConnectionStringProvider?.GetConnectionString(repositoryName);
+
+			builder.UseDatabase(connectionString, databaseName);
+		}
+	}
+#endif
 }

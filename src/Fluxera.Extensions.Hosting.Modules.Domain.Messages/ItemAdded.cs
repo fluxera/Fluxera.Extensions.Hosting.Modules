@@ -11,7 +11,7 @@
 	[PublicAPI]
 	[Serializable]
 	[ExcludeFromTopology]
-	public abstract class ItemAdded : IEventMessage
+	public abstract class ItemAdded : IIntegrationEvent
 	{
 		/// <summary>
 		///     Gets or sets the events item added metadata.

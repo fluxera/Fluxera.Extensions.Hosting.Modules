@@ -18,14 +18,15 @@
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.DependencyInjection.Extensions;
+	using Microsoft.Extensions.Logging;
 
 	/// <summary>
 	///     A module that enabled persistence.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn(typeof(CachingModule))]
-	[DependsOn(typeof(DataManagementModule))]
-	[DependsOn(typeof(OpenTelemetryModule))]
+	[DependsOn<CachingModule>]
+	[DependsOn<DataManagementModule>]
+	[DependsOn<OpenTelemetryModule>]
 	public sealed class PersistenceModule : ConfigureApplicationModule
 	{
 		/// <inheritdoc />
@@ -71,106 +72,114 @@
 			PersistenceOptions persistenceOptions = context.Services.GetOptions<PersistenceOptions>();
 
 			// Add default services and the repositories.
-			context.Services.AddRepository(builder =>
+			if(persistenceOptions.Repositories.Any())
 			{
-				foreach((string repositoryName, RepositoryOptions repositoryOptions) in persistenceOptions.Repositories)
+				context.Services.AddRepository(builder =>
 				{
-					Type repositoryContextType = Type.GetType(repositoryOptions.RepositoryContextType);
-					Guard.Against.Null(repositoryContextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
-
-					IList<IRepositoryContributor> repositoryContributors = contributorDictionary.GetOrDefault(repositoryName);
-					if(repositoryContributors == null)
+					foreach((string repositoryName, RepositoryOptions repositoryOptions) in persistenceOptions.Repositories)
 					{
-						throw new InvalidOperationException($"No repository contributor was added for repository '{repositoryName}'.");
-					}
+						Type repositoryContextType = Type.GetType(repositoryOptions.RepositoryContextType);
+						Guard.Against.Null(repositoryContextType, message: $"The repository context must be configured for repository '{repositoryName}'.");
 
-					context.Log($"AddRepository({repositoryName}, {repositoryOptions.ProviderName})", _ =>
-					{
-						if(string.IsNullOrWhiteSpace(repositoryOptions.ProviderName))
+						IList<IRepositoryContributor> repositoryContributors = contributorDictionary.GetOrDefault(repositoryName);
+						if(repositoryContributors == null)
 						{
-							throw new InvalidOperationException("No repository provider specified.");
+							throw new InvalidOperationException($"No repository contributor was added for repository '{repositoryName}'.");
 						}
 
-						// Select a configured repository provider.
-						IRepositoryProviderContributor repositoryProviderContributor =
-							contributorList.FirstOrDefault(x => x.RepositoryProviderName == repositoryOptions.ProviderName);
-						if(repositoryProviderContributor == null)
+						context.Log($"AddRepository({repositoryName}, {repositoryOptions.ProviderName})", _ =>
 						{
-							throw new InvalidOperationException($"No repository provider contributor found for provider '{repositoryOptions.ProviderName}'.");
-						}
-
-						// Configure the used provider.
-						repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryContextType, repositoryOptionsBuilder =>
-						{
-							// Enable the UoW feature.
-							if(repositoryOptions.EnableUnitOfWork)
+							if(string.IsNullOrWhiteSpace(repositoryOptions.ProviderName))
 							{
-								repositoryOptionsBuilder.EnableUnitOfWork();
+								throw new InvalidOperationException("No repository provider specified.");
 							}
 
-							// Configure for what aggregate root types this repository uses.
-							foreach(IRepositoryContributor persistenceContributor in repositoryContributors)
+							// Select a configured repository provider.
+							IRepositoryProviderContributor repositoryProviderContributor =
+								contributorList.FirstOrDefault(x => x.RepositoryProviderName == repositoryOptions.ProviderName);
+							if(repositoryProviderContributor == null)
 							{
-								IRepositoryAggregatesBuilder repositoryAggregatesBuilder = new RepositoryAggregatesBuilder(repositoryOptionsBuilder);
-								persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder, context);
+								throw new InvalidOperationException(
+									$"No repository provider contributor found for provider '{repositoryOptions.ProviderName}'.");
 							}
 
-							// Configure the domain event handlers.
-							repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>
+							// Configure the used provider.
+							repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryContextType, repositoryOptionsBuilder =>
 							{
-								// Enable the automatic CRUD domain events feature.
-								if(repositoryOptions.EnableAutomaticCrudDomainEvents)
+								// Enable the UoW feature.
+								if(repositoryOptions.EnableUnitOfWork)
 								{
-									domainHandlerOptionsBuilder.EnableAutomaticCrudDomainEvents();
+									repositoryOptionsBuilder.EnableUnitOfWork();
 								}
 
-								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+								// Configure for what aggregate root types this repository uses.
+								foreach(IRepositoryContributor persistenceContributor in repositoryContributors)
 								{
-									IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);
-									repositoryContributor.ConfigureDomainEventHandlers(domainEventHandlersBuilder, context);
+									IRepositoryAggregatesBuilder repositoryAggregatesBuilder = new RepositoryAggregatesBuilder(repositoryOptionsBuilder);
+									persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder, context);
 								}
-							});
 
-							// Configure validation providers.
-							repositoryOptionsBuilder.AddValidation(validationOptionsBuilder =>
-							{
-								validationOptionsBuilder.AddValidatorFactory(validationBuilder =>
+								// Configure the domain event handlers.
+								repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>
 								{
-									validationBuilder.AddDataAnnotations(validationOptionsBuilder.RepositoryName);
-									validationBuilder.AddFluentValidation(validationOptionsBuilder.RepositoryName, fluentValidationOptions =>
+									// Enable the automatic CRUD domain events feature.
+									if(repositoryOptions.EnableAutomaticCrudDomainEvents)
 									{
-										foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+										domainHandlerOptionsBuilder.EnableAutomaticCrudDomainEvents();
+									}
+
+									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+									{
+										IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);
+										repositoryContributor.ConfigureDomainEventHandlers(domainEventHandlersBuilder, context);
+									}
+								});
+
+								// Configure validation providers.
+								repositoryOptionsBuilder.AddValidation(validationOptionsBuilder =>
+								{
+									validationOptionsBuilder.AddValidatorFactory(validationBuilder =>
+									{
+										validationBuilder.AddDataAnnotations(validationOptionsBuilder.RepositoryName);
+										validationBuilder.AddFluentValidation(validationOptionsBuilder.RepositoryName, fluentValidationOptions =>
 										{
-											IValidatorsBuilder validatorsBuilder = new ValidatorsBuilder(fluentValidationOptions);
-											repositoryContributor.ConfigureValidators(validatorsBuilder, context);
-										}
+											foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+											{
+												IValidatorsBuilder validatorsBuilder = new ValidatorsBuilder(fluentValidationOptions);
+												repositoryContributor.ConfigureValidators(validatorsBuilder, context);
+											}
+										});
 									});
 								});
-							});
 
-							// Configure the interception.
-							repositoryOptionsBuilder.AddInterception(interceptionOptionsBuilder =>
-							{
-								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+								// Configure the interception.
+								repositoryOptionsBuilder.AddInterception(interceptionOptionsBuilder =>
 								{
-									IInterceptorsBuilder interceptorsBuilder = new InterceptorsBuilder(interceptionOptionsBuilder);
-									repositoryContributor.ConfigureInterceptors(interceptorsBuilder, context);
-								}
-							});
+									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+									{
+										IInterceptorsBuilder interceptorsBuilder = new InterceptorsBuilder(interceptionOptionsBuilder);
+										repositoryContributor.ConfigureInterceptors(interceptorsBuilder, context);
+									}
+								});
 
-							// Configure caching.
-							repositoryOptionsBuilder.AddCaching(cachingOptionsBuilder =>
-							{
-								foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+								// Configure caching.
+								repositoryOptionsBuilder.AddCaching(cachingOptionsBuilder =>
 								{
-									ICachingBuilder cachingBuilder = new CachingBuilder(cachingOptionsBuilder);
-									repositoryContributor.ConfigureCaching(cachingBuilder, context);
-								}
-							});
-						}, context);
-					});
-				}
-			});
+									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
+									{
+										ICachingBuilder cachingBuilder = new CachingBuilder(cachingOptionsBuilder);
+										repositoryContributor.ConfigureCaching(cachingBuilder, context);
+									}
+								});
+							}, context);
+						});
+					}
+				});
+			}
+			else
+			{
+				context.Logger.LogWarning("No repository was configured.");
+			}
 		}
 
 		/// <inheritdoc />
@@ -178,8 +187,13 @@
 		{
 			context.Log("Initialize(CachePrefixManager)", serviceProvider =>
 			{
-				ICachePrefixManager cachePrefixManager = serviceProvider.GetRequiredService<ICachePrefixManager>();
+				ICachePrefixManager cachePrefixManager = serviceProvider.GetService<ICachePrefixManager>();
 				CacheManager.CachePrefixManager = cachePrefixManager;
+
+				if(cachePrefixManager is null)
+				{
+					context.Logger.LogWarning("No cache prefix manager was registered.");
+				}
 			});
 		}
 	}

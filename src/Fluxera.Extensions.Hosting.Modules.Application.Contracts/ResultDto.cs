@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Linq;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -31,6 +32,106 @@
 
 		/// <inheritdoc />
 		public IList<SuccessDto> Successes { get; set; }
+
+		/// <summary>
+		///     Creates a successful result DTO.
+		/// </summary>
+		/// <returns></returns>
+		public static ResultDto Ok()
+		{
+			return new ResultDto
+			{
+				IsSuccessful = true
+			};
+		}
+
+		/// <summary>
+		///     Creates a successful result DTO.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public static ResultDto<TValue> Ok<TValue>(TValue value = default)
+		{
+			return new ResultDto<TValue>
+			{
+				IsSuccessful = true,
+				Value = value
+			};
+		}
+
+		/// <summary>
+		///     Creates a failed result DTO.
+		/// </summary>
+		/// <param name="errorMessage"></param>
+		/// <returns></returns>
+		public static ResultDto Fail(string errorMessage)
+		{
+			return new ResultDto
+			{
+				IsSuccessful = false,
+				Errors =
+				{
+					ErrorDto.Create(errorMessage, null)
+				}
+			};
+		}
+
+		/// <summary>
+		///     Creates a failed result DTO.
+		/// </summary>
+		/// <param name="errorMessage"></param>
+		/// <returns></returns>
+		public static ResultDto<TValue> Fail<TValue>(string errorMessage)
+		{
+			return new ResultDto<TValue>
+			{
+				IsSuccessful = false,
+				Errors =
+				{
+					ErrorDto.Create(errorMessage, null)
+				}
+			};
+		}
+
+		/// <summary>
+		///     Creates a failed result DTO.
+		/// </summary>
+		/// <param name="errorMessages"></param>
+		/// <returns></returns>
+		public static ResultDto Fail(IEnumerable<string> errorMessages)
+		{
+			ResultDto resultDto = new ResultDto
+			{
+				IsSuccessful = false
+			};
+
+			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
+			{
+				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
+			}
+
+			return resultDto;
+		}
+
+		/// <summary>
+		///     Creates a failed result DTO.
+		/// </summary>
+		/// <param name="errorMessages"></param>
+		/// <returns></returns>
+		public static ResultDto<TValue> Fail<TValue>(IEnumerable<string> errorMessages)
+		{
+			ResultDto<TValue> resultDto = new ResultDto<TValue>
+			{
+				IsSuccessful = false
+			};
+
+			foreach(string errorMessage in errorMessages ?? Enumerable.Empty<string>())
+			{
+				resultDto.Errors.Add(ErrorDto.Create(errorMessage, null));
+			}
+
+			return resultDto;
+		}
 	}
 
 	/// <summary>

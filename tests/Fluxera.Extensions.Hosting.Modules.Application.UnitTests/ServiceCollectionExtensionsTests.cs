@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Infrastructure.UnitTests
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests
 {
 	using System;
 	using System.Threading;

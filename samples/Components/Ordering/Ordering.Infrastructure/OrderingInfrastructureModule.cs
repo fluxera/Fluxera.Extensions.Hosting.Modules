@@ -40,9 +40,6 @@ namespace Ordering.Infrastructure
 			// Add the consumer contributor.
 			context.Services.AddConsumersContributor<ConsumersContributor>();
 
-			// Add the MediatR services.
-			context.Services.AddMediatR();
-
 			// Add repositories.
 			context.Log("AddRepositories", services =>
 			{

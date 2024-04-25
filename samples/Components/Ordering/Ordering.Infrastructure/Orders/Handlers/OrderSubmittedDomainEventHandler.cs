@@ -1,14 +1,15 @@
 ﻿namespace Ordering.Infrastructure.Orders.Handlers
 {
+	using System.Threading;
 	using System.Threading.Tasks;
-	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
+	using Fluxera.Entity.DomainEvents;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using Ordering.Domain.Messages.Orders;
+	using Ordering.Application.Contracts.Orders.Messages;
 	using Ordering.Domain.Orders.DomainEvents;
 
 	[UsedImplicitly]
-	public sealed class OrderSubmittedDomainEventHandler : DomainEventHandler<OrderSubmittedDomainEvent>
+	public sealed class OrderSubmittedDomainEventHandler : IDomainEventHandler<OrderSubmittedDomainEvent>
 	{
 		private readonly IPublishEndpoint publishEndpoint;
 
@@ -18,7 +19,7 @@
 		}
 
 		/// <inheritdoc />
-		public override async Task HandleAsync(OrderSubmittedDomainEvent domainEvent)
+		public async Task HandleAsync(OrderSubmittedDomainEvent domainEvent, CancellationToken cancellationToken)
 		{
 			OrderSubmitted message = new OrderSubmitted(domainEvent.Order.ID, domainEvent.Order.Total);
 

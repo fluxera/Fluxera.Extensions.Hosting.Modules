@@ -26,5 +26,20 @@
 		{
 			return mappingExpression.ForMember(destinationMember, opts => opts.Ignore());
 		}
+
+		/// <summary>
+		///		Creates mapping from <typeparamref name="TDestination" /> to <typeparamref name="TSource"/>,
+		///		enabling validation so that <see cref="MapperConfiguration.AssertConfigurationIsValid"/>
+		///		correctly identifies any missed reverse mappings.
+		/// </summary>
+		/// <typeparam name="TSource"></typeparam>
+		/// <typeparam name="TDestination"></typeparam>
+		/// <param name="mappingExpression"></param>
+		/// <returns></returns>
+		public static IMappingExpression<TDestination, TSource> CreateValidatedReverseMap<TSource, TDestination>(
+			this IMappingExpression<TSource, TDestination> mappingExpression)
+		{
+			return mappingExpression.ReverseMap().ValidateMemberList(MemberList.Source);
+		}
 	}
 }

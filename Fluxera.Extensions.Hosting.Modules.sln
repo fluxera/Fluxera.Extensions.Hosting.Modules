@@ -268,12 +268,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent", "src\Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent\Fluxera.Extensions.Hosting.Modules.Scheduler.Persistent.csproj", "{EC768D8F-B805-495D-8BD4-2EF7A87A8030}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Domain.Messages", "samples\Components\Catalog\Catalog.Domain.Messages\Catalog.Domain.Messages.csproj", "{71CC53CA-89DF-46BE-8398-429FCAB3825C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Domain.Messages", "src\Fluxera.Extensions.Hosting.Modules.Domain.Messages\Fluxera.Extensions.Hosting.Modules.Domain.Messages.csproj", "{B63B6195-7609-4F23-9AB7-48600AA6C1EA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain.Messages", "samples\Components\Ordering\Ordering.Domain.Messages\Ordering.Domain.Messages.csproj", "{36B5A175-4EE1-4584-B89A-D9907A32FBA9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.Infrastructure", "src\Fluxera.Extensions.Hosting.Modules.Infrastructure\Fluxera.Extensions.Hosting.Modules.Infrastructure.csproj", "{740473F6-19A6-4A90-85E7-E09A7598C4BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanArchitecture", "{E538DB0C-491B-4953-87CF-724A0EAF058E}"
@@ -670,18 +664,6 @@ Global
 		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC768D8F-B805-495D-8BD4-2EF7A87A8030}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71CC53CA-89DF-46BE-8398-429FCAB3825C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71CC53CA-89DF-46BE-8398-429FCAB3825C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71CC53CA-89DF-46BE-8398-429FCAB3825C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71CC53CA-89DF-46BE-8398-429FCAB3825C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B63B6195-7609-4F23-9AB7-48600AA6C1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B63B6195-7609-4F23-9AB7-48600AA6C1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B63B6195-7609-4F23-9AB7-48600AA6C1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B63B6195-7609-4F23-9AB7-48600AA6C1EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36B5A175-4EE1-4584-B89A-D9907A32FBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36B5A175-4EE1-4584-B89A-D9907A32FBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36B5A175-4EE1-4584-B89A-D9907A32FBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36B5A175-4EE1-4584-B89A-D9907A32FBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -816,9 +798,6 @@ Global
 		{02267656-419E-47EE-90BB-AB35D5D3CA97} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
 		{5C20A511-3E88-4AFF-8FE7-D386419DEA58} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
 		{EC768D8F-B805-495D-8BD4-2EF7A87A8030} = {171B2D9F-EC77-403E-9BFE-B283F5BA8A5E}
-		{71CC53CA-89DF-46BE-8398-429FCAB3825C} = {011FD3C6-58D5-41AA-BD29-D5802A5064D9}
-		{B63B6195-7609-4F23-9AB7-48600AA6C1EA} = {E538DB0C-491B-4953-87CF-724A0EAF058E}
-		{36B5A175-4EE1-4584-B89A-D9907A32FBA9} = {C8F2A879-7A2E-46B0-881F-7874F495F25F}
 		{740473F6-19A6-4A90-85E7-E09A7598C4BD} = {E538DB0C-491B-4953-87CF-724A0EAF058E}
 		{E538DB0C-491B-4953-87CF-724A0EAF058E} = {DF28D730-99B3-4811-AAC7-725A73B3F668}
 		{2EF14ED5-E7A7-45CA-97BE-90645F0D3491} = {3B623AB1-150E-40AB-A268-094BC35F24B5}

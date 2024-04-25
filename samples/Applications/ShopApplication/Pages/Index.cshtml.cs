@@ -3,7 +3,7 @@
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using Catalog.Application.Contracts.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using Microsoft.AspNetCore.Mvc.RazorPages;
 	using Microsoft.Extensions.Logging;
 

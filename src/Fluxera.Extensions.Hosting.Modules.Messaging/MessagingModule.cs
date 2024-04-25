@@ -10,6 +10,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Messaging.Filters;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Principal;
+	using Fluxera.Extensions.Validation;
 	using JetBrains.Annotations;
 	using MassTransit;
 	using Microsoft.Extensions.DependencyInjection;
@@ -59,6 +60,9 @@
 
 			// Add the hash calculator service.
 			context.Log("AddHashCalculator", services => services.AddHashCalculator());
+
+			// Add the validation service.
+			context.Log("AddValidationService", services => services.AddValidation());
 
 			// Add the principal factory service.
 			context.Log("AddPrincipalFactory",

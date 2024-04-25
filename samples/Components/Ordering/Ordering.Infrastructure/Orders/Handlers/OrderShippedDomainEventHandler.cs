@@ -1,14 +1,15 @@
 ﻿namespace Ordering.Infrastructure.Orders.Handlers
 {
+	using System.Threading;
 	using System.Threading.Tasks;
-	using Fluxera.Extensions.Hosting.Modules.Domain.EventHandlers;
+	using Fluxera.Entity.DomainEvents;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using Ordering.Domain.Messages.Orders;
+	using Ordering.Application.Contracts.Orders.Messages;
 	using Ordering.Domain.Orders.DomainEvents;
 
 	[UsedImplicitly]
-	public sealed class OrderShippedDomainEventHandler : DomainEventHandler<OrderShippedDomainEvent>
+	public sealed class OrderShippedDomainEventHandler : IDomainEventHandler<OrderShippedDomainEvent>
 	{
 		private readonly IPublishEndpoint publishEndpoint;
 
@@ -18,12 +19,12 @@
 		}
 
 		/// <inheritdoc />
-		public override async Task HandleAsync(OrderShippedDomainEvent domainEvent)
+		public async Task HandleAsync(OrderShippedDomainEvent domainEvent, CancellationToken cancellationToken)
 		{
 			OrderShipped message = new OrderShipped(domainEvent.Order.ID, domainEvent.Order.Total);
 
 			// Publish the event message on the message bus.
-			await this.publishEndpoint.Publish(message);
+			await this.publishEndpoint.Publish(message, cancellationToken);
 		}
 	}
 }

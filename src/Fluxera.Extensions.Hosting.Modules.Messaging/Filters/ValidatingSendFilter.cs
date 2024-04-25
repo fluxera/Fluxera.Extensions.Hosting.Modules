@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
 	using System.Threading.Tasks;
-	using Fluxera.Extensions.Validation;
+	using FluentValidation;
 	using JetBrains.Annotations;
 	using MassTransit;
 	using Microsoft.Extensions.Logging;

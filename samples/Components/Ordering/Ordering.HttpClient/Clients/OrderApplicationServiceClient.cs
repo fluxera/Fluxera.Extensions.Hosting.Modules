@@ -4,7 +4,7 @@
 	using System.Linq;
 	using System.Net.Http;
 	using System.Threading.Tasks;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using Fluxera.Extensions.Http;
 	using JetBrains.Annotations;
 	using Ordering.Application.Contracts.Orders;

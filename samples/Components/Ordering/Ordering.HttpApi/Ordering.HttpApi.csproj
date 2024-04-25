@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.0.7" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.1.0" />
 		<PackageReference Include="Fluxera.Guards" Version="8.0.2" />
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
 	</ItemGroup>

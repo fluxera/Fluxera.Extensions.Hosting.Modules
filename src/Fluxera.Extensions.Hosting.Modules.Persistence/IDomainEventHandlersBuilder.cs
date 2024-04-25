@@ -1,9 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Reflection;
-	using Fluxera.Entity.DomainEvents;
 	using Fluxera.Repository.DomainEvents;
 	using JetBrains.Annotations;
 
@@ -26,27 +24,6 @@
 		/// <param name="assembly"></param>
 		/// <returns></returns>
 		IDomainEventHandlersBuilder AddDomainEventHandlers(Assembly assembly);
-
-		/// <summary>
-		///     Adds all given domain event handler types.
-		/// </summary>
-		/// <param name="types"></param>
-		/// <returns></returns>
-		IDomainEventHandlersBuilder AddDomainEventHandlers(IEnumerable<Type> types);
-
-		/// <summary>
-		///     Adds the given domain event handler type.
-		/// </summary>
-		/// <param name="type"></param>
-		/// <returns></returns>
-		IDomainEventHandlersBuilder AddDomainEventHandler(Type type);
-
-		/// <summary>
-		///     Adds the given domain event handler type.
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		IDomainEventHandlersBuilder AddDomainEventHandler<T>() where T : IDomainEventHandler;
 
 		/// <summary>Adds a domain events reducer.</summary>
 		/// <typeparam name="T"></typeparam>

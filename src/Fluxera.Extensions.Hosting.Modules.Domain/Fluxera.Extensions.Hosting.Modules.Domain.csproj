@@ -21,23 +21,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation" Version="11.9.0" />
-		<PackageReference Include="Fluxera.Entity" Version="8.0.7" />
-		<PackageReference Include="Fluxera.Extensions.Common" Version="8.1.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.0.7" />
-		<PackageReference Include="Fluxera.Repository.Abstractions" Version="8.1.0" />
+		<PackageReference Include="FluentValidation" Version="11.9.1" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
+		<PackageReference Include="Fluxera.Entity" Version="8.1.2" />
+		<PackageReference Include="Fluxera.Extensions.Common" Version="8.2.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.1.0" />
+		<PackageReference Include="Fluxera.Repository.Abstractions" Version="8.3.0" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
-		<PackageReference Include="ObjectDelta" Version="8.0.2" />
+		<PackageReference Include="MassTransit.Abstractions" Version="8.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
 		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain.Shared\Fluxera.Extensions.Hosting.Modules.Domain.Shared.csproj" />
-		<ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain.Messages\Fluxera.Extensions.Hosting.Modules.Domain.Messages.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Infrastructure.Consumers
 {
 	using System.Threading.Tasks;
-	using Catalog.Domain.Messages.Products;
+	using Catalog.Domain.Products.DomainEvents;
 	using JetBrains.Annotations;
 	using MassTransit;
 

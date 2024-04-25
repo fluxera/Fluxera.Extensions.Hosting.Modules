@@ -9,8 +9,6 @@
 	using Fluxera.Extensions.Hosting.Modules.DataManagement;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.Contributors;
-	using Fluxera.Extensions.Validation.DataAnnotations;
-	using Fluxera.Extensions.Validation.FluentValidation;
 	using Fluxera.Guards;
 	using Fluxera.Repository;
 	using Fluxera.Repository.Caching;
@@ -138,18 +136,11 @@
 								// Configure validation providers.
 								repositoryOptionsBuilder.AddValidation(validationOptionsBuilder =>
 								{
-									validationOptionsBuilder.AddValidatorFactory(validationBuilder =>
+									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 									{
-										validationBuilder.AddDataAnnotations(validationOptionsBuilder.RepositoryName);
-										validationBuilder.AddFluentValidation(validationOptionsBuilder.RepositoryName, fluentValidationOptions =>
-										{
-											foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
-											{
-												IValidatorsBuilder validatorsBuilder = new ValidatorsBuilder(fluentValidationOptions);
-												repositoryContributor.ConfigureValidators(validatorsBuilder, context);
-											}
-										});
-									});
+										IValidatorsBuilder validatorsBuilder = new ValidatorsBuilder(validationOptionsBuilder);
+										repositoryContributor.ConfigureValidators(validatorsBuilder, context);
+									}
 								});
 
 								// Configure the interception.

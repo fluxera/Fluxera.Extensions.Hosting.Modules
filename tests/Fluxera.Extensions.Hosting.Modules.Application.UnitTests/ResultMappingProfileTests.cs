@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests
 {
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contributors;
 	using global::AutoMapper;
 	using MadEyeMatt.Results;

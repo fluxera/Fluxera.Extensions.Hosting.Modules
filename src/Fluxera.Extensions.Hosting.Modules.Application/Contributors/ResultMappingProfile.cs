@@ -3,7 +3,7 @@
 	using System;
 	using System.Linq;
 	using System.Reflection;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using global::AutoMapper;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;

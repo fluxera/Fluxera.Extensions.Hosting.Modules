@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.0.7" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.Abstractions" Version="8.1.0" />
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
 			<PrivateAssets>all</PrivateAssets>
@@ -23,7 +23,7 @@
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Infrastructure\Fluxera.Extensions.Hosting.Modules.Infrastructure.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore\Fluxera.Extensions.Hosting.Modules.Persistence.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\..\..\src\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB\Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB.csproj" />
-		<ProjectReference Include="..\Ordering.Domain.Messages\Ordering.Domain.Messages.csproj" />
+		<ProjectReference Include="..\Ordering.Application\Ordering.Application.csproj" />
 		<ProjectReference Include="..\Ordering.Domain\Ordering.Domain.csproj" />
 	</ItemGroup>
 

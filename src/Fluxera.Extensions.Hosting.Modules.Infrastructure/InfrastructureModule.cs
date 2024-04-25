@@ -1,5 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Infrastructure
 {
+	using Fluxera.Extensions.Hosting.Modules.Application;
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.Domain;
 	using Fluxera.Extensions.Hosting.Modules.Messaging;
@@ -13,6 +14,7 @@
 	[DependsOn<DomainModule>]
 	[DependsOn<PersistenceModule>]
 	[DependsOn<MessagingModule>]
+	[DependsOn<ApplicationModule>]
 	[DependsOn<ConfigurationModule>]
 	public sealed class InfrastructureModule : ConfigureServicesModule
 	{

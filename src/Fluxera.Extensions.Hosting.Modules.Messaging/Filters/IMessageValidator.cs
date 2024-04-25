@@ -1,6 +1,6 @@
 namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 {
-	using Fluxera.Extensions.Validation;
+	using FluentValidation;
 	using JetBrains.Annotations;
 
 	/// <summary>
@@ -10,7 +10,7 @@ namespace Fluxera.Extensions.Hosting.Modules.Messaging.Filters
 	public interface IMessageValidator
 	{
 		/// <summary>
-		///     Validates the given message. Will thrown an exception of validation fails.
+		///     Validates the given message. Will throw an exception if the validation fails.
 		///     NOTE: Validation must be enabled in the message bus settings.
 		/// </summary>
 		/// <typeparam name="T">The message type.</typeparam>

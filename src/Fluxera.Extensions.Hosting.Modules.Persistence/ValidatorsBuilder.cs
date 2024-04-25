@@ -1,52 +1,29 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Persistence
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Reflection;
-	using FluentValidation;
-	using Fluxera.Extensions.Validation.FluentValidation;
+	using Fluxera.Repository;
 
 	internal sealed class ValidatorsBuilder : IValidatorsBuilder
 	{
-		private readonly ValidatorRegistration validatorRegistration;
+		private readonly IValidationOptionsBuilder validationOptionsBuilder;
 
-		public ValidatorsBuilder(ValidatorRegistration validatorRegistration)
+		public ValidatorsBuilder(IValidationOptionsBuilder validationOptionsBuilder)
 		{
-			this.validatorRegistration = validatorRegistration;
+			this.validationOptionsBuilder = validationOptionsBuilder;
 		}
 
 		/// <inheritdoc />
 		public IValidatorsBuilder AddValidators(IEnumerable<Assembly> assemblies)
 		{
-			this.validatorRegistration.AddValidators(assemblies);
+			this.validationOptionsBuilder.AddValidators(assemblies);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IValidatorsBuilder AddValidators(Assembly assembly)
 		{
-			this.validatorRegistration.AddValidators(assembly);
-			return this;
-		}
-
-		/// <inheritdoc />
-		public IValidatorsBuilder AddValidators(IEnumerable<Type> types)
-		{
-			this.validatorRegistration.AddValidators(types);
-			return this;
-		}
-
-		/// <inheritdoc />
-		public IValidatorsBuilder AddValidator(Type type)
-		{
-			this.validatorRegistration.AddValidator(type);
-			return this;
-		}
-
-		/// <inheritdoc />
-		public IValidatorsBuilder AddValidator<TValidator>() where TValidator : IValidator
-		{
-			this.validatorRegistration.AddValidator<TValidator>();
+			this.validationOptionsBuilder.AddValidators(assembly);
 			return this;
 		}
 	}

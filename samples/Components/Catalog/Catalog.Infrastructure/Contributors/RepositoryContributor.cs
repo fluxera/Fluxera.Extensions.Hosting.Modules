@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Infrastructure.Contributors
 {
+	using Catalog.Application.Products.Handlers;
 	using Catalog.Domain.Products;
-	using Catalog.Infrastructure.Products.Handlers;
 	using Catalog.Infrastructure.Products.Interceptors;
 	using Fluxera.Extensions.Hosting;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
@@ -20,21 +20,21 @@
 		public override void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
 		{
 			builder
-				.AddDomainEventHandler<ProductAddedHandler>()
-				.AddDomainEventHandler<ProductUpdatedHandler>()
-				.AddDomainEventHandler<ProductRemovedHandler>();
+				.AddDomainEventHandlers(typeof(ProductAddedHandler).Assembly)
+				.AddDomainEventHandlers(typeof(ProductUpdatedHandler).Assembly)
+				.AddDomainEventHandlers(typeof(ProductRemovedHandler).Assembly);
 		}
 
 		/// <inheritdoc />
 		public override void ConfigureValidators(IValidatorsBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddValidator<ProductValidator>();
+			builder.AddValidators(typeof(ProductValidator).Assembly);
 		}
 
 		/// <inheritdoc />
 		public override void ConfigureInterceptors(IInterceptorsBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddInterceptor<ProductInterceptor>();
+			builder.AddInterceptors(typeof(ProductInterceptor).Assembly);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Application.Contracts.Products
 {
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Entities;
 	using JetBrains.Annotations;
 
 	/// <summary>

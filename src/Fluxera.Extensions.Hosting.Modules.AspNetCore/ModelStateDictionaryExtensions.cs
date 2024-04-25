@@ -1,7 +1,8 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.AspNetCore
 {
 	using System.Collections.Generic;
-	using Fluxera.Extensions.Validation;
+	using FluentValidation;
+	using FluentValidation.Results;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -31,14 +32,11 @@
 			modelState.AddModelErrors(ex.Errors);
 		}
 
-		private static void AddModelErrors(this ModelStateDictionary modelState, IEnumerable<ValidationError> errors)
+		private static void AddModelErrors(this ModelStateDictionary modelState, IEnumerable<ValidationFailure> errors)
 		{
-			foreach(ValidationError error in errors)
+			foreach(ValidationFailure error in errors)
 			{
-				foreach(string errorMessage in error.ErrorMessages)
-				{
-					modelState.AddModelError(error.PropertyName ?? string.Empty, errorMessage);
-				}
+				modelState.AddModelError(error.PropertyName ?? string.Empty, error.ErrorMessage);
 			}
 		}
 	}

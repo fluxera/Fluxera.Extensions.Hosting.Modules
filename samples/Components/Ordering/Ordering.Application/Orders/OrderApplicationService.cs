@@ -5,7 +5,7 @@ namespace Ordering.Application.Orders
 	using System;
 	using System.Threading.Tasks;
 	using AutoMapper;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
 	using MediatR;

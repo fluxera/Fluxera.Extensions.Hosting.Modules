@@ -26,9 +26,6 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			// Add the MediatR services.
-			context.Services.AddMediatR();
-
 			// Add application services.
 			context.Services.AddTransient<IOrderApplicationService, OrderApplicationService>();
 		}

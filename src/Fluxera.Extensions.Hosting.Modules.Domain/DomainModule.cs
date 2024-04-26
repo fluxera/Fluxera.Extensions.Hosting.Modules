@@ -1,14 +1,14 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Domain
 {
 	using Fluxera.Extensions.Common;
-	using Fluxera.Extensions.Hosting.Modules.Configuration;
+	using Fluxera.Extensions.Hosting.Modules.FluentValidation;
 	using JetBrains.Annotations;
 
 	/// <summary>
 	///		A module that enables the domain.
 	/// </summary>
 	[PublicAPI]
-	[DependsOn<ConfigurationModule>]
+	[DependsOn<FluentValidationModule>]
 	public sealed class DomainModule : ConfigureServicesModule
 	{
 		/// <inheritdoc />

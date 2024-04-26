@@ -120,12 +120,6 @@
 								// Configure the domain event handlers.
 								repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>
 								{
-									// Enable the automatic CRUD domain events feature.
-									if(repositoryOptions.EnableAutomaticCrudDomainEvents)
-									{
-										domainHandlerOptionsBuilder.EnableAutomaticCrudDomainEvents();
-									}
-
 									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 									{
 										IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);

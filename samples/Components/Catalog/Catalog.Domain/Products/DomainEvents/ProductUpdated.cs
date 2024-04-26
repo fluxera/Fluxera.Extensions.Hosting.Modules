@@ -1,16 +1,17 @@
 ﻿namespace Catalog.Domain.Products.DomainEvents
 {
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Repository.DomainEvents;
+	using Fluxera.Entity.DomainEvents;
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	public sealed class ProductUpdated : ItemUpdated<Product, ProductId>
+	public sealed class ProductUpdated : IDomainEvent
 	{
-		/// <inheritdoc />
-		public ProductUpdated(Product beforeUpdateItem, Product afterUpdateItem)
-			: base(beforeUpdateItem, afterUpdateItem)
+		public ProductUpdated(ProductId id)
 		{
+			this.ID = id;
 		}
+
+		public ProductId ID { get; }
 	}
 }

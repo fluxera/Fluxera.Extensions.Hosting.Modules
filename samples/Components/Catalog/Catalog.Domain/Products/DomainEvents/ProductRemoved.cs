@@ -1,16 +1,17 @@
 ﻿namespace Catalog.Domain.Products.DomainEvents
 {
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Repository.DomainEvents;
+	using Fluxera.Entity.DomainEvents;
 	using JetBrains.Annotations;
 
 	[PublicAPI]
-	public sealed class ProductRemoved : ItemRemoved<Product, ProductId>
+	public sealed class ProductRemoved : IDomainEvent
 	{
-		/// <inheritdoc />
-		public ProductRemoved(ProductId id, Product item)
-			: base(id, item)
+		public ProductRemoved(ProductId id)
 		{
+			this.ID = id;
 		}
+
+		public ProductId ID { get; }
 	}
 }

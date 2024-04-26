@@ -1,10 +1,13 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests
 {
 	using System;
+	using System.Reflection;
 	using System.Threading.Tasks;
 	using FluentAssertions;
-	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models;
+	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Commands;
+	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Events;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
+	using global::FluentValidation;
 	using MediatR;
 	using Microsoft.Extensions.DependencyInjection;
 	using NUnit.Framework;
@@ -19,7 +22,8 @@
 		{
 			this.serviceProvider = BuildServiceProvider(services =>
 			{
-				services.AddMediatR();
+				services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+				services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 			});
 		}
 
@@ -28,7 +32,7 @@
 		{
 			ISender sender = this.serviceProvider.GetRequiredService<ISender>();
 
-			Func<Task> func = async () => await sender.Send(new TestRequest());
+			Func<Task> func = async () => await sender.Send(new TestCommand());
 			await func.Should().NotThrowAsync();
 		}
 
@@ -37,7 +41,7 @@
 		{
 			IPublisher publisher = this.serviceProvider.GetRequiredService<IPublisher>();
 
-			Func<Task> func = async () => await publisher.Publish(new TestNotification());
+			Func<Task> func = async () => await publisher.Publish(new TestEvent());
 			await func.Should().NotThrowAsync();
 		}
 	}

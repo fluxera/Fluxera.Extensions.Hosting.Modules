@@ -3,6 +3,7 @@
 	using System.Threading.Tasks;
 	using AutoMapper;
 	using Catalog.Application.Contracts.Products;
+	using Catalog.Application.Contracts.Products.Application;
 	using Catalog.Domain.Shared.Products;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using JetBrains.Annotations;
@@ -24,21 +25,21 @@
 		/// <inheritdoc />
 		public async Task<ResultDto<ProductDto>> GetProductAsync(ProductId id)
 		{
-			Result<ProductDto> result = await this.sender.Send(new GetProductRequest(id));
+			Result<ProductDto> result = await this.sender.Send(new GetProduct(id));
 			return this.mapper.Map<ResultDto<ProductDto>>(result);
 		}
 
 		/// <inheritdoc />
 		public async Task<ResultDto<ProductDto>> AddProduct(ProductDto dto)
 		{
-			Result<ProductDto> result = await this.sender.Send(new AddProductRequest(dto));
+			Result<ProductDto> result = await this.sender.Send(new AddProduct(dto));
 			return this.mapper.Map<ResultDto<ProductDto>>(result);
 		}
 
 		/// <inheritdoc />
 		public async Task<ResultDto<ProductDto[]>> GetProductsAsync()
 		{
-			Result<ProductDto[]> result = await this.sender.Send(new GetProductsRequest());
+			Result<ProductDto[]> result = await this.sender.Send(new GetProducts());
 			return this.mapper.Map<ResultDto<ProductDto[]>>(result);
 		}
 	}

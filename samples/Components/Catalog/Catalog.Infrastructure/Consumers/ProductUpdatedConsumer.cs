@@ -1,7 +1,8 @@
 ﻿namespace Catalog.Infrastructure.Consumers
 {
 	using System.Threading.Tasks;
-	using Catalog.Domain.Products.DomainEvents;
+	using Catalog.Application.Contracts.Products.Integration;
+	using Fluxera.Extensions.Hosting.Modules.Infrastructure.Consumers;
 	using JetBrains.Annotations;
 	using MassTransit;
 
@@ -9,10 +10,10 @@
 	///     A consumer implementation that consumes <see cref="ProductUpdated" /> event messages.
 	/// </summary>
 	[UsedImplicitly]
-	public sealed class ProductUpdatedConsumer : IConsumer<ProductUpdated>
+	public sealed class ProductUpdatedConsumer : IIntegrationEventConsumer<ProductUpdated>
 	{
 		/// <inheritdoc />
-		public Task Consume(ConsumeContext<ProductUpdated> context)
+		public Task ConsumeAsync(ConsumeContext<ProductUpdated> context)
 		{
 			// NOTE: Whatever needs to be done when this message is consumed goes into the application.
 

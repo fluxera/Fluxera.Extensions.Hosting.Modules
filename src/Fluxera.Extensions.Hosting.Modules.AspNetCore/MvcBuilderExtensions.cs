@@ -14,7 +14,7 @@
 			ApplicationPartManager partManager = builder?.PartManager;
 			if(partManager is not null)
 			{
-				IModuleContainer container = builder.Services.GetSingletonInstance<IModuleContainer>();
+				IModuleContainer container = builder.Services.GetObject<IModuleContainer>();
 
 				IEnumerable<Assembly> moduleAssemblies = container.Modules.Select(x => x.Assembly).Distinct();
 

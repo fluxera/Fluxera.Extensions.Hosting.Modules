@@ -11,7 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting.Blazor" Version="8.1.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting.Blazor" Version="8.1.3" />
 		<PackageReference Include="MadEyeMatt.AspNetCore.Blazor" Version="8.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
 	</ItemGroup>

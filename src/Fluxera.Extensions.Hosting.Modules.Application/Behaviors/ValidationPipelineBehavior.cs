@@ -6,9 +6,9 @@
 	using System.Reflection;
 	using System.Threading;
 	using System.Threading.Tasks;
-	using FluentValidation;
-	using FluentValidation.Results;
 	using Fluxera.Utilities.Extensions;
+	using global::FluentValidation;
+	using global::FluentValidation.Results;
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;
 	using MediatR;
@@ -36,15 +36,18 @@
 		/// <inheritdoc />
 		public async Task<TResult> Handle(TRequest request, RequestHandlerDelegate<TResult> next, CancellationToken cancellationToken)
 		{
-			if (!this.validators.Any())
+			// Just continue the pipeline if no validator exists.
+			if(!this.validators.Any())
 			{
 				return await next();
 			}
 
+			// Execute the available validators.
 			ValidationFailure[] validationFailures = this.validators
 				.Select(validator => validator.Validate(request))
 				.SelectMany(validationResult => validationResult.Errors)
 				.Where(validationFailure => validationFailure is not null)
+				.Distinct()
 				.ToArray();
 
 			Type resultType = typeof(TResult);
@@ -58,6 +61,7 @@
 					break;
 			}
 
+			// Create validation errors from failures.
 			ValidationError[] errors = validationFailures
 			   .Select(x => new ValidationError(x.PropertyName, x.ErrorMessage))
 			   .Distinct()

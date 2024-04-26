@@ -24,7 +24,7 @@
 			this.ShippingAddress = shippingAddress;
 			this.BillingAddress = billingAddress;
 
-			this.RaiseDomainEvent(new OrderSubmittedDomainEvent(this));
+			this.RaiseDomainEvent(new OrderSubmitted(this));
 		}
 
 		public OrderState OrderState { get; private set; }
@@ -60,7 +60,7 @@
 			}
 
 			this.OrderState = OrderState.Shipped;
-			this.RaiseDomainEvent(new OrderSubmittedDomainEvent(this));
+			this.RaiseDomainEvent(new OrderSubmitted(this));
 		}
 	}
 }

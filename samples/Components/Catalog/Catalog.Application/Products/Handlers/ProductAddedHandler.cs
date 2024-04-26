@@ -1,30 +1,26 @@
 ﻿namespace Catalog.Application.Products.Handlers
 {
-	using Catalog.Domain.Products;
-	using Catalog.Domain.Shared.Products;
-	using Fluxera.Extensions.Common;
-	using Fluxera.Extensions.Hosting.Modules.Application.Messages.Domain;
+	using System.Threading;
+	using System.Threading.Tasks;
+	using Catalog.Domain.Products.DomainEvents;
+	using Fluxera.Entity.DomainEvents;
 	using JetBrains.Annotations;
 	using MassTransit;
-	using DomainProductAdded = Catalog.Domain.Products.DomainEvents.ProductAdded;
-	using IntegrationProductAdded = Catalog.Application.Contracts.Products.Messages.ProductAdded;
 
-	/// <summary>
-	///     An event handler for bridging the <see cref="DomainProductAdded" /> domain event
-	///     to the <see cref="IntegrationProductAdded" /> integration event message.
-	/// </summary>
 	[UsedImplicitly]
-	public sealed class ProductAddedHandler : ItemAddedEventHandlerBase<Product, ProductId, DomainProductAdded, IntegrationProductAdded>
+	internal sealed class ProductAddedHandler : IDomainEventHandler<ProductAdded>
 	{
-		/// <summary>
-		///     Initializes a new instance of the <see cref="ProductAddedHandler" /> class.
-		/// </summary>
-		/// <param name="publishEndpoint">The publish endpoint.</param>
-		/// <param name="dateTimeOffsetProvider">The date time offset provider.</param>
-		public ProductAddedHandler(
-			IPublishEndpoint publishEndpoint,
-			IDateTimeOffsetProvider dateTimeOffsetProvider) : base(publishEndpoint, dateTimeOffsetProvider)
+		private readonly IPublishEndpoint publishEndpoint;
+
+		public ProductAddedHandler(IPublishEndpoint publishEndpoint)
 		{
+			this.publishEndpoint = publishEndpoint;
+		}
+
+		/// <inheritdoc />
+		public async Task HandleAsync(ProductAdded domainEvent, CancellationToken cancellationToken)
+		{
+			await this.publishEndpoint.Publish(new Contracts.Products.Integration.ProductAdded(), cancellationToken);
 		}
 	}
 }

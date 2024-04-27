@@ -31,7 +31,7 @@
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
 		<PackageReference Include="MadEyeMatt.Results" Version="2.1.0" />
-		<PackageReference Include="MassTransit.Abstractions" Version="8.2.1" />
+		<PackageReference Include="MassTransit.Abstractions" Version="8.2.2" />
 		<PackageReference Include="MediatR.Contracts" Version="2.0.1" />
 	</ItemGroup>
 

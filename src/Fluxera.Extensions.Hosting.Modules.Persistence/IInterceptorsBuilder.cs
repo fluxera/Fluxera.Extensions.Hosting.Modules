@@ -15,13 +15,13 @@
 		/// </summary>
 		/// <param name="assemblies"></param>
 		/// <returns></returns>
-		IInterceptorsBuilder AddInterceptors(IEnumerable<Assembly> assemblies);
+		IInterceptorsBuilder AddInterceptorsFromAssemblies(IEnumerable<Assembly> assemblies);
 
 		/// <summary>
 		///     Adds all available interceptors in the given assembly.
 		/// </summary>
 		/// <param name="assembly"></param>
 		/// <returns></returns>
-		IInterceptorsBuilder AddInterceptors(Assembly assembly);
+		IInterceptorsBuilder AddInterceptorsFromAssembly(Assembly assembly);
 	}
 }

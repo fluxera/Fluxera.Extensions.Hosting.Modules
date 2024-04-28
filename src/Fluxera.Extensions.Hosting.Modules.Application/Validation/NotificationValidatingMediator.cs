@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Behaviors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Validation
 {
 	using System;
 	using System.Collections.Generic;
@@ -7,8 +7,8 @@
 	using System.Threading.Tasks;
 	using global::FluentValidation;
 	using global::FluentValidation.Results;
+	using global::MediatR;
 	using JetBrains.Annotations;
-	using MediatR;
 	using Microsoft.Extensions.DependencyInjection;
 
 	[UsedImplicitly]

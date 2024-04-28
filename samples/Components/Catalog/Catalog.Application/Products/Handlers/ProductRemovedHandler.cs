@@ -4,8 +4,8 @@
 	using MassTransit;
 	using System.Threading.Tasks;
 	using System.Threading;
-	using Fluxera.Entity.DomainEvents;
 	using Catalog.Domain.Products.DomainEvents;
+	using Fluxera.DomainEvents.MediatR;
 
 	[UsedImplicitly]
 	internal sealed class ProductRemovedHandler : IDomainEventHandler<ProductRemoved>

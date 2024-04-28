@@ -16,7 +16,7 @@
 		///     Adds the specified <see cref="IConfigureOptionsContributor" /> for the module.
 		/// </summary>
 		/// <remarks>
-		///     The contributors must be added in the pre configure services calls.
+		///     The contributors must be added in the pre-configure services calls.
 		/// </remarks>
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>

@@ -25,6 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Fluxera.DomainEvents.MediatR" Version="8.2.0" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.1.3" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
@@ -36,8 +37,10 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.AutoMapper\Fluxera.Extensions.Hosting.Modules.AutoMapper.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Configuration\Fluxera.Extensions.Hosting.Modules.Configuration.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.Domain\Fluxera.Extensions.Hosting.Modules.Domain.csproj" />
 	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.FluentValidation\Fluxera.Extensions.Hosting.Modules.FluentValidation.csproj" />
+	  <ProjectReference Include="..\Fluxera.Extensions.Hosting.Modules.MediatR\Fluxera.Extensions.Hosting.Modules.MediatR.csproj" />
 	</ItemGroup>
 
 </Project>

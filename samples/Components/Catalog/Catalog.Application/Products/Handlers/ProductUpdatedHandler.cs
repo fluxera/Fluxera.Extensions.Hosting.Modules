@@ -3,7 +3,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Catalog.Domain.Products.DomainEvents;
-	using Fluxera.Entity.DomainEvents;
+	using Fluxera.DomainEvents.MediatR;
 	using JetBrains.Annotations;
 	using MassTransit;
 

@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Behaviors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Validation
 {
 	using JetBrains.Annotations;
 	using MadEyeMatt.Results;

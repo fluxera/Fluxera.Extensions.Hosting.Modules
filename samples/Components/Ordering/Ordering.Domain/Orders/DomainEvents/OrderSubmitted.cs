@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Domain.Orders.DomainEvents
 {
-	using Fluxera.Entity.DomainEvents;
+	using Fluxera.DomainEvents.Abstractions;
 	using JetBrains.Annotations;
 
 	[PublicAPI]

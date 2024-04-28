@@ -7,13 +7,13 @@
 	using System.Threading.Tasks;
 	using MadEyeMatt.Results;
 	using MadEyeMatt.Results.FluentAssertions;
-	using MediatR;
 	using System.Reflection;
-	using Fluxera.Extensions.Hosting.Modules.Application.Behaviors;
 	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Commands;
 	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Events;
 	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Requests;
+	using Fluxera.Extensions.Hosting.Modules.Application.Validation;
 	using global::FluentValidation;
+	using global::MediatR;
 
 	[TestFixture]
 	public class ValidationPipelineBehaviorTests : TestBase
@@ -30,7 +30,7 @@
 					cfg.MediatorImplementationType = typeof(NotificationValidatingMediator);
 					cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 				});
-				services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+				services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), includeInternalTypes: true);
 				services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 			});
 		}

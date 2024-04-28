@@ -15,13 +15,13 @@
 		/// </summary>
 		/// <param name="assemblies"></param>
 		/// <returns></returns>
-		IValidatorsBuilder AddValidators(IEnumerable<Assembly> assemblies);
+		IValidatorsBuilder AddValidatorsFromAssemblies(IEnumerable<Assembly> assemblies);
 
 		/// <summary>
 		///     Adds all available validators in the given assembly.
 		/// </summary>
 		/// <param name="assembly"></param>
 		/// <returns></returns>
-		IValidatorsBuilder AddValidators(Assembly assembly);
+		IValidatorsBuilder AddValidatorsFromAssembly(Assembly assembly);
 	}
 }

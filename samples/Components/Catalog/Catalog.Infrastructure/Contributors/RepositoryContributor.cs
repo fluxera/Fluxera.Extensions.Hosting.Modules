@@ -1,6 +1,5 @@
 ﻿namespace Catalog.Infrastructure.Contributors
 {
-	using Catalog.Application;
 	using Catalog.Domain;
 	using Catalog.Domain.Products;
 	using Fluxera.Extensions.Hosting;
@@ -17,21 +16,15 @@
 		}
 
 		/// <inheritdoc />
-		public override void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
-		{
-			builder.AddDomainEventHandlers(CatalogApplication.Assembly);
-		}
-
-		/// <inheritdoc />
 		public override void ConfigureValidators(IValidatorsBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddValidators(CatalogDomain.Assembly);
+			builder.AddValidatorsFromAssembly(CatalogDomain.Assembly);
 		}
 
 		/// <inheritdoc />
 		public override void ConfigureInterceptors(IInterceptorsBuilder builder, IServiceConfigurationContext context)
 		{
-			builder.AddInterceptors(CatalogInfrastructure.Assembly);
+			builder.AddInterceptorsFromAssembly(CatalogInfrastructure.Assembly);
 		}
 	}
 }

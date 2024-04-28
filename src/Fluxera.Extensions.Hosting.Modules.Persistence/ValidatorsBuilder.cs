@@ -14,16 +14,16 @@
 		}
 
 		/// <inheritdoc />
-		public IValidatorsBuilder AddValidators(IEnumerable<Assembly> assemblies)
+		public IValidatorsBuilder AddValidatorsFromAssemblies(IEnumerable<Assembly> assemblies)
 		{
-			this.validationOptionsBuilder.AddValidators(assemblies);
+			this.validationOptionsBuilder.AddValidatorsFromAssemblies(assemblies);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IValidatorsBuilder AddValidators(Assembly assembly)
+		public IValidatorsBuilder AddValidatorsFromAssembly(Assembly assembly)
 		{
-			this.validationOptionsBuilder.AddValidators(assembly);
+			this.validationOptionsBuilder.AddValidatorsFromAssembly(assembly);
 			return this;
 		}
 	}

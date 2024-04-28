@@ -20,7 +20,7 @@
 		/// </summary>
 		/// <param name="builder"></param>
 		/// <param name="context"></param>
-		void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context);
+		void ConfigureDomainEvents(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context);
 
 		/// <summary>
 		///     Configures the validators to use.

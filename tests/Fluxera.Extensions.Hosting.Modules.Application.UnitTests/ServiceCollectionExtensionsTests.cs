@@ -8,7 +8,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Events;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
 	using global::FluentValidation;
-	using MediatR;
+	using global::MediatR;
 	using Microsoft.Extensions.DependencyInjection;
 	using NUnit.Framework;
 
@@ -23,7 +23,7 @@
 			this.serviceProvider = BuildServiceProvider(services =>
 			{
 				services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-				services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+				services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), includeInternalTypes: true);
 			});
 		}
 

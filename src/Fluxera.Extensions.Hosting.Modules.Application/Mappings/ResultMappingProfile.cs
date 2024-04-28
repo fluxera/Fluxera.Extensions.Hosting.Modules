@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contributors
+﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Mappings
 {
 	using System;
 	using System.Linq;

@@ -104,31 +104,31 @@
 							// Configure the used provider.
 							repositoryProviderContributor.AddRepository(builder, repositoryName, repositoryContextType, repositoryOptionsBuilder =>
 							{
-								// Enable the UoW feature.
+								// Enable unit-of-work.
 								if(repositoryOptions.EnableUnitOfWork)
 								{
 									repositoryOptionsBuilder.EnableUnitOfWork();
 								}
 
-								// Configure for what aggregate root types this repository uses.
+								// Enable for what aggregate root types this repository uses.
 								foreach(IRepositoryContributor persistenceContributor in repositoryContributors)
 								{
 									IRepositoryAggregatesBuilder repositoryAggregatesBuilder = new RepositoryAggregatesBuilder(repositoryOptionsBuilder);
 									persistenceContributor.ConfigureAggregates(repositoryAggregatesBuilder, context);
 								}
 
-								// Configure the domain event handlers.
-								repositoryOptionsBuilder.AddDomainEventHandling(domainHandlerOptionsBuilder =>
+								// Enable the domain event handlers.
+								repositoryOptionsBuilder.EnableDomainEventHandling(domainHandlerOptionsBuilder =>
 								{
 									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 									{
 										IDomainEventHandlersBuilder domainEventHandlersBuilder = new DomainEventHandlersBuilder(domainHandlerOptionsBuilder);
-										repositoryContributor.ConfigureDomainEventHandlers(domainEventHandlersBuilder, context);
+										repositoryContributor.ConfigureDomainEvents(domainEventHandlersBuilder, context);
 									}
 								});
 
-								// Configure validation providers.
-								repositoryOptionsBuilder.AddValidation(validationOptionsBuilder =>
+								// Enable validation providers.
+								repositoryOptionsBuilder.EnableValidation(validationOptionsBuilder =>
 								{
 									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 									{
@@ -137,8 +137,8 @@
 									}
 								});
 
-								// Configure the interception.
-								repositoryOptionsBuilder.AddInterception(interceptionOptionsBuilder =>
+								// Enable the interception.
+								repositoryOptionsBuilder.EnableInterception(interceptionOptionsBuilder =>
 								{
 									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 									{
@@ -147,8 +147,8 @@
 									}
 								});
 
-								// Configure caching.
-								repositoryOptionsBuilder.AddCaching(cachingOptionsBuilder =>
+								// Enable caching.
+								repositoryOptionsBuilder.EnableCaching(cachingOptionsBuilder =>
 								{
 									foreach(IRepositoryContributor repositoryContributor in repositoryContributors)
 									{

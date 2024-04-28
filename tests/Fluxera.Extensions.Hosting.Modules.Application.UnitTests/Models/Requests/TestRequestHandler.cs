@@ -2,7 +2,7 @@
 {
 	using System.Threading;
 	using System.Threading.Tasks;
-	using MediatR;
+	using global::MediatR;
 
 	public class TestRequestHandler : IRequestHandler<TestRequest, int>
 	{

@@ -14,7 +14,7 @@
 		}
 
 		/// <inheritdoc />
-		public virtual void ConfigureDomainEventHandlers(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
+		public virtual void ConfigureDomainEvents(IDomainEventHandlersBuilder builder, IServiceConfigurationContext context)
 		{
 		}
 

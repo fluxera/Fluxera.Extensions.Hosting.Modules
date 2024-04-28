@@ -2,7 +2,7 @@
 {
 	using FluentAssertions;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
-	using Fluxera.Extensions.Hosting.Modules.Application.Contributors;
+	using Fluxera.Extensions.Hosting.Modules.Application.Mappings;
 	using global::AutoMapper;
 	using MadEyeMatt.Results;
 	using NUnit.Framework;

@@ -3,8 +3,8 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts;
+	using global::MediatR;
 	using JetBrains.Annotations;
-	using MediatR;
 
 	/// <summary>
 	///		A contract for application event handlers.

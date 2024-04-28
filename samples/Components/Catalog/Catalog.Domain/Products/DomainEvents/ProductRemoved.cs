@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Domain.Products.DomainEvents
 {
 	using Catalog.Domain.Shared.Products;
-	using Fluxera.Entity.DomainEvents;
+	using Fluxera.DomainEvents.Abstractions;
 	using JetBrains.Annotations;
 
 	[PublicAPI]

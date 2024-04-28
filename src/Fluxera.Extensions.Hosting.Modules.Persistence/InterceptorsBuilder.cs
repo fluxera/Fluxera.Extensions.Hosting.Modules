@@ -14,16 +14,16 @@
 		}
 
 		/// <inheritdoc />
-		public IInterceptorsBuilder AddInterceptors(IEnumerable<Assembly> assemblies)
+		public IInterceptorsBuilder AddInterceptorsFromAssemblies(IEnumerable<Assembly> assemblies)
 		{
-			this.interceptionOptions.AddInterceptors(assemblies);
+			this.interceptionOptions.AddInterceptorsFromAssemblies(assemblies);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IInterceptorsBuilder AddInterceptors(Assembly assembly)
+		public IInterceptorsBuilder AddInterceptorsFromAssembly(Assembly assembly)
 		{
-			this.interceptionOptions.AddInterceptors(assembly);
+			this.interceptionOptions.AddInterceptorsFromAssembly(assembly);
 			return this;
 		}
 	}

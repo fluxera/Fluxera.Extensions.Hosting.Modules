@@ -2,7 +2,7 @@
 {
 	using System.Threading;
 	using System.Threading.Tasks;
-	using Fluxera.Entity.DomainEvents;
+	using Fluxera.DomainEvents.MediatR;
 	using JetBrains.Annotations;
 	using MassTransit;
 	using Ordering.Domain.Orders.DomainEvents;

@@ -1,6 +1,6 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Requests
 {
-	using MediatR;
+	using global::MediatR;
 
 	public class TestRequest : IRequest<int>
 	{

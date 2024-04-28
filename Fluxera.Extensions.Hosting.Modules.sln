@@ -278,7 +278,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BD3A660F-D504-4D50-8222-7F582D6F7E79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.FluentValidation", "src\Fluxera.Extensions.Hosting.Modules.FluentValidation\Fluxera.Extensions.Hosting.Modules.FluentValidation.csproj", "{36F7E880-06D3-4E5C-B587-A6ED9233C5F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Extensions.Hosting.Modules.FluentValidation", "src\Fluxera.Extensions.Hosting.Modules.FluentValidation\Fluxera.Extensions.Hosting.Modules.FluentValidation.csproj", "{36F7E880-06D3-4E5C-B587-A6ED9233C5F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Extensions.Hosting.Modules.MediatR", "src\Fluxera.Extensions.Hosting.Modules.MediatR\Fluxera.Extensions.Hosting.Modules.MediatR.csproj", "{A61312C0-0651-4E83-83CB-5A0B951E89D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -678,6 +680,10 @@ Global
 		{36F7E880-06D3-4E5C-B587-A6ED9233C5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36F7E880-06D3-4E5C-B587-A6ED9233C5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36F7E880-06D3-4E5C-B587-A6ED9233C5F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61312C0-0651-4E83-83CB-5A0B951E89D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61312C0-0651-4E83-83CB-5A0B951E89D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61312C0-0651-4E83-83CB-5A0B951E89D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61312C0-0651-4E83-83CB-5A0B951E89D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -810,6 +816,7 @@ Global
 		{3B623AB1-150E-40AB-A268-094BC35F24B5} = {F18D2D58-282C-4D93-8D9A-3A76CF98F018}
 		{BD3A660F-D504-4D50-8222-7F582D6F7E79} = {75AC41E9-2B8B-4D76-A7DF-A18F4FB9D6D6}
 		{36F7E880-06D3-4E5C-B587-A6ED9233C5F8} = {4D7FD136-FB23-4CD7-A6F2-431F01C15EA5}
+		{A61312C0-0651-4E83-83CB-5A0B951E89D8} = {4D7FD136-FB23-4CD7-A6F2-431F01C15EA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D97BF2AF-6E68-4E88-BF70-773A86E26013}

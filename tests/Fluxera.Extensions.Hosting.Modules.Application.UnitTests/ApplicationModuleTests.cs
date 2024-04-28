@@ -2,9 +2,9 @@ namespace Fluxera.Extensions.Hosting.Modules.Application.UnitTests
 {
 	using FluentAssertions;
 	using Fluxera.Extensions.Common;
-	using Fluxera.Extensions.Hosting.Modules.Application.Behaviors;
+	using Fluxera.Extensions.Hosting.Modules.Application.Validation;
 	using Fluxera.Extensions.Hosting.Modules.UnitTesting;
-	using MediatR;
+	using global::MediatR;
 	using Microsoft.Extensions.DependencyInjection;
 	using NUnit.Framework;
 

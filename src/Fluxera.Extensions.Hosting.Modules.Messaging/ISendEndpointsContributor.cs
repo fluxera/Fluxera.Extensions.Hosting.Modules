@@ -13,6 +13,6 @@
 		/// </summary>
 		/// <param name="configurator"></param>
 		/// <param name="context"></param>
-		void Configure(ISendEndpointMappingConfigurator configurator, IApplicationInitializationContext context);
+		void Configure(ISendEndpointConfigurator configurator, IApplicationInitializationContext context);
 	}
 }

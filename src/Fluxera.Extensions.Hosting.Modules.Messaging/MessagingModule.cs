@@ -186,7 +186,7 @@
 			{
 				foreach(ISendEndpointsContributor contributor in contributorList)
 				{
-					ISendEndpointMappingConfigurator configurator = new SendEndpointMappingConfigurator(serviceProvider);
+					ISendEndpointConfigurator configurator = new SendEndpointConfigurator(serviceProvider);
 					contributor.Configure(configurator, context);
 				}
 			});

@@ -4,17 +4,17 @@
 	using MassTransit;
 	using Microsoft.Extensions.DependencyInjection;
 
-	internal sealed class SendEndpointMappingConfigurator : ISendEndpointMappingConfigurator
+	internal sealed class SendEndpointConfigurator : ISendEndpointConfigurator
 	{
 		private readonly IServiceProvider serviceProvider;
 
-		public SendEndpointMappingConfigurator(IServiceProvider serviceProvider)
+		public SendEndpointConfigurator(IServiceProvider serviceProvider)
 		{
 			this.serviceProvider = serviceProvider;
 		}
 
 		/// <inheritdoc />
-		public ISendEndpointMappingConfigurator MapSendEndpoint<T, TConsumer>()
+		public ISendEndpointConfigurator MapSendEndpoint<T, TConsumer>()
 			where T : class
 			where TConsumer : class, IConsumer<T>
 		{

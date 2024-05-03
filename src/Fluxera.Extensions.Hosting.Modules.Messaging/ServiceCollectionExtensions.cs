@@ -42,7 +42,7 @@
 		/// <typeparam name="TContributor"></typeparam>
 		/// <param name="services"></param>
 		/// <returns></returns>
-		public static IServiceCollection AddSendEndpointMappingContributor<TContributor>(this IServiceCollection services)
+		public static IServiceCollection AddSendEndpointsContributor<TContributor>(this IServiceCollection services)
 			where TContributor : class, ISendEndpointsContributor, new()
 		{
 			SendEndpointsContributorList contributorList = services.GetObjectOrDefault<SendEndpointsContributorList>();

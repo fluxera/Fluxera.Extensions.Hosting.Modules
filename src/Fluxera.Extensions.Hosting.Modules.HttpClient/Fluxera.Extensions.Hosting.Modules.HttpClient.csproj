@@ -21,8 +21,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Http" Version="8.2.0" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.1.3" />
+		<PackageReference Include="Fluxera.Enumeration.SystemTextJson" Version="8.1.0" />
+		<PackageReference Include="Fluxera.Extensions.Http" Version="8.3.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.0" />
+		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="8.1.0" />
+		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="8.1.0" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

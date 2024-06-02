@@ -4,7 +4,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
 	using Fluxera.Extensions.Hosting.Modules.Application.Mappings;
 	using global::AutoMapper;
-	using MadEyeMatt.Results;
+	using Fluxera.Results;
 	using NUnit.Framework;
 
 	[TestFixture]

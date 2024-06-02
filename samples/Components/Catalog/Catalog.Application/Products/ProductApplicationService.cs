@@ -6,8 +6,8 @@
 	using Catalog.Application.Contracts.Products.Application;
 	using Catalog.Domain.Shared.Products;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
+	using Fluxera.Results;
 	using JetBrains.Annotations;
-	using MadEyeMatt.Results;
 	using MediatR;
 
 	[UsedImplicitly]

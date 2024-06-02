@@ -4,9 +4,9 @@
 	using System.Linq;
 	using System.Reflection;
 	using Fluxera.Extensions.Hosting.Modules.Application.Contracts.Dtos.Results;
+	using Fluxera.Results;
 	using global::AutoMapper;
 	using JetBrains.Annotations;
-	using MadEyeMatt.Results;
 
 	[UsedImplicitly]
 	internal sealed class ResultMappingProfile : Profile

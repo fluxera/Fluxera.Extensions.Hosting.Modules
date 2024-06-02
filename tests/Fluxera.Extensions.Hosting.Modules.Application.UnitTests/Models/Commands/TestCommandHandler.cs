@@ -3,7 +3,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Fluxera.Extensions.Hosting.Modules.Application.Handlers;
-	using MadEyeMatt.Results;
+	using Fluxera.Results;
 
 	public class TestCommandHandler : IApplicationCommandHandler<TestCommand>
 	{

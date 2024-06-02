@@ -6,12 +6,12 @@
 	using System.Reflection;
 	using System.Threading;
 	using System.Threading.Tasks;
+	using Fluxera.Results;
 	using Fluxera.Utilities.Extensions;
 	using global::FluentValidation;
 	using global::FluentValidation.Results;
 	using global::MediatR;
 	using JetBrains.Annotations;
-	using MadEyeMatt.Results;
 
 	/// <summary>
 	///		A MediatR pipeline behavior that validates request instances.

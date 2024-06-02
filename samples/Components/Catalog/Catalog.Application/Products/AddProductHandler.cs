@@ -11,8 +11,8 @@
 	using Catalog.Domain.Shared.Products;
 	using Fluxera.Extensions.Hosting.Modules.Application.Handlers;
 	using Fluxera.Repository;
+	using Fluxera.Results;
 	using JetBrains.Annotations;
-	using MadEyeMatt.Results;
 
 	[UsedImplicitly]
 	internal sealed class AddProductHandler : IApplicationCommandHandler<AddProduct, ProductDto>

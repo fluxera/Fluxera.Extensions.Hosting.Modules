@@ -5,8 +5,8 @@
 	using Microsoft.Extensions.DependencyInjection;
 	using System;
 	using System.Threading.Tasks;
-	using MadEyeMatt.Results;
-	using MadEyeMatt.Results.FluentAssertions;
+	using Fluxera.Results;
+	using Fluxera.Results.FluentAssertions;
 	using System.Reflection;
 	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Commands;
 	using Fluxera.Extensions.Hosting.Modules.Application.UnitTests.Models.Events;

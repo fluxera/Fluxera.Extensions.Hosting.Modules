@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Validation
 {
+	using Fluxera.Results;
 	using JetBrains.Annotations;
-	using MadEyeMatt.Results;
 
 	/// <summary>
 	///		An error type that adds the property name.

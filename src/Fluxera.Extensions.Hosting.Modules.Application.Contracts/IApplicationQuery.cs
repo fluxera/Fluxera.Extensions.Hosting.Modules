@@ -1,7 +1,7 @@
 ﻿namespace Fluxera.Extensions.Hosting.Modules.Application.Contracts
 {
+	using Fluxera.Results;
 	using JetBrains.Annotations;
-	using MadEyeMatt.Results;
 	using MediatR;
 
 	/// <summary>

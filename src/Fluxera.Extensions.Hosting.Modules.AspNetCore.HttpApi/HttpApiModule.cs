@@ -9,6 +9,10 @@
 	using MadEyeMatt.AspNetCore.ProblemDetails;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.Extensions.DependencyInjection;
+	using Fluxera.Enumeration.SystemTextJson;
+	using Fluxera.Spatial.SystemTextJson;
+	using Fluxera.StronglyTypedId.SystemTextJson;
+	using Fluxera.ValueObject.SystemTextJson;
 
 	/// <summary>
 	///     A module that enables HTTP APIs.
@@ -93,6 +97,17 @@
 							.AddValidation()
 							.WithOpenApi();
 					};
+				});
+			});
+
+			context.Log("ConfigureHttpJsonOptions", services =>
+			{
+				services.ConfigureHttpJsonOptions(options =>
+				{
+					options.SerializerOptions.UseSpatial();
+					options.SerializerOptions.UseEnumeration();
+					options.SerializerOptions.UsePrimitiveValueObject();
+					options.SerializerOptions.UseStronglyTypedId();
 				});
 			});
 		}

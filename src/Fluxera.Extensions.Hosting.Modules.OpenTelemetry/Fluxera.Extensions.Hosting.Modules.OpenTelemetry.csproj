@@ -21,15 +21,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.1" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.2" />
 		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
-		<PackageReference Include="OpenTelemetry" Version="1.8.1" />
-		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.8.1" />
-		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.8.1" />
+		<PackageReference Include="OpenTelemetry" Version="1.9.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
+		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Process" Version="0.5.0-beta.5" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.8.1" />
 		<PackageReference Include="OpenTelemetry.ResourceDetectors.Container" Version="1.0.0-beta.7" />

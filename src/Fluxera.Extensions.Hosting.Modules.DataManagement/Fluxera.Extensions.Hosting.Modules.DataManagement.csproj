@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -21,7 +21,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Utilities" Version="8.1.0" />
 		<PackageReference Include="Fluxera.Extensions.DataManagement" Version="8.3.2" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.2" />
 		<PackageReference Include="Fluxera.Utilities" Version="8.2.1" />

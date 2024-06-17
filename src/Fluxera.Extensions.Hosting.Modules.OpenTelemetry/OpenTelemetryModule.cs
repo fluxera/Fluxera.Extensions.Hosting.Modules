@@ -6,7 +6,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.OpenTelemetry.Contributors;
 	using global::OpenTelemetry.Metrics;
-	using global::OpenTelemetry.ResourceDetectors.Container;
 	using global::OpenTelemetry.Resources;
 	using global::OpenTelemetry.Trace;
 	using JetBrains.Annotations;
@@ -55,7 +54,7 @@
 				.ConfigureResource(builder =>
 				{
 					builder
-						.AddDetector(new ContainerResourceDetector())
+						.AddContainerDetector()
 						.AddService(
 							serviceName: context.Environment.ApplicationName,
 							serviceVersion: Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "unknown",

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Application\Fluxera.Extensions.Hosting.Modules.Application.csproj" />
+    <ProjectReference Include="..\SampleApp.Application.Contracts\SampleApp.Application.Contracts.csproj" />
+    <ProjectReference Include="..\SampleApp.Domain\SampleApp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

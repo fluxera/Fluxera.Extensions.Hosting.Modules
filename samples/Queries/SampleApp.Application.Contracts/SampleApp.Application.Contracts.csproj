@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fluxera.Queries" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fluxera.Extensions.Hosting.Modules.Application.Contracts\Fluxera.Extensions.Hosting.Modules.Application.Contracts.csproj" />
+    <ProjectReference Include="..\SampleApp.Domain.Shared\SampleApp.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

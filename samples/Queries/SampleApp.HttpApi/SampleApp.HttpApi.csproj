@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluxera.Queries.AspNetCore" Version="8.0.1" />
-    <PackageReference Include="Fluxera.Results.AspNetCore" Version="8.0.0" />
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+    <PackageReference Include="Fluxera.Queries.AspNetCore" Version="8.1.1" />
+    <PackageReference Include="Fluxera.Results.AspNetCore" Version="8.0.2" />
+    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
   </ItemGroup>
 
   <ItemGroup>

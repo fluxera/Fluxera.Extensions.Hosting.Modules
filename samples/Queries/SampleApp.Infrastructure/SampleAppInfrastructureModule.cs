@@ -10,7 +10,6 @@
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
 	using Fluxera.Extensions.Hosting.Modules.Persistence.MongoDB;
 	using Fluxera.Queries;
-	using Fluxera.Queries.Options;
 	using JetBrains.Annotations;
 	using Microsoft.Extensions.DependencyInjection;
 	using SampleApp.Application.Contracts.Customers;

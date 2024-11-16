@@ -12,7 +12,7 @@
 	<PropertyGroup>
 		<Company>Fluxera Software Development GmbH</Company>
 		<Product>Fluxera Software Foundation</Product>
-		<Copyright>Copyright © 2021-2024 Fluxera Software Development GmbH. All rights reserved.</Copyright>
+		<Copyright>Copyright © 2014-2024 Fluxera Software Development GmbH. All rights reserved.</Copyright>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -29,17 +29,12 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
-	<Target Name="Update Version" BeforeTargets="Build" Condition="'$(TF_BUILD)' == 'true' and '$(TargetFramework)' == 'net6.0'">
-		<Message Text="Version = $(GITVERSION_FullSemVer)" Importance="High" />
-		<Message Text="##vso[build.updatebuildnumber]$(GITVERSION_FullSemVer)" Importance="High" />
-	</Target>
-
-	<Target Name="Update Version" BeforeTargets="Build" Condition="'$(TF_BUILD)' == 'true' and '$(TargetFramework)' == 'net7.0'">
-		<Message Text="Version = $(GITVERSION_FullSemVer)" Importance="High" />
-		<Message Text="##vso[build.updatebuildnumber]$(GITVERSION_FullSemVer)" Importance="High" />
-	</Target>
-
 	<Target Name="Update Version" BeforeTargets="Build" Condition="'$(TF_BUILD)' == 'true' and '$(TargetFramework)' == 'net8.0'">
+		<Message Text="Version = $(GITVERSION_FullSemVer)" Importance="High" />
+		<Message Text="##vso[build.updatebuildnumber]$(GITVERSION_FullSemVer)" Importance="High" />
+	</Target>
+
+	<Target Name="Update Version" BeforeTargets="Build" Condition="'$(TF_BUILD)' == 'true' and '$(TargetFramework)' == 'net9.0'">
 		<Message Text="Version = $(GITVERSION_FullSemVer)" Importance="High" />
 		<Message Text="##vso[build.updatebuildnumber]$(GITVERSION_FullSemVer)" Importance="High" />
 	</Target>

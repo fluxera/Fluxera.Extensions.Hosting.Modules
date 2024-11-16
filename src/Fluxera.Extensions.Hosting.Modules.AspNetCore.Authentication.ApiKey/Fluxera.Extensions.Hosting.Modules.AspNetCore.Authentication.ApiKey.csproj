@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -25,10 +25,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MadEyeMatt.AspNetCore.Authentication.ApiKey" Version="8.0.5" />
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.4" />
-		<PackageReference Include="Fluxera.Utilities" Version="8.2.3" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.4">
+		<PackageReference Include="MadEyeMatt.AspNetCore.Authentication.ApiKey" Version="9.0.0" />
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="9.0.1" />
+		<PackageReference Include="Fluxera.Utilities" Version="9.0.0" />
+		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

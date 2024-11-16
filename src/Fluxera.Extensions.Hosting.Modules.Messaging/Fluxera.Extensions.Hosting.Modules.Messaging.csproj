@@ -32,7 +32,7 @@
 		<PackageReference Include="Fluxera.Spatial.SystemTextJson" Version="8.1.4" />
 		<PackageReference Include="Fluxera.StronglyTypedId.SystemTextJson" Version="8.3.7" />
 		<PackageReference Include="Fluxera.ValueObject.SystemTextJson" Version="8.2.4" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.4">
+		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

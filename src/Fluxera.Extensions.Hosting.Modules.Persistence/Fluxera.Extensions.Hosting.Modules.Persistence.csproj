@@ -24,7 +24,7 @@
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.4" />
 		<PackageReference Include="Fluxera.Repository" Version="8.7.3" />
 		<PackageReference Include="Fluxera.Repository.OpenTelemetry" Version="8.7.3" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.4">
+		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

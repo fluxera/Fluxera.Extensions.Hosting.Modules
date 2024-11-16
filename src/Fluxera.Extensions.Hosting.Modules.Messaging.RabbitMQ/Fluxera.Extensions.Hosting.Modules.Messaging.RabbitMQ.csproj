@@ -23,7 +23,7 @@
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="8.0.2" />
 		<PackageReference Include="Fluxera.Extensions.Hosting" Version="8.2.4" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.4">
+		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

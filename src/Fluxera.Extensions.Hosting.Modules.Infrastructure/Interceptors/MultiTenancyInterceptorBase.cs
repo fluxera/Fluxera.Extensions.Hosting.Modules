@@ -18,7 +18,7 @@
 	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
 	public abstract class MultiTenancyInterceptorBase<TAggregateRoot, TKey> : InterceptorBase<TAggregateRoot, TKey>
-		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>, IMultiTenancyObject
+		where TAggregateRoot : Entity<TAggregateRoot, TKey>, IMultiTenancyObject
 		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <summary>

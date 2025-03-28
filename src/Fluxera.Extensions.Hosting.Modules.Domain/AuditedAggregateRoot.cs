@@ -12,8 +12,8 @@
 	/// <typeparam name="TAggregateRoot"></typeparam>
 	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
-	public abstract class AuditedAggregateRoot<TAggregateRoot, TKey> : AggregateRoot<TAggregateRoot, TKey>, IAuditedObject
-		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+	public abstract class AuditedAggregateRoot<TAggregateRoot, TKey> : Entity<TAggregateRoot, TKey>, IAuditedObject
+		where TAggregateRoot : Entity<TAggregateRoot, TKey>
 		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <inheritdoc />

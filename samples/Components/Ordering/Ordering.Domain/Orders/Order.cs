@@ -9,7 +9,7 @@
 	using Ordering.Domain.Shared.Orders;
 
 	[PublicAPI]
-	public sealed class Order : AggregateRoot<Order, OrderId>
+	public sealed class Order : Entity<Order, OrderId>
 	{
 		private readonly IList<OrderItem> orderItems;
 

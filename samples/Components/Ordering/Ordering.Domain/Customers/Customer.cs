@@ -5,7 +5,7 @@
 	using Ordering.Domain.Shared.Customers;
 
 	[PublicAPI]
-	public sealed class Customer : AggregateRoot<Customer, CustomerId>
+	public sealed class Customer : Entity<Customer, CustomerId>
 	{
 		public Name Name { get; set; }
 	}

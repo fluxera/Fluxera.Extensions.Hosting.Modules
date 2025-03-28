@@ -12,8 +12,8 @@
 	/// <typeparam name="TAggregateRoot"></typeparam>
 	/// <typeparam name="TKey"></typeparam>
 	[PublicAPI]
-	public abstract class MultiTenancyAggregateRoot<TAggregateRoot, TKey> : AggregateRoot<TAggregateRoot, TKey>, IMultiTenancyObject
-		where TAggregateRoot : AggregateRoot<TAggregateRoot, TKey>
+	public abstract class MultiTenancyAggregateRoot<TAggregateRoot, TKey> : Entity<TAggregateRoot, TKey>, IMultiTenancyObject
+		where TAggregateRoot : Entity<TAggregateRoot, TKey>
 		where TKey : IComparable<TKey>, IEquatable<TKey>
 	{
 		/// <inheritdoc />

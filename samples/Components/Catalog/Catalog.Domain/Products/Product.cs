@@ -7,9 +7,9 @@
 	/// <summary>
 	///     An aggregate root holding the information of an example.
 	/// </summary>
-	/// <seealso cref="AggregateRoot{TAggregateRoot,TKey}" />
+	/// <seealso cref="Entity{TAggregateRoot,TKey}" />
 	[PublicAPI]
-	public sealed class Product : AggregateRoot<Product, ProductId>
+	public sealed class Product : Entity<Product, ProductId>
 	{
 		/// <summary>
 		///     Gets or sets the name.

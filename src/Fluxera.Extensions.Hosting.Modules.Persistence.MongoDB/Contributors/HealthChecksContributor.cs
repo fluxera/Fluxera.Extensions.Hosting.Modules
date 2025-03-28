@@ -3,6 +3,7 @@
 	using Fluxera.Extensions.Hosting.Modules.Configuration;
 	using Fluxera.Extensions.Hosting.Modules.HealthChecks;
 	using Fluxera.Extensions.Hosting.Modules.Persistence;
+	using global::MongoDB.Driver;
 	using Microsoft.Extensions.DependencyInjection;
 
 	internal sealed class HealthChecksContributor : IHealthChecksContributor
@@ -18,10 +19,7 @@
 					string connectionString = persistenceOptions.ConnectionStrings[repositoryOptions.ConnectionStringName];
 
 					// https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/tree/master/src/HealthChecks.MongoDb
-					builder.AddMongoDb(connectionString, name: $"RabbitMQ-{key}", tags: new string[]
-					{
-						HealthCheckTags.Ready
-					});
+					builder.AddMongoDb(_ => new MongoClient(connectionString), name: $"RabbitMQ-{key}", tags: [ HealthCheckTags.Ready ]);
 				}
 			}
 		}

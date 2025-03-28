@@ -21,9 +21,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="9.0.1" />
-		<PackageReference Include="Fluxera.Repository.EntityFrameworkCore" Version="9.0.1" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="9.0.2" />
+		<PackageReference Include="Fluxera.Repository.EntityFrameworkCore" Version="9.1.0" />
+		<PackageReference Include="GitVersion.MsBuild" Version="6.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -32,11 +32,11 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="[8.0.11]" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="[8.0.14]" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

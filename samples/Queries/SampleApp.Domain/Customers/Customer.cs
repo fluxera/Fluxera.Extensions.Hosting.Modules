@@ -5,7 +5,7 @@
 	using SampleApp.Domain.Shared.Customers;
 
 	[PublicAPI]
-	public sealed class Customer : AggregateRoot<Customer, CustomerId>
+	public sealed class Customer : Entity<Customer, CustomerId>
 	{
 		public string FirstName { get; set; }
 

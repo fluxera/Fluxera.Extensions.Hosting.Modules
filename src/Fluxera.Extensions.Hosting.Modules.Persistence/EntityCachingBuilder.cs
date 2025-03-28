@@ -3,52 +3,52 @@
 	using System;
 	using Fluxera.Repository;
 
-	internal sealed class AggregateCachingBuilder : IAggregateCachingBuilder
+	internal sealed class EntityCachingBuilder : IEntityCachingBuilder
 	{
-		private readonly IAggregateCachingOptionsBuilder aggregateCachingOptionsBuilder;
+		private readonly IEntityCachingOptionsBuilder aggregateCachingOptionsBuilder;
 
-		public AggregateCachingBuilder(IAggregateCachingOptionsBuilder aggregateCachingOptionsBuilder)
+		public EntityCachingBuilder(IEntityCachingOptionsBuilder aggregateCachingOptionsBuilder)
 		{
 			this.aggregateCachingOptionsBuilder = aggregateCachingOptionsBuilder;
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseNoCachingFor<TAggregateRoot>()
+		public IEntityCachingBuilder UseNoCachingFor<TAggregateRoot>()
 		{
 			this.aggregateCachingOptionsBuilder.UseNoCachingFor<TAggregateRoot>();
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseNoCachingFor(Type type)
+		public IEntityCachingBuilder UseNoCachingFor(Type type)
 		{
 			this.aggregateCachingOptionsBuilder.UseNoCachingFor(type);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseStandardFor<TAggregateRoot>()
+		public IEntityCachingBuilder UseStandardFor<TAggregateRoot>()
 		{
 			this.aggregateCachingOptionsBuilder.UseStandardFor<TAggregateRoot>();
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseStandardFor(Type type)
+		public IEntityCachingBuilder UseStandardFor(Type type)
 		{
 			this.aggregateCachingOptionsBuilder.UseStandardFor(type);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseTimeoutFor<TAggregateRoot>(TimeSpan expiration)
+		public IEntityCachingBuilder UseTimeoutFor<TAggregateRoot>(TimeSpan expiration)
 		{
 			this.aggregateCachingOptionsBuilder.UseTimeoutFor<TAggregateRoot>(expiration);
 			return this;
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseTimeoutFor(Type type, TimeSpan expiration)
+		public IEntityCachingBuilder UseTimeoutFor(Type type, TimeSpan expiration)
 		{
 			this.aggregateCachingOptionsBuilder.UseTimeoutFor(type, expiration);
 			return this;

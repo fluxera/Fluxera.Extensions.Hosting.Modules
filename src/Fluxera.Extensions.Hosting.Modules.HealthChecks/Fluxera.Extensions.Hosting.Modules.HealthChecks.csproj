@@ -21,14 +21,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Extensions.Hosting" Version="9.0.1" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
+		<PackageReference Include="Fluxera.Extensions.Hosting" Version="9.0.2" />
+		<PackageReference Include="GitVersion.MsBuild" Version="6.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="HealthChecks.OpenTelemetry.Instrumentation" Version="1.0.0-dev.7" />
 		<PackageReference Include="JetBrains.Annotations" Version="2024.3.0" PrivateAssets="All" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

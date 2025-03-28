@@ -13,24 +13,24 @@
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseNoCaching()
+		public IEntityCachingBuilder UseNoCaching()
 		{
-			IAggregateCachingOptionsBuilder aggregateCachingOptionsBuilder = this.cachingOptionsBuilder.UseNoCaching();
-			return new AggregateCachingBuilder(aggregateCachingOptionsBuilder);
+			IEntityCachingOptionsBuilder aggregateCachingOptionsBuilder = this.cachingOptionsBuilder.UseNoCaching();
+			return new EntityCachingBuilder(aggregateCachingOptionsBuilder);
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseStandard()
+		public IEntityCachingBuilder UseStandard()
 		{
-			IAggregateCachingOptionsBuilder aggregateCachingOptionsBuilder = this.cachingOptionsBuilder.UseStandard();
-			return new AggregateCachingBuilder(aggregateCachingOptionsBuilder);
+			IEntityCachingOptionsBuilder aggregateCachingOptionsBuilder = this.cachingOptionsBuilder.UseStandard();
+			return new EntityCachingBuilder(aggregateCachingOptionsBuilder);
 		}
 
 		/// <inheritdoc />
-		public IAggregateCachingBuilder UseTimeout(TimeSpan expiration)
+		public IEntityCachingBuilder UseTimeout(TimeSpan expiration)
 		{
-			IAggregateCachingOptionsBuilder aggregateCachingOptionsBuilder = this.cachingOptionsBuilder.UseTimeout(expiration);
-			return new AggregateCachingBuilder(aggregateCachingOptionsBuilder);
+			IEntityCachingOptionsBuilder aggregateCachingOptionsBuilder = this.cachingOptionsBuilder.UseTimeout(expiration);
+			return new EntityCachingBuilder(aggregateCachingOptionsBuilder);
 		}
 	}
 }

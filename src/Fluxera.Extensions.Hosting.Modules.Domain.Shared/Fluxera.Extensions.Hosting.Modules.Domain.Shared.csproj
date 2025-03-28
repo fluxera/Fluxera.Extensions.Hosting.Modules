@@ -25,12 +25,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fluxera.Guards" Version="9.0.0" />
-		<PackageReference Include="Fluxera.Enumeration" Version="9.0.1" />
-		<PackageReference Include="Fluxera.StronglyTypedId" Version="9.0.1" />
-		<PackageReference Include="Fluxera.Utilities" Version="9.0.0" />
-		<PackageReference Include="Fluxera.ValueObject" Version="9.0.1" />
-		<PackageReference Include="GitVersion.MsBuild" Version="6.0.5">
+		<PackageReference Include="Fluxera.Guards" Version="9.0.1" />
+		<PackageReference Include="Fluxera.Enumeration" Version="9.0.2" />
+		<PackageReference Include="Fluxera.StronglyTypedId" Version="9.0.2" />
+		<PackageReference Include="Fluxera.Utilities" Version="9.0.1" />
+		<PackageReference Include="Fluxera.ValueObject" Version="9.0.2" />
+		<PackageReference Include="GitVersion.MsBuild" Version="6.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

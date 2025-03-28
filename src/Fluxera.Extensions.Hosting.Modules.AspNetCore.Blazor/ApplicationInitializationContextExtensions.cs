@@ -3,11 +3,11 @@
 	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
 	using Microsoft.AspNetCore.Builder;
-	using Microsoft.AspNetCore.Components.WebAssembly.Server;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Reflection;
+	using Microsoft.AspNetCore.Components.WebAssembly.Server;
 
 	/// <summary>
 	///     Extension methods for the <see cref="IApplicationInitializationContext" /> type.

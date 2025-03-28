@@ -119,7 +119,6 @@
 			return context;
 		}
 
-#if NET8_0_OR_GREATER
 		/// <summary>
 		///		Adds the anti-forgery middleware to the pipeline.
 		/// </summary>
@@ -130,7 +129,6 @@
 
 			return context;
 		}
-#endif
 
 		/// <summary>
 		///     Adds a <see cref="EndpointRoutingMiddleware" /> middleware to the specified <see cref="IApplicationBuilder" />.
@@ -202,7 +200,6 @@
 			return context;
 		}
 
-#if NET8_0_OR_GREATER
 		/// <summary>
 		///		Adds a middleware to the pipeline that will catch exceptions, log them, reset the request path, and re-execute the request.
 		///		The request will not be re-executed if the response has already started.
@@ -214,7 +211,6 @@
 
 			return context;
 		}
-#endif
 
 		/// <summary>
 		///		Adds a middleware to the pipeline that will catch exceptions, log them, and re-execute the request in an alternate pipeline.

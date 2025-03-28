@@ -18,14 +18,14 @@
 		/// </summary>
 		/// <param name="assembly"></param>
 		/// <returns></returns>
-		public static IEnumerable<Type> EnumerateAggregates(this Assembly assembly)
+		public static IEnumerable<Type> EnumerateEntities(this Assembly assembly)
 		{
 			Guard.Against.Null(assembly);
 
 			Type[] types = assembly.GetTypes();
 			foreach(Type type in types)
 			{
-				if(type.IsAggregateRoot())
+				if(type.IsEntity())
 				{
 					yield return type;
 				}

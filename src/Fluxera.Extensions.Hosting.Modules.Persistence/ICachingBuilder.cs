@@ -13,19 +13,19 @@
 		///     Disable caching globally. This configuration can be overriden vor specific aggregates.
 		/// </summary>
 		/// <returns></returns>
-		IAggregateCachingBuilder UseNoCaching();
+		IEntityCachingBuilder UseNoCaching();
 
 		/// <summary>
 		///     Use the standard caching strategy globally. This configuration can be overriden vor specific aggregates.
 		/// </summary>
 		/// <returns></returns>
-		IAggregateCachingBuilder UseStandard();
+		IEntityCachingBuilder UseStandard();
 
 		/// <summary>
 		///     Use the timeout caching strategy globally. This configuration can be overriden vor specific aggregates.
 		/// </summary>
 		/// <param name="expiration"></param>
 		/// <returns></returns>
-		IAggregateCachingBuilder UseTimeout(TimeSpan expiration);
+		IEntityCachingBuilder UseTimeout(TimeSpan expiration);
 	}
 }

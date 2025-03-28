@@ -2,7 +2,6 @@
 {
 	using Fluxera.Extensions.DependencyInjection;
 	using JetBrains.Annotations;
-	using MadEyeMatt.AspNetCore.Blazor;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
@@ -27,9 +26,6 @@
 		/// <inheritdoc />
 		public override void ConfigureServices(IServiceConfigurationContext context)
 		{
-			context.Log("AddComponentActivator",
-				services => services.AddComponentActivator());
-
 			context.Log("AddRazorComponents", services => services
 				.AddRazorComponents()
 				.AddInteractiveWebAssemblyComponents());

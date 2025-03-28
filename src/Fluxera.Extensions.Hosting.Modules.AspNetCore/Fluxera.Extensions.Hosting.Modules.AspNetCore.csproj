@@ -41,6 +41,7 @@
 		<PackageReference Include="JetBrains.Annotations" Version="2024.3.0" PrivateAssets="All" />
 		<PackageReference Include="MadEyeMatt.AspNetCore.Endpoints" Version="9.0.1" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.11.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

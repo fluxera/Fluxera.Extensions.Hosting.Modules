@@ -9,10 +9,14 @@
 		<NoWarn>$(NoWarn);SYSLIB1006</NoWarn>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(CurrentYear)' == ''">
+		<CurrentYear>$([System.DateTime]::UtcNow.Year)</CurrentYear>
+	</PropertyGroup>
+	
 	<PropertyGroup>
 		<Company>Fluxera Software Development GmbH</Company>
 		<Product>Fluxera Software Foundation</Product>
-		<Copyright>Copyright © 2014-2024 Fluxera Software Development GmbH. All rights reserved.</Copyright>
+		<Copyright>Copyright © 2014-$(CurrentYear) Fluxera Software Development GmbH. All rights reserved.</Copyright>
 	</PropertyGroup>
 
 	<PropertyGroup>
